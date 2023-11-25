@@ -1,20 +1,47 @@
-//
-//  LocaGestApp.swift
-//  LocaGest
-//
-//  Created by Karim Hammami on 05/11/2023.
-//
-
 import SwiftUI
 
 @main
 struct LocaGestApp: App {
-    let persistenceController = PersistenceController.shared
+    @StateObject var viewModel: ViewModel = ViewModel()
+    @ObservedObject var router = Router()
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            NavigationStack(path: $router.navPath){
+                FlotteMainView()
+                    .environmentObject(viewModel)
+                    .navigationBarBackButtonHidden(true)
+                    .navigationDestination(for: Router.Destination.self){
+                        destination in
+                        switch destination{
+                        case .user:
+                            UserMainView()
+                                .environmentObject(viewModel)
+                                .navigationBarBackButtonHidden(true)
+                        case .agence:
+                            AgenceMainView()
+                                .environmentObject(viewModel)
+                                .navigationBarBackButtonHidden(true)
+                        case .flotte:
+                            FlotteMainView()
+                                .environmentObject(viewModel)
+                                .navigationBarBackButtonHidden(true)
+                        case .reservation:
+                            ReservationMainView()
+                                .environmentObject(viewModel)
+                                .navigationBarBackButtonHidden(true)
+                        case .garage:
+                            GarageMainView()
+                                .environmentObject(viewModel)
+                                .navigationBarBackButtonHidden(true)
+                        case .chat:
+                            ChatMainView()
+                                .environmentObject(viewModel)
+                                .navigationBarBackButtonHidden(true)
+                        }
+                    }
+            }
+            .environmentObject(router)
         }
     }
 }

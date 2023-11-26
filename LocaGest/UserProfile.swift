@@ -13,6 +13,8 @@ struct UserProfile: View {
     }
 }
 
-#Preview {
+struct UserOrofileView_Previews: PreviewProvider {
+static var previews: some View {
     UserProfile()
+}
 }

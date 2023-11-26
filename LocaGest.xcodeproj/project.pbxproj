@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30F918AE2B13999D004EAF46 /* ReservationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F918AD2B13999D004EAF46 /* ReservationModel.swift */; };
+		30F918B02B139E1F004EAF46 /* ReservationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F918AF2B139E1F004EAF46 /* ReservationListView.swift */; };
 		DC453BD02B122E0100B2B9BA /* UserMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC453BCF2B122E0100B2B9BA /* UserMainView.swift */; };
 		DC453BD22B122E5800B2B9BA /* FlotteMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC453BD12B122E5800B2B9BA /* FlotteMainView.swift */; };
 		DC453BD42B122ECA00B2B9BA /* AgenceMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC453BD32B122ECA00B2B9BA /* AgenceMainView.swift */; };
@@ -25,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		30F918AD2B13999D004EAF46 /* ReservationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationModel.swift; sourceTree = "<group>"; };
+		30F918AF2B139E1F004EAF46 /* ReservationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationListView.swift; sourceTree = "<group>"; };
 		DC453BCF2B122E0100B2B9BA /* UserMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMainView.swift; sourceTree = "<group>"; };
 		DC453BD12B122E5800B2B9BA /* FlotteMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlotteMainView.swift; sourceTree = "<group>"; };
 		DC453BD32B122ECA00B2B9BA /* AgenceMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgenceMainView.swift; sourceTree = "<group>"; };
@@ -112,6 +116,8 @@
 				DC453BD92B12301300B2B9BA /* SideBarViewModel.swift */,
 				DC453BDB2B1238AC00B2B9BA /* SideBar.swift */,
 				DC453BDD2B12AC1900B2B9BA /* Router.swift */,
+				30F918AD2B13999D004EAF46 /* ReservationModel.swift */,
+				30F918AF2B139E1F004EAF46 /* ReservationListView.swift */,
 			);
 			path = LocaGest;
 			sourceTree = "<group>";
@@ -200,8 +206,10 @@
 				DC453BD82B122F9200B2B9BA /* GarageMainView.swift in Sources */,
 				DC4AC4572B139A4100AFDA6F /* CardConversation.swift in Sources */,
 				DC453BD42B122ECA00B2B9BA /* AgenceMainView.swift in Sources */,
+				30F918AE2B13999D004EAF46 /* ReservationModel.swift in Sources */,
 				DC453BDA2B12301300B2B9BA /* SideBarViewModel.swift in Sources */,
 				DCFCEF652B10C2CC004C3574 /* ChatMainView.swift in Sources */,
+				30F918B02B139E1F004EAF46 /* ReservationListView.swift in Sources */,
 				DC51CA342AF8324D00DC8C9A /* LocaGestApp.swift in Sources */,
 				DC51CA402AF8325100DC8C9A /* LocaGest.xcdatamodeld in Sources */,
 				DC453BD62B122F4800B2B9BA /* ReservationMainView.swift in Sources */,

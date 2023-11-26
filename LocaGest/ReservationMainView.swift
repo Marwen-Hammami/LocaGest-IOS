@@ -47,7 +47,7 @@ struct ReservationMainView: View {
     @ViewBuilder
     func HomeView()-> some View{
         // Start - Here you can put your work ************************
-        Text("Jouhayna - exmpl List Reservations")
+     ReservationListView()
         
         
         // End   - Here you can put your work ************************

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "44F13DFA-A26C-4156-857A-416480F783C1"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0D334D58-62D0-427D-B27D-DD1C313808E0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LocaGest/ReservationMainView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "HomeView()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0D334D58-62D0-427D-B27D-DD1C313808E0 - f94746d5c5519125"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LocaGest.ReservationMainView.HomeView() -&gt; some"
+                  moduleName = "LocaGest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jouhaynacheikh/Desktop/LocaGest-IOS/LocaGest/ReservationMainView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "224">
+               </Location>
+               <Location
+                  uuid = "0D334D58-62D0-427D-B27D-DD1C313808E0 - f94746d5c5519125"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LocaGest.ReservationMainView.HomeView() -&gt; some"
+                  moduleName = "LocaGest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jouhaynacheikh/Desktop/LocaGest-IOS/LocaGest/ReservationMainView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "204">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2C679AC7-5B21-485C-9A26-D0147A37A126"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LocaGest/ReservationMainView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "HomeView()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

@@ -17,6 +17,8 @@
 		DC453BDA2B12301300B2B9BA /* SideBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC453BD92B12301300B2B9BA /* SideBarViewModel.swift */; };
 		DC453BDC2B1238AC00B2B9BA /* SideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC453BDB2B1238AC00B2B9BA /* SideBar.swift */; };
 		DC453BDE2B12AC1900B2B9BA /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC453BDD2B12AC1900B2B9BA /* Router.swift */; };
+		DC4AC4532B1398E700AFDA6F /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4AC4522B1398E700AFDA6F /* Conversation.swift */; };
+		DC4AC4572B139A4100AFDA6F /* CardConversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4AC4562B139A4100AFDA6F /* CardConversation.swift */; };
 		DC51CA342AF8324D00DC8C9A /* LocaGestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC51CA332AF8324D00DC8C9A /* LocaGestApp.swift */; };
 		DC51CA382AF8325100DC8C9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC51CA372AF8325100DC8C9A /* Assets.xcassets */; };
 		DC51CA3B2AF8325100DC8C9A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC51CA3A2AF8325100DC8C9A /* Preview Assets.xcassets */; };
@@ -35,6 +37,8 @@
 		DC453BD92B12301300B2B9BA /* SideBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarViewModel.swift; sourceTree = "<group>"; };
 		DC453BDB2B1238AC00B2B9BA /* SideBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBar.swift; sourceTree = "<group>"; };
 		DC453BDD2B12AC1900B2B9BA /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		DC4AC4522B1398E700AFDA6F /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
+		DC4AC4562B139A4100AFDA6F /* CardConversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardConversation.swift; sourceTree = "<group>"; };
 		DC51CA302AF8324D00DC8C9A /* LocaGest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocaGest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC51CA332AF8324D00DC8C9A /* LocaGestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaGestApp.swift; sourceTree = "<group>"; };
 		DC51CA372AF8325100DC8C9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -54,6 +58,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DC4AC4512B1397ED00AFDA6F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DC4AC4522B1398E700AFDA6F /* Conversation.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DC4AC4542B1399F600AFDA6F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DC4AC4552B139A0D00AFDA6F /* Chat */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DC4AC4552B139A0D00AFDA6F /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				DC4AC4562B139A4100AFDA6F /* CardConversation.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
 		DC51CA272AF8324D00DC8C9A = {
 			isa = PBXGroup;
 			children = (
@@ -73,6 +101,8 @@
 		DC51CA322AF8324D00DC8C9A /* LocaGest */ = {
 			isa = PBXGroup;
 			children = (
+				DC4AC4542B1399F600AFDA6F /* Views */,
+				DC4AC4512B1397ED00AFDA6F /* Models */,
 				DC51CA332AF8324D00DC8C9A /* LocaGestApp.swift */,
 				DC51CA372AF8325100DC8C9A /* Assets.xcassets */,
 				DC51CA3E2AF8325100DC8C9A /* LocaGest.xcdatamodeld */,
@@ -170,9 +200,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC4AC4532B1398E700AFDA6F /* Conversation.swift in Sources */,
 				DC453BDE2B12AC1900B2B9BA /* Router.swift in Sources */,
 				DC453BD02B122E0100B2B9BA /* UserMainView.swift in Sources */,
 				DC453BD82B122F9200B2B9BA /* GarageMainView.swift in Sources */,
+				DC4AC4572B139A4100AFDA6F /* CardConversation.swift in Sources */,
 				DC453BD42B122ECA00B2B9BA /* AgenceMainView.swift in Sources */,
 				30F918AE2B13999D004EAF46 /* ReservationModel.swift in Sources */,
 				DC453BDA2B12301300B2B9BA /* SideBarViewModel.swift in Sources */,

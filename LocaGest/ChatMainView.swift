@@ -54,7 +54,14 @@ struct ChatMainView: View {
     @ViewBuilder
     func HomeView()-> some View{
         // Start - Here you can put your work ************************
-        Text("Marwen")
+//        Text("Marwen")
+        VStack{
+            ForEach(sidebar){ item in
+                CardConversation()
+
+            }
+        }
+        
         
         
         // End   - Here you can put your work ************************

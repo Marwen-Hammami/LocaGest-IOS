@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30F918AE2B13999D004EAF46 /* ReservationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F918AD2B13999D004EAF46 /* ReservationModel.swift */; };
+		30F918B02B139E1F004EAF46 /* ReservationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F918AF2B139E1F004EAF46 /* ReservationListView.swift */; };
 		33D31BCE2B13B079007E1B84 /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D31BCD2B13B079007E1B84 /* SignIn.swift */; };
 		33D31BD02B13B184007E1B84 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D31BCF2B13B184007E1B84 /* SignUp.swift */; };
 		33D31BD22B13B1B9007E1B84 /* ForgotPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D31BD12B13B1B9007E1B84 /* ForgotPassword.swift */; };
 		33D31BD42B13B3A4007E1B84 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D31BD32B13B3A4007E1B84 /* User.swift */; };
 		33D31BD62B13B435007E1B84 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D31BD52B13B435007E1B84 /* UserProfile.swift */; };
-		30F918AE2B13999D004EAF46 /* ReservationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F918AD2B13999D004EAF46 /* ReservationModel.swift */; };
-		30F918B02B139E1F004EAF46 /* ReservationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F918AF2B139E1F004EAF46 /* ReservationListView.swift */; };
+		7FA0E9612B148AA900A46450 /* DashboardFlotte.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0E9602B148AA900A46450 /* DashboardFlotte.swift */; };
 		DC453BD02B122E0100B2B9BA /* UserMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC453BCF2B122E0100B2B9BA /* UserMainView.swift */; };
 		DC453BD22B122E5800B2B9BA /* FlotteMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC453BD12B122E5800B2B9BA /* FlotteMainView.swift */; };
 		DC453BD42B122ECA00B2B9BA /* AgenceMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC453BD32B122ECA00B2B9BA /* AgenceMainView.swift */; };
@@ -32,13 +33,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		30F918AD2B13999D004EAF46 /* ReservationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationModel.swift; sourceTree = "<group>"; };
+		30F918AF2B139E1F004EAF46 /* ReservationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationListView.swift; sourceTree = "<group>"; };
 		33D31BCD2B13B079007E1B84 /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
 		33D31BCF2B13B184007E1B84 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		33D31BD12B13B1B9007E1B84 /* ForgotPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassword.swift; sourceTree = "<group>"; };
 		33D31BD32B13B3A4007E1B84 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		33D31BD52B13B435007E1B84 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
-		30F918AD2B13999D004EAF46 /* ReservationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationModel.swift; sourceTree = "<group>"; };
-		30F918AF2B139E1F004EAF46 /* ReservationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationListView.swift; sourceTree = "<group>"; };
+		7FA0E9602B148AA900A46450 /* DashboardFlotte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardFlotte.swift; sourceTree = "<group>"; };
 		DC453BCF2B122E0100B2B9BA /* UserMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMainView.swift; sourceTree = "<group>"; };
 		DC453BD12B122E5800B2B9BA /* FlotteMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlotteMainView.swift; sourceTree = "<group>"; };
 		DC453BD32B122ECA00B2B9BA /* AgenceMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgenceMainView.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 		DC4AC4512B1397ED00AFDA6F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DCFCEF642B10C2CC004C3574 /* ChatMainView.swift */,
 				DC4AC4522B1398E700AFDA6F /* Conversation.swift */,
 				33D31BD32B13B3A4007E1B84 /* User.swift */,
 			);
@@ -118,7 +121,6 @@
 				DC51CA372AF8325100DC8C9A /* Assets.xcassets */,
 				DC51CA3E2AF8325100DC8C9A /* LocaGest.xcdatamodeld */,
 				DC51CA392AF8325100DC8C9A /* Preview Content */,
-				DCFCEF642B10C2CC004C3574 /* ChatMainView.swift */,
 				DC453BCF2B122E0100B2B9BA /* UserMainView.swift */,
 				DC453BD12B122E5800B2B9BA /* FlotteMainView.swift */,
 				DC453BD32B122ECA00B2B9BA /* AgenceMainView.swift */,
@@ -133,6 +135,7 @@
 				33D31BD52B13B435007E1B84 /* UserProfile.swift */,
 				30F918AD2B13999D004EAF46 /* ReservationModel.swift */,
 				30F918AF2B139E1F004EAF46 /* ReservationListView.swift */,
+				7FA0E9602B148AA900A46450 /* DashboardFlotte.swift */,
 			);
 			path = LocaGest;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 				DC453BD02B122E0100B2B9BA /* UserMainView.swift in Sources */,
 				33D31BD22B13B1B9007E1B84 /* ForgotPassword.swift in Sources */,
 				DC453BD82B122F9200B2B9BA /* GarageMainView.swift in Sources */,
+				7FA0E9612B148AA900A46450 /* DashboardFlotte.swift in Sources */,
 				33D31BD02B13B184007E1B84 /* SignUp.swift in Sources */,
 				DC4AC4572B139A4100AFDA6F /* CardConversation.swift in Sources */,
 				33D31BD42B13B3A4007E1B84 /* User.swift in Sources */,

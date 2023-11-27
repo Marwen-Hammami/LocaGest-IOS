@@ -47,7 +47,7 @@ struct FlotteMainView: View {
     @ViewBuilder
     func HomeView()-> some View{
         // Start - Here you can put your work ************************
-        Text("Maamoun - exmpl dashboard")
+        DashboardFlotte()
         
         
         // End   - Here you can put your work ************************

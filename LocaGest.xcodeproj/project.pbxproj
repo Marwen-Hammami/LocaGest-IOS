@@ -70,10 +70,65 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		30D8BA2C2B14F56A00888A18 /* Reservation */ = {
+			isa = PBXGroup;
+			children = (
+				30F918AF2B139E1F004EAF46 /* ReservationListView.swift */,
+				DC453BD52B122F4800B2B9BA /* ReservationMainView.swift */,
+			);
+			path = Reservation;
+			sourceTree = "<group>";
+		};
+		30D8BA2D2B14F5B300888A18 /* Agence */ = {
+			isa = PBXGroup;
+			children = (
+				DC453BD32B122ECA00B2B9BA /* AgenceMainView.swift */,
+			);
+			path = Agence;
+			sourceTree = "<group>";
+		};
+		30D8BA2E2B14F5BD00888A18 /* Garage */ = {
+			isa = PBXGroup;
+			children = (
+				DC453BD72B122F9200B2B9BA /* GarageMainView.swift */,
+			);
+			path = Garage;
+			sourceTree = "<group>";
+		};
+		30D8BA2F2B14F5C800888A18 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				33D31BD12B13B1B9007E1B84 /* ForgotPassword.swift */,
+				33D31BCF2B13B184007E1B84 /* SignUp.swift */,
+				33D31BCD2B13B079007E1B84 /* SignIn.swift */,
+				DC453BCF2B122E0100B2B9BA /* UserMainView.swift */,
+				33D31BD52B13B435007E1B84 /* UserProfile.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		30D8BA302B14F70E00888A18 /* Flotte */ = {
+			isa = PBXGroup;
+			children = (
+				7FA0E9602B148AA900A46450 /* DashboardFlotte.swift */,
+				DC453BD12B122E5800B2B9BA /* FlotteMainView.swift */,
+			);
+			path = Flotte;
+			sourceTree = "<group>";
+		};
+		30D8BA312B14F7EC00888A18 /* SideBar */ = {
+			isa = PBXGroup;
+			children = (
+				DC453BD92B12301300B2B9BA /* SideBarViewModel.swift */,
+				DC453BDB2B1238AC00B2B9BA /* SideBar.swift */,
+			);
+			path = SideBar;
+			sourceTree = "<group>";
+		};
 		DC4AC4512B1397ED00AFDA6F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				DCFCEF642B10C2CC004C3574 /* ChatMainView.swift */,
+				30F918AD2B13999D004EAF46 /* ReservationModel.swift */,
 				DC4AC4522B1398E700AFDA6F /* Conversation.swift */,
 				33D31BD32B13B3A4007E1B84 /* User.swift */,
 			);
@@ -83,6 +138,12 @@
 		DC4AC4542B1399F600AFDA6F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				30D8BA312B14F7EC00888A18 /* SideBar */,
+				30D8BA302B14F70E00888A18 /* Flotte */,
+				30D8BA2F2B14F5C800888A18 /* User */,
+				30D8BA2E2B14F5BD00888A18 /* Garage */,
+				30D8BA2D2B14F5B300888A18 /* Agence */,
+				30D8BA2C2B14F56A00888A18 /* Reservation */,
 				DC4AC4552B139A0D00AFDA6F /* Chat */,
 			);
 			path = Views;
@@ -91,6 +152,7 @@
 		DC4AC4552B139A0D00AFDA6F /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				DCFCEF642B10C2CC004C3574 /* ChatMainView.swift */,
 				DC4AC4562B139A4100AFDA6F /* CardConversation.swift */,
 			);
 			path = Chat;
@@ -121,21 +183,7 @@
 				DC51CA372AF8325100DC8C9A /* Assets.xcassets */,
 				DC51CA3E2AF8325100DC8C9A /* LocaGest.xcdatamodeld */,
 				DC51CA392AF8325100DC8C9A /* Preview Content */,
-				DC453BCF2B122E0100B2B9BA /* UserMainView.swift */,
-				DC453BD12B122E5800B2B9BA /* FlotteMainView.swift */,
-				DC453BD32B122ECA00B2B9BA /* AgenceMainView.swift */,
-				DC453BD52B122F4800B2B9BA /* ReservationMainView.swift */,
-				DC453BD72B122F9200B2B9BA /* GarageMainView.swift */,
-				DC453BD92B12301300B2B9BA /* SideBarViewModel.swift */,
-				DC453BDB2B1238AC00B2B9BA /* SideBar.swift */,
 				DC453BDD2B12AC1900B2B9BA /* Router.swift */,
-				33D31BCD2B13B079007E1B84 /* SignIn.swift */,
-				33D31BCF2B13B184007E1B84 /* SignUp.swift */,
-				33D31BD12B13B1B9007E1B84 /* ForgotPassword.swift */,
-				33D31BD52B13B435007E1B84 /* UserProfile.swift */,
-				30F918AD2B13999D004EAF46 /* ReservationModel.swift */,
-				30F918AF2B139E1F004EAF46 /* ReservationListView.swift */,
-				7FA0E9602B148AA900A46450 /* DashboardFlotte.swift */,
 			);
 			path = LocaGest;
 			sourceTree = "<group>";

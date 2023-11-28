@@ -8,15 +8,17 @@
 import SwiftUI
 
 struct CardConversation: View {
+    let conversation: Conversation
+    
     var body: some View {
         VStack{
             HStack{
-                Image("person")
+                Image(conversation.image)
                     .resizable()
                     .scaledToFill()
                     .mask(Circle())
                     .frame(width: 60, height: 60)
-                Text("name")
+                Text(conversation.isGroup ? conversation.name : conversation.members[1])
                     .bold()
                     .font(.title2)
                     .opacity(0.7)
@@ -35,6 +37,11 @@ struct CardConversation: View {
 
 struct CardConversation_Previews: PreviewProvider {
     static var previews: some View {
-        CardConversation()
+        CardConversation(conversation: Conversation(
+            members: ["id1","id2"],
+            isGroup: false,
+            name: "notGrp",
+            image: "person"
+        ))
     }
 }

@@ -21,10 +21,25 @@ struct ChatMainView: View {
                     HStack{
                         SideBarButton()
                         
-                        Text("Liste des Conversations")
+                        Text("Discussions")
                             .font(.title)
-                            .padding()
+                            .padding(.horizontal)
+                        
+                        Spacer()
+                        ZStack{
+                            Button(action: {
+                                //Add new Conversation
+                            }, label: {
+                                Image(systemName:"plus.message")
+                                    .foregroundColor(Color("Accent"))
+                            })
+                            Circle()
+                                .stroke(Color("Accent"), lineWidth: 2)
+                                .frame(height: 30)
+                        }
+                        
                     }
+                    .padding(.horizontal)
                     
                     
                     HomeView()
@@ -63,7 +78,7 @@ struct ChatMainView: View {
         VStack{
             ScrollView {
                 ForEach(conversations){ item in
-                    CardConversation()
+                    CardConversation(conversation: item)
                 }
             }
             

@@ -10,6 +10,8 @@ import SwiftUI
 struct CardConversation: View {
     let conversation: Conversation
     
+    @State private var isConversationMessagesViewActive = false
+    
     var body: some View {
         VStack{
             HStack{
@@ -32,6 +34,16 @@ struct CardConversation: View {
                 .foregroundColor(.black)
                 .padding(.horizontal)
         }
+        .onTapGesture {
+                    isConversationMessagesViewActive = true
+                }
+                .background(
+                    NavigationLink(
+                        destination: ConversationMessagesView(),
+                        isActive: $isConversationMessagesViewActive,
+                        label: { EmptyView() }
+                    )
+                )
     }
 }
 

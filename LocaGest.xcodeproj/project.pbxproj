@@ -30,6 +30,7 @@
 		DC51CA382AF8325100DC8C9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC51CA372AF8325100DC8C9A /* Assets.xcassets */; };
 		DC51CA3B2AF8325100DC8C9A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC51CA3A2AF8325100DC8C9A /* Preview Assets.xcassets */; };
 		DC51CA402AF8325100DC8C9A /* LocaGest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DC51CA3E2AF8325100DC8C9A /* LocaGest.xcdatamodeld */; };
+		DCF00B7C2B16159C00EB69EF /* ConversationMessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF00B7B2B16159C00EB69EF /* ConversationMessagesView.swift */; };
 		DCFCEF652B10C2CC004C3574 /* ChatMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFCEF642B10C2CC004C3574 /* ChatMainView.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		DC51CA372AF8325100DC8C9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DC51CA3A2AF8325100DC8C9A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DC51CA3F2AF8325100DC8C9A /* LocaGest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocaGest.xcdatamodel; sourceTree = "<group>"; };
+		DCF00B7B2B16159C00EB69EF /* ConversationMessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationMessagesView.swift; sourceTree = "<group>"; };
 		DCFCEF642B10C2CC004C3574 /* ChatMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,6 +159,7 @@
 			children = (
 				DCFCEF642B10C2CC004C3574 /* ChatMainView.swift */,
 				DC4AC4562B139A4100AFDA6F /* CardConversation.swift */,
+				DCF00B7B2B16159C00EB69EF /* ConversationMessagesView.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				DC453BD02B122E0100B2B9BA /* UserMainView.swift in Sources */,
 				33D31BD22B13B1B9007E1B84 /* ForgotPassword.swift in Sources */,
 				DC453BD82B122F9200B2B9BA /* GarageMainView.swift in Sources */,
+				DCF00B7C2B16159C00EB69EF /* ConversationMessagesView.swift in Sources */,
 				7FA0E9612B148AA900A46450 /* DashboardFlotte.swift in Sources */,
 				33D31BD02B13B184007E1B84 /* SignUp.swift in Sources */,
 				DC4AC4572B139A4100AFDA6F /* CardConversation.swift in Sources */,

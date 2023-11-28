@@ -6,18 +6,37 @@ struct FlotteMainView: View {
         ZStack{
             Color(.black)
                 .ignoresSafeArea()
+            
             SideBar()
                 .opacity(vm.isopen ? 1 : 0)
             ZStack{
                 Color(.white)
+                LinearGradient(
+                    gradient: Gradient(colors: [Color("Main"), Color.white]),
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+                .edgesIgnoringSafeArea(.all)
+                
                 VStack{
-                    SideBarButton()
+                    HStack{
+                        SideBarButton()
+                        
+                        Text("Accueil")
+                            .font(.title)
+                            .padding(.horizontal)
+                        
+                        Spacer()
+                        
+                    }
+                    .padding(.horizontal)
+                    
                     
                     HomeView()
                 }
-                .padding()
-                .padding(.vertical, 50)
+                .padding(.top, 50)
             }
+
             .mask(RoundedRectangle(cornerRadius: 30, style: .continuous))
             .rotation3DEffect(.degrees(30), axis: (x: 0, y: vm.isopen ? -1 : 0, z: 0))
             .offset(x: vm.isopen ? 250 : 0)
@@ -40,7 +59,6 @@ struct FlotteMainView: View {
                     .font(.title)
                     .foregroundColor(.black)
             })
-            .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
     

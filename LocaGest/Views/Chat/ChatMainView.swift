@@ -18,12 +18,18 @@ struct ChatMainView: View {
             ZStack{
                 Color(.white)
                 VStack{
-                    SideBarButton()
+                    HStack{
+                        SideBarButton()
+                        
+                        Text("Liste des Conversations")
+                            .font(.title)
+                            .padding()
+                    }
+                    
                     
                     HomeView()
                 }
-                .padding()
-                .padding(.vertical, 50)
+                .padding(.top, 50)
             }
             .mask(RoundedRectangle(cornerRadius: 30, style: .continuous))
             .rotation3DEffect(.degrees(30), axis: (x: 0, y: vm.isopen ? -1 : 0, z: 0))
@@ -47,7 +53,6 @@ struct ChatMainView: View {
                     .font(.title)
                     .foregroundColor(.black)
             })
-            .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
     
@@ -56,10 +61,12 @@ struct ChatMainView: View {
         // Start - Here you can put your work ************************
 //        Text("Marwen")
         VStack{
-            ForEach(sidebar){ item in
-                CardConversation()
-
+            ScrollView {
+                ForEach(conversations){ item in
+                    CardConversation()
+                }
             }
+            
         }
         
         

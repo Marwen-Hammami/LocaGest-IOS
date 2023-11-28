@@ -18,6 +18,8 @@
 		7F32854B2B160CAE00ABE165 /* DetailFlotte.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F32854A2B160CAE00ABE165 /* DetailFlotte.swift */; };
 		7F6439192B162917001416B3 /* Ajouter_Voiture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6439182B162917001416B3 /* Ajouter_Voiture.swift */; };
 		7FA0E9612B148AA900A46450 /* DashboardFlotte.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0E9602B148AA900A46450 /* DashboardFlotte.swift */; };
+		81312F6E2B164614001D38C9 /* Ajouter_Entretien.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81312F6D2B164614001D38C9 /* Ajouter_Entretien.swift */; };
+		81312F702B1647AA001D38C9 /* Modifier_Entretien.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81312F6F2B1647AA001D38C9 /* Modifier_Entretien.swift */; };
 		81C7C3A22B1641F1000D3C90 /* Modifier_Voiture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C7C3A12B1641F1000D3C90 /* Modifier_Voiture.swift */; };
 		DC453BD02B122E0100B2B9BA /* UserMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC453BCF2B122E0100B2B9BA /* UserMainView.swift */; };
 		DC453BD22B122E5800B2B9BA /* FlotteMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC453BD12B122E5800B2B9BA /* FlotteMainView.swift */; };
@@ -48,6 +50,8 @@
 		7F32854A2B160CAE00ABE165 /* DetailFlotte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFlotte.swift; sourceTree = "<group>"; };
 		7F6439182B162917001416B3 /* Ajouter_Voiture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ajouter_Voiture.swift; sourceTree = "<group>"; };
 		7FA0E9602B148AA900A46450 /* DashboardFlotte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardFlotte.swift; sourceTree = "<group>"; };
+		81312F6D2B164614001D38C9 /* Ajouter_Entretien.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ajouter_Entretien.swift; sourceTree = "<group>"; };
+		81312F6F2B1647AA001D38C9 /* Modifier_Entretien.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifier_Entretien.swift; sourceTree = "<group>"; };
 		81C7C3A12B1641F1000D3C90 /* Modifier_Voiture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifier_Voiture.swift; sourceTree = "<group>"; };
 		DC453BCF2B122E0100B2B9BA /* UserMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMainView.swift; sourceTree = "<group>"; };
 		DC453BD12B122E5800B2B9BA /* FlotteMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlotteMainView.swift; sourceTree = "<group>"; };
@@ -123,6 +127,8 @@
 				7F32854A2B160CAE00ABE165 /* DetailFlotte.swift */,
 				7F6439182B162917001416B3 /* Ajouter_Voiture.swift */,
 				81C7C3A12B1641F1000D3C90 /* Modifier_Voiture.swift */,
+				81312F6D2B164614001D38C9 /* Ajouter_Entretien.swift */,
+				81312F6F2B1647AA001D38C9 /* Modifier_Entretien.swift */,
 			);
 			path = Flotte;
 			sourceTree = "<group>";
@@ -283,6 +289,7 @@
 				DC453BD02B122E0100B2B9BA /* UserMainView.swift in Sources */,
 				81C7C3A22B1641F1000D3C90 /* Modifier_Voiture.swift in Sources */,
 				33D31BD22B13B1B9007E1B84 /* ForgotPassword.swift in Sources */,
+				81312F6E2B164614001D38C9 /* Ajouter_Entretien.swift in Sources */,
 				DC453BD82B122F9200B2B9BA /* GarageMainView.swift in Sources */,
 				7FA0E9612B148AA900A46450 /* DashboardFlotte.swift in Sources */,
 				33D31BD02B13B184007E1B84 /* SignUp.swift in Sources */,
@@ -303,6 +310,7 @@
 				33D31BCE2B13B079007E1B84 /* SignIn.swift in Sources */,
 				DC453BDC2B1238AC00B2B9BA /* SideBar.swift in Sources */,
 				DC453BD22B122E5800B2B9BA /* FlotteMainView.swift in Sources */,
+				81312F702B1647AA001D38C9 /* Modifier_Entretien.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

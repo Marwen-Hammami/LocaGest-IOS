@@ -16,9 +16,19 @@ struct Conversation:Identifiable {
 }
 
 var conversations = [
-    Conversation(members: ["id1","id2"], isGroup: false, name: "notGrp", image: "path/to/grp/img"),
-    Conversation(members: ["id1","id3"], isGroup: false, name: "notGrp", image: "path/to/grp/img"),
-    Conversation(members: ["id1","id6","id3"], isGroup: true, name: "CCF4", image: "path/to/grp/img"),
-    Conversation(members: ["id1","id4"], isGroup: false, name: "notGrp", image: "path/to/grp/img"),
-    Conversation(members: ["id1","id5"], isGroup: false, name: "notGrp", image: "path/to/grp/img")
+    Conversation(members: ["id1","id2"], isGroup: false, name: "notGrp", image: "person"),
+    Conversation(members: ["id1","id3"], isGroup: false, name: "notGrp", image: "person2"),
+    Conversation(members: ["id1","id6","id3"], isGroup: true, name: "CCF4", image: "person"),
+    Conversation(members: ["id1","id4"], isGroup: false, name: "notGrp", image: "person3"),
+    Conversation(members: ["id1","id6","id3"], isGroup: true, name: "CCF4", image: "person"),
+    Conversation(members: ["id1","id4"], isGroup: false, name: "notGrp", image: "person3"),
+    Conversation(members: ["id1","id2"], isGroup: false, name: "notGrp", image: "person"),
+    Conversation(members: ["id1","id3"], isGroup: false, name: "notGrp", image: "person2"),
+    Conversation(members: ["id1","id6","id3"], isGroup: true, name: "CCF4", image: "person"),Conversation(members: ["id1","id4"], isGroup: false, name: "notGrp", image: "person3"),
+    Conversation(members: ["id1","id6","id3"], isGroup: true, name: "CCF4", image: "person"),
+    Conversation(members: ["id1","id4"], isGroup: false, name: "notGrp", image: "person3"),
+    Conversation(members: ["id1","id2"], isGroup: false, name: "notGrp", image: "person"),
+    Conversation(members: ["id1","id3"], isGroup: false, name: "notGrp", image: "person2"),
+    Conversation(members: ["id1","id6","id3"], isGroup: true, name: "CCF4", image: "person"),
+    Conversation(members: ["id1","id5"], isGroup: false, name: "notGrp", image: "person2")
 ]

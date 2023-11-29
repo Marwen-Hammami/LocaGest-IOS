@@ -13,6 +13,7 @@ struct Car: Identifiable {
     var carburant: Carburant
     var boite: Boite
     var disponibility: Disponibility
+    
 }
 
 enum Carburant: String {

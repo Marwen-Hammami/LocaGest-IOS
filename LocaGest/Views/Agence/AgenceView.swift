@@ -91,6 +91,21 @@ struct DetailView: View {
                 }
                 .padding()
             }
+                HStack{
+                    Spacer()
+                Image(systemName: "square.and.pencil.circle.fill")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 100, height: 100)
+                    .foregroundColor(.blue)
+                    Spacer()
+                Image(systemName: "trash.circle.fill")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 100, height: 100)
+                    .foregroundColor(.red)
+                    Spacer()
+                }
             }
         .navigationBarTitle(agency.agenceName, displayMode: .inline)
     }

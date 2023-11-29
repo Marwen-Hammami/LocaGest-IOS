@@ -16,6 +16,7 @@
 		33D31BD62B13B435007E1B84 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D31BD52B13B435007E1B84 /* UserProfile.swift */; };
 		7F3285492B1609BD00ABE165 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3285482B1609BD00ABE165 /* Car.swift */; };
 		7FA0E9612B148AA900A46450 /* DashboardFlotte.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0E9602B148AA900A46450 /* DashboardFlotte.swift */; };
+		DC3FB5692B175CF2001239E6 /* CardCurrentConnectedUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3FB5682B175CF2001239E6 /* CardCurrentConnectedUsers.swift */; };
 		DC453BD02B122E0100B2B9BA /* UserMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC453BCF2B122E0100B2B9BA /* UserMainView.swift */; };
 		DC453BD22B122E5800B2B9BA /* FlotteMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC453BD12B122E5800B2B9BA /* FlotteMainView.swift */; };
 		DC453BD42B122ECA00B2B9BA /* AgenceMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC453BD32B122ECA00B2B9BA /* AgenceMainView.swift */; };
@@ -44,6 +45,7 @@
 		33D31BD52B13B435007E1B84 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		7F3285482B1609BD00ABE165 /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		7FA0E9602B148AA900A46450 /* DashboardFlotte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardFlotte.swift; sourceTree = "<group>"; };
+		DC3FB5682B175CF2001239E6 /* CardCurrentConnectedUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCurrentConnectedUsers.swift; sourceTree = "<group>"; };
 		DC453BCF2B122E0100B2B9BA /* UserMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMainView.swift; sourceTree = "<group>"; };
 		DC453BD12B122E5800B2B9BA /* FlotteMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlotteMainView.swift; sourceTree = "<group>"; };
 		DC453BD32B122ECA00B2B9BA /* AgenceMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgenceMainView.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				DCFCEF642B10C2CC004C3574 /* ChatMainView.swift */,
 				DC4AC4562B139A4100AFDA6F /* CardConversation.swift */,
 				DCF00B7B2B16159C00EB69EF /* ConversationMessagesView.swift */,
+				DC3FB5682B175CF2001239E6 /* CardCurrentConnectedUsers.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				33D31BD42B13B3A4007E1B84 /* User.swift in Sources */,
 				33D31BD62B13B435007E1B84 /* UserProfile.swift in Sources */,
 				DC453BD42B122ECA00B2B9BA /* AgenceMainView.swift in Sources */,
+				DC3FB5692B175CF2001239E6 /* CardCurrentConnectedUsers.swift in Sources */,
 				30F918AE2B13999D004EAF46 /* ReservationModel.swift in Sources */,
 				DC453BDA2B12301300B2B9BA /* SideBarViewModel.swift in Sources */,
 				DCFCEF652B10C2CC004C3574 /* ChatMainView.swift in Sources */,

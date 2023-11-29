@@ -1,10 +1,3 @@
-//
-//  DetailFlotte.swift
-//  LocaGest
-//
-//  Created by Mohamed Maamoun Jrad  on 28/11/2023.
-//
-
 import SwiftUI
 
 struct DetailFlotte: View {
@@ -12,32 +5,33 @@ struct DetailFlotte: View {
 
     var body: some View {
         NavigationView {
-            VStack {
-                List(cars) { car in
-                    NavigationLink(destination: CarDetailView(car: car)) {
-                        CarRow(car: car)
-                    }
-                }
-                .listStyle(GroupedListStyle())
-                .background(
-                    LinearGradient(
-                        gradient: Gradient(colors: [Color("Main"), Color.white]),
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                    .edgesIgnoringSafeArea(.all)
+            ZStack {
+                LinearGradient(
+                    gradient: Gradient(colors: [Color("Main"), Color.white]),
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
                 )
+                .edgesIgnoringSafeArea(.all)
 
-                Spacer()
+                VStack {
+                    List(cars) { car in
+                        NavigationLink(destination: CarDetailView(car: car)) {
+                            CarRow(car: car)
+                        }
+                    }
+                    .listStyle(GroupedListStyle())
 
-                NavigationLink(destination: AjouterVoitureView()) {
-                    Text("Ajouter une voiture")
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color("Accent"))
-                        .foregroundColor(.white)
-                        .cornerRadius(8)
-                        .padding()
+                    Spacer()
+
+                    NavigationLink(destination: AjouterVoitureView()) {
+                        Text("Ajouter une voiture")
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color("Accent"))
+                            .foregroundColor(.white)
+                            .cornerRadius(8)
+                            .padding()
+                    }
                 }
             }
             .navigationTitle("Détails de la flotte")
@@ -50,25 +44,49 @@ struct CarRow: View {
 
     var body: some View {
         HStack {
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 8) {
                 Text("Marque: \(car.marque )")
                     .font(.headline)
                 Text("Modèle: \(car.modele )")
                     .font(.subheadline)
-                Text("Immatriculation: \(car.immatriculation ?? "")")
+                Text("Immatriculation: \(car.immatriculation ?? "")").fontWeight(.bold)
                     .font(.subheadline)
                 Text("Disponibilité: \(car.disponibility.rawValue)")
                     .font(.subheadline)
             }
+            .padding()
+            .background(
+                LinearGradient(
+                    gradient: Gradient(colors: [Color("Main"), Color.white]),
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+            )
 
             Spacer()
+
+            // Emplacement pour l'image à droite
+            Image(systemName: "car.fill")
+                .resizable()
+                .frame(width: 50, height: 50)
+                .padding()
+                .background(
+                    LinearGradient(
+                        gradient: Gradient(colors: [Color("Main"), Color.white]),
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                )
+                .cornerRadius(10)
 
             NavigationLink(destination: CarDetailView(car: car)) {
                 Text("Détail")
                     .foregroundColor(Color("Accent"))
+                    .font(.subheadline)
             }
         }
         .padding()
+        .background(Color.clear) // Fond transparent pour le HStack
     }
 }
 

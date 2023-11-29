@@ -22,51 +22,69 @@ struct Detail_Voiture: View {
                     Spacer()
                 }
 
-                Text("Immatriculation: ")
-                    .padding()
-                    .background(Color.green)
-                    .cornerRadius(10)
-                    .padding(.horizontal)
-                    .padding(.leading, 20)
+                HStack {
+                    Text("Immatriculation: ")
+                        .padding()
+                        .background(Color.green)
+                        .cornerRadius(10)
+                        .padding(.horizontal)
+                        .padding(.leading, 20)
+                    
+                    Spacer()
+                }
 
-                Text("Marque: ")
-                    .padding()
-                    .background(Color.green)
-                    .cornerRadius(10)
-                    .padding(.horizontal)
-                    .padding(.leading, 20)
+                HStack {
+                    Text("Marque: ")
+                        .padding()
+                        .background(Color.green)
+                        .cornerRadius(10)
+                        .padding(.horizontal)
+                        .padding(.leading, 20)
+                    
+                    Spacer()
+                }
 
-                Text("Modèle: ")
-                    .padding()
-                    .background(Color.green)
-                    .cornerRadius(10)
-                    .padding(.horizontal)
-                    .padding(.leading, 20)
+                HStack {
+                    Text("Modèle: ")
+                        .padding()
+                        .background(Color.green)
+                        .cornerRadius(10)
+                        .padding(.horizontal)
+                        .padding(.leading, 20)
+                    
+                    Spacer()
+                }
 
-                Text("Carburant: ")
-                    .padding()
-                    .background(Color.green)
-                    .cornerRadius(10)
-                    .padding(.horizontal)
-                    .padding(.leading, 20)
+                HStack {
+                    Text("Carburant: ")
+                        .padding()
+                        .background(Color.green)
+                        .cornerRadius(10)
+                        .padding(.horizontal)
+                        .padding(.leading, 20)
+                    
+                    Spacer()
+                }
 
-                Text("Boite: ")
-                    .padding()
-                    .background(Color.green)
-                    .cornerRadius(10)
-                    .padding(.horizontal)
-                    .padding(.leading, 20)
-                    .padding(.bottom, 60)
+                HStack {
+                    Text("Boite: ")
+                        .padding()
+                        .background(Color.green)
+                        .cornerRadius(10)
+                        .padding(.horizontal)
+                        .padding(.leading, 20)
+                        .padding(.bottom, 60)
+                    
+                    Spacer()
+                }
+                
                 // Emplacement pour une image
-                    Image(systemName: "car.fill")
+                Image(systemName: "car.fill")
                     .resizable()
                     .frame(width: 50, height: 50)
                     .padding()
                     .background(Color.green)
                     .cornerRadius(10)
-
-                    Spacer()
-
 
                 Spacer()
 

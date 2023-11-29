@@ -22,35 +22,50 @@ struct Detail_Entretien: View {
                     Spacer()
                 }
 
-                Text("ID: ")
-                    .padding()
-                    .background(Color.green)
-                    .cornerRadius(10)
-                    .padding(.horizontal)
-                    .padding(.leading, 20)
+                HStack {
+                    Text("ID: ")
+                        .padding()
+                        .background(Color.green)
+                        .cornerRadius(10)
+                        .padding(.horizontal)
+                        .padding(.leading, 20)
+                    
+                    Spacer()
+                }
 
-                Text("Titre: ")
-                    .padding()
-                    .background(Color.green)
-                    .cornerRadius(10)
-                    .padding(.horizontal)
-                    .padding(.leading, 20)
+                HStack {
+                    Text("Titre: ")
+                        .padding()
+                        .background(Color.green)
+                        .cornerRadius(10)
+                        .padding(.horizontal)
+                        .padding(.leading, 20)
+                    
+                    Spacer()
+                }
 
-                Text("Description: ")
-                    .padding()
-                    .background(Color.green)
-                    .cornerRadius(10)
-                    .padding(.horizontal)
-                    .padding(.leading, 20)
+                HStack {
+                    Text("Description: ")
+                        .padding()
+                        .background(Color.green)
+                        .cornerRadius(10)
+                        .padding(.horizontal)
+                        .padding(.leading, 20)
+                    
+                    Spacer()
+                }
 
-                Text("Cout: ")
-                    .padding()
-                    .background(Color.green)
-                    .cornerRadius(10)
-                    .padding(.horizontal)
-                    .padding(.leading, 20)
-                    .padding(.bottom, 80)
-
+                HStack {
+                    Text("Cout: ")
+                        .padding()
+                        .background(Color.green)
+                        .cornerRadius(10)
+                        .padding(.horizontal)
+                        .padding(.leading, 20)
+                        .padding(.bottom, 80)
+                    
+                    Spacer()
+                }
                 
                 // Emplacement pour une image
                 Image(systemName: "car.fill")
@@ -59,9 +74,6 @@ struct Detail_Entretien: View {
                     .padding()
                     .background(Color.green)
                     .cornerRadius(10)
-
-                    Spacer()
-
 
                 Spacer()
 

@@ -44,24 +44,20 @@ struct Modifier_Entretien: View {
                 
                 VStack(spacing: 20) {
                     TextField("ID", text: $id)
-                       .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding(.horizontal, 30)
-                        
-                    
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding([.horizontal, .bottom], 30)
                     
                     TextField("Titre", text: $titre)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding(.horizontal, 30)
+                        .padding([.horizontal, .bottom], 30)
                     
                     TextField("Description", text: $description)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding(.horizontal, 30)
+                        .padding([.horizontal, .bottom], 30)
                     
                     TextField("Cout", text: $cout)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding(.horizontal, 30)
-                    
-                    
+                        .padding([.horizontal, .bottom], 30)
                 }
                 .padding(.top, 50)
                 

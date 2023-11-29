@@ -30,7 +30,7 @@ struct CardCurrentConnectedUsers: View {
                         ZStack(alignment: .bottomTrailing) {
                             Image(user.username!)
                                 .resizable()
-                                .frame(width: 64, height: 64)
+                                .frame(width: 60, height: 60)
                                 .mask(Circle())
                             
                             ZStack{

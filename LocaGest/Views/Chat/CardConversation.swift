@@ -39,7 +39,7 @@ struct CardConversation: View {
                 }
                 .background(
                     NavigationLink(
-                        destination: ConversationMessagesView(),
+                        destination: ConversationMessagesView(conversation: conversation),
                         isActive: $isConversationMessagesViewActive,
                         label: { EmptyView() }
                     )

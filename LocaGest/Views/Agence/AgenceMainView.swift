@@ -47,7 +47,7 @@ struct AgenceMainView: View {
     @ViewBuilder
     func HomeView()-> some View{
         // Start - Here you can put your work ************************
-        Text("Skander - exmpl List Agences")
+        AgenceView()
         
         
         // End   - Here you can put your work ************************

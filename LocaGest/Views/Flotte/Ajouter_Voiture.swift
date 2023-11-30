@@ -62,18 +62,20 @@ struct Ajouter_Voiture: View {
                 
                 Button(action: {
                     // Ajoutez le code pour traiter l'ajout de la voiture ici
-                    print("Voiture ajoutée avec succès!")
                 }) {
-                    Text("Ajouter")
-                        .foregroundColor(.white)
-                        .font(.headline)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color("Accent"))
-                        .cornerRadius(10)
-                        .padding(.horizontal, 30)
+                    NavigationLink(destination: DetailFlotte(cars: [])) {
+                        Text("Ajouter")
+                            .foregroundColor(.white)
+                            .font(.headline)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color("Accent"))
+                            .cornerRadius(10)
+                            .padding(.horizontal, 30)
+                    }
                 }
                 .padding(.top, 30)
+
                 
                 Spacer()
             }

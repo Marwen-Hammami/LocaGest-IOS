@@ -22,7 +22,7 @@ struct Page_Entretiens: View {
 
                 VStack {
                     List(entretiens) { entretien in
-                        NavigationLink(destination: EntretienDetailView(entretien: entretien)) {
+                        NavigationLink(destination: Detail_Entretien()) {
                             EntretienRow(entretien: entretien)
                         }
                     }
@@ -30,7 +30,7 @@ struct Page_Entretiens: View {
 
                     Spacer()
 
-                    NavigationLink(destination: AjouterEntretienView()) {
+                    NavigationLink(destination: Ajouter_Entretien()) {
                         Text("Ajouter un entretien")
                             .padding()
                             .frame(maxWidth: .infinity)
@@ -83,7 +83,7 @@ struct EntretienRow: View {
                 )
                 .cornerRadius(10)
 
-            NavigationLink(destination: EntretienDetailView(entretien: entretien)) {
+            NavigationLink(destination: Detail_Entretien( )) {
                 Text("Détail")
                     .foregroundColor(Color("Accent"))
                     .font(.subheadline)
@@ -94,33 +94,8 @@ struct EntretienRow: View {
     }
 }
 
-struct EntretienDetailView: View {
-    var entretien: HistoriqueEntretiens
 
-    var body: some View {
-        VStack {
-            Text("Titre: \(entretien.titre)")
-                .font(.title)
 
-            Spacer()
-
-            Text("Description: \(entretien.description)")
-                .font(.subheadline)
-            Text("Coût: \(entretien.cout)")
-                .font(.subheadline)
-
-            Spacer()
-        }
-        .navigationBarTitle(Text("\(entretien.titre)"), displayMode: .inline)
-    }
-}
-
-struct AjouterEntretienView: View {
-    var body: some View {
-        Text("Formulaire d'ajout d'entretien")
-            .font(.title)
-    }
-}
 
 struct Page_Entretiens_Previews: PreviewProvider {
     static var previews: some View {

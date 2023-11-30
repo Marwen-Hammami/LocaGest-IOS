@@ -9,6 +9,8 @@ import SwiftUI
 import PhotosUI
 
 struct ConversationMessagesView: View {
+    @State private var showDialog: Bool = false
+    @Environment(\.dismiss) var dismiss
     
     @StateObject var viewModel = SelectedImageViewModel()
     @State private var messageText = ""
@@ -34,6 +36,20 @@ struct ConversationMessagesView: View {
                         .foregroundColor(.gray)
                         .padding(.bottom)
                     
+                    //MESSAGES
+                    ForEach(messages){ item in
+                        CardMessage(message: item)
+                            .onLongPressGesture {
+                                showDialog = true
+                            }
+                    }
+                    .alert(isPresented: $showDialog){
+                                            Alert(title: Text("Êtes-vous sûres?"),message: Text("Êtes vous sûres de vouloir supprimer l'agence"),
+                                                  primaryButton: .destructive(Text("Supprimer")){
+                                                dismiss()
+                                            },
+                                                  secondaryButton: .cancel() )
+                                        }
                 }
             }
                 .navigationBarTitle(conversation.isGroup ? conversation.name : conversation.members[1], displayMode: .inline)

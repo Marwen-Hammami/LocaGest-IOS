@@ -14,6 +14,8 @@
 		33D31BD22B13B1B9007E1B84 /* ForgotPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D31BD12B13B1B9007E1B84 /* ForgotPassword.swift */; };
 		33D31BD42B13B3A4007E1B84 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D31BD32B13B3A4007E1B84 /* User.swift */; };
 		33D31BD62B13B435007E1B84 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D31BD52B13B435007E1B84 /* UserProfile.swift */; };
+		4688E9672B18FA3B00F83DD5 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E9662B18FA3B00F83DD5 /* Message.swift */; };
+		4688E9692B18FB6A00F83DD5 /* CardMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E9682B18FB6A00F83DD5 /* CardMessage.swift */; };
 		7F3285492B1609BD00ABE165 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3285482B1609BD00ABE165 /* Car.swift */; };
 		7FA0E9612B148AA900A46450 /* DashboardFlotte.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0E9602B148AA900A46450 /* DashboardFlotte.swift */; };
 		DC36D4962B17B35A00E95FAA /* SelectedImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC36D4952B17B35A00E95FAA /* SelectedImageViewModel.swift */; };
@@ -45,6 +47,8 @@
 		33D31BD12B13B1B9007E1B84 /* ForgotPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassword.swift; sourceTree = "<group>"; };
 		33D31BD32B13B3A4007E1B84 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		33D31BD52B13B435007E1B84 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		4688E9662B18FA3B00F83DD5 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		4688E9682B18FB6A00F83DD5 /* CardMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardMessage.swift; sourceTree = "<group>"; };
 		7F3285482B1609BD00ABE165 /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		7FA0E9602B148AA900A46450 /* DashboardFlotte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardFlotte.swift; sourceTree = "<group>"; };
 		DC36D4952B17B35A00E95FAA /* SelectedImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedImageViewModel.swift; sourceTree = "<group>"; };
@@ -142,6 +146,7 @@
 				DC4AC4522B1398E700AFDA6F /* Conversation.swift */,
 				33D31BD32B13B3A4007E1B84 /* User.swift */,
 				7F3285482B1609BD00ABE165 /* Car.swift */,
+				4688E9662B18FA3B00F83DD5 /* Message.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -169,6 +174,7 @@
 				DC3FB5682B175CF2001239E6 /* CardCurrentConnectedUsers.swift */,
 				DC3FB56A2B17774D001239E6 /* NewMessageView.swift */,
 				DC36D4952B17B35A00E95FAA /* SelectedImageViewModel.swift */,
+				4688E9682B18FB6A00F83DD5 /* CardMessage.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -302,11 +308,13 @@
 				DC51CA342AF8324D00DC8C9A /* LocaGestApp.swift in Sources */,
 				DC36D4962B17B35A00E95FAA /* SelectedImageViewModel.swift in Sources */,
 				DC51CA402AF8325100DC8C9A /* LocaGest.xcdatamodeld in Sources */,
+				4688E9672B18FA3B00F83DD5 /* Message.swift in Sources */,
 				DC453BD62B122F4800B2B9BA /* ReservationMainView.swift in Sources */,
 				7F3285492B1609BD00ABE165 /* Car.swift in Sources */,
 				33D31BCE2B13B079007E1B84 /* SignIn.swift in Sources */,
 				DC453BDC2B1238AC00B2B9BA /* SideBar.swift in Sources */,
 				DC453BD22B122E5800B2B9BA /* FlotteMainView.swift in Sources */,
+				4688E9692B18FB6A00F83DD5 /* CardMessage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

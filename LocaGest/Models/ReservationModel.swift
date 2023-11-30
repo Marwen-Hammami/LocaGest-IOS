@@ -17,9 +17,12 @@ enum StatutRes: String {
 class ReservationModel: ObservableObject {
     @Published var reservations: [Reservation] = []
         
-        func addReservation(_ reservation: Reservation) {
-            reservations.append(reservation)
-        }
+    func addReservation(_ reservation: Reservation) {
+        reservations.append(reservation)
+    }
+    func updateReservation(_ reservation: Reservation) {
+        reservations.append(reservation)
+    }
     func deleteReservation(at index: Int) {
         reservations.remove(at: index)
     }

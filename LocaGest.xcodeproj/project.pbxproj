@@ -19,6 +19,8 @@
 		4681CCA52B19283E00359338 /* RservationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4681CCA42B19283E00359338 /* RservationDetailView.swift */; };
 		4681CCA72B19285600359338 /* ReservationCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4681CCA62B19285600359338 /* ReservationCardView.swift */; };
 		4681CCA92B19286E00359338 /* AddReservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4681CCA82B19286E00359338 /* AddReservation.swift */; };
+		4681CCAB2B192C3900359338 /* DetailChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4681CCAA2B192C3900359338 /* DetailChat.swift */; };
+		4681CCAD2B192C6B00359338 /* UpdateReservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4681CCAC2B192C6B00359338 /* UpdateReservation.swift */; };
 		4688E99D2B19105000F83DD5 /* addTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E99C2B19105000F83DD5 /* addTool.swift */; };
 		4688E99F2B19106D00F83DD5 /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E99E2B19106D00F83DD5 /* Tool.swift */; };
 		4688E9A12B19108E00F83DD5 /* tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E9A02B19108E00F83DD5 /* tools.swift */; };
@@ -73,6 +75,8 @@
 		4681CCA42B19283E00359338 /* RservationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RservationDetailView.swift; sourceTree = "<group>"; };
 		4681CCA62B19285600359338 /* ReservationCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationCardView.swift; sourceTree = "<group>"; };
 		4681CCA82B19286E00359338 /* AddReservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReservation.swift; sourceTree = "<group>"; };
+		4681CCAA2B192C3900359338 /* DetailChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailChat.swift; sourceTree = "<group>"; };
+		4681CCAC2B192C6B00359338 /* UpdateReservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateReservation.swift; sourceTree = "<group>"; };
 		4688E99C2B19105000F83DD5 /* addTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addTool.swift; sourceTree = "<group>"; };
 		4688E99E2B19106D00F83DD5 /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
 		4688E9A02B19108E00F83DD5 /* tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tools.swift; sourceTree = "<group>"; };
@@ -134,6 +138,7 @@
 				4681CCA42B19283E00359338 /* RservationDetailView.swift */,
 				4681CCA62B19285600359338 /* ReservationCardView.swift */,
 				4681CCA82B19286E00359338 /* AddReservation.swift */,
+				4681CCAC2B192C6B00359338 /* UpdateReservation.swift */,
 			);
 			path = Reservation;
 			sourceTree = "<group>";
@@ -238,6 +243,7 @@
 				4688E9AE2B1912BC00F83DD5 /* ConversationMessagesView.swift */,
 				4688E9B02B1912D600F83DD5 /* NewMessageView.swift */,
 				4688E9B22B1912FC00F83DD5 /* SelectedImageViewModel.swift */,
+				4681CCAA2B192C3900359338 /* DetailChat.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -382,6 +388,7 @@
 				DC453BD42B122ECA00B2B9BA /* AgenceMainView.swift in Sources */,
 				30F918AE2B13999D004EAF46 /* ReservationModel.swift in Sources */,
 				09D7DF732B17E287003080D5 /* Agence.swift in Sources */,
+				4681CCAD2B192C6B00359338 /* UpdateReservation.swift in Sources */,
 				DC453BDA2B12301300B2B9BA /* SideBarViewModel.swift in Sources */,
 				DCFCEF652B10C2CC004C3574 /* ChatMainView.swift in Sources */,
 				30F918B02B139E1F004EAF46 /* ReservationListView.swift in Sources */,
@@ -396,6 +403,7 @@
 				33D31BCE2B13B079007E1B84 /* SignIn.swift in Sources */,
 				DC453BDC2B1238AC00B2B9BA /* SideBar.swift in Sources */,
 				DC453BD22B122E5800B2B9BA /* FlotteMainView.swift in Sources */,
+				4681CCAB2B192C3900359338 /* DetailChat.swift in Sources */,
 				81312F702B1647AA001D38C9 /* Modifier_Entretien.swift in Sources */,
 				7FB00C452B17743500764794 /* Page_Entretiens.swift in Sources */,
 				4688E9A72B1910EC00F83DD5 /* Tools.swift in Sources */,

@@ -49,7 +49,6 @@ struct GarageMainView: View {
         // Start - Here you can put your work ************************
         tools()
         
-        
         // End   - Here you can put your work ************************
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }

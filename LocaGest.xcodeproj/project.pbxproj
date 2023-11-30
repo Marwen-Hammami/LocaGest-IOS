@@ -16,12 +16,12 @@
 		33D31BD22B13B1B9007E1B84 /* ForgotPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D31BD12B13B1B9007E1B84 /* ForgotPassword.swift */; };
 		33D31BD42B13B3A4007E1B84 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D31BD32B13B3A4007E1B84 /* User.swift */; };
 		33D31BD62B13B435007E1B84 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D31BD52B13B435007E1B84 /* UserProfile.swift */; };
-		4688E96C2B190BBE00F83DD5 /* Distribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E96A2B190BBE00F83DD5 /* Distribution.swift */; };
-		4688E96D2B190BBE00F83DD5 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E96B2B190BBE00F83DD5 /* Tools.swift */; };
-		4688E9722B190BDD00F83DD5 /* addTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E96E2B190BDD00F83DD5 /* addTool.swift */; };
-		4688E9732B190BDD00F83DD5 /* tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E96F2B190BDD00F83DD5 /* tools.swift */; };
-		4688E9742B190BDD00F83DD5 /* updateTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E9702B190BDD00F83DD5 /* updateTool.swift */; };
-		4688E9752B190BDD00F83DD5 /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E9712B190BDD00F83DD5 /* Tool.swift */; };
+		4688E9922B190ECD00F83DD5 /* Distribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E9902B190ECD00F83DD5 /* Distribution.swift */; };
+		4688E9932B190ECD00F83DD5 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E9912B190ECD00F83DD5 /* Tools.swift */; };
+		4688E9982B190EFA00F83DD5 /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E9942B190EFA00F83DD5 /* Tool.swift */; };
+		4688E9992B190EFA00F83DD5 /* updateTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E9952B190EFA00F83DD5 /* updateTool.swift */; };
+		4688E99A2B190EFA00F83DD5 /* tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E9962B190EFA00F83DD5 /* tools.swift */; };
+		4688E99B2B190EFA00F83DD5 /* addTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E9972B190EFA00F83DD5 /* addTool.swift */; };
 		7F3285492B1609BD00ABE165 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3285482B1609BD00ABE165 /* Car.swift */; };
 		7F32854B2B160CAE00ABE165 /* DetailFlotte.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F32854A2B160CAE00ABE165 /* DetailFlotte.swift */; };
 		7F6439192B162917001416B3 /* Ajouter_Voiture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6439182B162917001416B3 /* Ajouter_Voiture.swift */; };
@@ -61,12 +61,12 @@
 		33D31BD12B13B1B9007E1B84 /* ForgotPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassword.swift; sourceTree = "<group>"; };
 		33D31BD32B13B3A4007E1B84 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		33D31BD52B13B435007E1B84 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
-		4688E96A2B190BBE00F83DD5 /* Distribution.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Distribution.swift; path = "../../../../../Downloads/Gestion Garage/LocaGest/Models/Distribution.swift"; sourceTree = "<group>"; };
-		4688E96B2B190BBE00F83DD5 /* Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Tools.swift; path = "../../../../../Downloads/Gestion Garage/LocaGest/Models/Tools.swift"; sourceTree = "<group>"; };
-		4688E96E2B190BDD00F83DD5 /* addTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = addTool.swift; path = "../../../../../../Downloads/Gestion Garage/LocaGest/Views/Garage/addTool.swift"; sourceTree = "<group>"; };
-		4688E96F2B190BDD00F83DD5 /* tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = tools.swift; path = "../../../../../../Downloads/Gestion Garage/LocaGest/Views/Garage/tools.swift"; sourceTree = "<group>"; };
-		4688E9702B190BDD00F83DD5 /* updateTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = updateTool.swift; path = "../../../../../../Downloads/Gestion Garage/LocaGest/Views/Garage/updateTool.swift"; sourceTree = "<group>"; };
-		4688E9712B190BDD00F83DD5 /* Tool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Tool.swift; path = "../../../../../../Downloads/Gestion Garage/LocaGest/Views/Garage/Tool.swift"; sourceTree = "<group>"; };
+		4688E9902B190ECD00F83DD5 /* Distribution.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Distribution.swift; path = "../../../Downloads/Gestion Garage/LocaGest/Models/Distribution.swift"; sourceTree = "<group>"; };
+		4688E9912B190ECD00F83DD5 /* Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Tools.swift; path = "../../../Downloads/Gestion Garage/LocaGest/Models/Tools.swift"; sourceTree = "<group>"; };
+		4688E9942B190EFA00F83DD5 /* Tool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Tool.swift; path = "../../../../Downloads/Gestion Garage/LocaGest/Views/Garage/Tool.swift"; sourceTree = "<group>"; };
+		4688E9952B190EFA00F83DD5 /* updateTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = updateTool.swift; path = "../../../../Downloads/Gestion Garage/LocaGest/Views/Garage/updateTool.swift"; sourceTree = "<group>"; };
+		4688E9962B190EFA00F83DD5 /* tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = tools.swift; path = "../../../../Downloads/Gestion Garage/LocaGest/Views/Garage/tools.swift"; sourceTree = "<group>"; };
+		4688E9972B190EFA00F83DD5 /* addTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = addTool.swift; path = "../../../../Downloads/Gestion Garage/LocaGest/Views/Garage/addTool.swift"; sourceTree = "<group>"; };
 		7F3285482B1609BD00ABE165 /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		7F32854A2B160CAE00ABE165 /* DetailFlotte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFlotte.swift; sourceTree = "<group>"; };
 		7F6439182B162917001416B3 /* Ajouter_Voiture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ajouter_Voiture.swift; sourceTree = "<group>"; };
@@ -129,10 +129,10 @@
 		30D8BA2E2B14F5BD00888A18 /* Garage */ = {
 			isa = PBXGroup;
 			children = (
-				4688E96E2B190BDD00F83DD5 /* addTool.swift */,
-				4688E9712B190BDD00F83DD5 /* Tool.swift */,
-				4688E96F2B190BDD00F83DD5 /* tools.swift */,
-				4688E9702B190BDD00F83DD5 /* updateTool.swift */,
+				4688E9972B190EFA00F83DD5 /* addTool.swift */,
+				4688E9942B190EFA00F83DD5 /* Tool.swift */,
+				4688E9962B190EFA00F83DD5 /* tools.swift */,
+				4688E9952B190EFA00F83DD5 /* updateTool.swift */,
 				DC453BD72B122F9200B2B9BA /* GarageMainView.swift */,
 			);
 			path = Garage;
@@ -180,8 +180,8 @@
 		DC4AC4512B1397ED00AFDA6F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				4688E96A2B190BBE00F83DD5 /* Distribution.swift */,
-				4688E96B2B190BBE00F83DD5 /* Tools.swift */,
+				4688E9902B190ECD00F83DD5 /* Distribution.swift */,
+				4688E9912B190ECD00F83DD5 /* Tools.swift */,
 				09D7DF722B17E287003080D5 /* Agence.swift */,
 				30F918AD2B13999D004EAF46 /* ReservationModel.swift */,
 				DC4AC4522B1398E700AFDA6F /* Conversation.swift */,
@@ -323,32 +323,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4688E9992B190EFA00F83DD5 /* updateTool.swift in Sources */,
 				DC4AC4532B1398E700AFDA6F /* Conversation.swift in Sources */,
 				DC453BDE2B12AC1900B2B9BA /* Router.swift in Sources */,
 				DC453BD02B122E0100B2B9BA /* UserMainView.swift in Sources */,
-				4688E9752B190BDD00F83DD5 /* Tool.swift in Sources */,
 				7FB00C492B1776EE00764794 /* HistoriqueEntretiens.swift in Sources */,
 				81C7C3A22B1641F1000D3C90 /* Modifier_Voiture.swift in Sources */,
 				33D31BD22B13B1B9007E1B84 /* ForgotPassword.swift in Sources */,
 				81312F6E2B164614001D38C9 /* Ajouter_Entretien.swift in Sources */,
-				4688E9742B190BDD00F83DD5 /* updateTool.swift in Sources */,
 				DC453BD82B122F9200B2B9BA /* GarageMainView.swift in Sources */,
 				7FA0E9612B148AA900A46450 /* DashboardFlotte.swift in Sources */,
-				4688E9722B190BDD00F83DD5 /* addTool.swift in Sources */,
 				33D31BD02B13B184007E1B84 /* SignUp.swift in Sources */,
 				DC4AC4572B139A4100AFDA6F /* CardConversation.swift in Sources */,
 				7FB00C432B175DBB00764794 /* Detail_Entretien.swift in Sources */,
 				7F32854B2B160CAE00ABE165 /* DetailFlotte.swift in Sources */,
+				4688E9922B190ECD00F83DD5 /* Distribution.swift in Sources */,
+				4688E9982B190EFA00F83DD5 /* Tool.swift in Sources */,
 				7FB00C412B1756F900764794 /* Detail_Voiture.swift in Sources */,
-				4688E9732B190BDD00F83DD5 /* tools.swift in Sources */,
 				33D31BD42B13B3A4007E1B84 /* User.swift in Sources */,
-				4688E96D2B190BBE00F83DD5 /* Tools.swift in Sources */,
 				7F6439192B162917001416B3 /* Ajouter_Voiture.swift in Sources */,
 				7FB00C472B17756300764794 /* Geolocalisation.swift in Sources */,
 				33D31BD62B13B435007E1B84 /* UserProfile.swift in Sources */,
 				DC453BD42B122ECA00B2B9BA /* AgenceMainView.swift in Sources */,
 				30F918AE2B13999D004EAF46 /* ReservationModel.swift in Sources */,
+				4688E99B2B190EFA00F83DD5 /* addTool.swift in Sources */,
 				09D7DF732B17E287003080D5 /* Agence.swift in Sources */,
+				4688E99A2B190EFA00F83DD5 /* tools.swift in Sources */,
 				DC453BDA2B12301300B2B9BA /* SideBarViewModel.swift in Sources */,
 				DCFCEF652B10C2CC004C3574 /* ChatMainView.swift in Sources */,
 				30F918B02B139E1F004EAF46 /* ReservationListView.swift in Sources */,
@@ -361,8 +361,8 @@
 				DC453BDC2B1238AC00B2B9BA /* SideBar.swift in Sources */,
 				DC453BD22B122E5800B2B9BA /* FlotteMainView.swift in Sources */,
 				81312F702B1647AA001D38C9 /* Modifier_Entretien.swift in Sources */,
+				4688E9932B190ECD00F83DD5 /* Tools.swift in Sources */,
 				7FB00C452B17743500764794 /* Page_Entretiens.swift in Sources */,
-				4688E96C2B190BBE00F83DD5 /* Distribution.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

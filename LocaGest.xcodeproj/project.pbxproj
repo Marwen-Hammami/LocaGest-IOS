@@ -16,6 +16,7 @@
 		33D31BD62B13B435007E1B84 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D31BD52B13B435007E1B84 /* UserProfile.swift */; };
 		7F3285492B1609BD00ABE165 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3285482B1609BD00ABE165 /* Car.swift */; };
 		7FA0E9612B148AA900A46450 /* DashboardFlotte.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0E9602B148AA900A46450 /* DashboardFlotte.swift */; };
+		DC36D4962B17B35A00E95FAA /* SelectedImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC36D4952B17B35A00E95FAA /* SelectedImageViewModel.swift */; };
 		DC3FB5692B175CF2001239E6 /* CardCurrentConnectedUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3FB5682B175CF2001239E6 /* CardCurrentConnectedUsers.swift */; };
 		DC3FB56B2B17774D001239E6 /* NewMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3FB56A2B17774D001239E6 /* NewMessageView.swift */; };
 		DC453BD02B122E0100B2B9BA /* UserMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC453BCF2B122E0100B2B9BA /* UserMainView.swift */; };
@@ -46,6 +47,7 @@
 		33D31BD52B13B435007E1B84 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		7F3285482B1609BD00ABE165 /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		7FA0E9602B148AA900A46450 /* DashboardFlotte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardFlotte.swift; sourceTree = "<group>"; };
+		DC36D4952B17B35A00E95FAA /* SelectedImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedImageViewModel.swift; sourceTree = "<group>"; };
 		DC3FB5682B175CF2001239E6 /* CardCurrentConnectedUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCurrentConnectedUsers.swift; sourceTree = "<group>"; };
 		DC3FB56A2B17774D001239E6 /* NewMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageView.swift; sourceTree = "<group>"; };
 		DC453BCF2B122E0100B2B9BA /* UserMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMainView.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				DCF00B7B2B16159C00EB69EF /* ConversationMessagesView.swift */,
 				DC3FB5682B175CF2001239E6 /* CardCurrentConnectedUsers.swift */,
 				DC3FB56A2B17774D001239E6 /* NewMessageView.swift */,
+				DC36D4952B17B35A00E95FAA /* SelectedImageViewModel.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				DCFCEF652B10C2CC004C3574 /* ChatMainView.swift in Sources */,
 				30F918B02B139E1F004EAF46 /* ReservationListView.swift in Sources */,
 				DC51CA342AF8324D00DC8C9A /* LocaGestApp.swift in Sources */,
+				DC36D4962B17B35A00E95FAA /* SelectedImageViewModel.swift in Sources */,
 				DC51CA402AF8325100DC8C9A /* LocaGest.xcdatamodeld in Sources */,
 				DC453BD62B122F4800B2B9BA /* ReservationMainView.swift in Sources */,
 				7F3285492B1609BD00ABE165 /* Car.swift in Sources */,

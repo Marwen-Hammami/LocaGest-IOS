@@ -6,11 +6,31 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct ConversationMessagesView: View {
+    @StateObject var viewModel = SelectedImageViewModel()
     let conversation: Conversation
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            Text("Choisir une image")
+            
+            PhotosPicker(selection: $viewModel.selectedItem){
+                if let selectedImage = viewModel.selectedImage {
+                    selectedImage
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 180, height: 180)
+                        .clipShape(Rectangle())
+                } else {
+                    Image(systemName: "photo.circle.fill")
+                        .resizable()
+                        .frame(width: 80, height: 80)
+                        .foregroundColor(Color(.systemGray4))
+                }
+            }
+            
+        }
             .navigationBarTitle(conversation.isGroup ? conversation.name : conversation.members[1], displayMode: .inline)
             .navigationBarItems(
                 leading: Image(conversation.image)

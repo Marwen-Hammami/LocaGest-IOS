@@ -15,7 +15,7 @@ struct DetailFlotte: View {
 
                 VStack {
                     List(cars) { car in
-                        NavigationLink(destination: CarDetailView(car: car)) {
+                        NavigationLink(destination: Detail_Voiture()) {
                             CarRow(car: car)
                         }
                     }
@@ -23,7 +23,7 @@ struct DetailFlotte: View {
 
                     Spacer()
 
-                    NavigationLink(destination: AjouterVoitureView()) {
+                    NavigationLink(destination: Ajouter_Voiture()) {
                         Text("Ajouter une voiture")
                             .padding()
                             .frame(maxWidth: .infinity)
@@ -115,12 +115,7 @@ struct CarDetailView: View {
     }
 }
 
-struct AjouterVoitureView: View {
-    var body: some View {
-        Text("Formulaire d'ajout de voiture")
-            .font(.title)
-    }
-}
+
 
 struct DetailFlotte_Previews: PreviewProvider {
     static var previews: some View {

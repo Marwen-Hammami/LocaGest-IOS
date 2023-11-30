@@ -48,43 +48,45 @@ struct DashboardFlotte: View {
 
 struct CardView1: View {
     var body: some View {
-        VStack {
-            Image("car_7828724")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 80, height: 80)
-                .clipped()
+        NavigationLink(destination: DetailFlotte(cars: [])) {
+            VStack {
+                Image("car_7828724")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 80, height: 80)
+                    .clipped()
 
-            Text("Voir la flotte")
-                .font(.headline)
-                .padding()
-
-            
+                Text("Voir la flotte")
+                    .font(.headline)
+                    .padding()
+            }
+            .background(Color.white)
+            .cornerRadius(10)
+            .shadow(radius: 5)
         }
-        .background(Color.white)
-        .cornerRadius(10)
-        .shadow(radius: 5)
     }
 }
 struct CardView2: View {
     var body: some View {
-        VStack {
-            Image("wrench_7185363")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 80, height: 80)
-                .clipped()
+        NavigationLink(destination: Page_Entretiens(entretiens: [])) {
+            VStack {
+                Image("wrench_7185363")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 80, height: 80)
+                    .clipped()
 
-            Text("Historique des Entretiens")
-                .font(.headline)
-                .padding()
-
+                Text("Historique des Entretiens")
+                    .font(.headline)
+                    .padding()
+            }
+            .background(Color.white)
+            .cornerRadius(10)
+            .shadow(radius: 5)
         }
-        .background(Color.white)
-        .cornerRadius(10)
-        .shadow(radius: 5)
     }
 }
+
 struct CardView3: View {
     var body: some View {
         VStack {

@@ -4,23 +4,47 @@ struct AgenceView: View {
     @State private var showForm = false
     
     @Environment(\.dismiss) var dismiss
+    
+    @State private var searchText: String = ""
 
     var body: some View {
         NavigationView {
             VStack {
-                List {
-                    ForEach(agencies) { agency in
-                        NavigationLink(destination: DetailView(agency: agency)) {
-                            VStack(alignment: .leading) {
-                                Text(agency.agenceName)
-                                Text(agency.adresse)
-                                    .font(.subheadline)
-                                    .multilineTextAlignment(.leading)
+                HStack {
+                    TextField("Search...", text: $searchText)
+                                .padding(7)
+                                .padding(.horizontal, 25)
+                               .background(Color(.systemGray6))
+                               .cornerRadius(8)
+                
+                            Button(action: {
+                                searchText = ""
+                            }) {
+                                Image(systemName: "xmark.circle.fill")
                                     .foregroundColor(.gray)
+                                   .frame(minWidth: 0, maxWidth: .infinity, alignment: .trailing)
                             }
+                            .buttonStyle(PlainButtonStyle())
+                        }
+                        .padding(3)
+                        .background(Color(.systemGray6))
+                        .cornerRadius(5)
+                
+                List(agencies.filter { agency in
+                    searchText.isEmpty ? true : agency.agenceName.localizedCaseInsensitiveContains(searchText)
+                }) { agency in
+                    NavigationLink(destination: DetailView(agency: agency)) {
+                        VStack(alignment: .leading) {
+                            Text(agency.agenceName)
+                            Text(agency.adresse)
+                                .font(.subheadline)
+                                .multilineTextAlignment(.leading)
+                                .foregroundColor(.gray)
                         }
                     }
                 }
+
+
 
                 Button(action: { self.showForm.toggle() }) {
                     Text("Ajouter une agence")

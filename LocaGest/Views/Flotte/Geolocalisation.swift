@@ -13,6 +13,8 @@ struct Geolocalisation: View {
     }
 }
 
-#Preview {
-    Geolocalisation()
+struct Geolocalisation_Previews: PreviewProvider {
+    static var previews: some View {
+        Geolocalisation()
+    }
 }

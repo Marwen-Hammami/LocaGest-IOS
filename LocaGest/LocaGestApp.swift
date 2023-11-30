@@ -3,6 +3,7 @@ import SwiftUI
 @main
 struct LocaGestApp: App {
     @StateObject var viewModel: ViewModel = ViewModel()
+    @StateObject private var reservationModel = ReservationModel()
     @ObservedObject var router = Router()
 
     var body: some Scene {
@@ -30,6 +31,7 @@ struct LocaGestApp: App {
                             ReservationMainView()
                                 .environmentObject(viewModel)
                                 .navigationBarBackButtonHidden(true)
+                                .environmentObject(reservationModel)
                         case .garage:
                             GarageMainView()
                                 .environmentObject(viewModel)

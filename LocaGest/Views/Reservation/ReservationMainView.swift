@@ -12,11 +12,11 @@ struct ReservationMainView: View {
                 Color(.white)
                 VStack{
                     SideBarButton()
+                        .padding()
                     
                     HomeView()
                 }
-                .padding()
-                .padding(.vertical, 50)
+                .padding(.top, 50)
             }
             .mask(RoundedRectangle(cornerRadius: 30, style: .continuous))
             .rotation3DEffect(.degrees(30), axis: (x: 0, y: vm.isopen ? -1 : 0, z: 0))

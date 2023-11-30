@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ChatMainView: View {
     @EnvironmentObject var vm: ViewModel
+    
+    @State private var showNewMessageView = false
     var body: some View {
         ZStack{
             Color(.black)
@@ -28,7 +30,8 @@ struct ChatMainView: View {
                         Spacer()
                         ZStack{
                             Button(action: {
-                                //Add new Conversation
+                                //Add new Message
+                                showNewMessageView.toggle()
                             }, label: {
                                 Image(systemName:"plus.message")
                                     .foregroundColor(Color("Accent"))
@@ -51,6 +54,8 @@ struct ChatMainView: View {
             .offset(x: vm.isopen ? 250 : 0)
             .ignoresSafeArea()
         }
+        .fullScreenCover(isPresented: $showNewMessageView, content: { NewMessageView()
+        })
         .onAppear {
             vm.selecteditem = .chat
         }
@@ -77,6 +82,7 @@ struct ChatMainView: View {
 //        Text("Marwen")
         VStack{
             ScrollView {
+                CardCurrentConnectedUsers()
                 ForEach(conversations){ item in
                     CardConversation(conversation: item)
                 }

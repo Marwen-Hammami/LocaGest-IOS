@@ -38,6 +38,20 @@ struct DetailChat: View {
                 .foregroundColor(.black)
                 .padding(.horizontal)
             
+            //MESSAGES
+            Text("Liste des images de la Conversation")
+            ForEach(messages){ item in
+                if item.file != [] {
+                    Image(item.file[0])
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 170, height: 170)
+                        .mask(Rectangle())
+                        .cornerRadius(10)
+                        .foregroundColor(Color(.systemGray4))
+                }
+
+            }
             
             
             Spacer()

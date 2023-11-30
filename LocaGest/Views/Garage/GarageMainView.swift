@@ -47,7 +47,7 @@ struct GarageMainView: View {
     @ViewBuilder
     func HomeView()-> some View{
         // Start - Here you can put your work ************************
-        Text("Chiheb - exmpl list Tools")
+        tools()
         
         
         // End   - Here you can put your work ************************

@@ -30,10 +30,21 @@ struct NewMessageView: View {
             }
             .padding(.horizontal)
             ScrollView{
-                TextField("À: Entrez un nom ou un groupe", text: $searchText)
-                    .frame(height: 44)
-                    .padding(.leading)
-                    .background(Color(.systemGroupedBackground))
+                HStack {
+                    TextField("À: Entrez un nom ou un groupe", text: $searchText)
+                        .frame(height: 44)
+                        .padding(.leading)
+                    Button(action: {
+                        searchText = ""
+                    }) {
+                    Image(systemName: "xmark.circle.fill")
+                        .foregroundColor(.gray)
+                        .frame(minWidth: 0, maxWidth: 20, alignment: .trailing)
+                        .padding(.trailing)
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                }
+                .background(Color(.systemGroupedBackground))
                 
                 Text("Contacts")
                     .foregroundColor(.gray)
@@ -41,7 +52,10 @@ struct NewMessageView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
                 
-                ForEach(conversations){ item in
+                ForEach(conversations.filter { item in
+                    searchText.isEmpty ? true : item.members[1].localizedCaseInsensitiveContains(searchText)
+                })
+                { item in
                     CardConversation(conversation: item)
                 }
             }

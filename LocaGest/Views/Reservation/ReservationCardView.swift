@@ -7,12 +7,12 @@ struct ReservationCardView: View {
     
     var body: some View {
         ZStack {
-            LinearGradient(
+           /* LinearGradient(
                 gradient: Gradient(colors: [Color("Main"), Color.white]),
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
-            .edgesIgnoringSafeArea(.all)
+            .edgesIgnoringSafeArea(.all)*/
             
             VStack(alignment: .leading, spacing: 8) {
                 // reservation image

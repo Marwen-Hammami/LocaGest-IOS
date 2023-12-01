@@ -5,7 +5,9 @@ struct ReservationListView: View {
     @State private var isShowingAddPage = false
     @State private var showDeleteConfirmation = false
     @State private var selectedStatus: StatutRes? = nil
-    
+    var screenWidth = UIScreen.main.bounds.width
+    var screenHeight = UIScreen.main.bounds.height
+
     var body: some View {
         NavigationView {
             VStack {
@@ -26,7 +28,11 @@ struct ReservationListView: View {
                             .environmentObject(reservationModel)
                     }
                 }
-                
+                /*.background(Image("back1")
+                    .resizable()
+                    .scaledToFill()
+                    .edgesIgnoringSafeArea(.all)
+                    .frame(width: screenWidth, height: screenWidth))*/
                 Spacer()
                 
                 bottomNavigationBar()
@@ -44,6 +50,8 @@ struct ReservationListView: View {
                 }
             }
         }
+         //.background(Image("back1"))
+
     }
     
     func addButton() -> some View {
@@ -107,7 +115,7 @@ struct ReservationListView: View {
             
             Spacer()
         }
-        .background(Color.white)
+        
     }
 }
 

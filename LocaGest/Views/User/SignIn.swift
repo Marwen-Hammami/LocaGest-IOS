@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct LoginView: View {
+    @EnvironmentObject var vm: ViewModel
     @State private var username = ""
     @State private var email = ""
     @State private var password = ""
@@ -139,7 +140,11 @@ struct LoginView: View {
                 ForgotPasswordEmailView()
             }
             .background(
-                NavigationLink(destination: FlotteMainView(), isActive: $shouldNavigateToFlotte) {
+                NavigationLink(destination:
+                                FlotteMainView()
+                                    .environmentObject(vm)
+                                    .navigationBarBackButtonHidden(true)
+                                , isActive: $shouldNavigateToFlotte) {
                     EmptyView()
                 }
             )

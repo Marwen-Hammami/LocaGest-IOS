@@ -131,6 +131,8 @@ struct ReservationDetailView: View {
         }
         }
        
+
+       
 }
 
 struct ReservationDetailView_Previews: PreviewProvider {

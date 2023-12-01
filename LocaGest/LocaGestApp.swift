@@ -22,7 +22,7 @@ struct LocaGestApp: App {
                 }
                             else {
                     NavigationStack(path: $router.navPath){
-                        FlotteMainView()
+                        LoginView()
                             .environmentObject(viewModel)
                             .navigationBarBackButtonHidden(true)
                             .navigationDestination(for: Router.Destination.self){

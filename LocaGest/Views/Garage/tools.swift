@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct tools: View {
+
     @State private var tools: [Tools] = [
         Tools(id: UUID(), name: "Tool 1", marque: "aaasas",type: "aaa", prix: 50, image: "", stock: 10),
         Tools(id: UUID(), name: "Tool 2", marque: "aaasas",type: "aaa", prix: 50, image: "", stock: 10),
@@ -19,17 +20,27 @@ struct tools: View {
     ]
     
     var body: some View {
+
+
         NavigationView {
+            
+            
             List(tools, id: \.id) { tool in
                 NavigationLink(destination: Tool(tool: tool)) {
                     Tool(tool: tool)
                 }
             }
             .navigationBarTitle("Tools")
+            .navigationBarItems(trailing:
+                   NavigationLink(destination: addTool()) {
+                       Image(systemName: "plus")
+                   }
+               )
             .onAppear {
-               
+                
             }
         }
+    
     }
 }
 

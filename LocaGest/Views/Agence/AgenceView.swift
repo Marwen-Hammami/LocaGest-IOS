@@ -1,11 +1,13 @@
 import SwiftUI
 
 struct AgenceView: View {
+    @StateObject var agenceViewModel = AgenceViewModel()
     @State private var showForm = false
     
     @Environment(\.dismiss) var dismiss
     
     @State private var searchText: String = ""
+    @State private var isSubmissionSuccessful = false
 
     var body: some View {
         NavigationView {
@@ -30,19 +32,28 @@ struct AgenceView: View {
                         .background(Color(.systemGray6))
                         .cornerRadius(5)
                 
-                List(agencies.filter { agency in
-                    searchText.isEmpty ? true : agency.agenceName.localizedCaseInsensitiveContains(searchText)
-                }) { agency in
-                    NavigationLink(destination: DetailView(agency: agency)) {
-                        VStack(alignment: .leading) {
-                            Text(agency.agenceName)
-                            Text(agency.adresse)
-                                .font(.subheadline)
-                                .multilineTextAlignment(.leading)
-                                .foregroundColor(.gray)
+                if let agences = agenceViewModel.agences {
+                    List(agences.filter { agency in
+                        searchText.isEmpty ? true : agency.agenceName.localizedCaseInsensitiveContains(searchText)
+                    }) { agency in
+                        NavigationLink(destination: DetailView(agency: agency)) {
+                            VStack(alignment: .leading) {
+                                Text(agency.agenceName)
+                                Text(agency.adresse)
+                                    .font(.subheadline)
+                                    .multilineTextAlignment(.leading)
+                                    .foregroundColor(.gray)
+                            }
                         }
                     }
+                } else {
+                    // Show loading indicator or error message
+                    ProgressView()
+                        .onAppear {
+                            agenceViewModel.fetchAgencess()
+                        }
                 }
+                
 
 
 
@@ -59,7 +70,11 @@ struct AgenceView: View {
             }
             .navigationBarTitle("Mes Agences", displayMode: .inline)
         }
+        .onAppear {
+            agenceViewModel.fetchAgencess()
+        }
     }
+    
 }
 
 struct DetailView: View {
@@ -95,7 +110,7 @@ struct DetailView: View {
                     Text("Head ID:")
                         .font(.headline)
                         .foregroundColor(.gray)
-                    Text(agency.idHead)
+                    Text(agency.idHead ?? "0")
                         .font(.body)
                 }
                 .padding()
@@ -260,7 +275,7 @@ struct FormUpdateView: View {
         .onAppear {
             self.name = agency.agenceName
             self.address = agency.adresse
-            self.assigneeID = agency.idHead
+            self.assigneeID = "agency.idHead"
             self.latitude = String(agency.latitude)
             self.longitude = String(agency.longitude)
         }
@@ -344,7 +359,7 @@ struct FormView: View {
             })
             .navigationBarItems(trailing: Button(action: {
                 // Action for Cancel button
-                dismiss()
+                addAgence()
                 self.name = ""
                 self.address = ""
                 self.assigneeID = ""
@@ -358,16 +373,67 @@ struct FormView: View {
             })
         }
     }
+    func addAgence() {
+        // Define the API endpoint URL
+        let apiUrlString = "http://172.20.10.12:9090/agence/new/"
+        
+        // Create the URL
+        guard let url = URL(string: apiUrlString) else {
+            return
+        }
+        
+        // Create the request
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        // Create the request body
+        let requestBody: [String: Any] = [
+            "AgenceName": name,
+            "Adresse": address,
+            "IdHead": assigneeID,
+            "latitude": latitude,
+            "longitude": longitude
+        ]
+        
+        do {
+            // Convert the request body to JSON data
+            let jsonData = try JSONSerialization.data(withJSONObject: requestBody)
+            request.httpBody = jsonData
+        } catch {
+            return
+        }
+        
+        // Perform the request
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            // Check for errors
+            if let error = error {
+                print("Error adding agence: \(error)")
+               
+                return
+            }
+            
+            // Check for a successful HTTP response
+            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
+                                
+            } else {
+                // Agence addition failed
+               
+            }
+        }.resume()
+    }
+
 }
 
-let agencies = [
-    Agence(agenceName: "Agence Ariana", adresse: "30 Rue des voirures, Ariana",idHead: "1",longitude : "56,6,656",latitude: "648468,6546,66"),
-    Agence(agenceName: "Agence Bardo", adresse: "50 Avenue des beaux arts, Tunis",idHead: "2",longitude : "56,6,656",latitude: "648468,6546,66"),
-    Agence(agenceName: "Agence Soussa", adresse: "30 Rue des voirures, Ariana",idHead: "1",longitude : "56,6,656",latitude: "648468,6546,66"),
-    Agence(agenceName: "Agence Manar", adresse: "30 Rue des voirures, Ariana",idHead: "1",longitude : "56,6,656",latitude: "648468,6546,66"),
-    Agence(agenceName: "Agence Gbelli", adresse: "30 Rue des voirures, Ariana",idHead: "1",longitude : "56,6,656",latitude: "648468,6546,66"),
-    Agence(agenceName: "Agence Tozer", adresse: "30 Rue des voirures, Ariana",idHead: "1",longitude : "56,6,656",latitude: "648468,6546,66"),
-]
+
+//let agencies = [
+//    Agence(agenceName: "Agence Ariana", adresse: "30 Rue des voirures, Ariana",idHead: "1",longitude : "56,6,656",latitude: "648468,6546,66"),
+//    Agence(agenceName: "Agence Bardo", adresse: "50 Avenue des beaux arts, Tunis",idHead: "2",longitude : "56,6,656",latitude: "648468,6546,66"),
+//    Agence(agenceName: "Agence Soussa", adresse: "30 Rue des voirures, Ariana",idHead: "1",longitude : "56,6,656",latitude: "648468,6546,66"),
+//    Agence(agenceName: "Agence Manar", adresse: "30 Rue des voirures, Ariana",idHead: "1",longitude : "56,6,656",latitude: "648468,6546,66"),
+//    Agence(agenceName: "Agence Gbelli", adresse: "30 Rue des voirures, Ariana",idHead: "1",longitude : "56,6,656",latitude: "648468,6546,66"),
+//    Agence(agenceName: "Agence Tozer", adresse: "30 Rue des voirures, Ariana",idHead: "1",longitude : "56,6,656",latitude: "648468,6546,66"),
+//]
 
 struct AgenceView_Previews: PreviewProvider {
     static var previews: some View {

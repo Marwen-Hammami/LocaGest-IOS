@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		090D82C12B19DC76000D1B47 /* AgenceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090D82C02B19DC76000D1B47 /* AgenceViewModel.swift */; };
+		090D82C42B19DC9C000D1B47 /* AgenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090D82C32B19DC9C000D1B47 /* AgenceService.swift */; };
 		09666FC52B17E7E10025248E /* AgenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09666FC42B17E7E10025248E /* AgenceView.swift */; };
 		09D7DF732B17E287003080D5 /* Agence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D7DF722B17E287003080D5 /* Agence.swift */; };
 		30F918AE2B13999D004EAF46 /* ReservationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F918AD2B13999D004EAF46 /* ReservationModel.swift */; };
@@ -67,6 +69,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		090D82C02B19DC76000D1B47 /* AgenceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgenceViewModel.swift; sourceTree = "<group>"; };
+		090D82C32B19DC9C000D1B47 /* AgenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgenceService.swift; sourceTree = "<group>"; };
 		09666FC42B17E7E10025248E /* AgenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgenceView.swift; sourceTree = "<group>"; };
 		09D7DF722B17E287003080D5 /* Agence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agence.swift; sourceTree = "<group>"; };
 		30F918AD2B13999D004EAF46 /* ReservationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationModel.swift; sourceTree = "<group>"; };
@@ -138,6 +142,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		090D82BF2B19DC5B000D1B47 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				090D82C02B19DC76000D1B47 /* AgenceViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		090D82C22B19DC83000D1B47 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				090D82C32B19DC9C000D1B47 /* AgenceService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		30D8BA2C2B14F56A00888A18 /* Reservation */ = {
 			isa = PBXGroup;
 			children = (
@@ -278,6 +298,8 @@
 		DC51CA322AF8324D00DC8C9A /* LocaGest */ = {
 			isa = PBXGroup;
 			children = (
+				090D82C22B19DC83000D1B47 /* Services */,
+				090D82BF2B19DC5B000D1B47 /* ViewModels */,
 				DC4AC4542B1399F600AFDA6F /* Views */,
 				DC4AC4512B1397ED00AFDA6F /* Models */,
 				DC51CA332AF8324D00DC8C9A /* LocaGestApp.swift */,
@@ -391,6 +413,7 @@
 				7F32854B2B160CAE00ABE165 /* DetailFlotte.swift in Sources */,
 				4688E9A52B1910C300F83DD5 /* Distribution.swift in Sources */,
 				4688E9AD2B19125E00F83DD5 /* CardMessage.swift in Sources */,
+				090D82C12B19DC76000D1B47 /* AgenceViewModel.swift in Sources */,
 				7FB00C412B1756F900764794 /* Detail_Voiture.swift in Sources */,
 				33D31BD42B13B3A4007E1B84 /* User.swift in Sources */,
 				4688E99D2B19105000F83DD5 /* addTool.swift in Sources */,
@@ -416,6 +439,7 @@
 				09666FC52B17E7E10025248E /* AgenceView.swift in Sources */,
 				7F3285492B1609BD00ABE165 /* Car.swift in Sources */,
 				33D31BCE2B13B079007E1B84 /* SignIn.swift in Sources */,
+				090D82C42B19DC9C000D1B47 /* AgenceService.swift in Sources */,
 				DC453BDC2B1238AC00B2B9BA /* SideBar.swift in Sources */,
 				DC453BD22B122E5800B2B9BA /* FlotteMainView.swift in Sources */,
 				33ECD5F12B1951D70010A977 /* SplashScreen.swift in Sources */,

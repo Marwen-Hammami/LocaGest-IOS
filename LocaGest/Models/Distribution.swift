@@ -6,14 +6,27 @@
 //
 
 import Foundation
-//struct Distribution: Identifiable {
-//    let id: UUID
-//    var name: String
-//    let marque: String
-//    let type: String
-//    var prix: Int
-//    var image: String
-//    var stock: Int
-//}
+struct Distribution: Identifiable{
+    let id: UUID
+    var typeRepair: String
+    let pieces: Tool
+    let cars: Car
+    var description: String
+    var technicien: User
+    var startDate: Date?
+    var endDate: Date?
+    var statusCar: String
+}
+
+enum typeRepair: String {
+    case maintenance = "Maintenance"
+    case repair = "Repair"
+    case carWash = "Car Wash"
+
+}
+enum status: String {
+    case inProgress = "In Progress"
+    case delivred = "Delivred"
+}
 
 

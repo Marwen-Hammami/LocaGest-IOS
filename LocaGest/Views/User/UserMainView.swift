@@ -47,7 +47,7 @@ struct UserMainView: View {
     @ViewBuilder
     func HomeView()-> some View{
         // Start - Here you can put your work ************************
-        UserProfile()
+        Text("Maher - exmpl settings or profile")
         
         
         // End   - Here you can put your work ************************

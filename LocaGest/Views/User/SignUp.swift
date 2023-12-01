@@ -18,7 +18,7 @@ struct SignUpView: View {
             
             
             VStack(spacing: 30, content: {
-                Image("edit")
+                Image("aaa")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 200, height: 200)
@@ -40,32 +40,18 @@ struct SignUpView: View {
                 
                 VStack(spacing: 20) {
                     TextField("Username", text: $username)
-                        .font(.system(size: 16))
-                        .padding()
-                        .background(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color.gray, lineWidth: 1)
-                        )
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(.horizontal, 30)
                     
                     TextField("Email", text: $email)
-                        .font(.system(size: 16))
-                        .padding()
-                        .background(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color.gray, lineWidth: 1)
-                        )
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(.horizontal, 30)
                     
                     SecureField("Password", text: $password)
-                        .font(.system(size: 16))
-                        .padding()
-                        .background(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color.gray, lineWidth: 1)
-                        )
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(.horizontal, 30)
                 }
+                .padding(.top, 50)
                 
                 Button(action: {
                     // Perform sign-up action with username, email, and password

@@ -1,118 +1,60 @@
 import SwiftUI
 
+
 struct ReservationListView: View {
-    @StateObject private var reservationModel = ReservationModel()
-    @State private var isShowingAddPage = false
-    @State private var showDeleteConfirmation = false
-    @State private var selectedStatus: StatutRes? = nil
+    @StateObject private var reservationModel = ReservationModel(reservations: [
+        Reservation(dateDebut: Date(), dateFin: Date(), heureDebut: "10:00 AM", heureFin: "12:00 PM", statut: .reservee, total: 100.0),
+        Reservation(dateDebut: Date(), dateFin: Date(), heureDebut: "2:00 PM", heureFin: "4:00 PM", statut: .payee, total: 150.0),
+        Reservation(dateDebut: Date(), dateFin: Date(), heureDebut: "6:00 PM", heureFin: "8:00 PM", statut: .achevee, total: 200.0)
+    ])
+    @State private var selectedReservation: Reservation?
     
     var body: some View {
         NavigationView {
-            VStack {
-                List {
-                    ForEach(reservationModel.reservations.filter { reservation in
-                        selectedStatus == nil || reservation.statut == selectedStatus
-                    }) { reservation in
-                        ReservationCardView(reservation: reservation)
-                            .contextMenu {
-                                Button(action: {
-                                    if let index = reservationModel.reservations.firstIndex(where: { $0.id == reservation.id }) {
-                                        reservationModel.deleteReservation(at: index)
-                                    }
-                                }) {
-                                    Label("Delete", systemImage: "trash")
-                                }
-                            }
-                            .environmentObject(reservationModel)
-                    }
-                }
-                
-                Spacer()
-                
-                bottomNavigationBar()
-            }
-            .navigationBarTitle("Reservations")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    addButton()
+            List(reservationModel.reservations) { reservation in
+                Button(action: {
+                    selectedReservation = reservation
+                }) {
+                    Text("Reservation ID: \(reservation.id)")
                 }
             }
-            .sheet(isPresented: $isShowingAddPage) {
-                AddReservation(reservationModel: reservationModel) { newReservation in
-                    reservationModel.addReservation(newReservation)
-                }
+            .navigationTitle("Reservations")
+            .sheet(item: $selectedReservation) { reservation in
+                ReservationDetailView(reservation: reservation)
             }
         }
-    }
-    
-    func addButton() -> some View {
-        Button(action: {
-            isShowingAddPage = true
-        }) {
-            Image(systemName: "plus")
-                .font(.title2)
-                .foregroundColor(.white)
-                .padding(8)
-                .background(Color.primary)
-                .clipShape(Circle())
-        }
-    }
-    
-    func bottomNavigationBar() -> some View {
-        HStack {
-            Spacer()
-            
-            Button(action: {
-                selectedStatus = nil // Afficher toutes les réservations
-            }) {
-                Image(systemName: "list.bullet")
-                    .font(.title2)
-                    .foregroundColor(selectedStatus == nil ? .blue : .gray)
-                    .padding(8)
-            }
-            
-            Spacer()
-            
-            Button(action: {
-                selectedStatus = .achevee // Afficher les réservations achevées
-            }) {
-                Image(systemName: "checkmark.circle")
-                    .font(.title2)
-                    .foregroundColor(selectedStatus == .achevee ? .blue : .gray)
-                    .padding(8)
-            }
-            
-            Spacer()
-            
-            Button(action: {
-                selectedStatus = .payee // Afficher les réservations payées
-            }) {
-                Image(systemName: "dollarsign.circle")
-                    .font(.title2)
-                    .foregroundColor(selectedStatus == .payee ? .blue : .gray)
-                    .padding(8)
-            }
-            
-            Spacer()
-            
-            Button(action: {
-                selectedStatus = .annulee // Afficher les réservations annulées
-            }) {
-                Image(systemName: "xmark.circle")
-                    .font(.title2)
-                    .foregroundColor(selectedStatus == .annulee ? .blue : .gray)
-                    .padding(8)
-            }
-            
-            Spacer()
-        }
-        .background(Color.white)
     }
 }
 
-struct ReservationListView_Previews: PreviewProvider {
-    static var previews: some View {
+struct ReservationDetailView: View {
+    let reservation: Reservation
+    
+    var body: some View {
+        VStack {
+            Text("Reservation Details")
+                .font(.title)
+            
+            Text("Start Date: \(reservation.dateDebut)")
+            Text("End Date: \(reservation.dateFin)")
+            Text("Start Time: \(reservation.heureDebut)")
+            Text("End Time: \(reservation.heureFin)")
+            Text("Status: \(reservation.statut.rawValue)")
+            Text("Total: \(reservation.total)")
+            
+            Spacer()
+        }
+        .padding()
+    }
+}
+
+struct ContentView: View {
+    var body: some View {
         ReservationListView()
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
     }
 }

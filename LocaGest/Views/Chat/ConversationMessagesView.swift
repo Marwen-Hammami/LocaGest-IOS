@@ -7,7 +7,6 @@
 
 import SwiftUI
 import PhotosUI
-import UniformTypeIdentifiers
 
 struct ConversationMessagesView: View {
     @State private var showDialog: Bool = false
@@ -16,7 +15,6 @@ struct ConversationMessagesView: View {
     @StateObject var viewModel = SelectedImageViewModel()
     @State private var messageText = ""
     let conversation: Conversation
-    @State private var messageToCopy = ""
     var body: some View {
         VStack {
             ScrollView{
@@ -43,16 +41,15 @@ struct ConversationMessagesView: View {
                         CardMessage(message: item)
                             .onLongPressGesture {
                                 showDialog = true
-                                messageToCopy = item.text
                             }
                     }
-                    .alert("Que voulais-vous effectuer ?", isPresented: $showDialog) {
-                            Button("Copier", action: {
-                                UIPasteboard.general.setValue(messageToCopy,
-                                            forPasteboardType: UTType.plainText.identifier)
-                            })
-                            Button("Supprimer", role: .destructive, action: {})
-                        }
+                    .alert(isPresented: $showDialog){
+                                            Alert(title: Text("Êtes-vous sûres?"),message: Text("Êtes vous sûres de vouloir supprimer l'agence"),
+                                                  primaryButton: .destructive(Text("Supprimer")){
+                                                dismiss()
+                                            },
+                                                  secondaryButton: .cancel() )
+                                        }
                 }
             }
                 .navigationBarTitle(conversation.isGroup ? conversation.name : conversation.members[1], displayMode: .inline)

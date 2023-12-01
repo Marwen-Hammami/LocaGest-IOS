@@ -7,7 +7,7 @@ struct UserProfile: View {
     @State private var notificationsEnabled = true
     @State private var selectedLanguage = "English"
     @State private var isEditingProfile = false
-    
+    @StateObject private var router = Router() // Create an instance of the Router
     
     @State private var rotationAngle: Double = 0
     
@@ -100,7 +100,11 @@ struct UserProfile: View {
                                 .foregroundColor(.gray)
                         }
                         .onTapGesture {
-                            showEmailAlert = true
+                            let emailAddress = "MaherKaroui@gmail.com"
+                            guard let emailURL = URL(string: "mailto:\(emailAddress)") else {
+                                return
+                            }
+                            UIApplication.shared.open(emailURL)
                         }
                     }
                     
@@ -133,7 +137,7 @@ struct UserProfile: View {
                 }
                 .navigationBarTitle("Settings")
                 .navigationBarItems(trailing: Button(action: {
-                    // Perform logout action here
+                    router.navigateToRoot() // Navigate to the root of the navigation stack
                 }) {
                     Text("Logout")
                         .foregroundColor(.red)
@@ -148,6 +152,7 @@ struct UserProfile: View {
         .alert(isPresented: $showUsernameAlert) {
             Alert(title: Text("Username"), message: Text("You can edit your username here."), dismissButton: .default(Text("OK")))
         }
+        .environmentObject(router) // Inject the router as an environment object
     }
 }
 

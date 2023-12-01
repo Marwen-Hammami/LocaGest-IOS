@@ -1,39 +1,33 @@
 import SwiftUI
-
 @main
 struct LocaGestApp: App {
     @StateObject var viewModel: ViewModel = ViewModel()
     @ObservedObject var router = Router()
-    @State private var showSplash = true
-    @State private var showSignIn = false
+    @State private var showSplash = true // Added state variable for controlling splash screen visibility
     
     var body: some Scene {
         WindowGroup {
-          
-                      
-                 
             Group {
-                if showSplash {
+                if showSplash { // Show splash screen conditionally
                     SplashScreen()
                         .onAppear {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                                showSplash = false
-                                showSignIn = true
+                                showSplash = false // Hide splash screen after 3 seconds
+                                
+                                
+
                             }
                         }
-                } else if showSignIn {
-                    LoginView()
-                        .environmentObject(viewModel)
-                        .onAppear {
-                            // Perform any necessary setup for the sign-in screen
-                        }
-                } else {
+                    
+                }
+                            else {
                     NavigationStack(path: $router.navPath){
                         FlotteMainView()
                             .environmentObject(viewModel)
                             .navigationBarBackButtonHidden(true)
-                            .navigationDestination(for: Router.Destination.self) { destination in
-                                switch destination {
+                            .navigationDestination(for: Router.Destination.self){
+                                destination in
+                                switch destination{
                                 case .user:
                                     UserMainView()
                                         .environmentObject(viewModel)

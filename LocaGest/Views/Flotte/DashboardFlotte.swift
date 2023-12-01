@@ -43,6 +43,7 @@ struct DashboardFlotte: View {
                 .accentColor(.green)
             }
         }
+        .navigationBarBackButtonHidden()
     }
 }
 

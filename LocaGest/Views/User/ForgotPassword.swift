@@ -80,7 +80,7 @@ struct ForgotPasswordEmailView: View {
                 }
             }
             .sheet(isPresented: $isOTPViewPresented) {
-                OTPView() // Present the OTP view
+                OTPView()
             }
         }
     }
@@ -92,13 +92,19 @@ struct ForgotPasswordEmailView: View {
             case .success:
                 // Email sending succeeded
                 errorMessage = ""
+                saveEmail(email: emailAddress) // Save the email address
             case .failure(let error):
                 // Email sending failed
                 errorMessage = error.localizedDescription
             }
         }
     }
+    
+    private func saveEmail(email: String) {
+        UserDefaults.standard.set(email, forKey: "userEmail")
+    }
 }
+
 
 struct ForgotPasswordEmailView_Previews: PreviewProvider {
     static var previews: some View {

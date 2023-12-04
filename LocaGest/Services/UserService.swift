@@ -2,7 +2,7 @@ import Foundation
 
 class UserService {
     static let shared = UserService()
-    private let baseURL = "http://192.168.0.117:9090"
+    private let baseURL = "http://172.18.26.10:9090"
     
     func signIn(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
         let signInURL = URL(string: "\(baseURL)/User/signing")!

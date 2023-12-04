@@ -3,6 +3,18 @@ import SwiftUI
 struct OTPView: View {
     @State private var otp: String = ""
     @State private var isUpdatePasswordViewPresented = false
+    @State private var isOTPValid = false
+    @State private var error: Error? = nil
+    
+    private let email: String
+    
+    init() {
+        if let savedEmail = UserDefaults.standard.string(forKey: "userEmail") {
+            self.email = savedEmail
+        } else {
+            self.email = ""
+        }
+    }
     
     var body: some View {
         NavigationView {
@@ -26,21 +38,21 @@ struct OTPView: View {
                         .foregroundColor(.white)
                         .padding()
                     
-                    HStack(spacing: 10) {
-                        ForEach(0..<6, id: \.self) { index in
-                            OTPDigitView(otp: $otp, digit: otpDigit(at: index))
-                        }
-                    }
-                    .padding()
+                    TextField("Enter your otp", text: $otp)
+                        .font(.system(size: 16))
+                        .padding()
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.gray, lineWidth: 1)
+                        )
+                        .padding()
                     
                     NavigationLink(destination: UpdatePasswordView(), isActive: $isUpdatePasswordViewPresented) {
                         EmptyView()
                     }
                     
                     Button(action: {
-                        // Perform OTP verification logic
                         verifyOTP()
-                        isUpdatePasswordViewPresented = true
                     }) {
                         Text("Verify OTP")
                             .foregroundColor(.white)
@@ -50,55 +62,38 @@ struct OTPView: View {
                             .cornerRadius(8)
                     }
                     .padding()
+                    
+                    if let error = error {
+                        Text(error.localizedDescription)
+                            .foregroundColor(.red)
+                            .padding()
+                    }
                 }
             }
         }
         .navigationBarBackButtonHidden()
     }
     
-    private func otpDigit(at index: Int) -> String {
-        let digits = Array(otp)
-        if index < digits.count {
-            return String(digits[index])
-        } else {
-            return ""
-        }
-    }
-    
     private func verifyOTP() {
-        // Perform OTP verification logic here
-        // Validate the entered OTP
-        // Display success or error message to the user
-    }
-}
-
-struct OTPDigitView: View {
-    @Binding var otp: String
-    let digit: String
-    
-    var body: some View {
-        TextField("", text: Binding(
-            get: {
-                otp
-            },
-            set: { newValue in
-                if newValue.count <= 1 {
-                    otp = newValue
+        UserService.shared.verifyOTP(email: email, otpCode: otp) { result in
+            switch result {
+            case .success(let isOTPValid):
+                DispatchQueue.main.async {
+                    self.isOTPValid = isOTPValid
+                    if isOTPValid {
+                        self.isUpdatePasswordViewPresented = true
+                    } else {
+                        self.error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid OTP"])
+                    }
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self.error = error
                 }
             }
-        ))
-        .font(.title)
-        .frame(width: 40, height: 40)
-        .background(Color.gray.opacity(0.2))
-        .cornerRadius(8)
-        .padding(4)
-        .multilineTextAlignment(.center)
-        .keyboardType(.numberPad)
-        .textContentType(.oneTimeCode)
+        }
     }
 }
-
-
 
 struct OTPView_Previews: PreviewProvider {
     static var previews: some View {

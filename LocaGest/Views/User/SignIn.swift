@@ -5,7 +5,10 @@ struct LoginView: View {
     @State private var username = ""
     @State private var email = ""
     @State private var password = ""
+    @State private var phoneNumber = ""
     @State private var isLogin = true
+    @State private var selectedImage: UIImage? = nil
+    @State private var isShowingImagePicker = false
     @State private var isForgotPasswordViewPresented = false
     
     @State private var shouldNavigateToFlotte = false
@@ -27,6 +30,20 @@ struct LoginView: View {
                 
                 VStack(spacing: 20) {
                     if !isLogin {
+                        Button(action: {
+                                           isShowingImagePicker = true
+                                       }) {
+                                           Text("Select Image")
+                                       }
+                                       .padding()
+                                       .background(
+                                           RoundedRectangle(cornerRadius: 10)
+                                               .stroke(Color.gray, lineWidth: 1)
+                                       )
+                                       .padding(.horizontal, 30)
+                                       .sheet(isPresented: $isShowingImagePicker) {
+                                           ImagePicker(image: $selectedImage)
+                                       }
                         TextField("Username", text: $username)
                             .font(.system(size: 16))
                             .padding()
@@ -35,6 +52,19 @@ struct LoginView: View {
                                     .stroke(Color.gray, lineWidth: 1)
                             )
                             .padding(.horizontal, 30)
+                        TextField("PhoneNumber", text: $phoneNumber)
+                            .font(.system(size: 16))
+                            .padding()
+                            .background(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color.gray, lineWidth: 1)
+                            )
+                            .padding(.horizontal, 30)
+                       
+                                       
+                                       // Additional code for handling image upload, if required
+                                       
+                                   
                     }
                     
                     TextField("Email", text: $email)
@@ -59,10 +89,31 @@ struct LoginView: View {
                 Button(action: {
                     if isLogin {
                         // Perform login action with email and password
-                        // Assuming login is successful
-                        shouldNavigateToFlotte = true // Set the flag to navigate to FlotteMainView
+                        UserService.shared.signIn(email: email, password: password) { result in
+                            switch result {
+                            case .success:
+                                // Login successful
+                                shouldNavigateToFlotte = true // Set the flag to navigate to FlotteMainView
+                            case .failure(let error):
+                                // Login failed
+                                // Show an error message or perform appropriate action
+                                print("Login failed: \(error.localizedDescription)")
+                            }
+                        }
                     } else {
-                        // Perform sign-up action with username, email, and password
+                        // Perform sign-up action with user details
+                        let newUser = User(username : username , email : email ,password: password, phoneNumber: phoneNumber) // Replace with the actual user details
+                        UserService.shared.signUp(user: newUser) { result in
+                            switch result {
+                            case .success:
+                                // Signup successful
+                                shouldNavigateToFlotte = true // Set the flag to navigate to FlotteMainView
+                            case .failure(let error):
+                                // Signup failed
+                                // Show an error message or perform appropriate action
+                                print("Signup failed: \(error.localizedDescription)")
+                            }
+                        }
                     }
                 }) {
                     Text(isLogin ? "Login" : "Sign Up")
@@ -74,6 +125,8 @@ struct LoginView: View {
                         .cornerRadius(10)
                         .padding(.horizontal, 30)
                 }
+                
+                
                 
                 Button(action: {
                     isLogin.toggle()
@@ -153,8 +206,52 @@ struct LoginView: View {
     }
 }
 
-struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView()
+struct ImagePicker: UIViewControllerRepresentable {
+    @Binding var image: UIImage?
+    @Environment(\.presentationMode) private var presentationMode
+    
+    func makeUIViewController(context: Context) -> UIImagePickerController {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = context.coordinator
+        return imagePicker
+    }
+    
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {
+    }
+    
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+    
+    class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+        let parent: ImagePicker
+        
+        init(_ parent: ImagePicker) {
+            self.parent = parent
+        }
+        
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            if let uiImage = info[.originalImage] as? UIImage {
+                parent.image = uiImage
+            }
+            parent.presentationMode.wrappedValue.dismiss()
+        }
+        
+        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+            parent.presentationMode.wrappedValue.dismiss()
+        }
     }
 }
+    
+
+    
+    struct LoginView_Previews: PreviewProvider {
+        static var previews: some View {
+            let viewModel = ViewModel(/* initialize your ViewModel with required parameters */)
+            
+            return LoginView()
+                .environmentObject(viewModel)
+        }
+    }
+
+

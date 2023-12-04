@@ -28,7 +28,7 @@ struct OTPView: View {
                     
                     HStack(spacing: 10) {
                         ForEach(0..<6, id: \.self) { index in
-                            OTPDigitView(digit: otpDigit(at: index))
+                            OTPDigitView(otp: $otp, digit: otpDigit(at: index))
                         }
                     }
                     .padding()
@@ -73,23 +73,35 @@ struct OTPView: View {
 }
 
 struct OTPDigitView: View {
+    @Binding var otp: String
     let digit: String
     
     var body: some View {
-        Text(digit)
-            .font(.title)
-            .frame(width: 40, height: 40)
-            .background(Color.gray.opacity(0.2))
-            .cornerRadius(8)
-            .padding(4)
-            .multilineTextAlignment(.center)
+        TextField("", text: Binding(
+            get: {
+                otp
+            },
+            set: { newValue in
+                if newValue.count <= 1 {
+                    otp = newValue
+                }
+            }
+        ))
+        .font(.title)
+        .frame(width: 40, height: 40)
+        .background(Color.gray.opacity(0.2))
+        .cornerRadius(8)
+        .padding(4)
+        .multilineTextAlignment(.center)
+        .keyboardType(.numberPad)
+        .textContentType(.oneTimeCode)
     }
 }
+
+
 
 struct OTPView_Previews: PreviewProvider {
     static var previews: some View {
         OTPView()
     }
 }
-
-

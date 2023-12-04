@@ -82,7 +82,7 @@ struct ChatMainView: View {
 //        Text("Marwen")
         VStack{
             ScrollView {
-                CardCurrentConnectedUsers()
+               // CardCurrentConnectedUsers()
                 ForEach(conversations){ item in
                     CardConversation(conversation: item)
                 }

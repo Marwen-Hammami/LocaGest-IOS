@@ -18,6 +18,8 @@
 		09D7DF732B17E287003080D5 /* Agence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D7DF722B17E287003080D5 /* Agence.swift */; };
 		30F918AE2B13999D004EAF46 /* ReservationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F918AD2B13999D004EAF46 /* ReservationModel.swift */; };
 		30F918B02B139E1F004EAF46 /* ReservationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F918AF2B139E1F004EAF46 /* ReservationListView.swift */; };
+		3300909C2B1E41B5006E7B4B /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3300909B2B1E41B5006E7B4B /* UserService.swift */; };
+		3300909E2B1E41F3006E7B4B /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3300909D2B1E41F3006E7B4B /* UserViewModel.swift */; };
 		33D31BCE2B13B079007E1B84 /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D31BCD2B13B079007E1B84 /* SignIn.swift */; };
 		33D31BD02B13B184007E1B84 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D31BCF2B13B184007E1B84 /* SignUp.swift */; };
 		33D31BD22B13B1B9007E1B84 /* ForgotPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D31BD12B13B1B9007E1B84 /* ForgotPassword.swift */; };
@@ -85,6 +87,8 @@
 		09D7DF722B17E287003080D5 /* Agence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agence.swift; sourceTree = "<group>"; };
 		30F918AD2B13999D004EAF46 /* ReservationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationModel.swift; sourceTree = "<group>"; };
 		30F918AF2B139E1F004EAF46 /* ReservationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationListView.swift; sourceTree = "<group>"; };
+		3300909B2B1E41B5006E7B4B /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		3300909D2B1E41F3006E7B4B /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		33D31BCD2B13B079007E1B84 /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
 		33D31BCF2B13B184007E1B84 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		33D31BD12B13B1B9007E1B84 /* ForgotPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassword.swift; sourceTree = "<group>"; };
@@ -156,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				090D82C02B19DC76000D1B47 /* AgenceViewModel.swift */,
+				3300909D2B1E41F3006E7B4B /* UserViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -164,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				090D82C32B19DC9C000D1B47 /* AgenceService.swift */,
+				3300909B2B1E41B5006E7B4B /* UserService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -430,6 +436,7 @@
 				4681CCA52B19283E00359338 /* RservationDetailView.swift in Sources */,
 				7FB00C432B175DBB00764794 /* Detail_Entretien.swift in Sources */,
 				7F32854B2B160CAE00ABE165 /* DetailFlotte.swift in Sources */,
+				3300909E2B1E41F3006E7B4B /* UserViewModel.swift in Sources */,
 				4688E9A52B1910C300F83DD5 /* Distribution.swift in Sources */,
 				4688E9AD2B19125E00F83DD5 /* CardMessage.swift in Sources */,
 				090D82C12B19DC76000D1B47 /* AgenceViewModel.swift in Sources */,
@@ -461,6 +468,7 @@
 				33D31BCE2B13B079007E1B84 /* SignIn.swift in Sources */,
 				090D82C42B19DC9C000D1B47 /* AgenceService.swift in Sources */,
 				DC453BDC2B1238AC00B2B9BA /* SideBar.swift in Sources */,
+				3300909C2B1E41B5006E7B4B /* UserService.swift in Sources */,
 				DC453BD22B122E5800B2B9BA /* FlotteMainView.swift in Sources */,
 				33ECD5F12B1951D70010A977 /* SplashScreen.swift in Sources */,
 				4681CCAB2B192C3900359338 /* DetailChat.swift in Sources */,

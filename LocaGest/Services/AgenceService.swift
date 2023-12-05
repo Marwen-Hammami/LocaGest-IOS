@@ -9,7 +9,7 @@ import Foundation
 
 class AgenceService {
     static let shared = AgenceService()
-    private let baseURL = "http://172.20.10.12:9090"
+    private let baseURL = "https://locagest.onrender.com"
 
     func fetchAgencess(completion: @escaping ([Agence]?) -> Void) {
         let url = URL(string: "\(baseURL)/agence")!

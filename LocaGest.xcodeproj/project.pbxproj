@@ -48,6 +48,8 @@
 		7F32854B2B160CAE00ABE165 /* DetailFlotte.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F32854A2B160CAE00ABE165 /* DetailFlotte.swift */; };
 		7F6439192B162917001416B3 /* Ajouter_Voiture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6439182B162917001416B3 /* Ajouter_Voiture.swift */; };
 		7FA0E9612B148AA900A46450 /* DashboardFlotte.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0E9602B148AA900A46450 /* DashboardFlotte.swift */; };
+		7FAD90BE2B1F2F3E000BF913 /* FlotteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAD90BD2B1F2F3E000BF913 /* FlotteService.swift */; };
+		7FAD90C02B1F32D8000BF913 /* CarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAD90BF2B1F32D8000BF913 /* CarViewModel.swift */; };
 		7FB00C412B1756F900764794 /* Detail_Voiture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB00C402B1756F900764794 /* Detail_Voiture.swift */; };
 		7FB00C432B175DBB00764794 /* Detail_Entretien.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB00C422B175DBB00764794 /* Detail_Entretien.swift */; };
 		7FB00C452B17743500764794 /* Page_Entretiens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB00C442B17743500764794 /* Page_Entretiens.swift */; };
@@ -115,6 +117,8 @@
 		7F32854A2B160CAE00ABE165 /* DetailFlotte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFlotte.swift; sourceTree = "<group>"; };
 		7F6439182B162917001416B3 /* Ajouter_Voiture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ajouter_Voiture.swift; sourceTree = "<group>"; };
 		7FA0E9602B148AA900A46450 /* DashboardFlotte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardFlotte.swift; sourceTree = "<group>"; };
+		7FAD90BD2B1F2F3E000BF913 /* FlotteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlotteService.swift; sourceTree = "<group>"; };
+		7FAD90BF2B1F32D8000BF913 /* CarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarViewModel.swift; sourceTree = "<group>"; };
 		7FB00C402B1756F900764794 /* Detail_Voiture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail_Voiture.swift; sourceTree = "<group>"; };
 		7FB00C422B175DBB00764794 /* Detail_Entretien.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail_Entretien.swift; sourceTree = "<group>"; };
 		7FB00C442B17743500764794 /* Page_Entretiens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page_Entretiens.swift; sourceTree = "<group>"; };
@@ -156,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				090D82C02B19DC76000D1B47 /* AgenceViewModel.swift */,
+				7FAD90BF2B1F32D8000BF913 /* CarViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -164,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				090D82C32B19DC9C000D1B47 /* AgenceService.swift */,
+				7FAD90BD2B1F2F3E000BF913 /* FlotteService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -420,6 +426,7 @@
 				4688E9B12B1912D600F83DD5 /* NewMessageView.swift in Sources */,
 				4688E9A12B19108E00F83DD5 /* tools.swift in Sources */,
 				33ECD5EF2B1951AB0010A977 /* UpdatePassword.swift in Sources */,
+				7FAD90C02B1F32D8000BF913 /* CarViewModel.swift in Sources */,
 				4688E9B32B1912FC00F83DD5 /* SelectedImageViewModel.swift in Sources */,
 				DC453BD82B122F9200B2B9BA /* GarageMainView.swift in Sources */,
 				33ECD5EB2B1950D80010A977 /* UpdateUser.swift in Sources */,
@@ -464,6 +471,7 @@
 				DC453BD22B122E5800B2B9BA /* FlotteMainView.swift in Sources */,
 				33ECD5F12B1951D70010A977 /* SplashScreen.swift in Sources */,
 				4681CCAB2B192C3900359338 /* DetailChat.swift in Sources */,
+				7FAD90BE2B1F2F3E000BF913 /* FlotteService.swift in Sources */,
 				81312F702B1647AA001D38C9 /* Modifier_Entretien.swift in Sources */,
 				7FB00C452B17743500764794 /* Page_Entretiens.swift in Sources */,
 				4688E9A72B1910EC00F83DD5 /* Tools.swift in Sources */,

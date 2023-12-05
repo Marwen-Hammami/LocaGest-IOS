@@ -2,6 +2,7 @@ import SwiftUI
 
 struct FlotteMainView: View {
     @EnvironmentObject var vm: ViewModel
+    @StateObject var carViewModel = CarViewModel()
     var body: some View {
         ZStack{
             Color(.black)
@@ -65,7 +66,7 @@ struct FlotteMainView: View {
     @ViewBuilder
     func HomeView()-> some View{
         // Start - Here you can put your work ************************
-        DashboardFlotte()
+        DashboardFlotte(carViewModel: carViewModel)
         
         
         // End   - Here you can put your work ************************
@@ -73,9 +74,9 @@ struct FlotteMainView: View {
     }
 }
 
-struct FlotteMainView_Previews: PreviewProvider {
-    static var previews: some View {
-        FlotteMainView()
-            .environmentObject(ViewModel())
-    }
-}
+//struct FlotteMainView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        FlotteMainView(carViewModel: carViewModel)
+//            .environmentObject(ViewModel())
+//    }
+//}

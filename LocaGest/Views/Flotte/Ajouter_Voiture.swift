@@ -63,7 +63,8 @@ struct Ajouter_Voiture: View {
                 Button(action: {
                     // Ajoutez le code pour traiter l'ajout de la voiture ici
                 }) {
-                    NavigationLink(destination: DetailFlotte(cars: [])) {
+                    NavigationLink(destination: Detail_Voiture(
+                )) {
                         Text("Ajouter")
                             .foregroundColor(.white)
                             .font(.headline)

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DashboardFlotte: View {
+    @ObservedObject var carViewModel: CarViewModel
     var body: some View {
         NavigationView {
             ZStack {
@@ -17,39 +18,32 @@ struct DashboardFlotte: View {
                     endPoint: .bottomTrailing
                 )
                 .edgesIgnoringSafeArea(.all)
-                
-                VStack {
-                    Spacer()
 
-                    CardView1()
-                        .padding()
-
-                    Spacer()
-
+                VStack(spacing: 16) {
+                    CardView1(carViewModel: carViewModel)
+                        .frame(width: 200, height: 200) // Adjust the size as needed
                     CardView2()
-                        .padding()
-
-                    Spacer()
-
+                        .frame(width: 200, height: 200) // Match the size of CardView1
                     CardView3()
-                        .padding()
+                        .frame(width: 200, height: 200) // Match the size of CardView1
+                }
+                .padding()
 
-                    Spacer()
-                }
-                .navigationBarTitle("LocaGest")
-                .toolbar {
-                    // ... (votre barre de navigation)
-                }
-                .accentColor(.green)
+                Spacer()
             }
+            .navigationBarTitle("LocaGest")
+            .toolbar {
+                // ... (votre barre de navigation)
+            }
+            .accentColor(.green)
         }
         .navigationBarBackButtonHidden()
     }
 }
-
 struct CardView1: View {
+    @ObservedObject var carViewModel: CarViewModel
     var body: some View {
-        NavigationLink(destination: DetailFlotte(cars: [])) {
+        NavigationLink(destination: DetailFlotte(carViewModel: carViewModel)) {
             VStack {
                 Image("car_7828724")
                     .resizable()
@@ -77,7 +71,7 @@ struct CardView2: View {
                     .frame(width: 80, height: 80)
                     .clipped()
 
-                Text("Historique des Entretiens")
+                Text("Voir Entretiens")
                     .font(.headline)
                     .padding()
             }
@@ -110,8 +104,8 @@ struct CardView3: View {
 }
 
 
-struct DashboardFlotte_Previews: PreviewProvider {
-    static var previews: some View {
-        DashboardFlotte()
-    }
-}
+//struct DashboardFlotte_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DashboardFlotte()
+//    }
+//}

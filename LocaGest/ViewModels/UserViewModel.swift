@@ -92,6 +92,19 @@ class UserViewModel: ObservableObject {
             }
         }
     
+    func updatePassword(email: String, password: String, confirmPassword: String) {
+            userService.updatePassword(email: email, password: password, confirmPassword: confirmPassword) { result in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success:
+                        print("Password updated successfully.")
+                    case .failure(let error):
+                        print("Failed to update password:", error)
+                    }
+                }
+            }
+        }
+    
     func handleSignInResponse(userData: UserData?, token: String?, error: Error?) {
         if let userData = userData, let token = token {
             if let id = UUID(uuidString: userData.id) {
@@ -104,6 +117,8 @@ class UserViewModel: ObservableObject {
         self.error = error
         self.isSignedIn = false
     }
+   
+    
 }
 
 struct UserSign: Codable {

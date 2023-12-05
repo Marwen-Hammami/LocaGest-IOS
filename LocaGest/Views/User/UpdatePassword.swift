@@ -3,6 +3,20 @@ import SwiftUI
 struct UpdatePasswordView: View {
     @State private var newPassword = ""
     @State private var confirmPassword = ""
+    @State private var message = ""
+    @State private var showingAlert = false
+    
+    private let userViewModel = UserViewModel()
+    private let email: String
+    
+    init() {
+        if let savedEmail = UserDefaults.standard.string(forKey: "userEmail") {
+            self.email = savedEmail
+        } else {
+            self.email = ""
+        }
+    }
+    
     
     var body: some View {
         ZStack {
@@ -18,12 +32,12 @@ struct UpdatePasswordView: View {
                     .font(.title)
                     .padding(.bottom, 50)
                 
-                Image(systemName: "lock.shield.fill") // Add a lock icon
+                Image(systemName: "lock.shield.fill")
                     .font(.system(size: 100))
                     .foregroundColor(.blue)
                     .padding()
                 
-                    SecureField("New Password", text: $newPassword)
+                SecureField("New Password", text: $newPassword)
                     .font(.system(size: 16))
                     .padding()
                     .background(
@@ -33,16 +47,15 @@ struct UpdatePasswordView: View {
                     .padding(.horizontal, 30)
                 
                 SecureField("Confirm Password", text: $confirmPassword)
-                .font(.system(size: 16))
-                .padding()
-                .background(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.gray, lineWidth: 1)
-                )
-                .padding(.horizontal, 30)
+                    .font(.system(size: 16))
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.gray, lineWidth: 1)
+                    )
+                    .padding(.horizontal, 30)
                 
                 Button(action: {
-                    // Perform password update logic here
                     updatePassword()
                 }) {
                     Text("Update Password")
@@ -57,13 +70,26 @@ struct UpdatePasswordView: View {
                 Spacer()
             }
             .padding()
+            .alert(isPresented: $showingAlert) {
+                Alert(title: Text("Password Update"), message: Text(message), dismissButton: .default(Text("OK")))
+            }
         }
     }
     
     private func updatePassword() {
-        // Perform password update logic here
-        // Validate current password, new password, and confirm password
-        // Display success or error message to the user
+        guard newPassword == confirmPassword else {
+            message = "New password and confirm password do not match."
+            showingAlert = true
+            return
+        }
+        
+        userViewModel.updatePassword(email: email, password: newPassword, confirmPassword: confirmPassword)
+        
+        // Handle the success or failure of the password update
+        // Display the appropriate message to the user
+        // Example:
+        message = "Password updated successfully."
+        showingAlert = true
     }
 }
 

@@ -3,6 +3,9 @@ import Foundation
 class UserService {
     static let shared = UserService()
     private let baseURL = "http://172.18.26.10:9090"
+
+    
+  
     
     func signIn(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
         let signInURL = URL(string: "\(baseURL)/User/signing")!
@@ -135,6 +138,42 @@ class UserService {
                 }
             }.resume()
         }
+    func updatePassword(email: String, password: String, confirmPassword: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        let updatePasswordURL = URL(string: "\(baseURL)/User/newpass")!
+        var request = URLRequest(url: updatePasswordURL)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let updatePasswordData: [String: Any] = [
+            "email": email,
+            "password": password,
+            "confirmPassword": confirmPassword
+        ]
+        
+        request.httpBody = try? JSONSerialization.data(withJSONObject: updatePasswordData)
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse else {
+                completion(.failure(NetworkError.invalidResponse))
+                return
+            }
+            
+            if httpResponse.statusCode == 200 {
+                // Password updated successfully
+                completion(.success(()))
+            } else {
+                // Failed to update password
+                completion(.failure(NetworkError.requestFailed(httpResponse.statusCode)))
+            }
+        }.resume()
+    }
+    
+    
     }
     
     

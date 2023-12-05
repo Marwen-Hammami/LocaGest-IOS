@@ -10,6 +10,7 @@ struct UserProfile: View {
     @StateObject private var router = Router() // Create an instance of the Router
     
     @State private var rotationAngle: Double = 0
+    @State private var isEmailVerified = true // Add a boolean variable to track email verification status
     
     var body: some View {
         ZStack {
@@ -92,6 +93,27 @@ struct UserProfile: View {
                     
                     Section(header: Text("Account")) {
                         HStack {
+                            Image(systemName: "person")
+                                .foregroundColor(.purple)
+                            Text("Username")
+                            Spacer()
+                            Text("Maher")
+                                .foregroundColor(.gray)
+                        }
+                        .onTapGesture {
+                            showUsernameAlert = true
+                        }
+                        
+                        HStack {
+                            Image(systemName: "phone")
+                                .foregroundColor(.green)
+                            Text("Phone Number")
+                            Spacer()
+                            Text("1234567890")
+                                .foregroundColor(.gray)
+                        }
+                        
+                        HStack {
                             Image(systemName: "envelope")
                                 .foregroundColor(.blue)
                             Text("Email")
@@ -105,22 +127,16 @@ struct UserProfile: View {
                                 return
                             }
                             UIApplication.shared.open(emailURL)
+                        }	
+                        
+                        HStack {
+                            Image(systemName: isEmailVerified ? "checkmark.circle" : "xmark.circle") // Use the verification status to determine the image
+                                .foregroundColor(isEmailVerified ? .yellow : .red)
+                            Text("Email Verification")
                         }
                     }
                     
-                    Section {
-                        HStack {
-                            Image(systemName: "person")
-                                .foregroundColor(.purple)
-                            Text("Username")
-                            Spacer()
-                            Text("Maher")
-                                .foregroundColor(.gray)
-                        }
-                        .onTapGesture {
-                            showUsernameAlert = true
-                        }
-                    }
+                    
                     
                     Section {
                         Toggle(isOn: $darkModeEnabled) {
@@ -145,6 +161,8 @@ struct UserProfile: View {
             }
             .navigationBarBackButtonHidden()
         }
+
+
         .preferredColorScheme(darkModeEnabled ? .dark : .light)
         .alert(isPresented: $showEmailAlert) {
             Alert(title: Text("Email"), message: Text("You can edit your email here."), dismissButton: .default(Text("OK")))

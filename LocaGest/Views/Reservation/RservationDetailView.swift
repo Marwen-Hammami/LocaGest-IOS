@@ -22,12 +22,13 @@ struct ReservationDetailView: View {
                 // Details
                 VStack(alignment: .leading, spacing: 8) {
                     // Reservation status
-                    Text("STATUT: \(reservation.statut.rawValue)")
+    //                Text("STATUT: \(reservation.Statut.rawValue)")
+                    Text("STATUT: \(reservation.Statut)")
                         .font(.title)
                         .fontWeight(.medium)
 
                     // Reservation total
-                    Text("Total: \(reservation.total)")
+                    Text("Total: \(reservation.Total)")
                         .font(.body)
                         .foregroundColor(.secondary)
 
@@ -35,25 +36,25 @@ struct ReservationDetailView: View {
                     VStack {
                         // Calendar icon and reservation start date
                         Image(systemName: "calendar")
-                        Text("Start Date: \(reservation.dateDebut)")
+                        Text("Start Date: \(reservation.DateDebut)")
                             .font(.body)
                             .fontWeight(.medium)
 
                         // Calendar icon and reservation end date
                         Image(systemName: "calendar")
-                        Text("End Date: \(reservation.dateFin)")
+                        Text("End Date: \(reservation.DateFin)")
                             .font(.body)
                             .fontWeight(.medium)
 
                         // Calendar icon and reservation start time
                         Image(systemName: "clock")
-                        Text("Start Time: \(reservation.heureDebut)")
+                        Text("Start Time: \(reservation.HeureDebut)")
                             .font(.body)
                             .fontWeight(.medium)
 
                         // Calendar icon and reservation end time
                         Image(systemName: "clock")
-                        Text("End Time: \(reservation.heureFin)")
+                        Text("End Time: \(reservation.HeureFin)")
                             .font(.body)
                             .fontWeight(.medium)
                     }
@@ -126,7 +127,7 @@ struct ReservationDetailView: View {
         }
         .sheet(isPresented: $isShowingUpdatePage) {
             UpdateReservation(reservation: reservation, reservationModel: reservationModel) { newReservation in
-                reservationModel.updateReservation(newReservation)
+//                reservationModel.updateReservation(newReservation)
             }
         }
         }

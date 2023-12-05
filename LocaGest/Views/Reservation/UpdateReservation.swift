@@ -10,11 +10,12 @@ struct UpdateReservation: View {
     @State private var dateFin = Date()
     @State private var heureDebut = 0
     @State private var heureFin = 0
-    @State private var statut: StatutRes = .annulee
+    @State private var statut: StatutRes = .reserve
     
     var reservationTotal: Double {
-        let newReservation = Reservation(dateDebut: dateDebut, dateFin: dateFin, heureDebut: heureDebut, heureFin: heureFin, statut: statut)
-        return newReservation.total
+//        let newReservation = Reservation(dateDebut: dateDebut, dateFin: dateFin, heureDebut: heureDebut, heureFin: heureFin, statut: statut)
+//        return newReservation.total
+        return 0.0
     }
     func saveReservation() {
 //        let newReservation = Reservation(dateDebut: dateDebut, dateFin: dateFin, heureDebut: heureDebut, heureFin: heureFin, statut: statut)
@@ -48,7 +49,7 @@ struct UpdateReservation: View {
 
                 Section(header: Text("Statut")) {
                     Picker("Statut", selection: $statut) {
-                        Text("Annulée").tag(StatutRes.annulee)
+                        Text("Réservée").tag(StatutRes.reserve)
                         Text("Payée").tag(StatutRes.payee)
                         Text("Achevée").tag(StatutRes.achevee)
                     }
@@ -72,18 +73,18 @@ struct UpdateReservation: View {
             }
         }
         .onAppear {
-            self.dateDebut = reservation.dateDebut
-            self.dateFin = reservation.dateFin
-            self.heureDebut = reservation.heureDebut
-            self.heureFin = reservation.heureFin
-            self.statut = reservation.statut
+//            self.dateDebut = reservation.DateDebut
+//            self.dateFin = reservation.DateFin
+//            self.heureDebut = reservation.HeureDebut
+//            self.heureFin = reservation.HeureFin
+//            self.statut = reservation.Statut
         }
     }
 }
 
-struct UpdateReservation_Previews: PreviewProvider {
-    static var previews: some View {
-        let reservationModel = ReservationModel() // Créez une instance de ReservationModel
-        UpdateReservation(reservation: Reservation(dateDebut: Date(), dateFin: Date(), heureDebut: 10, heureFin: 13, statut: StatutRes.achevee), reservationModel: reservationModel, updateReservation: { _ in })
-    }
-}
+//struct UpdateReservation_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let reservationModel = ReservationModel() // Créez une instance de ReservationModel
+//        UpdateReservation(reservation: Reservation(dateDebut: Date(), dateFin: Date(), heureDebut: 10, heureFin: 13, statut: StatutRes.achevee), reservationModel: reservationModel, updateReservation: { _ in })
+//    }
+//}

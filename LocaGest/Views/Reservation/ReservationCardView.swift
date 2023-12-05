@@ -32,7 +32,8 @@ struct ReservationCardView: View {
                     // HStack for date and info icons
                     HStack {
                         VStack {
-                            Text("STATUT: \(reservation.statut.rawValue)")
+//                            Text("STATUT: \(reservation.Statut.rawValue)")
+                            Text("STATUT: \(reservation.Statut)")
                                 .font(.body)
                                 .fontWeight(.medium)
                             

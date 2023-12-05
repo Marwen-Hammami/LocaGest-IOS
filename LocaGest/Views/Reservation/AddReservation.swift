@@ -2,22 +2,22 @@ import SwiftUI
 
 struct AddReservation: View {
     @Environment(\.presentationMode) var presentationMode
-    let reservationModel: ReservationModel
-    let addReservation: (Reservation) -> Void
+//    let addReservation: (Reservation) -> Void
     
     @State private var dateDebut = Date()
     @State private var dateFin = Date()
     @State private var heureDebut = 0
     @State private var heureFin = 0
-    @State private var statut: StatutRes = .annulee
+    @State private var statut: StatutRes = .reserve
     
     var reservationTotal: Double {
-        let newReservation = Reservation(dateDebut: dateDebut, dateFin: dateFin, heureDebut: heureDebut, heureFin: heureFin, statut: statut)
-        return newReservation.total
+//        let newReservation = Reservation(dateDebut: dateDebut, dateFin: dateFin, heureDebut: heureDebut, heureFin: heureFin, statut: statut)
+//        return newReservation.total
+        return 0.0
     }
     func saveReservation() {
-        let newReservation = Reservation(dateDebut: dateDebut, dateFin: dateFin, heureDebut: heureDebut, heureFin: heureFin, statut: statut)
-        addReservation(newReservation) // Ajoutez la réservation en utilisant la closure `addReservation`
+//        let newReservation = Reservation(dateDebut: dateDebut, dateFin: dateFin, heureDebut: heureDebut, heureFin: heureFin, statut: statut)
+//        addReservation(newReservation) // Ajoutez la réservation en utilisant la closure `addReservation`
         presentationMode.wrappedValue.dismiss() // Fermez la vue modale après avoir ajouté la réservation
     }
     
@@ -47,7 +47,7 @@ struct AddReservation: View {
 
                 Section(header: Text("Statut")) {
                     Picker("Statut", selection: $statut) {
-                        Text("Annulée").tag(StatutRes.annulee)
+                        Text("Réservée").tag(StatutRes.reserve)
                         Text("Payée").tag(StatutRes.payee)
                         Text("Achevée").tag(StatutRes.achevee)
                     }
@@ -73,9 +73,9 @@ struct AddReservation: View {
     }
 }
 
-struct AddReservation_Previews: PreviewProvider {
-    static var previews: some View {
-        let reservationModel = ReservationModel() // Créez une instance de ReservationModel
-        AddReservation(reservationModel: reservationModel, addReservation: { _ in })
-    }
-}
+//struct AddReservation_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let reservationModel = ReservationModel() // Créez une instance de ReservationModel
+//        AddReservation(reservationModel: reservationModel, addReservation: { _ in })
+//    }
+//}

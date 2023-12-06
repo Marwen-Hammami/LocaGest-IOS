@@ -93,34 +93,39 @@ struct UserProfile: View {
                     }
                     
                     Section(header: Text("Account")) {
-                        HStack {
-                            Image(systemName: "person")
-                                .foregroundColor(.purple)
-                            Text("Username")
-                            Spacer()
-                            Text(userViewModel.user?.username ?? "")
-                                .foregroundColor(.gray)
-                        }
-                        
-                        HStack {
-                            Image(systemName: "phone")
-                                .foregroundColor(.green)
-                            Text("Phone Number")
-                            Spacer()
-                            Text(userViewModel.user?.phoneNumber ?? "")
-                                .foregroundColor(.gray)
-                        }
-                        
-                        HStack {
-                            Image(systemName: "envelope")
-                                .foregroundColor(.blue)
-                            Text("Email")
-                            Spacer()
-                            Text(userViewModel.user?.email ?? "")
-                                .foregroundColor(.gray)
-                        }
-                    }
-                   
+                                NavigationLink(destination: UpdateUsernameView().environmentObject(userViewModel)) {
+                                    HStack {
+                                        Image(systemName: "person")
+                                            .foregroundColor(.purple)
+                                        Text("Username")
+                                        Spacer()
+                                        Text(userViewModel.user?.username ?? "")
+                                            .foregroundColor(.gray)
+                                    }
+                                }
+                                
+                                NavigationLink(destination: UpdatePhoneNumberView().environmentObject(userViewModel)) {
+                                    HStack {
+                                        Image(systemName: "phone")
+                                            .foregroundColor(.green)
+                                        Text("Phone Number")
+                                        Spacer()
+                                        Text(userViewModel.user?.phoneNumber ?? "")
+                                            .foregroundColor(.gray)
+                                    }
+                                }
+                                
+                                NavigationLink(destination: UpdateEmailView().environmentObject(userViewModel)) {
+                                    HStack {
+                                        Image(systemName: "envelope")
+                                            .foregroundColor(.blue)
+                                        Text("Email")
+                                        Spacer()
+                                        Text(userViewModel.user?.email ?? "")
+                                            .foregroundColor(.gray)
+                                    }
+                                }
+                            }
                     
                     
                     
@@ -166,5 +171,6 @@ struct UserProfile: View {
 struct UserProfile_Previews: PreviewProvider {
     static var previews: some View {
         UserProfile()
+        
     }
 }

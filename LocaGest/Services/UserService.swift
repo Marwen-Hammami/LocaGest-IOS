@@ -234,53 +234,143 @@ class UserService {
             }.resume()
         }
     
-    func updateUser(userId: String, username: String, email: String, password: String, firstName: String, lastName: String,phoneNumber:String, creditCardNumber: String, completion: @escaping (Result<User, Error>) -> Void) {
-            
-            // Make the API request to update the user
-            guard let url = URL(string: "\(baseURL)/User/(userId)") else {
-                completion(.failure(UserServiceError.invalidURL))
-                return
-            }
-            
-            var request = URLRequest(url: url)
-            request.httpMethod = "PUT"
-            
-            let parameters: [String: Any] = [
-                "username": username,
-                "email": email,
-                "password": password,
-                "firstName": firstName,
-                "lastName": lastName,
-                "creditCardNumber": creditCardNumber,
-               
-            ]
-            
-            do {
-                request.httpBody = try JSONSerialization.data(withJSONObject: parameters)
-            } catch {
+    
+    
+    func updateUserUsername(username: String, completion: @escaping (Result<User, Error>) -> Void) {
+        guard let userID = UserDefaults.standard.string(forKey: "UserID") else {
+            completion(.failure(NetworkError.userIDNotFound))
+            return
+        }
+        
+        guard let url = URL(string: "\(baseURL)/User/username/\(userID)") else {
+            completion(.failure(NetworkError.invalidURL))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let parameters: [String: Any] = [
+            "username": username
+        ]
+        
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+        } catch {
+            completion(.failure(error))
+            return
+        }
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
                 completion(.failure(error))
                 return
             }
             
-            URLSession.shared.dataTask(with: request) { (data, response, error) in
-                if let error = error {
-                    completion(.failure(error))
-                    return
-                }
-                
-                guard let data = data else {
-                    completion(.failure(UserServiceError.noData))
-                    return
-                }
-                
-                do {
-                    let updatedUser = try JSONDecoder().decode(User.self, from: data)
-                    completion(.success(updatedUser))
-                } catch {
-                    completion(.failure(error))
-                }
-            }.resume()
+            guard let data = data else {
+                completion(.failure(UserServiceError.noData))
+                return
+            }
+            
+            do {
+                let updatedUser = try JSONDecoder().decode(User.self, from: data)
+                completion(.success(updatedUser))
+            } catch {
+                completion(.failure(error))
+            }
+        }.resume()
+    }
+    func updateUserPhone(phoneNumber: String, completion: @escaping (Result<User, Error>) -> Void) {
+        guard let userID = UserDefaults.standard.string(forKey: "UserID") else {
+            completion(.failure(NetworkError.userIDNotFound))
+            return
         }
+        
+        guard let url = URL(string: "\(baseURL)/User/phone/\(userID)") else {
+            completion(.failure(NetworkError.invalidURL))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let parameters: [String: Any] = [
+            "phoneNumber": phoneNumber
+        ]
+        
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+        } catch {
+            completion(.failure(error))
+            return
+        }
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            guard let data = data else {
+                completion(.failure(UserServiceError.noData))
+                return
+            }
+            
+            do {
+                let updatedUser = try JSONDecoder().decode(User.self, from: data)
+                completion(.success(updatedUser))
+            } catch {
+                completion(.failure(error))
+            }
+        }.resume()
+    }
+    func updateUserEmail(email: String, completion: @escaping (Result<User, Error>) -> Void) {
+        guard let userID = UserDefaults.standard.string(forKey: "UserID") else {
+            completion(.failure(NetworkError.userIDNotFound))
+            return
+        }
+        
+        guard let url = URL(string: "\(baseURL)/User/email/\(userID)") else {
+            completion(.failure(NetworkError.invalidURL))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let parameters: [String: Any] = [
+            "email": email
+        ]
+        
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+        } catch {
+            completion(.failure(error))
+            return
+        }
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            guard let data = data else {
+                completion(.failure(UserServiceError.noData))
+                return
+            }
+            
+            do {
+                let updatedUser = try JSONDecoder().decode(User.self, from: data)
+                completion(.success(updatedUser))
+            } catch {
+                completion(.failure(error))
+            }
+        }.resume()
+    }
     
     
     }
@@ -289,6 +379,8 @@ class UserService {
 
 
 enum NetworkError: Error {
+    case userIDNotFound
+    case invalidURL
     case invalidResponse
     case requestFailed(Int)
     case noData

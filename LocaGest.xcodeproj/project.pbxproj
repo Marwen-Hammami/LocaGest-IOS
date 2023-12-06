@@ -26,6 +26,10 @@
 		33D31BD42B13B3A4007E1B84 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D31BD32B13B3A4007E1B84 /* User.swift */; };
 		33D31BD62B13B435007E1B84 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D31BD52B13B435007E1B84 /* UserProfile.swift */; };
 		33DAD6612B1FD5FA00AB616B /* UserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DAD6602B1FD5FA00AB616B /* UserDetails.swift */; };
+		33E1616E2B21168B000D58CC /* UpdateUsername.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E1616D2B21168B000D58CC /* UpdateUsername.swift */; };
+		33E161702B2135A9000D58CC /* UpdatePhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E1616F2B2135A9000D58CC /* UpdatePhone.swift */; };
+		33E161722B2135B5000D58CC /* UpdateEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E161712B2135B5000D58CC /* UpdateEmail.swift */; };
+		33E161742B2135D2000D58CC /* UpdatePasswordProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E161732B2135D2000D58CC /* UpdatePasswordProfile.swift */; };
 		33ECD5EB2B1950D80010A977 /* UpdateUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33ECD5EA2B1950D80010A977 /* UpdateUser.swift */; };
 		33ECD5ED2B1951660010A977 /* ResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33ECD5EC2B1951660010A977 /* ResetPassword.swift */; };
 		33ECD5EF2B1951AB0010A977 /* UpdatePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33ECD5EE2B1951AB0010A977 /* UpdatePassword.swift */; };
@@ -96,6 +100,10 @@
 		33D31BD32B13B3A4007E1B84 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		33D31BD52B13B435007E1B84 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		33DAD6602B1FD5FA00AB616B /* UserDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetails.swift; sourceTree = "<group>"; };
+		33E1616D2B21168B000D58CC /* UpdateUsername.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUsername.swift; sourceTree = "<group>"; };
+		33E1616F2B2135A9000D58CC /* UpdatePhone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePhone.swift; sourceTree = "<group>"; };
+		33E161712B2135B5000D58CC /* UpdateEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateEmail.swift; sourceTree = "<group>"; };
+		33E161732B2135D2000D58CC /* UpdatePasswordProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordProfile.swift; sourceTree = "<group>"; };
 		33ECD5EA2B1950D80010A977 /* UpdateUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUser.swift; sourceTree = "<group>"; };
 		33ECD5EC2B1951660010A977 /* ResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassword.swift; sourceTree = "<group>"; };
 		33ECD5EE2B1951AB0010A977 /* UpdatePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePassword.swift; sourceTree = "<group>"; };
@@ -227,6 +235,10 @@
 				33ECD5EC2B1951660010A977 /* ResetPassword.swift */,
 				33ECD5EE2B1951AB0010A977 /* UpdatePassword.swift */,
 				33DAD6602B1FD5FA00AB616B /* UserDetails.swift */,
+				33E1616D2B21168B000D58CC /* UpdateUsername.swift */,
+				33E1616F2B2135A9000D58CC /* UpdatePhone.swift */,
+				33E161712B2135B5000D58CC /* UpdateEmail.swift */,
+				33E161732B2135D2000D58CC /* UpdatePasswordProfile.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -429,6 +441,7 @@
 				4688E9B12B1912D600F83DD5 /* NewMessageView.swift in Sources */,
 				4688E9A12B19108E00F83DD5 /* tools.swift in Sources */,
 				33ECD5EF2B1951AB0010A977 /* UpdatePassword.swift in Sources */,
+				33E161702B2135A9000D58CC /* UpdatePhone.swift in Sources */,
 				4688E9B32B1912FC00F83DD5 /* SelectedImageViewModel.swift in Sources */,
 				DC453BD82B122F9200B2B9BA /* GarageMainView.swift in Sources */,
 				33ECD5EB2B1950D80010A977 /* UpdateUser.swift in Sources */,
@@ -444,7 +457,9 @@
 				4688E9AD2B19125E00F83DD5 /* CardMessage.swift in Sources */,
 				090D82C12B19DC76000D1B47 /* AgenceViewModel.swift in Sources */,
 				33DAD6612B1FD5FA00AB616B /* UserDetails.swift in Sources */,
+				33E161722B2135B5000D58CC /* UpdateEmail.swift in Sources */,
 				7FB00C412B1756F900764794 /* Detail_Voiture.swift in Sources */,
+				33E161742B2135D2000D58CC /* UpdatePasswordProfile.swift in Sources */,
 				33D31BD42B13B3A4007E1B84 /* User.swift in Sources */,
 				4688E99D2B19105000F83DD5 /* addTool.swift in Sources */,
 				4688E9A92B1911AA00F83DD5 /* Message.swift in Sources */,
@@ -464,6 +479,7 @@
 				DC51CA402AF8325100DC8C9A /* LocaGest.xcdatamodeld in Sources */,
 				4681CCA92B19286E00359338 /* AddReservation.swift in Sources */,
 				DC453BD62B122F4800B2B9BA /* ReservationMainView.swift in Sources */,
+				33E1616E2B21168B000D58CC /* UpdateUsername.swift in Sources */,
 				33ECD5ED2B1951660010A977 /* ResetPassword.swift in Sources */,
 				4688E99F2B19106D00F83DD5 /* Tool.swift in Sources */,
 				09666FC52B17E7E10025248E /* AgenceView.swift in Sources */,

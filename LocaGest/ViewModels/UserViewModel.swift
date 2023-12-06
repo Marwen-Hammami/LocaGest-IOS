@@ -132,16 +132,51 @@ class UserViewModel: ObservableObject {
            }
        }
     
-    func updateUser(userId: String, username: String, email: String, password: String, firstName: String, lastName: String,phoneNumber:String, creditCardNumber: String, completion: @escaping (Result<User, Error>) -> Void)  {
-            userService.updateUser(userId: userId, username: username, email: email, password: password, firstName: firstName, lastName: lastName, phoneNumber: phoneNumber,creditCardNumber: creditCardNumber) { result in
+    func updateUserUsername(username: String) {
+            UserService().updateUserUsername(username: username) { [weak self] result in
                 switch result {
                 case .success(let updatedUser):
                     DispatchQueue.main.async {
-                        self.user = updatedUser
+                        self?.user = updatedUser
+                        self?.error = nil
                     }
-                    completion(.success(updatedUser))
                 case .failure(let error):
-                    completion(.failure(error))
+                    DispatchQueue.main.async {
+                        self?.user = nil
+                        self?.error = error
+                    }
+                }
+            }
+        }
+    func updateUserPhone(phoneNumber: String) {
+            UserService().updateUserPhone(phoneNumber: phoneNumber) { [weak self] result in
+                switch result {
+                case .success(let updatedUser):
+                    DispatchQueue.main.async {
+                        self?.user = updatedUser
+                        self?.error = nil
+                    }
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                        self?.user = nil
+                        self?.error = error
+                    }
+                }
+            }
+        }
+    func updateUserEmail(email: String) {
+            UserService().updateUserEmail(email: email) { [weak self] result in
+                switch result {
+                case .success(let updatedUser):
+                    DispatchQueue.main.async {
+                        self?.user = updatedUser
+                        self?.error = nil
+                    }
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                        self?.user = nil
+                        self?.error = error
+                    }
                 }
             }
         }
@@ -153,13 +188,14 @@ class UserViewModel: ObservableObject {
             if let id = UUID(uuidString: userData.id) {
                 let userSign = UserSign(id: id, email: userData.email)
                 self.userSign = userSign
-            }
+            }	
             self.token = token
         }
         
         self.error = error
         self.isSignedIn = false
     }
+   
    
     
 }

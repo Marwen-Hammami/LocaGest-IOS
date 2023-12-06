@@ -78,8 +78,8 @@
             filePath = "LocaGest/Services/UserService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "294"
-            endingLineNumber = "294"
+            startingLineNumber = "386"
+            endingLineNumber = "386"
             landmarkName = "NetworkError"
             landmarkType = "13">
          </BreakpointContent>
@@ -110,8 +110,8 @@
             filePath = "LocaGest/Services/UserService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "287"
-            endingLineNumber = "287"
+            startingLineNumber = "377"
+            endingLineNumber = "377"
             landmarkName = "unknown"
             landmarkType = "0">
          </BreakpointContent>

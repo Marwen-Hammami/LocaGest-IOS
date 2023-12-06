@@ -22,6 +22,7 @@ struct User: Codable {
             self.id = id
             self.image = image
         }
+    
 }
 enum Rate: String, Codable {
     case good = "GOOD"
@@ -34,3 +35,4 @@ enum Role: String, Codable {
     case admin = "admin"
     case client = "client"
 }
+

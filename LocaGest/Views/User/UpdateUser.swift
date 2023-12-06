@@ -14,6 +14,8 @@ struct EditProfile: View {
     @State private var password = ""
     @State private var username = ""
     @State private var firstName = ""
+    @State private var creditCard = ""
+    @State private var phoneNumber = ""
     @State private var lastName = ""
     @State private var navigationLinkActive: Bool = false
     @State private var showingAlert = false
@@ -97,10 +99,29 @@ struct EditProfile: View {
                             .padding(EdgeInsets(top: 16, leading: 32, bottom: 16, trailing: 32))
                     }
                     HStack {
-                        Image(systemName: "phone")
+                        Image(systemName: "phoneNumber")
                             .foregroundColor(.black)
                             .padding(.leading, 8)
                         TextField("", text: $firstName)
+                            .font(.title3)
+                            .padding(EdgeInsets(top: 16, leading: 32, bottom: 16, trailing: 32))
+                    }
+                }
+                .frame(width: 343, height: 51)
+                .background(Color.black.opacity(0.05))
+                .cornerRadius(12)
+                .padding(10)
+                ZStack(alignment: .leading) {
+                    if creditCard.isEmpty {
+                        Text("Credit Card")
+                            .foregroundColor(.black)
+                            .padding(EdgeInsets(top: 16, leading: 32, bottom: 16, trailing: 32))
+                    }
+                    HStack {
+                        Image(systemName: "creditcard")
+                            .foregroundColor(.black)
+                            .padding(.leading, 8)
+                        TextField("", text: $creditCard)
                             .font(.title3)
                             .padding(EdgeInsets(top: 16, leading: 32, bottom: 16, trailing: 32))
                     }

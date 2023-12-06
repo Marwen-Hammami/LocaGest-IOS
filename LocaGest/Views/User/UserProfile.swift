@@ -8,7 +8,8 @@ struct UserProfile: View {
     @State private var selectedLanguage = "English"
     @State private var isEditingProfile = false
     @StateObject private var router = Router() // Create an instance of the Router
-    
+    @StateObject private var userViewModel = UserViewModel()
+
     @State private var rotationAngle: Double = 0
     @State private var isEmailVerified = true // Add a boolean variable to track email verification status
     
@@ -97,11 +98,8 @@ struct UserProfile: View {
                                 .foregroundColor(.purple)
                             Text("Username")
                             Spacer()
-                            Text("Maher")
+                            Text(userViewModel.user?.username ?? "")
                                 .foregroundColor(.gray)
-                        }
-                        .onTapGesture {
-                            showUsernameAlert = true
                         }
                         
                         HStack {
@@ -109,7 +107,7 @@ struct UserProfile: View {
                                 .foregroundColor(.green)
                             Text("Phone Number")
                             Spacer()
-                            Text("1234567890")
+                            Text(userViewModel.user?.phoneNumber ?? "")
                                 .foregroundColor(.gray)
                         }
                         
@@ -118,23 +116,11 @@ struct UserProfile: View {
                                 .foregroundColor(.blue)
                             Text("Email")
                             Spacer()
-                            Text("MaherKaroui@gmail.com")
+                            Text(userViewModel.user?.email ?? "")
                                 .foregroundColor(.gray)
                         }
-                        .onTapGesture {
-                            let emailAddress = "MaherKaroui@gmail.com"
-                            guard let emailURL = URL(string: "mailto:\(emailAddress)") else {
-                                return
-                            }
-                            UIApplication.shared.open(emailURL)
-                        }	
-                        
-                        HStack {
-                            Image(systemName: isEmailVerified ? "checkmark.circle" : "xmark.circle") // Use the verification status to determine the image
-                                .foregroundColor(isEmailVerified ? .yellow : .red)
-                            Text("Email Verification")
-                        }
                     }
+                   
                     
                     
                     
@@ -160,6 +146,9 @@ struct UserProfile: View {
                 })
             }
             .navigationBarBackButtonHidden()
+        }
+        .onAppear {
+            userViewModel.getUser() // Fetch the user data
         }
 
 

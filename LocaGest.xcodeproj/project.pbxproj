@@ -25,6 +25,7 @@
 		33D31BD22B13B1B9007E1B84 /* ForgotPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D31BD12B13B1B9007E1B84 /* ForgotPassword.swift */; };
 		33D31BD42B13B3A4007E1B84 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D31BD32B13B3A4007E1B84 /* User.swift */; };
 		33D31BD62B13B435007E1B84 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D31BD52B13B435007E1B84 /* UserProfile.swift */; };
+		33DAD6612B1FD5FA00AB616B /* UserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DAD6602B1FD5FA00AB616B /* UserDetails.swift */; };
 		33ECD5EB2B1950D80010A977 /* UpdateUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33ECD5EA2B1950D80010A977 /* UpdateUser.swift */; };
 		33ECD5ED2B1951660010A977 /* ResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33ECD5EC2B1951660010A977 /* ResetPassword.swift */; };
 		33ECD5EF2B1951AB0010A977 /* UpdatePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33ECD5EE2B1951AB0010A977 /* UpdatePassword.swift */; };
@@ -94,6 +95,7 @@
 		33D31BD12B13B1B9007E1B84 /* ForgotPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassword.swift; sourceTree = "<group>"; };
 		33D31BD32B13B3A4007E1B84 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		33D31BD52B13B435007E1B84 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		33DAD6602B1FD5FA00AB616B /* UserDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetails.swift; sourceTree = "<group>"; };
 		33ECD5EA2B1950D80010A977 /* UpdateUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUser.swift; sourceTree = "<group>"; };
 		33ECD5EC2B1951660010A977 /* ResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassword.swift; sourceTree = "<group>"; };
 		33ECD5EE2B1951AB0010A977 /* UpdatePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePassword.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 				33ECD5EA2B1950D80010A977 /* UpdateUser.swift */,
 				33ECD5EC2B1951660010A977 /* ResetPassword.swift */,
 				33ECD5EE2B1951AB0010A977 /* UpdatePassword.swift */,
+				33DAD6602B1FD5FA00AB616B /* UserDetails.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -440,6 +443,7 @@
 				4688E9A52B1910C300F83DD5 /* Distribution.swift in Sources */,
 				4688E9AD2B19125E00F83DD5 /* CardMessage.swift in Sources */,
 				090D82C12B19DC76000D1B47 /* AgenceViewModel.swift in Sources */,
+				33DAD6612B1FD5FA00AB616B /* UserDetails.swift in Sources */,
 				7FB00C412B1756F900764794 /* Detail_Voiture.swift in Sources */,
 				33D31BD42B13B3A4007E1B84 /* User.swift in Sources */,
 				4688E99D2B19105000F83DD5 /* addTool.swift in Sources */,

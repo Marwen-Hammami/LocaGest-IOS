@@ -5,7 +5,8 @@ class UserViewModel: ObservableObject {
     @Published var isSignedIn = false
     @Published var isLoading = false
     @Published var error: Error?
-    @Published var user: UserSign?
+    @Published var userSign: UserSign?
+    @Published var user: User?
     @Published var token: String?
     
     private let userService: UserService
@@ -16,23 +17,29 @@ class UserViewModel: ObservableObject {
     }
     
     func signIn(email: String, password: String) {
-        isLoading = true
-        
-        userService.signIn(email: email, password: password) { [weak self] result in
-            guard let self = self else { return }
+            isLoading = true
             
-            self.isLoading = false
-            
-            switch result {
-            case .success:
-                self.isSignedIn = true
-                self.error = nil
-            case .failure(let error):
-                self.isSignedIn = false
-                self.error = error
+            userService.signIn(email: email, password: password) { [weak self] result in
+                guard let self = self else { return }
+                
+                self.isLoading = false
+                
+                switch result {
+                case .success(let userID):
+                    self.isSignedIn = true
+                    self.error = nil
+                    
+                    // Save the token in the user defaults
+                    UserDefaults.standard.setValue(userID, forKey: "UserID")
+                    
+                    // Call getUser to fetch the user data
+                    self.getUser()
+                case .failure(let error):
+                    self.isSignedIn = false
+                    self.error = error
+                }
             }
         }
-    }
     
     func signUp(user: User, completion: @escaping (Result<Void, Error>) -> Void) {
         isLoading = true
@@ -104,12 +111,48 @@ class UserViewModel: ObservableObject {
                 }
             }
         }
+    func getUser() {
+           guard let userID = UserDefaults.standard.string(forKey: "UserID") else {
+               // User ID not found in UserDefaults
+               return
+           }
+           
+           // Call the userService.getUser() method with the retrieved user ID
+           userService.getUser(userID: userID) { [weak self] result in
+               switch result {
+               case .success(let user):
+                   // Update the user property
+                   DispatchQueue.main.async {
+                       self?.user = user
+                   }
+               case .failure(let error):
+                   // Handle error
+                   print("Failed to get user: \(error)")
+               }
+           }
+       }
+    
+    func updateUser(userId: String, username: String, email: String, password: String, firstName: String, lastName: String,phoneNumber:String, creditCardNumber: String, completion: @escaping (Result<User, Error>) -> Void)  {
+            userService.updateUser(userId: userId, username: username, email: email, password: password, firstName: firstName, lastName: lastName, phoneNumber: phoneNumber,creditCardNumber: creditCardNumber) { result in
+                switch result {
+                case .success(let updatedUser):
+                    DispatchQueue.main.async {
+                        self.user = updatedUser
+                    }
+                    completion(.success(updatedUser))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+        }
+    
+    
     
     func handleSignInResponse(userData: UserData?, token: String?, error: Error?) {
         if let userData = userData, let token = token {
             if let id = UUID(uuidString: userData.id) {
-                let user = UserSign(id: id, email: userData.email)
-                self.user = user
+                let userSign = UserSign(id: id, email: userData.email)
+                self.userSign = userSign
             }
             self.token = token
         }

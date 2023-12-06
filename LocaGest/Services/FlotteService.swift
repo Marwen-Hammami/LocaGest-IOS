@@ -9,29 +9,103 @@ import Foundation
 
 class FlotteService {
     static let shared = FlotteService()
-    private let baseURL = "https://locagest.onrender.com"
+    private let baseURL = "http://localhost:9090/car"
 
-    func fetchCars(completion: @escaping ([Car]?) -> Void) {
-        let url = URL(string: "\(baseURL)/flotte")!
+    func createCar(car: Car, completion: @escaping (Result<Car, Error>) -> Void) {
+        let url = URL(string: "\(baseURL)")!
         
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard let data = data, error == nil else {
-                print("Error fetching cars:", error?.localizedDescription ?? "Unknown error")
-                completion(nil)
-                return
-            }
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.cachePolicy = .reloadIgnoringLocalCacheData // Ignore local cache
+        
+        do {
+            let jsonData = try JSONEncoder().encode(car)
+            request.httpBody = jsonData
+            
+            URLSession.shared.dataTask(with: request) { data, response, error in
+                if let data = data {
+                    do {
+                        let createdCar = try JSONDecoder().decode(Car.self, from: data)
+                        completion(.success(createdCar))
+                    } catch {
+                        completion(.failure(error))
+                    }
+                } else if let error = error {
+                    completion(.failure(error))
+                }
+            }.resume()
+        } catch {
+            completion(.failure(error))
+        }
+    }
 
-            do {
-                let decoder = JSONDecoder()
-                let cars = try decoder.decode([Car].self, from: data)
-                completion(cars)
-            } catch let decodingError {
-                print("Error decoding cars:", decodingError.localizedDescription)
-                completion(nil)
+    func getCars(completion: @escaping (Result<[Car], Error>) -> Void) {
+        let url = URL(string: "\(baseURL)")!
+        
+        var request = URLRequest(url: url)
+        request.addValue("no-cache", forHTTPHeaderField: "Cache-Control") // Do not use cache
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let data = data {
+                do {
+                    let cars = try JSONDecoder().decode([Car].self, from: data)
+                    completion(.success(cars))
+                } catch {
+                    completion(.failure(error))
+                }
+            } else if let error = error {
+                completion(.failure(error))
+            }
+        }.resume()
+    }
+
+    func updateCar(immatriculation: String, car: Car, completion: @escaping (Result<Car, Error>) -> Void) {
+        let url = URL(string: "\(baseURL)/\(immatriculation)")!
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.cachePolicy = .reloadIgnoringLocalCacheData // Ignore local cache
+        
+        do {
+            let jsonData = try JSONEncoder().encode(car)
+            request.httpBody = jsonData
+            
+            URLSession.shared.dataTask(with: request) { data, response, error in
+                if let data = data {
+                    do {
+                        let updatedCar = try JSONDecoder().decode(Car.self, from: data)
+                        completion(.success(updatedCar))
+                    } catch {
+                        completion(.failure(error))
+                    }
+                } else if let error = error {
+                    completion(.failure(error))
+                }
+            }.resume()
+        } catch {
+            completion(.failure(error))
+        }
+    }
+
+    func deleteCar(immatriculation: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        let url = URL(string: "\(baseURL)/\(immatriculation)")!
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        request.cachePolicy = .reloadIgnoringLocalCacheData // Ignore local cache
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let _ = data {
+                completion(.success(()))
+            } else if let error = error {
+                completion(.failure(error))
             }
         }.resume()
     }
 }
+
 
 
     // Fetch product details by ID

@@ -69,10 +69,15 @@ struct CarCardView: View {
                 .font(.headline)
             Text("Modèle: \(car.modele)")
                 .font(.subheadline)
-            Text("Immatriculation: \(car.immatriculation ?? "")")
-                .fontWeight(.bold)
-                .font(.subheadline)
-            Text("Disponibilité: \(car.disponibility.rawValue)")
+            
+            // Conditionally render immatriculation if it is not nil
+            if let immatriculation = car.immatriculation {
+                Text("Immatriculation: \(immatriculation)")
+                    .fontWeight(.bold)
+                    .font(.subheadline)
+            }
+            
+            Text("Disponibilité: \(car.disponibility)")
                 .font(.subheadline)
         }
         .padding()

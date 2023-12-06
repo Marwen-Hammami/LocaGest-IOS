@@ -1,21 +1,64 @@
-import SwiftUI
-import Combine
+import Foundation
 
 class CarViewModel: ObservableObject {
     @Published var cars: [Car] = []
-    @Published var isLoading: Bool = false // Ajoutez cette ligne
-    private var cancellables: Set<AnyCancellable> = []
-    
-    init() {
-        fetchCars()
-    }
-    
+    @Published var isLoading: Bool = false
+
+    private let flotteService = FlotteService.shared
+
     func fetchCars() {
-        isLoading = true // Définir isLoading à true au début du chargement
-        FlotteService.shared.fetchCars { [weak self] cars in
+        isLoading = true
+        flotteService.getCars { result in
             DispatchQueue.main.async {
-                self?.cars = cars ?? []
-                self?.isLoading = false // Définir isLoading à false une fois le chargement terminé
+                self.isLoading = false
+                switch result {
+                case .success(let cars):
+                    self.cars = cars
+                case .failure(let error):
+                    print("Error fetching cars: \(error.localizedDescription)")
+                }
+            }
+        }
+    }
+
+    func addCar(car: Car) {
+        flotteService.createCar(car: car) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let createdCar):
+                    // Optionally, update the UI or perform any other actions
+                    print("Car added successfully: \(createdCar)")
+                case .failure(let error):
+                    print("Error adding car: \(error.localizedDescription)")
+                }
+            }
+        }
+    }
+
+    func updateCar(immatriculation: String, car: Car) {
+        flotteService.updateCar(immatriculation: immatriculation, car: car) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let updatedCar):
+                    // Optionally, update the UI or perform any other actions
+                    print("Car updated successfully: \(updatedCar)")
+                case .failure(let error):
+                    print("Error updating car: \(error.localizedDescription)")
+                }
+            }
+        }
+    }
+
+    func deleteCar(immatriculation: String) {
+        flotteService.deleteCar(immatriculation: immatriculation) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    // Optionally, update the UI or perform any other actions
+                    print("Car deleted successfully")
+                case .failure(let error):
+                    print("Error deleting car: \(error.localizedDescription)")
+                }
             }
         }
     }

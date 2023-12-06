@@ -11,27 +11,27 @@ struct Car: Identifiable, Codable {
     var immatriculation: String?
     var marque: String
     var modele: String
-    var carburant: Carburant
-    var boite: Boite
-    var disponibility: Disponibility
+    var carburant: String
+    var boite: String
+    var disponibility: String
 
     init?(json: [String: Any]) {
         guard
-            let idString = json["id"] as? String,
-            let idUUID = UUID(uuidString: idString),
+            let _id = json["_id"] as? String,
+            let idUUID = UUID(uuidString: _id),
             let immatriculation = json["immatriculation"] as? String,
             let marque = json["marque"] as? String,
             let modele = json["modele"] as? String,
-            let carburantRawValue = json["carburant"] as? String,
-            let carburant = Carburant(rawValue: carburantRawValue),
-            let boiteRawValue = json["boite"] as? String,
-            let boite = Boite(rawValue: boiteRawValue),
-            let disponibilityRawValue = json["disponibility"] as? String,
-            let disponibility = Disponibility(rawValue: disponibilityRawValue)
+            let carburant = json["carburant"] as? String,
+            let boite = json["boite"] as? String,
+            let disponibility = json["disponibility"] as? String
         else {
             return nil
         }
 
+        
+
+        
         self.id = idUUID
         self.immatriculation = immatriculation
         self.marque = marque
@@ -40,23 +40,27 @@ struct Car: Identifiable, Codable {
         self.boite = boite
         self.disponibility = disponibility
     }
+
+
+        
 }
 
-enum Carburant: String, Codable {
-    case essence = "Essence"
-    case diesel = "Diesel"
-    case hybride = "Hybride"
-}
 
-enum Boite: String, Codable {
-    case manuelle = "Manuelle"
-    case automatique = "Automatique"
-}
+//enum Carburant: String, Codable {
+   // case essence = "Essence"
+   // case diesel = "Diesel"
+   // case hybride = "Hybride"
+//}
 
-enum Disponibility: String, Codable {
-    case disponible = "Disponible"
-    case louee = "Louée"
-}
+//enum Boite: String, Codable {
+    //case manuelle = "Manuelle"
+    //case automatique = "Automatique"
+//}
+
+//enum Disponibility: String, Codable {
+    //case disponible = "Disponible"
+   // case louee = "Louée"
+//}
 
 
 

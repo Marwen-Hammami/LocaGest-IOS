@@ -5,6 +5,8 @@ struct ForgotPasswordEmailView: View {
     @State private var isOTPViewPresented = false
     @State private var isEmailSent = false
     @State private var errorMessage = ""
+    @State private var isSMSSent = false // Add a state variable for tracking if SMS is sent
+
     
     var body: some View {
         NavigationView {
@@ -46,6 +48,21 @@ struct ForgotPasswordEmailView: View {
                 }
                 .padding(.horizontal, 30)
                 .disabled(emailAddress.isEmpty) // Disable button if email address is empty
+                Button(action: {
+                                    // Handle send SMS action
+                                    isSMSSent = true
+                                   // sendSMS()
+                                }) {
+                                    Text("Send SMS")
+                                        .foregroundColor(.white)
+                                        .font(.headline)
+                                        .padding()
+                                        .frame(maxWidth: .infinity)
+                                        .background(Color("Accent"))
+                                        .cornerRadius(10)
+                                }
+                                .padding(.horizontal, 30)
+                                .disabled(emailAddress.isEmpty)
                 
                 Text("If you didn't request to reset your password, please ignore this email.")
                     .multilineTextAlignment(.center)

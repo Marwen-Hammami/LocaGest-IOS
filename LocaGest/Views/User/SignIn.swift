@@ -10,7 +10,8 @@ struct LoginView: View {
     @State private var selectedImage: UIImage? = nil
     @State private var isShowingImagePicker = false
     @State private var isForgotPasswordViewPresented = false
-    
+    @State private var rememberMe = false // Add a state variable to track "Remember Me" checkbox
+
     @State private var shouldNavigateToFlotte = false
     
     var body: some View {
@@ -85,7 +86,16 @@ struct LoginView: View {
                         )
                         .padding(.horizontal, 30)
                 }
-                
+                Toggle(isOn: $rememberMe) {
+                    Text("Remember Me")
+                        .foregroundColor(.blue)
+                        .font(.body)
+                }
+                .padding(.top, 10)
+                           .padding(.horizontal, 0)
+                           .toggleStyle(CheckboxToggleStyle()) // Apply custom checkbox style
+                           .padding(.trailing, 155) // Add trailing padding to align to the right
+
                 Button(action: {
                     if isLogin {
                         // Perform login action with email and password
@@ -115,6 +125,7 @@ struct LoginView: View {
                             }
                         }
                     }
+                    
                 }) {
                     Text(isLogin ? "Login" : "Sign Up")
                         .foregroundColor(.white)
@@ -128,6 +139,7 @@ struct LoginView: View {
                 
                 
                 
+                
                 Button(action: {
                     isLogin.toggle()
                 }) {
@@ -136,6 +148,8 @@ struct LoginView: View {
                         .font(.subheadline)
                 }
                 .padding(.top, 20)
+                
+                
                 
                 Button(action: {
                     isForgotPasswordViewPresented = true

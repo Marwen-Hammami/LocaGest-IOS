@@ -42,7 +42,7 @@ struct ReservationListView: View {
                 }
             }
             .sheet(isPresented: $isShowingAddPage) {
-                AddReservation()
+                AddReservation(viewModel: ReservationViewModel())
                 }
             }
         }

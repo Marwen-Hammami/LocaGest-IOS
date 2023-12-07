@@ -16,6 +16,7 @@
 		090D82CE2B19DE30000D1B47 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090D82CD2B19DE30000D1B47 /* Link.swift */; };
 		09666FC52B17E7E10025248E /* AgenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09666FC42B17E7E10025248E /* AgenceView.swift */; };
 		09D7DF732B17E287003080D5 /* Agence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D7DF722B17E287003080D5 /* Agence.swift */; };
+		300A22972B2233F70062B463 /* ReservationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300A22962B2233F70062B463 /* ReservationRequest.swift */; };
 		30F918AE2B13999D004EAF46 /* ReservationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F918AD2B13999D004EAF46 /* ReservationModel.swift */; };
 		30F918B02B139E1F004EAF46 /* ReservationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F918AF2B139E1F004EAF46 /* ReservationListView.swift */; };
 		33D31BCE2B13B079007E1B84 /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D31BCD2B13B079007E1B84 /* SignIn.swift */; };
@@ -84,6 +85,7 @@
 		090D82CD2B19DE30000D1B47 /* Link.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
 		09666FC42B17E7E10025248E /* AgenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgenceView.swift; sourceTree = "<group>"; };
 		09D7DF722B17E287003080D5 /* Agence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agence.swift; sourceTree = "<group>"; };
+		300A22962B2233F70062B463 /* ReservationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationRequest.swift; sourceTree = "<group>"; };
 		30F918AD2B13999D004EAF46 /* ReservationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationModel.swift; sourceTree = "<group>"; };
 		30F918AF2B139E1F004EAF46 /* ReservationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationListView.swift; sourceTree = "<group>"; };
 		33D31BCD2B13B079007E1B84 /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 				4688E9A42B1910C300F83DD5 /* Distribution.swift */,
 				4688E9A62B1910EC00F83DD5 /* Tools.swift */,
 				4688E9A82B1911AA00F83DD5 /* Message.swift */,
+				300A22962B2233F70062B463 /* ReservationRequest.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -454,6 +457,7 @@
 				30F918B02B139E1F004EAF46 /* ReservationListView.swift in Sources */,
 				DC51CA342AF8324D00DC8C9A /* LocaGestApp.swift in Sources */,
 				4688E9AB2B1911F500F83DD5 /* CardCurrentConnectedUsers.swift in Sources */,
+				300A22972B2233F70062B463 /* ReservationRequest.swift in Sources */,
 				DC51CA402AF8325100DC8C9A /* LocaGest.xcdatamodeld in Sources */,
 				4681CCA92B19286E00359338 /* AddReservation.swift in Sources */,
 				DC453BD62B122F4800B2B9BA /* ReservationMainView.swift in Sources */,

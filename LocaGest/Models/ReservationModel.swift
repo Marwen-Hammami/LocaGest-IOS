@@ -25,47 +25,59 @@ class ReservationModel: ObservableObject {
     }
     init() {
         
-        // Ajouter une réservation fictive pour la prévisualisation
-      /*  let dummyReservation = Reservation(dateDebut: Date(), dateFin: Date(), heureDebut: 09, heureFin: 12, statut: .reservee, total: 50.0)
-        addReservation(dummyReservation)*/
+      
     }
 }
 
 struct Reservation: Identifiable {
-    let id = UUID() //id from swuift
-    var _id: String //id from mongodb
+    var id: String
+    
     let DateDebut: String//Date
     let DateFin: String//Date
     let HeureDebut: String//Int
     let HeureFin: String//Int
     let Statut: String//StatutRes
-    var Total: Double //{
-//        let calendar = Calendar.current
-//        let components = calendar.dateComponents([.hour], from: dateDebut, to: dateFin)
-//        let durationInHours = components.hour ?? 0
-//
-//        if durationInHours <= 24 {
-//            // Tarif horaire
-//            let hourlyRate = 10.0 // Remplacez par le tarif horaire réel
-//            let hours = max(heureFin - heureDebut, 0) // Durée en heures, avec un minimum de 0
-//            return Double(hours) * hourlyRate
-//        } else {
-//            // Tarif journalier
-//            let dailyRate = 50.0 // Remplacez par le tarif journalier réel
-//            let numberOfDays = durationInHours / 24
-//            let remainingHours = max(heureFin - heureDebut - numberOfDays * 24, 0) // Heures restantes, avec un minimum de 0
-//            let extraHourlyRate = dailyRate / 24.0 // Tarif horaire pour les heures supplémentaires
-//
-//            let totalDailyRate = Double(numberOfDays) * dailyRate
-//            let totalExtraHourlyRate = Double(remainingHours) * extraHourlyRate
-//
-//            return totalDailyRate + totalExtraHourlyRate
-//        }
-//    }
+    private(set) var Total: Double {
+           get {
+               let dateFormatter = DateFormatter()
+               dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+               guard let startDate = dateFormatter.date(from: "\(DateDebut) \(HeureDebut):00:00"),
+                     let endDate = dateFormatter.date(from: "\(DateFin) \(HeureFin):00:00") else {
+                   return 0.0
+               }
+               
+               let calendar = Calendar.current
+               let components = calendar.dateComponents([.hour], from: startDate, to: endDate)
+               let durationInHours = components.hour ?? 0
+               
+               if durationInHours <= 24 {
+                   // Hourly rate
+                   let hourlyRate = 10.0 // Replace with the actual hourly rate
+                   let hours = max(Int(HeureFin)! - Int(HeureDebut)!, 0) // Duration in hours, with a minimum of 0
+                   return Double(hours) * hourlyRate
+               } else {
+                   // Daily rate
+                   let dailyRate = 50.0 // Replace with the actual daily rate
+                   let numberOfDays = durationInHours / 24
+                   let remainingHours = max(Int(HeureFin)! - Int(HeureDebut)! - numberOfDays * 24, 0) // Remaining hours, with a minimum of 0
+                   let extraHourlyRate = dailyRate / 24.0 // Hourly rate for extra hours
+
+                   let totalDailyRate = Double(numberOfDays) * dailyRate
+                   let totalExtraHourlyRate = Double(remainingHours) * extraHourlyRate
+
+                   return totalDailyRate + totalExtraHourlyRate
+               }
+           }
+           set {
+               // You can set the total value internally if needed
+               // For example:
+               // self.Total = newValue
+           }
+       }
     
     init?(json: [String: Any]) {
         guard
-            let _id = json["_id"] as? String,
+            let id = json["_id"] as? String,
             let dateDebut = json["DateDebut"] as? String,
             let dateFin = json["DateFin"] as? String,
             let heureDebut = json["HeureDebut"] as? String,
@@ -76,7 +88,7 @@ struct Reservation: Identifiable {
             return nil
         }
 
-        self._id = _id
+        self.id = id
         self.DateDebut = dateDebut
         self.DateFin = dateFin
         self.HeureDebut = heureDebut

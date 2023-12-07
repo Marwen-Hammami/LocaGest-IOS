@@ -2,65 +2,54 @@ import SwiftUI
 
 struct ReservationDetailView: View {
     @StateObject private var reservationModel = ReservationModel()
+    @StateObject private var viewModel = ReservationViewModel()
     let reservation: Reservation
     @State private var showDeleteConfirmation = false
-    
     @State private var isShowingUpdatePage = false
 
-    
+    @State private var navigateToReservationList = false
+
     var body: some View {
         NavigationView {
             VStack(alignment: .leading, spacing: 8) {
-                
-                // Image
                 Image("car1")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(height: 200)
                     .clipped()
 
-                // Details
                 VStack(alignment: .leading, spacing: 8) {
-                    // Reservation status
-    //                Text("STATUT: \(reservation.Statut.rawValue)")
                     Text("STATUT: \(reservation.Statut)")
                         .font(.title)
                         .fontWeight(.medium)
 
-                    // Reservation total
                     Text("Total: \(reservation.Total)")
                         .font(.body)
                         .foregroundColor(.secondary)
 
-                    // VStack for date and info icons
                     VStack {
-                        // Calendar icon and reservation start date
                         Image(systemName: "calendar")
                         Text("Start Date: \(reservation.DateDebut)")
                             .font(.body)
                             .fontWeight(.medium)
 
-                        // Calendar icon and reservation end date
                         Image(systemName: "calendar")
                         Text("End Date: \(reservation.DateFin)")
                             .font(.body)
                             .fontWeight(.medium)
 
-                        // Calendar icon and reservation start time
                         Image(systemName: "clock")
                         Text("Start Time: \(reservation.HeureDebut)")
                             .font(.body)
                             .fontWeight(.medium)
 
-                        // Calendar icon and reservation end time
                         Image(systemName: "clock")
                         Text("End Time: \(reservation.HeureFin)")
                             .font(.body)
                             .fontWeight(.medium)
                     }
-                    
+
                     Button(action: {
-                        //interface update
                         isShowingUpdatePage = true
                     }) {
                         Text("Update")
@@ -73,7 +62,6 @@ struct ReservationDetailView: View {
                             .padding(.leading, 0)
                     }
 
-                    // Button with the "trash" icon for deletion
                     Button(action: {
                         showDeleteConfirmation = true
                     }) {
@@ -91,31 +79,22 @@ struct ReservationDetailView: View {
                             title: Text("Confirmation"),
                             message: Text("Voulez-vous vraiment supprimer cette réservation ?"),
                             primaryButton: .destructive(Text("Supprimer")) {
-    //                            if let index = reservationModel.reservations.firstIndex(where: { $0.id == reservation.id }) {
-    //                                reservationModel.deleteReservation(at: index)
-    //                                showDeleteConfirmation = false
-    //                            }
+                                viewModel.deleteReservation(reservationID: reservation.id) { error in
+                                    if let error = error {
+                                        print("Erreur lors de la suppression de la réservation : \(error)")
+                                    } else {
+                                        if let index = reservationModel.reservations.firstIndex(where: { $0.id == reservation.id }) {
+                                            reservationModel.deleteReservation(at: index)
+
+                                            // Activer la navigation après la suppression
+                                            navigateToReservationList = true
+                                        }
+                                    }
+                                }
                             },
                             secondaryButton: .cancel()
                         )
                     }
-
-                   /* Button(action: {
-                        // Action when "Cancel" button is tapped
-                    }) {
-                        Text("Delete")
-                            .font(.system(size: 20))
-                            .foregroundColor(.white)
-                            .frame(maxWidth: .infinity)
-                            .frame(height: 50)
-                            .background(Color.red)
-                            .cornerRadius(50)
-                            .padding(.leading, 0)
-                        
-                        
-                        
-                        
-                    }*/
                 }
                 .padding(16)
             }
@@ -124,22 +103,27 @@ struct ReservationDetailView: View {
             .shadow(radius: 4)
             .padding(8)
             .navigationBarTitle("Reservation Details", displayMode: .inline)
+            .background(
+                // Utilisez un NavigationLink pour effectuer la navigation programmatically
+                NavigationLink(
+                    destination: ReservationListView(),
+                    isActive: $navigateToReservationList
+                ) {
+                    EmptyView()
+                }
+                .isDetailLink(false)
+            )
         }
         .sheet(isPresented: $isShowingUpdatePage) {
-            UpdateReservation(reservation: reservation, reservationModel: reservationModel) { newReservation in
-//                reservationModel.updateReservation(newReservation)
-            }
+            //UpdateReservation(reservation: reservation, viewModel: reservationModel)
         }
-        }
-       
-
-       
+    }
 }
 
 struct ReservationDetailView_Previews: PreviewProvider {
     static var previews: some View {
         let reservationModel = ReservationModel()
-        
+
         if let reservation = reservationModel.reservations.first {
             return AnyView(ReservationDetailView(reservation: reservation))
         } else {
@@ -147,3 +131,4 @@ struct ReservationDetailView_Previews: PreviewProvider {
         }
     }
 }
+

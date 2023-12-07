@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 enum StatutRes: String {
-    case reserve = "Reservée"
+    case reserve = "Réservée"
     case payee = "Payée"
     case achevee = "Achevée"
 }

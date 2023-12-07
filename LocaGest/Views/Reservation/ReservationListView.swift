@@ -4,7 +4,6 @@ struct ReservationListView: View {
     @StateObject private var viewModel = ReservationViewModel()
     @State private var isShowingAddPage = false
     @State private var showDeleteConfirmation = false
-//    @State private var selectedStatus: StatutRes? = nil
     @State private var selectedStatus: String? = nil
     
     var body: some View {
@@ -18,7 +17,7 @@ struct ReservationListView: View {
                             .contextMenu {
                                 Button(action: {
                                     if let index = viewModel.reservations?.firstIndex(where: { $0.id == reservation.id }) {
-//                                        viewModel.deleteReservation(at: index)
+                                        // viewModel.deleteReservation(at: index)
                                     }
                                 }) {
                                     Label("Delete", systemImage: "trash")
@@ -33,20 +32,20 @@ struct ReservationListView: View {
                 Spacer()
                 
                 bottomNavigationBar()
-            }
-            .navigationBarTitle("Reservations")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    addButton()
-                }
-            }
-            .sheet(isPresented: $isShowingAddPage) {
-                AddReservation(viewModel: ReservationViewModel())
-                }
+                //  }
+                    .navigationBarTitle("Reservations")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            addButton()
+                        }
+                    }
+                    .sheet(isPresented: $isShowingAddPage) {
+                        AddReservation(viewModel: ReservationViewModel())
+                    }
             }
         }
-    
+    }
     func addButton() -> some View {
         Button(action: {
             isShowingAddPage = true

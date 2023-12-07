@@ -6,9 +6,9 @@ struct ReservationDetailView: View {
     let reservation: Reservation
     @State private var showDeleteConfirmation = false
     @State private var isShowingUpdatePage = false
-
+    
     @State private var navigateToReservationList = false
-
+    
     var body: some View {
         NavigationView {
             VStack(alignment: .leading, spacing: 8) {
@@ -85,7 +85,7 @@ struct ReservationDetailView: View {
                                     } else {
                                         if let index = reservationModel.reservations.firstIndex(where: { $0.id == reservation.id }) {
                                             reservationModel.deleteReservation(at: index)
-
+                                            
                                             // Activer la navigation après la suppression
                                             navigateToReservationList = true
                                         }

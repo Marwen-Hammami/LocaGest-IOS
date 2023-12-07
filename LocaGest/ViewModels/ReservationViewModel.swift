@@ -4,7 +4,7 @@ class ReservationViewModel: ObservableObject {
     @Published var reservations: [Reservation]?
 
     func fetchReservations() {
-        guard let url = URL(string: "http://172.20.10.9:9090/res") else {
+        guard let url = URL(string: "http://172.20.10.5:9090/res") else {
             return
         }
 
@@ -36,7 +36,7 @@ class ReservationViewModel: ObservableObject {
     
     func addReservation(_ reservation: ReservationRequest) {
         // Define the API endpoint URL
-        let apiUrlString = "http://172.20.10.9:9090/res/"
+        let apiUrlString = "http://172.20.10.5:9090/res/"
         
         // Create the URL
         guard let url = URL(string: apiUrlString) else {

@@ -8,43 +8,53 @@ struct ReservationListView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                List {
-                    ForEach(viewModel.reservations?.filter { reservation in
-                        selectedStatus == nil || reservation.Statut == selectedStatus
-                    } ?? []) { reservation in
-                        ReservationCardView(reservation: reservation)
-                            .contextMenu {
-                                Button(action: {
-                                    if let index = viewModel.reservations?.firstIndex(where: { $0.id == reservation.id }) {
-                                        // viewModel.deleteReservation(at: index)
-                                    }
-                                }) {
-                                    Label("Delete", systemImage: "trash")
-                                }
-                            }
-                    }
-                }
-                .onAppear {
-                    viewModel.fetchReservations()
-                }
-                
-                Spacer()
-                
-                bottomNavigationBar()
-                //  }
-                    .navigationBarTitle("Reservations")
-                    .navigationBarTitleDisplayMode(.inline)
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarLeading) {
-                            addButton()
-                        }
-                    }
-                    .sheet(isPresented: $isShowingAddPage) {
-                        AddReservation(viewModel: ReservationViewModel())
-                    }
-            }
-        }
+            
+                   VStack {
+                       List {
+                           ForEach(viewModel.reservations?.filter { reservation in
+                               selectedStatus == nil || reservation.Statut == selectedStatus
+                           } ?? []) { reservation in
+                               ReservationCardView(reservation: reservation)
+                                   .contextMenu {
+                                       Button(action: {
+                                           if let index = viewModel.reservations?.firstIndex(where: { $0.id == reservation.id }) {
+                                               // viewModel.deleteReservation(at: index)
+                                           }
+                                       }) {
+                                           Label("Delete", systemImage: "trash")
+                                       }
+                                   }
+                                   .listRowBackground(Color.clear) // Fond transparent pour chaque élément
+                           }
+                       }
+                       .listStyle(PlainListStyle())
+                       .background(Color.clear) // Fond transparent pour la liste elle-même
+
+                       
+                       .onAppear {
+                           viewModel.fetchReservations()
+                       }
+                       
+                       Spacer()
+                       
+                       bottomNavigationBar()
+                       //  }
+                           .navigationBarTitle("Reservations")
+                           .navigationBarTitleDisplayMode(.inline)
+                           .toolbar {
+                               ToolbarItem(placement: .navigationBarLeading) {
+                                   addButton()
+                               }
+                           }
+                           .sheet(isPresented: $isShowingAddPage) {
+                               AddReservation(viewModel: ReservationViewModel())
+                           }
+                   }.background(
+                       Image("back1").resizable()
+                           .scaledToFill()
+                           .edgesIgnoringSafeArea(.all))
+                   
+               }
     }
     func addButton() -> some View {
         Button(action: {
@@ -54,7 +64,7 @@ struct ReservationListView: View {
                 .font(.title2)
                 .foregroundColor(.white)
                 .padding(8)
-                .background(Color.primary)
+                .background(Color.teal)
                 .clipShape(Circle())
         }
     }
@@ -68,7 +78,7 @@ struct ReservationListView: View {
             }) {
                 Text("All")
                     .font(.title2)
-                    .foregroundColor(selectedStatus == nil ? .blue : .gray)
+                    .foregroundColor(selectedStatus == nil ? .teal : .black)
                     .padding(8)
             }
             
@@ -79,7 +89,7 @@ struct ReservationListView: View {
             }) {
                 Text("Completed")
                     .font(.title2)
-                    .foregroundColor(selectedStatus == "Achevée" ? .blue : .gray)
+                    .foregroundColor(selectedStatus == "Achevée" ? .teal : .black)
                     .padding(8)
             }
             
@@ -90,7 +100,7 @@ struct ReservationListView: View {
             }) {
                 Text("Paid")
                     .font(.title2)
-                    .foregroundColor(selectedStatus == "Payée" ? .blue : .gray)
+                    .foregroundColor(selectedStatus == "Payée" ? .teal : .black)
                     .padding(8)
             }
             
@@ -101,14 +111,16 @@ struct ReservationListView: View {
             }) {
                 Text("Reserved")
                     .font(.title2)
-                    .foregroundColor(selectedStatus == "Réservée" ? .blue : .gray)
+                    .foregroundColor(selectedStatus == "Réservée" ? .teal : .black)
                     .padding(8)
             }
             
             Spacer()
         }
         .padding(.bottom, 8)
-        .background(Color.white)
+        .background( LinearGradient(gradient: Gradient(colors: [Color.clear, Color.white]),
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing))
     }
 }
 

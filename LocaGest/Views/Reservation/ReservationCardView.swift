@@ -6,42 +6,54 @@ struct ReservationCardView: View {
     @State private var showDeleteConfirmation = false
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            // reservation image
-            Image("car1")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(height: 200)
-                .clipped()
+        ZStack {
+           /* LinearGradient(
+                gradient: Gradient(colors: [Color("Main"), Color.white]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .edgesIgnoringSafeArea(.all)*/
             
-            // reservation details
             VStack(alignment: .leading, spacing: 8) {
-                // reservation title
-                Text("Voiture")
-                    .font(.title)
-                    .fontWeight(.medium)
+                // reservation image
+                Image("car1")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(height: 200)
+                    .clipped()
                 
-                // HStack for date and info icons
-                HStack {
-                    VStack {
-                        Text("STATUT: \(reservation.Statut)")
-                            .font(.body)
-                            .fontWeight(.medium)
-                        
-                        // Button with the "info.circle" icon
-                        NavigationLink(destination: ReservationDetailView(reservation: reservation)) {
-                            Image(systemName: "info.circle")
-                                .foregroundColor(.blue)
-                        }
+                // reservation details
+                VStack(alignment: .leading, spacing: 8) {
+                    // reservation title
+                    Text("Voiture")
+                        .font(.title)
+                        .fontWeight(.medium)
+                    
+                    // HStack for date and info icons
+                    HStack {
+                        VStack {
+//                            Text("STATUT: \(reservation.Statut.rawValue)")
+                            Text("STATUT: \(reservation.Statut)")
+                                .font(.body)
+                                .fontWeight(.medium)
+                            
+                            // Button with the "info.circle" icon
+                            NavigationLink(destination: ReservationDetailView(reservation: reservation)) {
+                                Image(systemName: "info.circle")
+                                    .foregroundColor(.blue)
+                            }/*}
+                        VStack {*/
+                         
+                        }//***
                     }
                 }
+                .padding(16)
             }
-            .padding(16)
+            .background(Color.white)
+            .cornerRadius(8)
+            .shadow(radius: 4)
+            .padding(8)
         }
-        .background(Color.white)
-        .cornerRadius(8)
-        .shadow(radius: 4)
-        .padding(8)
     }
 }
 

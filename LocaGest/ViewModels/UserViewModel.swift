@@ -12,6 +12,8 @@ class UserViewModel: ObservableObject {
     private let userService: UserService
     private var cancellables = Set<AnyCancellable>()
     
+        
+    
     init(userService: UserService = UserService.shared) {
         self.userService = userService
     }
@@ -182,6 +184,14 @@ class UserViewModel: ObservableObject {
         }
     
     
+    func deleteUser(userID: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        // Delete the user based on the provided userID
+        // Call the completion block with the appropriate result
+    
+            userService.deleteUser(userID: userID, completion: completion)
+        }
+    
+    
     
     func handleSignInResponse(userData: UserData?, token: String?, error: Error?) {
         if let userData = userData, let token = token {
@@ -209,3 +219,4 @@ struct UserData: Codable {
     let id: String
     let email: String
 }
+

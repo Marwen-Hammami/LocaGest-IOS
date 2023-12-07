@@ -49,6 +49,14 @@ struct UpdateUsernameView: View {
         .onAppear {
             newUsername = userViewModel.user?.username ?? ""
         }
+        .background(
+            LinearGradient(
+                gradient: Gradient(colors: [Color("Main"), Color.white]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .edgesIgnoringSafeArea(.all)
+        )
     }
     
     private func updateUserUsername() {

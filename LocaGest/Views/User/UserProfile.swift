@@ -9,11 +9,16 @@ struct UserProfile: View {
     @State private var isEditingProfile = false
     @StateObject private var router = Router() // Create an instance of the Router
     @StateObject private var userViewModel = UserViewModel()
-
+    @AppStorage("userId") private var userId: String = ""
+    @Environment(\.presentationMode) private var presentationMode
+    var deleteUserCompletion: ((Result<Void, Error>) -> Void)?
     @State private var rotationAngle: Double = 0
     @State private var isEmailVerified = true // Add a boolean variable to track email verification status
     
+    
+
     var body: some View {
+        
         ZStack {
             LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all)
@@ -91,7 +96,7 @@ struct UserProfile: View {
                             }
                         }
                     }
-                    
+                                        
                     Section(header: Text("Account")) {
                                 NavigationLink(destination: UpdateUsernameView().environmentObject(userViewModel)) {
                                     HStack {
@@ -128,6 +133,9 @@ struct UserProfile: View {
                             }
                     
                     
+                                    
+
+                    
                     
                     Section {
                         Toggle(isOn: $darkModeEnabled) {
@@ -140,21 +148,43 @@ struct UserProfile: View {
                             Text("Notifications")
                         }
                     }
+                    Section {
+                                            Button(action: {
+                                                // Add account deletion logic here
+                                                //deleteAccount()
+                                            }) {
+                                                Text("Logout")
+                                                    .foregroundColor(.red)
+                                            }
+                                        } 
+                    Section {
+                                            Button(action: {
+                                                // Add account deletion logic here
+                                               deleteUser()
+                                            }) {
+                                                Text("Delete Account")
+                                                    .foregroundColor(.red)
+                                            }
+                                        }
+                    
                     
                 }
+                
                 .navigationBarTitle("Settings")
                 .navigationBarItems(trailing: Button(action: {
                     router.navigateToRoot() // Navigate to the root of the navigation stack
                 }) {
-                    Text("Logout")
+                    Text("")
                         .foregroundColor(.red)
                 })
+                
             }
             .navigationBarBackButtonHidden()
         }
         .onAppear {
             userViewModel.getUser() // Fetch the user data
         }
+        
 
 
         .preferredColorScheme(darkModeEnabled ? .dark : .light)
@@ -166,7 +196,43 @@ struct UserProfile: View {
         }
         .environmentObject(router) // Inject the router as an environment object
     }
+    func deleteUser() {
+        userViewModel.deleteUser(userID: userId) { result in
+            self.deleteUserCompletion?(result)
+            switch result {
+                    case .success:
+                        // User deleted successfully, remove all storage and dismiss to login view
+                        self.clearUserStorage()
+                        DispatchQueue.main.async {
+                            self.dismissToLoginView()
+                        }
+                        
+                    case .failure(let error):
+                        // Handle the error appropriately
+                        print("Failed to delete user: \(error)")
+                    }
+        }
+        
+    }
+    private func clearUserStorage() {
+        // Clear any user-specific data or storage
+        // For example, you can reset UserDefaults or remove cached data
+        UserDefaults.standard.removeObject(forKey: "userId")
+        // Additional storage clearing code goes here
+    }
+
+    private func dismissToLoginView() {
+        // Dismiss to the login view
+        // You can use a suitable navigation technique or present the login view modally
+        // For example, if using a navigation stack:
+        presentationMode.wrappedValue.dismiss()
+        // Additional code for presenting the login view goes here
+    }
+    
+   
 }
+
+
 
 struct UserProfile_Previews: PreviewProvider {
     static var previews: some View {

@@ -48,6 +48,14 @@ struct UpdatePhoneNumberView: View {
         .onAppear {
             newPhoneNumber = userViewModel.user?.phoneNumber ?? ""
         }
+        .background(
+            LinearGradient(
+                gradient: Gradient(colors: [Color("Main"), Color.white]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .edgesIgnoringSafeArea(.all)
+        )
     }
     
     private func updatePhoneNumber() {

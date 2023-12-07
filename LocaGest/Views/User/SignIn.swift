@@ -104,6 +104,16 @@ struct LoginView: View {
                             case .success:
                                 // Login successful
                                 shouldNavigateToFlotte = true // Set the flag to navigate to FlotteMainView
+                                if rememberMe {
+                                                                    // Store the email and password in UserDefaults
+                                                                    UserDefaults.standard.set(email, forKey: "RememberedEmail")
+                                                                    UserDefaults.standard.set(password, forKey: "RememberedPassword")
+                                                                } else {
+                                                                    // Clear the stored email and password from UserDefaults
+                                                                    UserDefaults.standard.removeObject(forKey: "RememberedEmail")
+                                                                    UserDefaults.standard.removeObject(forKey: "RememberedPassword")
+                                                                }
+                                                           
                             case .failure(let error):
                                 // Login failed
                                 // Show an error message or perform appropriate action
@@ -215,9 +225,21 @@ struct LoginView: View {
                     EmptyView()
                 }
             )
+            
         }
+        
         .navigationBarBackButtonHidden()
     }
+    init() {
+        // Check if email and password are stored in UserDefaults
+        if let rememberedEmail = UserDefaults.standard.string(forKey: "RememberedEmail"),
+           let rememberedPassword = UserDefaults.standard.string(forKey: "RememberedPassword") {
+            email = rememberedEmail
+            password = rememberedPassword
+            rememberMe = true
+        }
+    }
+    
 }
 
 struct ImagePicker: UIViewControllerRepresentable {

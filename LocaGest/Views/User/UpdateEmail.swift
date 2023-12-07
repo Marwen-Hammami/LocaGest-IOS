@@ -48,6 +48,14 @@ struct UpdateEmailView: View {
         .onAppear {
             newEmail = userViewModel.user?.email ?? ""
         }
+        .background(
+            LinearGradient(
+                gradient: Gradient(colors: [Color("Main"), Color.white]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .edgesIgnoringSafeArea(.all)
+        )
     }
     
     private func updateEmail() {

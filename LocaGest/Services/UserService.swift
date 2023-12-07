@@ -372,6 +372,34 @@ class UserService {
         }.resume()
     }
     
+  
+    func deleteUser(userID: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        guard let userID = UserDefaults.standard.string(forKey: "UserID") else {
+            completion(.failure(NetworkError.userIDNotFound))
+            return
+        }
+        
+        guard let url = URL(string: "\(baseURL)/User/delete/\(userID)") else {
+            completion(.failure(NetworkError.invalidURL))
+            return
+        }
+        var request = URLRequest(url: url)
+
+        request.httpMethod = "DELETE"
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            // Process the response if needed
+            
+            completion(.success(()))
+        }.resume()
+    }
+    
+    
     
     }
     
@@ -391,3 +419,4 @@ enum UserServiceError: Error {
     case invalidURL
     case noData
 }
+

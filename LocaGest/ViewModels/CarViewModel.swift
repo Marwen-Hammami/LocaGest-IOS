@@ -32,14 +32,15 @@ class CarViewModel: ObservableObject {
            }
        }
     
-//    func deleteCar(immatriculation: String, completion: @escaping (Result<Void, Error>) -> Void) {
-//           FlotteService.deleteCar(immatriculation: immatriculation) { result in
-//               DispatchQueue.main.async {
-//                   completion(result)
-//               }
-//           }
-//       }
-
+    func deleteCar(immatriculation: String) async {
+            do {
+                try await FlotteService.deleteCar(immatriculation: immatriculation)
+                // Handle success, maybe refresh your list of cars
+            } catch {
+                // Handle the error, display an alert, etc.
+                print("Error deleting car: \(error)")
+            }
+        }
 
 //    func addCar(car: Car) {
 //        flotteService.createCar(car: car) { result in

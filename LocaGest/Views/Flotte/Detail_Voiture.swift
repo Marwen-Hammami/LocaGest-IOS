@@ -2,6 +2,9 @@ import SwiftUI
 
 struct Detail_Voiture: View {
     let car : Car
+    @StateObject var carViewModel = CarViewModel()
+    @State private var carDeleted = false
+    
     var body: some View {
         ZStack {
             LinearGradient(
@@ -98,18 +101,36 @@ struct Detail_Voiture: View {
                     .foregroundColor(.white)
                     .cornerRadius(10)
                     .padding()
-
+                    
                     Spacer()
-
-                    Button("Supprimer") {
-                        // Action lorsque le bouton "Supprimer" est appuyé
+                    NavigationLink(
+                        destination: DetailFlotte(carViewModel: carViewModel),
+                        isActive: $carDeleted // Use a state variable to control the navigation
+                    ) {
+                        EmptyView() // An empty view as NavigationLink requires a visible view
                     }
-                    .padding()
-                    .background(Color.red)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
-                    .padding()
+                    
+                    Button {
+                        Task {
+                            do {
+                                try await carViewModel.deleteCar(immatriculation: car.immatriculation)
+                                carDeleted = true
+                                // Handle success, maybe refresh your list of cars
+                            } catch {
+                                // Handle the error, display an alert, etc.
+                                print("Error deleting car: \(error)")
+                            }
+                        }
+                    } label: {
+                        Text("Supprimer")
+                            .padding()
+                            .background(Color.red)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                            .padding()
+                    }
                 }
+
                 .padding(.horizontal, 20)
                 .padding(.bottom, 20)
             }

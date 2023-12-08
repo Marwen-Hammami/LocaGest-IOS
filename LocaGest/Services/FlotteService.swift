@@ -95,29 +95,26 @@ final class FlotteService {
 //    }
 //
     
-    func deleteCar(immatriculation: String, completion: @escaping (Result<Void, Error>) -> Void) {
-            guard let url = URL(string: baseURL + immatriculation) else {
-                completion(.failure(NetworkError.invalidURL))
-                return
+    static func deleteCar(immatriculation: String) async throws {
+            let urlString = "http://localhost:9090/car/\(immatriculation)"
+
+            guard let url = URL(string: urlString) else {
+                throw NetworkError.invalidURL
             }
 
             var request = URLRequest(url: url)
             request.httpMethod = "DELETE"
 
-            URLSession.shared.dataTask(with: request) { data, response, error in
-                guard error == nil else {
-                    completion(.failure(error!))
-                    return
-                }
+            do {
+                let (_, response) = try await URLSession.shared.data(for: request)
 
-                if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
-                    completion(.success(()))
-                } else {
-                    completion(.failure(NetworkError.invalidResponse))
+                guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 204 else {
+                    throw NetworkError.invalidResponse
                 }
-            }.resume()
+            } catch {
+                throw NetworkError.requestFailed(error)
+            }
         }
-    
     
     
     

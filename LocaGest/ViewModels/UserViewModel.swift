@@ -183,6 +183,26 @@ class UserViewModel: ObservableObject {
             }
         }
     
+    func updateUserEmail(password: String) {
+            UserService().updateUserPassword(password: password) { [weak self] result in
+                switch result {
+                case .success(let updatedUser):
+                    DispatchQueue.main.async {
+                        self?.user = updatedUser
+                        self?.error = nil
+                    }
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                        self?.user = nil
+                        self?.error = error
+                    }
+                }
+            }
+        }
+    func sendResetPasswordOTP(email: String, completion: @escaping (Result<String, Error>) -> Void) {
+            userService.sendResetPasswordOTP(email: email, completion: completion)
+        }
+    
     
     func deleteUser(userID: String, completion: @escaping (Result<Void, Error>) -> Void) {
         // Delete the user based on the provided userID

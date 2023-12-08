@@ -82,6 +82,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		03E67BE32B22430D007DDBC4 /* LocaGest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LocaGest.entitlements; sourceTree = "<group>"; };
 		090D82C02B19DC76000D1B47 /* AgenceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgenceViewModel.swift; sourceTree = "<group>"; };
 		090D82C32B19DC9C000D1B47 /* AgenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgenceService.swift; sourceTree = "<group>"; };
 		090D82C52B19DDDA000D1B47 /* addDist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addDist.swift; sourceTree = "<group>"; };
@@ -337,6 +338,7 @@
 		DC51CA322AF8324D00DC8C9A /* LocaGest */ = {
 			isa = PBXGroup;
 			children = (
+				03E67BE32B22430D007DDBC4 /* LocaGest.entitlements */,
 				090D82C22B19DC83000D1B47 /* Services */,
 				090D82BF2B19DC5B000D1B47 /* ViewModels */,
 				DC4AC4542B1399F600AFDA6F /* Views */,
@@ -375,6 +377,8 @@
 			dependencies = (
 			);
 			name = LocaGest;
+			packageProductDependencies = (
+			);
 			productName = LocaGest;
 			productReference = DC51CA302AF8324D00DC8C9A /* LocaGest.app */;
 			productType = "com.apple.product-type.application";
@@ -403,6 +407,9 @@
 				Base,
 			);
 			mainGroup = DC51CA272AF8324D00DC8C9A;
+			packageReferences = (
+				03E67BE02B222809007DDBC4 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+			);
 			productRefGroup = DC51CA312AF8324D00DC8C9A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -624,6 +631,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LocaGest/LocaGest.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"LocaGest/Preview Content\"";
@@ -653,6 +661,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LocaGest/LocaGest.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"LocaGest/Preview Content\"";
@@ -699,6 +708,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		03E67BE02B222809007DDBC4 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 14.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCVersionGroup section */
 		DC51CA3E2AF8325100DC8C9A /* LocaGest.xcdatamodeld */ = {

@@ -51,7 +51,7 @@ struct ForgotPasswordEmailView: View {
                 Button(action: {
                                     // Handle send SMS action
                                     isSMSSent = true
-                                   // sendSMS()
+                                    sendSMS()
                                 }) {
                                     Text("Send SMS")
                                         .foregroundColor(.white)
@@ -102,6 +102,22 @@ struct ForgotPasswordEmailView: View {
         }
     }
     
+    private func sendSMS() {
+            UserService.shared.sendResetPasswordOTP(email: emailAddress) { result in
+                switch result {
+                case .success(let message):
+                    // SMS sending succeeded
+                    errorMessage = ""
+                    saveEmail(email: emailAddress) // Save the email address
+                    isOTPViewPresented = true // Set the flag to present the OTP view
+
+                case .failure(let error):
+                    // SMS sending failed
+                    errorMessage = error.localizedDescription
+                }
+            }
+        }
+    
     private func sendEmail() {
         // Call the UserService.forgotPassword() method with a completion closure
         UserService.shared.forgotPassword(email: emailAddress) { result in
@@ -126,5 +142,7 @@ struct ForgotPasswordEmailView: View {
 struct ForgotPasswordEmailView_Previews: PreviewProvider {
     static var previews: some View {
         ForgotPasswordEmailView()
+        
+        
     }
 }

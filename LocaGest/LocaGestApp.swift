@@ -1,10 +1,12 @@
 import SwiftUI
+
+
 @main
 struct LocaGestApp: App {
     @StateObject var viewModel: ViewModel = ViewModel()
     @ObservedObject var router = Router()
     @State private var showSplash = true // Added state variable for controlling splash screen visibility
-    
+  
     var body: some Scene {
         WindowGroup {
             Group {

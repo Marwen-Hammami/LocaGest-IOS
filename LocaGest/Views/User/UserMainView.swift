@@ -48,6 +48,7 @@ struct UserMainView: View {
     func HomeView()-> some View{
         // Start - Here you can put your work ************************
         UserProfile()
+            .environmentObject(vm)
         
         
         // End   - Here you can put your work ************************

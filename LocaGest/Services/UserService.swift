@@ -372,6 +372,52 @@ class UserService {
         }.resume()
     }
     
+    func updateUserPassword(password: String, completion: @escaping (Result<User, Error>) -> Void) {
+        guard let userID = UserDefaults.standard.string(forKey: "UserID") else {
+            completion(.failure(NetworkError.userIDNotFound))
+            return
+        }
+        
+        guard let url = URL(string: "\(baseURL)/User/pass/\(userID)") else {
+            completion(.failure(NetworkError.invalidURL))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let parameters: [String: Any] = [
+            "password": password
+        ]
+        
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+        } catch {
+            completion(.failure(error))
+            return
+        }
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            guard let data = data else {
+                completion(.failure(UserServiceError.noData))
+                return
+            }
+            
+            do {
+                let updatedUser = try JSONDecoder().decode(User.self, from: data)
+                completion(.success(updatedUser))
+            } catch {
+                completion(.failure(error))
+            }
+        }.resume()
+    }
+    
   
     func deleteUser(userID: String, completion: @escaping (Result<Void, Error>) -> Void) {
         guard let userID = UserDefaults.standard.string(forKey: "UserID") else {
@@ -398,6 +444,38 @@ class UserService {
             completion(.success(()))
         }.resume()
     }
+    
+    func sendResetPasswordOTP(email: String, completion: @escaping (Result<String, Error>) -> Void) {
+            // Make a network request to your server endpoint
+            guard let url = URL(string: "\(baseURL)/User/sms") else {
+                let error = NSError(domain: "Invalid URL", code: 0, userInfo: nil)
+                completion(.failure(error))
+                return
+            }
+            
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            
+            let params = ["email": email]
+            request.httpBody = try? JSONSerialization.data(withJSONObject: params)
+            
+            URLSession.shared.dataTask(with: request) { (data, response, error) in
+                if let error = error {
+                    completion(.failure(error))
+                    return
+                }
+                
+                if let data = data,
+                   let responseJSON = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                   let message = responseJSON["message"] as? String {
+                    completion(.success(message))
+                } else {
+                    let error = NSError(domain: "Invalid response", code: 0, userInfo: nil)
+                    completion(.failure(error))
+                }
+            }.resume()
+        }
     
     
     

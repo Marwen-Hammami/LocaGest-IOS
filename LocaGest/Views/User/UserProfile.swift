@@ -15,7 +15,8 @@ struct UserProfile: View {
     @State private var rotationAngle: Double = 0
     @State private var isEmailVerified = true // Add a boolean variable to track email verification status
     
-    
+    @EnvironmentObject var vm: ViewModel
+
 
     var body: some View {
         
@@ -98,39 +99,50 @@ struct UserProfile: View {
                     }
                                         
                     Section(header: Text("Account")) {
-                                NavigationLink(destination: UpdateUsernameView().environmentObject(userViewModel)) {
-                                    HStack {
-                                        Image(systemName: "person")
-                                            .foregroundColor(.purple)
-                                        Text("Username")
-                                        Spacer()
-                                        Text(userViewModel.user?.username ?? "")
-                                            .foregroundColor(.gray)
-                                    }
-                                }
-                                
-                                NavigationLink(destination: UpdatePhoneNumberView().environmentObject(userViewModel)) {
-                                    HStack {
-                                        Image(systemName: "phone")
-                                            .foregroundColor(.green)
-                                        Text("Phone Number")
-                                        Spacer()
-                                        Text(userViewModel.user?.phoneNumber ?? "")
-                                            .foregroundColor(.gray)
-                                    }
-                                }
-                                
-                                NavigationLink(destination: UpdateEmailView().environmentObject(userViewModel)) {
-                                    HStack {
-                                        Image(systemName: "envelope")
-                                            .foregroundColor(.blue)
-                                        Text("Email")
-                                        Spacer()
-                                        Text(userViewModel.user?.email ?? "")
-                                            .foregroundColor(.gray)
-                                    }
-                                }
+                        NavigationLink(destination: UpdateUsernameView().environmentObject(userViewModel)) {
+                            HStack {
+                                Image(systemName: "person")
+                                    .foregroundColor(.purple)
+                                Text("Username")
+                                Spacer()
+                                Text(userViewModel.user?.username ?? "")
+                                    .foregroundColor(.gray)
                             }
+                        }
+                        
+                        NavigationLink(destination: UpdatePhoneNumberView().environmentObject(userViewModel)) {
+                            HStack {
+                                Image(systemName: "phone")
+                                    .foregroundColor(.green)
+                                Text("Phone Number")
+                                Spacer()
+                                Text(userViewModel.user?.phoneNumber ?? "")
+                                    .foregroundColor(.gray)
+                            }
+                        }
+                        
+                        NavigationLink(destination: UpdateEmailView().environmentObject(userViewModel)) {
+                            HStack {
+                                Image(systemName: "envelope")
+                                    .foregroundColor(.blue)
+                                Text("Email")
+                                Spacer()
+                                Text(userViewModel.user?.email ?? "")
+                                    .foregroundColor(.gray)
+                            }
+                        }
+                        
+                        NavigationLink(destination: UpdateUserPasswordView().environmentObject(userViewModel)) {
+                            HStack {
+                                Image(systemName: "lock")
+                                    .foregroundColor(.red)
+                                Text("Password")
+                                Spacer()
+                                Text("********") // Display masked password or some other indicator
+                                    .foregroundColor(.gray)
+                            }
+                        }
+                    }
                     
                     
                                     
@@ -150,8 +162,7 @@ struct UserProfile: View {
                     }
                     Section {
                                             Button(action: {
-                                                // Add account deletion logic here
-                                                //deleteAccount()
+                                                dismissToLoginView()
                                             }) {
                                                 Text("Logout")
                                                     .foregroundColor(.red)
@@ -221,12 +232,21 @@ struct UserProfile: View {
         // Additional storage clearing code goes here
     }
 
+    
+
     private func dismissToLoginView() {
         // Dismiss to the login view
         // You can use a suitable navigation technique or present the login view modally
         // For example, if using a navigation stack:
         presentationMode.wrappedValue.dismiss()
-        // Additional code for presenting the login view goes here
+        
+        // Present the login view modally
+        let loginView = LoginView()
+            .environmentObject(vm)
+            //.navigationBarBackButtonHidden(true)// Replace "LoginView" with the actual name of your login view
+        let hostingController = UIHostingController(rootView: loginView)
+        hostingController.modalPresentationStyle = .fullScreen // Adjust the presentation style as needed
+        UIApplication.shared.keyWindow?.rootViewController?.present(hostingController, animated: true, completion: nil)
     }
     
    

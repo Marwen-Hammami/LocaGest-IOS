@@ -95,6 +95,7 @@ struct UpdatePasswordView: View {
 
 struct UpdatePasswordView_Previews: PreviewProvider {
     static var previews: some View {
-        UpdatePasswordView()
+        UpdatePasswordView()            .environmentObject(UserViewModel())
+
     }
 }

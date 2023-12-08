@@ -3,6 +3,8 @@ import SwiftUI
 struct UpdateUserPasswordView: View {
     @State private var newPassword = ""
     @State private var confirmPassword = ""
+    @EnvironmentObject private var userViewModel: UserViewModel
+
     
     var body: some View {
         VStack {
@@ -79,9 +81,12 @@ struct UpdateUserPasswordView: View {
             return
         }
         
-        // Perform the password update process here
-        // You can add your own logic to update the password
+        guard let userId = UserDefaults.standard.string(forKey: "UserID") else {
+            // Handle the case where userId is not available in UserDefaults
+            return
+        }
         
+        userViewModel.updateUserEmail(password: newPassword)
         // Reset the fields after successful update
         newPassword = ""
         confirmPassword = ""
@@ -91,6 +96,7 @@ struct UpdateUserPasswordView: View {
 }
 struct UpdateUserPasswordView_Previews: PreviewProvider {
     static var previews: some View {
-        UpdateUserPasswordView()
+        UpdateUserPasswordView()            
+
     }
 }

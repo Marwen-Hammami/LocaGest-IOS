@@ -1,5 +1,6 @@
 import SwiftUI
 
+
 struct LoginView: View {
     @EnvironmentObject var vm: ViewModel
     @State private var username = ""
@@ -173,7 +174,25 @@ struct LoginView: View {
                 // Add social media buttons
                 HStack(spacing: 20) {
                     Button(action: {
-                        // Handle Facebook login action
+                               /*// Handle Facebook login action
+                               let loginManager = LoginManager()
+                               loginManager.logIn(permissions: [.publicProfile, .email]) { result in
+                                   switch result {
+                                   case .success(let grantedPermissions, let declinedPermissions, let accessToken):
+                                       // Successfully logged in with Facebook
+                                       // You can access the user's Facebook data using the grantedPermissions and accessToken
+                                       
+                                       // Call your authentication or user registration method using the obtained access token
+                                       
+                                   case .cancelled:
+                                       // User cancelled the Facebook login
+                                       print("Facebook login cancelled")
+                                       
+                                   case .failed(let error):
+                                       // Facebook login failed
+                                       print("Facebook login failed: \(error.localizedDescription)")
+                                   }
+                               }*/
                     }) {
                         Image("img_symbol")
                             .resizable()

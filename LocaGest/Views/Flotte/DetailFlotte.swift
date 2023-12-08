@@ -27,7 +27,7 @@ struct DetailFlotte: View {
                             .padding(.top, 20)
                     } else {
                         ScrollView {
-                            LazyVStack(spacing: 16) {
+                            VStack(spacing: 16) {
                                 ForEach(carViewModel.cars) { car in
                                     CarCardView(car: car, carViewModel: carViewModel)
                                 }
@@ -38,7 +38,7 @@ struct DetailFlotte: View {
 
                     Spacer()
 
-                    NavigationLink(destination: Ajouter_Voiture()) {
+                    NavigationLink(destination: Ajouter_Voiture(carViewModel: carViewModel)) {
                         Text("Ajouter")
                             .padding()
                             .frame(maxWidth: .infinity)
@@ -49,12 +49,16 @@ struct DetailFlotte: View {
                     }
                     .padding(.bottom, 20)
                 }
+            }.task {
+                do {
+                    await carViewModel.fetchCars()
+                }catch{
+                    print("sdfsdfdsfsdf")
+                }
+                
             }
             .navigationTitle("LocaGest")
             .accentColor(.green)
-            .onAppear {
-                carViewModel.fetchCars()
-            }
         }
     }
 }
@@ -69,16 +73,13 @@ struct CarCardView: View {
                 .font(.headline)
             Text("Modèle: \(car.modele)")
                 .font(.subheadline)
-            
+
             // Conditionally render immatriculation if it is not nil
             if let immatriculation = car.immatriculation {
                 Text("Immatriculation: \(immatriculation)")
                     .fontWeight(.bold)
                     .font(.subheadline)
             }
-            
-            Text("Disponibilité: \(car.disponibility)")
-                .font(.subheadline)
         }
         .padding()
         .background(
@@ -93,7 +94,8 @@ struct CarCardView: View {
 
         HStack {
             Spacer()
-             
+
+            NavigationLink(destination: Detail_Voiture()) {
                 Text("Détails")
                     .padding()
                     .background(Color.green)
@@ -102,13 +104,5 @@ struct CarCardView: View {
                     .padding(.bottom, 10)
             }
         }
-    }
-
-
-struct DetailFlotte_Previews: PreviewProvider {
-    static var previews: some View {
-        let carViewModel = CarViewModel()
-
-        return DetailFlotte(carViewModel: carViewModel)
     }
 }

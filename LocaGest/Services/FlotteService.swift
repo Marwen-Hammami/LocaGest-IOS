@@ -7,11 +7,11 @@
 
 import Foundation
 
-class FlotteService {
+final class FlotteService {
     static let shared = FlotteService()
     private let baseURL = "http://localhost:9090/car"
 
-    func createCar(car: Car, completion: @escaping (Result<Car, Error>) -> Void) {
+    func createCar(car: CarRequest, completion: @escaping (Result<CarRequest, Error>) -> Void) {
         let url = URL(string: "\(baseURL)")!
         
         var request = URLRequest(url: url)
@@ -26,7 +26,7 @@ class FlotteService {
             URLSession.shared.dataTask(with: request) { data, response, error in
                 if let data = data {
                     do {
-                        let createdCar = try JSONDecoder().decode(Car.self, from: data)
+                        let createdCar = try JSONDecoder().decode(CarRequest.self, from: data)
                         completion(.success(createdCar))
                     } catch {
                         completion(.failure(error))
@@ -60,50 +60,92 @@ class FlotteService {
         }.resume()
     }
 
-    func updateCar(immatriculation: String, car: Car, completion: @escaping (Result<Car, Error>) -> Void) {
-        let url = URL(string: "\(baseURL)/\(immatriculation)")!
-        
+    
+    
+    
+
+    
+//    func updateCar(immatriculation: String, car: Car, completion: @escaping (Result<Car, Error>) -> Void) {
+//        let url = URL(string: "\(baseURL)/\(immatriculation)")!
+//        
+//        var request = URLRequest(url: url)
+//        request.httpMethod = "PUT"
+//        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+//        request.cachePolicy = .reloadIgnoringLocalCacheData // Ignore local cache
+//        
+//        do {
+//            let jsonData = try JSONEncoder().encode(car)
+//            request.httpBody = jsonData
+//            
+//            URLSession.shared.dataTask(with: request) { data, response, error in
+//                if let data = data {
+//                    do {
+//                        let updatedCar = try JSONDecoder().decode(Car.self, from: data)
+//                        completion(.success(updatedCar))
+//                    } catch {
+//                        completion(.failure(error))
+//                    }
+//                } else if let error = error {
+//                    completion(.failure(error))
+//                }
+//            }.resume()
+//        } catch {
+//            completion(.failure(error))
+//        }
+//    }
+//
+//    func deleteCar(immatriculation: String, completion: @escaping (Result<Void, Error>) -> Void) {
+//        let url = URL(string: "\(baseURL)/\(immatriculation)")!
+//        
+//        var request = URLRequest(url: url)
+//        request.httpMethod = "DELETE"
+//        request.cachePolicy = .reloadIgnoringLocalCacheData // Ignore local cache
+//        
+//        URLSession.shared.dataTask(with: request) { data, response, error in
+//            if let _ = data {
+//                completion(.success(()))
+//            } else if let error = error {
+//                completion(.failure(error))
+//            }
+//        }.resume()
+//    }
+    
+    
+    
+    
+    
+    
+    static func getCars() async throws -> [Car] {
+        let urlString = "http://localhost:9090/car/"
+
+        guard let url = URL(string: urlString) else {
+            throw NetworkError.invalidURL
+        }
+
         var request = URLRequest(url: url)
-        request.httpMethod = "PUT"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.cachePolicy = .reloadIgnoringLocalCacheData // Ignore local cache
-        
+        request.httpMethod = "GET"
+
         do {
-            let jsonData = try JSONEncoder().encode(car)
-            request.httpBody = jsonData
-            
-            URLSession.shared.dataTask(with: request) { data, response, error in
-                if let data = data {
-                    do {
-                        let updatedCar = try JSONDecoder().decode(Car.self, from: data)
-                        completion(.success(updatedCar))
-                    } catch {
-                        completion(.failure(error))
-                    }
-                } else if let error = error {
-                    completion(.failure(error))
-                }
-            }.resume()
+            let (data, response) = try await URLSession.shared.data(for: request)
+
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                throw NetworkError.invalidResponse
+            }
+
+            let decoder = JSONDecoder()
+            let cars = try decoder.decode([Car].self, from: data)
+            return cars
         } catch {
-            completion(.failure(error))
+            throw NetworkError.requestFailed(error)
         }
     }
-
-    func deleteCar(immatriculation: String, completion: @escaping (Result<Void, Error>) -> Void) {
-        let url = URL(string: "\(baseURL)/\(immatriculation)")!
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "DELETE"
-        request.cachePolicy = .reloadIgnoringLocalCacheData // Ignore local cache
-        
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let _ = data {
-                completion(.success(()))
-            } else if let error = error {
-                completion(.failure(error))
-            }
-        }.resume()
+    enum NetworkError: Error {
+        case invalidURL
+        case invalidResponse
+        case requestFailed(Error)
     }
+    
+
 }
 
 

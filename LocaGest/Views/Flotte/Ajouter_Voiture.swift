@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct Ajouter_Voiture: View {
+    @ObservedObject var carViewModel: CarViewModel
+    
     @State private var immatriculation = ""
     @State private var marque = ""
     @State private var modele = ""
@@ -61,7 +63,8 @@ struct Ajouter_Voiture: View {
                 .padding(.top, 50)
                 
                 Button(action: {
-                    // Ajoutez le code pour traiter l'ajout de la voiture ici
+                    //let newCar = CarRequest(id: UUID(), immatriculation: immatriculation, marque: marque, modele: modele, carburant: carburant, boite: boite)
+                    //carViewModel.createCar(newCar)
                 }) {
                     NavigationLink(destination: Detail_Voiture(
                 )) {
@@ -86,6 +89,6 @@ struct Ajouter_Voiture: View {
 
 struct Ajouter_Voiture_Previews: PreviewProvider {
     static var previews: some View {
-        Ajouter_Voiture()
+        Ajouter_Voiture(carViewModel: CarViewModel())
     }
 }

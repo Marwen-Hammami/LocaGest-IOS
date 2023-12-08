@@ -47,6 +47,7 @@
 		7F3285492B1609BD00ABE165 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3285482B1609BD00ABE165 /* Car.swift */; };
 		7F32854B2B160CAE00ABE165 /* DetailFlotte.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F32854A2B160CAE00ABE165 /* DetailFlotte.swift */; };
 		7F6439192B162917001416B3 /* Ajouter_Voiture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6439182B162917001416B3 /* Ajouter_Voiture.swift */; };
+		7F9A70D62B22813100A011D8 /* CarRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9A70D52B22813100A011D8 /* CarRequest.swift */; };
 		7FA0E9612B148AA900A46450 /* DashboardFlotte.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0E9602B148AA900A46450 /* DashboardFlotte.swift */; };
 		7FAD90BE2B1F2F3E000BF913 /* FlotteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAD90BD2B1F2F3E000BF913 /* FlotteService.swift */; };
 		7FAD90C02B1F32D8000BF913 /* CarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAD90BF2B1F32D8000BF913 /* CarViewModel.swift */; };
@@ -116,6 +117,7 @@
 		7F3285482B1609BD00ABE165 /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		7F32854A2B160CAE00ABE165 /* DetailFlotte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFlotte.swift; sourceTree = "<group>"; };
 		7F6439182B162917001416B3 /* Ajouter_Voiture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ajouter_Voiture.swift; sourceTree = "<group>"; };
+		7F9A70D52B22813100A011D8 /* CarRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarRequest.swift; sourceTree = "<group>"; };
 		7FA0E9602B148AA900A46450 /* DashboardFlotte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardFlotte.swift; sourceTree = "<group>"; };
 		7FAD90BD2B1F2F3E000BF913 /* FlotteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlotteService.swift; sourceTree = "<group>"; };
 		7FAD90BF2B1F32D8000BF913 /* CarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarViewModel.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 				4688E9A42B1910C300F83DD5 /* Distribution.swift */,
 				4688E9A62B1910EC00F83DD5 /* Tools.swift */,
 				4688E9A82B1911AA00F83DD5 /* Message.swift */,
+				7F9A70D52B22813100A011D8 /* CarRequest.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				4688E99F2B19106D00F83DD5 /* Tool.swift in Sources */,
 				09666FC52B17E7E10025248E /* AgenceView.swift in Sources */,
 				090D82C62B19DDDA000D1B47 /* addDist.swift in Sources */,
+				7F9A70D62B22813100A011D8 /* CarRequest.swift in Sources */,
 				7F3285492B1609BD00ABE165 /* Car.swift in Sources */,
 				33D31BCE2B13B079007E1B84 /* SignIn.swift in Sources */,
 				090D82C42B19DC9C000D1B47 /* AgenceService.swift in Sources */,

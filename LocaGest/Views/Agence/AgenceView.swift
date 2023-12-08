@@ -15,38 +15,37 @@ struct AgenceView: View {
             VStack {
                 HStack {
                     TextField("Search...", text: $searchText)
-                                .padding(7)
-                                .padding(.horizontal, 25)
-                               .background(Color(.systemGray6))
-                               .cornerRadius(8)
-                
-                            Button(action: {
-                                searchText = ""
-                            }) {
-                                Image(systemName: "xmark.circle.fill")
-                                    .foregroundColor(.gray)
-                                   .frame(minWidth: 0, maxWidth: .infinity, alignment: .trailing)
-                            }
-                            .buttonStyle(PlainButtonStyle())
-                        }
-                        .padding(3)
+                        .padding(7)
+                        .padding(.horizontal, 25)
                         .background(Color(.systemGray6))
-                        .cornerRadius(5)
+                        .cornerRadius(8)
+                    
+                    Button(action: {
+                        searchText = ""
+                    }) {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundColor(.gray)
+                            .frame(minWidth: 0, maxWidth: .infinity, alignment: .trailing)
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                }
+                .padding(3)
+                .background(Color(.systemGray6))
+                .cornerRadius(5)
                 
                 if let agences = agenceViewModel.agences {
-                    List(agences.filter { agency in
-                        searchText.isEmpty ? true : agency.agenceName.localizedCaseInsensitiveContains(searchText)
-                    }) { agency in
-                        NavigationLink(destination: DetailView(agency: agency)) {
-                            VStack(alignment: .leading) {
-                                Text(agency.agenceName)
-                                Text(agency.adresse)
-                                    .font(.subheadline)
-                                    .multilineTextAlignment(.leading)
-                                    .foregroundColor(.gray)
+                    List {
+                        ForEach(agences.filter { agency in
+                            searchText.isEmpty ? true : agency.agenceName.localizedCaseInsensitiveContains(searchText)
+                        }) { agency in
+                            NavigationLink(destination: DetailView(agency: agency)) {
+                                CardView(agency: agency)
+                                    .listRowBackground(Color(.systemGray6)) // Couleur de fond gris clair
+
                             }
                         }
-                    }
+                    } .listStyle(PlainListStyle()) // Utiliser un style de liste simple
+                        .background(Color.clear) 
                 } else {
                     // Show loading indicator or error message
                     ProgressView()
@@ -55,17 +54,22 @@ struct AgenceView: View {
                         }
                 }
                 
-
-
-
                 Button(action: { self.showForm.toggle() }) {
                     Text("Ajouter une agence")
                         .padding()
                         .background(Color.blue)
                         .foregroundColor(.white)
                         .cornerRadius(10)
+                    
                 }
             }
+            .padding()
+            .background(
+                            Image("back1") // Assurez-vous de remplacer "back1" par le nom de votre image dans le dossier "Assets"
+                                .resizable()
+                                .scaledToFill()
+            )
+
             .sheet(isPresented: $showForm) {
                 FormView()
             }
@@ -140,7 +144,7 @@ struct DetailView: View {
                         Image(systemName: "square.and.pencil.circle.fill")
                             .resizable()
                             .scaledToFill()
-                            .frame(width: 100, height: 100)
+                            .frame(width: 50, height: 50)
                             .foregroundColor(.blue)
                     }
    
@@ -154,7 +158,7 @@ struct DetailView: View {
                         Image(systemName: "trash.circle.fill")
                             .resizable()
                             .scaledToFill()
-                            .frame(width: 100, height: 100)
+                            .frame(width: 50, height: 50)
                             .foregroundColor(.red)
                     }
                     .alert(isPresented: $showAlert){
@@ -175,7 +179,11 @@ struct DetailView: View {
                 Spacer()
                         
                 }
-            }
+            } .background(
+                Image("back1") // Assurez-vous de remplacer "back1" par le nom de votre image dans le dossier "Assets"
+                    .resizable()
+                    .scaledToFill()
+)
         .navigationBarTitle(agency.agenceName, displayMode: .inline)
     }
 }
@@ -611,7 +619,7 @@ struct FormView: View {
                         Image(systemName: "trash.circle.fill")
                             .resizable()
                             .scaledToFill()
-                            .frame(width: 100, height: 100)
+                            .frame(width: 50, height: 50)
                             .foregroundColor(.red)
                     }
                     .alert(isPresented: $showAlert){

@@ -27,6 +27,7 @@
 		33ECD5ED2B1951660010A977 /* ResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33ECD5EC2B1951660010A977 /* ResetPassword.swift */; };
 		33ECD5EF2B1951AB0010A977 /* UpdatePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33ECD5EE2B1951AB0010A977 /* UpdatePassword.swift */; };
 		33ECD5F12B1951D70010A977 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33ECD5F02B1951D70010A977 /* SplashScreen.swift */; };
+		4336F29E2B22843000F51BC2 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4336F29D2B22843000F51BC2 /* CardView.swift */; };
 		4681CCA52B19283E00359338 /* RservationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4681CCA42B19283E00359338 /* RservationDetailView.swift */; };
 		4681CCA72B19285600359338 /* ReservationCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4681CCA62B19285600359338 /* ReservationCardView.swift */; };
 		4681CCA92B19286E00359338 /* AddReservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4681CCA82B19286E00359338 /* AddReservation.swift */; };
@@ -94,6 +95,7 @@
 		33ECD5EC2B1951660010A977 /* ResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassword.swift; sourceTree = "<group>"; };
 		33ECD5EE2B1951AB0010A977 /* UpdatePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePassword.swift; sourceTree = "<group>"; };
 		33ECD5F02B1951D70010A977 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		4336F29D2B22843000F51BC2 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		4681CCA42B19283E00359338 /* RservationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RservationDetailView.swift; sourceTree = "<group>"; };
 		4681CCA62B19285600359338 /* ReservationCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationCardView.swift; sourceTree = "<group>"; };
 		4681CCA82B19286E00359338 /* AddReservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReservation.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 			children = (
 				DC453BD32B122ECA00B2B9BA /* AgenceMainView.swift */,
 				09666FC42B17E7E10025248E /* AgenceView.swift */,
+				4336F29D2B22843000F51BC2 /* CardView.swift */,
 			);
 			path = Agence;
 			sourceTree = "<group>";
@@ -433,6 +436,7 @@
 				4688E9A52B1910C300F83DD5 /* Distribution.swift in Sources */,
 				4688E9AD2B19125E00F83DD5 /* CardMessage.swift in Sources */,
 				090D82C12B19DC76000D1B47 /* AgenceViewModel.swift in Sources */,
+				4336F29E2B22843000F51BC2 /* CardView.swift in Sources */,
 				7FB00C412B1756F900764794 /* Detail_Voiture.swift in Sources */,
 				33D31BD42B13B3A4007E1B84 /* User.swift in Sources */,
 				4688E99D2B19105000F83DD5 /* addTool.swift in Sources */,

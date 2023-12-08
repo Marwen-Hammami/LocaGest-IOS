@@ -93,7 +93,7 @@ class ReservationViewModel: ObservableObject {
     
     func deleteReservation(reservationID: String, completion: @escaping (Error?) -> Void) {
         // Définir l'URL de l'API pour supprimer une réservation en utilisant l'ID de la réservation
-        let apiUrlString = "http://172.20.10.9:9090/res/\(reservationID)"
+        let apiUrlString = "http://172.20.10.5:9090/res/\(reservationID)"
 
         // Créer l'URL
         guard let url = URL(string: apiUrlString) else {
@@ -133,6 +133,69 @@ class ReservationViewModel: ObservableObject {
             }
         }.resume()
     }
+    
+    
+    
+    func updateReservation(_ reservationId: String, updatedReservation: ReservationRequest) {
+        // Define the API endpoint URL
+        let apiUrlString = "http://172.20.10.5:9090/res/\(reservationId)"
+        
+        // Create the URL
+        guard let url = URL(string: apiUrlString) else {
+            //completion(false)
+            return
+        }
+        
+        // Create the request
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        // Create the request body
+        let requestBody: [String: Any] = [
+            "DateDebut": dateFormatter.string(from: updatedReservation.DateDebut),
+            "DateFin": dateFormatter.string(from: updatedReservation.DateFin),
+            "HeureDebut": updatedReservation.HeureDebut,
+            "HeureFin": updatedReservation.HeureFin,
+            "Statut": updatedReservation.Statut.rawValue,
+            "Total": 0.0
+        ]
+        
+        do {
+            // Convert the request body to JSON data
+            let jsonData = try JSONSerialization.data(withJSONObject: requestBody)
+            request.httpBody = jsonData
+        } catch {
+            //completion(false)
+            return
+        }
+        
+        // Perform the request
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            // Check for errors
+            if let error = error {
+                print("Error updating reservation: \(error)")
+               // completion(false)
+                return
+            }
+            
+            // Check for a successful HTTP response
+            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
+                // Reservation updated successfully
+              //  completion(true)
+            } else {
+                // Reservation update failed
+               // completion(false)
+            }
+        }.resume()
+    }
+
+
+  
+
+
 
     
     

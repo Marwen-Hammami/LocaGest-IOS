@@ -32,8 +32,8 @@ class ReservationModel: ObservableObject {
 struct Reservation: Identifiable {
     var id: String
     
-    let DateDebut: String//Date
-    let DateFin: String//Date
+    var DateDebut: String//Date
+    var DateFin: String//Date
     let HeureDebut: String//Int
     let HeureFin: String//Int
     let Statut: String//StatutRes

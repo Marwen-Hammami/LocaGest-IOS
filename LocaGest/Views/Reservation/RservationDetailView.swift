@@ -123,8 +123,10 @@ struct ReservationDetailView: View {
             )
         }
         .sheet(isPresented: $isShowingUpdatePage) {
-            //UpdateReservation(reservation: reservation, viewModel: reservationModel)
+            UpdateReservation (reservation: reservation)
         }
+
+
     }
 }
 

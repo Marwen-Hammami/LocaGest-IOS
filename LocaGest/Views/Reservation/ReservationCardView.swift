@@ -40,7 +40,7 @@ struct ReservationCardView: View {
                             // Button with the "info.circle" icon
                             NavigationLink(destination: ReservationDetailView(reservation: reservation)) {
                                 Image(systemName: "info.circle")
-                                    .foregroundColor(.blue)
+                                    .foregroundColor(.teal)
                             }/*}
                         VStack {*/
                          

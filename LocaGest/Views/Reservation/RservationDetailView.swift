@@ -49,31 +49,35 @@ struct ReservationDetailView: View {
                             .fontWeight(.medium)
                     }
 
-                    Button(action: {
-                        isShowingUpdatePage = true
-                    }) {
-                        Text("Update")
-                            .font(.system(size: 20))
-                            .foregroundColor(.white)
-                            .frame(maxWidth: .infinity)
-                            .frame(height: 50)
-                            .background(Color.orange)
-                            .cornerRadius(50)
-                            .padding(.leading, 0)
-                    }
+                    HStack {
+                        Spacer()
+                        
+                        Button(action: {
+                            isShowingUpdatePage = true
+                        }) {
+                            Image(systemName: "square.and.pencil") // Choisir le nom de l'icône que vous souhaitez
+                                .resizable()
+                                .scaledToFit()
+                                .foregroundColor(.blue) // Changer la couleur selon vos besoins
+                                .frame(width: 20, height: 20) // Ajuster la taille selon vos besoins
+                        }
 
-                    Button(action: {
-                        showDeleteConfirmation = true
-                    }) {
-                        Text("Delete")
-                            .font(.system(size: 20))
-                            .foregroundColor(.white)
-                            .frame(maxWidth: .infinity)
-                            .frame(height: 50)
-                            .background(Color.red)
-                            .cornerRadius(50)
-                            .padding(.leading, 0)
+                        Spacer()
+
+                        Button(action: {
+                            showDeleteConfirmation = true
+                        }) {
+                            Image(systemName: "trash") // Choisir le nom de l'icône que vous souhaitez
+                                .resizable()
+                                .scaledToFit()
+                                .foregroundColor(.red) // Changer la couleur selon vos besoins
+                                .frame(width: 20, height: 20) // Ajuster la taille selon vos besoins
+                        }
+
+                        Spacer()
                     }
+                    .padding(.leading, 0)
+
                     .alert(isPresented: $showDeleteConfirmation) {
                         Alert(
                             title: Text("Confirmation"),
@@ -98,11 +102,15 @@ struct ReservationDetailView: View {
                 }
                 .padding(16)
             }
-            .background(Color.white)
+            .background(
+                Image("back1").resizable()
+                    .scaledToFill()
+                    .edgesIgnoringSafeArea(.all))
             .cornerRadius(8)
             .shadow(radius: 4)
             .padding(8)
             .navigationBarTitle("Reservation Details", displayMode: .inline)
+            .font(.largeTitle)
             .background(
                 // Utilisez un NavigationLink pour effectuer la navigation programmatically
                 NavigationLink(

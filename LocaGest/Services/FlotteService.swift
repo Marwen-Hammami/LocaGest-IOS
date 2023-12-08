@@ -94,22 +94,29 @@ final class FlotteService {
 //        }
 //    }
 //
-//    func deleteCar(immatriculation: String, completion: @escaping (Result<Void, Error>) -> Void) {
-//        let url = URL(string: "\(baseURL)/\(immatriculation)")!
-//        
-//        var request = URLRequest(url: url)
-//        request.httpMethod = "DELETE"
-//        request.cachePolicy = .reloadIgnoringLocalCacheData // Ignore local cache
-//        
-//        URLSession.shared.dataTask(with: request) { data, response, error in
-//            if let _ = data {
-//                completion(.success(()))
-//            } else if let error = error {
-//                completion(.failure(error))
-//            }
-//        }.resume()
-//    }
     
+    func deleteCar(immatriculation: String, completion: @escaping (Result<Void, Error>) -> Void) {
+            guard let url = URL(string: baseURL + immatriculation) else {
+                completion(.failure(NetworkError.invalidURL))
+                return
+            }
+
+            var request = URLRequest(url: url)
+            request.httpMethod = "DELETE"
+
+            URLSession.shared.dataTask(with: request) { data, response, error in
+                guard error == nil else {
+                    completion(.failure(error!))
+                    return
+                }
+
+                if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
+                    completion(.success(()))
+                } else {
+                    completion(.failure(NetworkError.invalidResponse))
+                }
+            }.resume()
+        }
     
     
     

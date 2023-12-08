@@ -31,6 +31,14 @@ class CarViewModel: ObservableObject {
                self.errorMessage = "Failed to fetch cars: \(error.localizedDescription)"
            }
        }
+    
+//    func deleteCar(immatriculation: String, completion: @escaping (Result<Void, Error>) -> Void) {
+//           FlotteService.deleteCar(immatriculation: immatriculation) { result in
+//               DispatchQueue.main.async {
+//                   completion(result)
+//               }
+//           }
+//       }
 
 
 //    func addCar(car: Car) {

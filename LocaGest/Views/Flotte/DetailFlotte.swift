@@ -75,11 +75,11 @@ struct CarCardView: View {
                 .font(.subheadline)
 
             // Conditionally render immatriculation if it is not nil
-            if let immatriculation = car.immatriculation {
-                Text("Immatriculation: \(immatriculation)")
+            
+            Text("Immatriculation: \(car.immatriculation)")
                     .fontWeight(.bold)
                     .font(.subheadline)
-            }
+            
         }
         .padding()
         .background(
@@ -95,7 +95,7 @@ struct CarCardView: View {
         HStack {
             Spacer()
 
-            NavigationLink(destination: Detail_Voiture()) {
+            NavigationLink(destination: Detail_Voiture(car: car)) {
                 Text("Détails")
                     .padding()
                     .background(Color.green)

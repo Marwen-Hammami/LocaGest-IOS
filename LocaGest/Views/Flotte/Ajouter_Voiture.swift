@@ -66,17 +66,17 @@ struct Ajouter_Voiture: View {
                     //let newCar = CarRequest(id: UUID(), immatriculation: immatriculation, marque: marque, modele: modele, carburant: carburant, boite: boite)
                     //carViewModel.createCar(newCar)
                 }) {
-                    NavigationLink(destination: Detail_Voiture(
-                )) {
-                        Text("Ajouter")
-                            .foregroundColor(.white)
-                            .font(.headline)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color("Accent"))
-                            .cornerRadius(10)
-                            .padding(.horizontal, 30)
-                    }
+//                    NavigationLink(destination: Detail_Voiture(car: <#T##Car#>
+//                )) {
+//                        Text("Ajouter")
+//                            .foregroundColor(.white)
+//                            .font(.headline)
+//                            .padding()
+//                            .frame(maxWidth: .infinity)
+//                            .background(Color("Accent"))
+//                            .cornerRadius(10)
+//                            .padding(.horizontal, 30)
+//                    }
                 }
                 .padding(.top, 30)
 

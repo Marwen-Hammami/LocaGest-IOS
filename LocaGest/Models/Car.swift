@@ -2,7 +2,7 @@ import Foundation
 
 struct Car: Decodable, Identifiable {
     let id: String
-    var immatriculation: String?
+    var immatriculation: String
     var marque: String
     var modele: String
     var image: String

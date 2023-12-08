@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct Detail_Voiture: View {
+    let car : Car
     var body: some View {
         ZStack {
             LinearGradient(
@@ -14,7 +15,7 @@ struct Detail_Voiture: View {
                 HStack {
                     Spacer()
 
-                    Text("Détail voiture")
+                    Text("Détail voiture  ")
                         .font(.title)
                         .fontWeight(.bold)
                         .foregroundColor(.white)
@@ -23,7 +24,7 @@ struct Detail_Voiture: View {
                 }
 
                 HStack {
-                    Text("Immatriculation: ")
+                    Text("Immatriculation : \(car.immatriculation)")
                         .padding()
                         .background(Color.green)
                         .cornerRadius(10)
@@ -34,7 +35,7 @@ struct Detail_Voiture: View {
                 }
 
                 HStack {
-                    Text("Marque: ")
+                    Text("Marque :\(car.marque) ")
                         .padding()
                         .background(Color.green)
                         .cornerRadius(10)
@@ -45,7 +46,7 @@ struct Detail_Voiture: View {
                 }
 
                 HStack {
-                    Text("Modèle: ")
+                    Text("Modèle :\(car.marque) ")
                         .padding()
                         .background(Color.green)
                         .cornerRadius(10)
@@ -55,28 +56,28 @@ struct Detail_Voiture: View {
                     Spacer()
                 }
 
-                HStack {
-                    Text("Carburant: ")
-                        .padding()
-                        .background(Color.green)
-                        .cornerRadius(10)
-                        .padding(.horizontal)
-                        .padding(.leading, 20)
-                    
-                    Spacer()
-                }
+//                HStack {
+//                    Text("Carburant :\(car.c) ")
+//                        .padding()
+//                        .background(Color.green)
+//                        .cornerRadius(10)
+//                        .padding(.horizontal)
+//                        .padding(.leading, 20)
+//                    
+//                    Spacer()
+//                }
 
-                HStack {
-                    Text("Boite: ")
-                        .padding()
-                        .background(Color.green)
-                        .cornerRadius(10)
-                        .padding(.horizontal)
-                        .padding(.leading, 20)
-                        .padding(.bottom, 60)
-                    
-                    Spacer()
-                }
+//                HStack {
+//                    Text("Boite : ")
+//                        .padding()
+//                        .background(Color.green)
+//                        .cornerRadius(10)
+//                        .padding(.horizontal)
+//                        .padding(.leading, 20)
+//                        .padding(.bottom, 60)
+//                    
+//                    Spacer()
+//                }
                 
                 // Emplacement pour une image
                 Image(systemName: "car.fill")
@@ -113,12 +114,27 @@ struct Detail_Voiture: View {
                 .padding(.bottom, 20)
             }
             .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
+        }.onAppear(){
+            print(car)
         }
     }
 }
 
 struct Detail_Voiture_Previews: PreviewProvider {
     static var previews: some View {
-        Detail_Voiture()
+        
+        let sampleCar = Car(
+                    id: "sampleID",
+                    immatriculation: "ABC123",
+                    marque: "Toyota",
+                    modele: "Camry",
+                    image: "sampleImageURL",
+                    cylindree: "sampleCylindree",
+                    etatVoiture: "sampleEtatVoiture",
+                    type: "sampleType",
+                    prixParJour: 50
+                )
+
+        Detail_Voiture(car: sampleCar)
     }
 }

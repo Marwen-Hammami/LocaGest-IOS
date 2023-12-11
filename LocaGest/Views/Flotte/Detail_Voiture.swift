@@ -26,72 +26,89 @@ struct Detail_Voiture: View {
                     Spacer()
                 }
 
+                // Emplacement pour une image
+                AsyncImage(url: URL(string: "http://localhost:9090/images/car/\(car.image)")) { phase in
+                    switch phase {
+                    case .empty:
+                        ProgressView()
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .scaledToFill()
+                            .frame(maxWidth: .infinity, maxHeight: .infinity) // Cover the entire container
+                            .clipped() // Clip the image to fit the frame
+                    case .failure:
+                        Image(systemName: "car.fill")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(maxWidth: .infinity, maxHeight: .infinity) // Cover the entire container
+                            .clipped() // Clip the image to fit the frame
+                    @unknown default:
+                        EmptyView()
+                    }
+                }
+                .padding()
+                .cornerRadius(10)
+
+                Spacer()
+
                 HStack {
                     Text("Immatriculation : \(car.immatriculation)")
                         .padding()
-                        .background(Color.green)
+                        
                         .cornerRadius(10)
                         .padding(.horizontal)
                         .padding(.leading, 20)
-                    
+
                     Spacer()
                 }
 
                 HStack {
                     Text("Marque :\(car.marque) ")
                         .padding()
-                        .background(Color.green)
+                        
                         .cornerRadius(10)
                         .padding(.horizontal)
                         .padding(.leading, 20)
-                    
+
                     Spacer()
                 }
 
                 HStack {
-                    Text("Modèle :\(car.marque) ")
+                    Text("Modèle :\(car.modele) ")
                         .padding()
-                        .background(Color.green)
+                        
                         .cornerRadius(10)
                         .padding(.horizontal)
                         .padding(.leading, 20)
-                    
+
                     Spacer()
                 }
 
-//                HStack {
-//                    Text("Carburant :\(car.c) ")
-//                        .padding()
-//                        .background(Color.green)
-//                        .cornerRadius(10)
-//                        .padding(.horizontal)
-//                        .padding(.leading, 20)
-//                    
-//                    Spacer()
-//                }
+                HStack {
+                    Text("Carburant :\(car.etatVoiture) ")
+                        .padding()
+                        
+                        .cornerRadius(10)
+                        .padding(.horizontal)
+                        .padding(.leading, 20)
 
-//                HStack {
-//                    Text("Boite : ")
-//                        .padding()
-//                        .background(Color.green)
-//                        .cornerRadius(10)
-//                        .padding(.horizontal)
-//                        .padding(.leading, 20)
-//                        .padding(.bottom, 60)
-//                    
-//                    Spacer()
-//                }
-                
-                // Emplacement pour une image
-                Image(systemName: "car.fill")
-                    .resizable()
-                    .frame(width: 50, height: 50)
-                    .padding()
-                    .background(Color.green)
-                    .cornerRadius(10)
+                    Spacer()
+                }
 
-                Spacer()
+                HStack {
+                    Text("Boite :\(car.cylindree)")
+                        .padding()
+                        
+                        .cornerRadius(10)
+                        .padding(.horizontal)
+                        .padding(.leading, 20)
+                        .padding(.bottom, 60)
 
+                    Spacer()
+                }
+
+            
                 HStack {
                     Button("Modifier") {
                         // Action lorsque le bouton "Modifier" est appuyé

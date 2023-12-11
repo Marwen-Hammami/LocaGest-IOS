@@ -14,10 +14,7 @@ struct DetailFlotte: View {
                 .edgesIgnoringSafeArea(.all)
 
                 VStack {
-                    Text("LocaGest")
-                        .font(.largeTitle)
-                        .foregroundColor(.white)
-                        .padding(.top, 20)
+                    
 
                     if carViewModel.isLoading {
                         ProgressView("Chargement...")
@@ -68,41 +65,58 @@ struct CarCardView: View {
     @ObservedObject var carViewModel: CarViewModel
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("Marque: \(car.marque)")
-                .font(.headline)
-            Text("Modèle: \(car.modele)")
-                .font(.subheadline)
+        NavigationLink(destination: Detail_Voiture(car: car)) {
+            ZStack {
+                Rectangle()
+                    .foregroundColor(Color.black.opacity(0.3))
+                    .cornerRadius(20)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Marque: \(car.marque)")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                    Text("Modèle: \(car.modele)")
+                        .font(.subheadline)
+                        .foregroundColor(.white)
 
-            // Conditionally render immatriculation if it is not nil
-            
-            Text("Immatriculation: \(car.immatriculation)")
-                    .fontWeight(.bold)
-                    .font(.subheadline)
-            
-        }
-        .padding()
-        .background(
-            LinearGradient(
-                gradient: Gradient(colors: [Color("Main"), Color.white]),
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-        )
-        .cornerRadius(10)
-        .foregroundColor(.black)
-
-        HStack {
-            Spacer()
-
-            NavigationLink(destination: Detail_Voiture(car: car)) {
-                Text("Détails")
-                    .padding()
-                    .background(Color.green)
-                    .foregroundColor(.white)
-                    .cornerRadius(8)
-                    .padding(.bottom, 10)
+                    // Conditionally render immatriculation if it is not nil
+                    Text("Immatriculation: \(car.immatriculation ?? "")")
+                        .fontWeight(.bold)
+                        .font(.subheadline)
+                        .foregroundColor(.white)
+                }
+                .padding()
             }
+            .background(
+               /* ("Dacia_Logan")
+                    .resizable()
+                    .scaledToFill()*/
+                
+         
+                
+                AsyncImage(url: URL(string: "http://localhost:9090/images/car/\(car.image)")) { phase in
+                                     switch phase {
+                                     case .empty:
+                                         ProgressView()
+                                     case .success(let image):
+                                         image
+                                             .resizable()
+                                             .scaledToFill()
+                                     case .failure:
+                                         Image(systemName: "photo")
+                                             .resizable()
+                                             .scaledToFill()
+                                     @unknown default:
+                                         EmptyView()
+                                     }
+                                 }
+                
+                
+            )
+            .cornerRadius(20)
+            .frame(width: 340, height: 180) // Ajustez ces valeurs selon vos besoins
         }
+        .buttonStyle(PlainButtonStyle())
     }
 }

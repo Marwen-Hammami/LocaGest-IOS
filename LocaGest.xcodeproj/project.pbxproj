@@ -16,6 +16,7 @@
 		090D82CE2B19DE30000D1B47 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090D82CD2B19DE30000D1B47 /* Link.swift */; };
 		09666FC52B17E7E10025248E /* AgenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09666FC42B17E7E10025248E /* AgenceView.swift */; };
 		09D7DF732B17E287003080D5 /* Agence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D7DF722B17E287003080D5 /* Agence.swift */; };
+		2199B0B013CDA3D65EAC64CD /* Pods_LocaGest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06C155FADBF483D7B159D780 /* Pods_LocaGest.framework */; };
 		300A22972B2233F70062B463 /* ReservationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300A22962B2233F70062B463 /* ReservationRequest.swift */; };
 		30F918AE2B13999D004EAF46 /* ReservationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F918AD2B13999D004EAF46 /* ReservationModel.swift */; };
 		30F918B02B139E1F004EAF46 /* ReservationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F918AF2B139E1F004EAF46 /* ReservationListView.swift */; };
@@ -76,6 +77,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		06C155FADBF483D7B159D780 /* Pods_LocaGest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LocaGest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		090D82C02B19DC76000D1B47 /* AgenceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgenceViewModel.swift; sourceTree = "<group>"; };
 		090D82C32B19DC9C000D1B47 /* AgenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgenceService.swift; sourceTree = "<group>"; };
 		090D82C52B19DDDA000D1B47 /* addDist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addDist.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 		33ECD5EC2B1951660010A977 /* ResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassword.swift; sourceTree = "<group>"; };
 		33ECD5EE2B1951AB0010A977 /* UpdatePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePassword.swift; sourceTree = "<group>"; };
 		33ECD5F02B1951D70010A977 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		462F8EEB038B0186CF2B4C97 /* Pods-LocaGest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocaGest.release.xcconfig"; path = "Target Support Files/Pods-LocaGest/Pods-LocaGest.release.xcconfig"; sourceTree = "<group>"; };
 		4681CCA42B19283E00359338 /* RservationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RservationDetailView.swift; sourceTree = "<group>"; };
 		4681CCA62B19285600359338 /* ReservationCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationCardView.swift; sourceTree = "<group>"; };
 		4681CCA82B19286E00359338 /* AddReservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReservation.swift; sourceTree = "<group>"; };
@@ -126,6 +129,7 @@
 		81312F6D2B164614001D38C9 /* Ajouter_Entretien.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ajouter_Entretien.swift; sourceTree = "<group>"; };
 		81312F6F2B1647AA001D38C9 /* Modifier_Entretien.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifier_Entretien.swift; sourceTree = "<group>"; };
 		81C7C3A12B1641F1000D3C90 /* Modifier_Voiture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifier_Voiture.swift; sourceTree = "<group>"; };
+		9E9F7509D519648AE4CB8C24 /* Pods-LocaGest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocaGest.debug.xcconfig"; path = "Target Support Files/Pods-LocaGest/Pods-LocaGest.debug.xcconfig"; sourceTree = "<group>"; };
 		DC453BCF2B122E0100B2B9BA /* UserMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMainView.swift; sourceTree = "<group>"; };
 		DC453BD12B122E5800B2B9BA /* FlotteMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlotteMainView.swift; sourceTree = "<group>"; };
 		DC453BD32B122ECA00B2B9BA /* AgenceMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgenceMainView.swift; sourceTree = "<group>"; };
@@ -150,6 +154,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2199B0B013CDA3D65EAC64CD /* Pods_LocaGest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,6 +259,24 @@
 			path = SideBar;
 			sourceTree = "<group>";
 		};
+		4B6D9FE738984D264EBB8544 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				06C155FADBF483D7B159D780 /* Pods_LocaGest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AE58DFE85A2FEB62F9C957CF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9E9F7509D519648AE4CB8C24 /* Pods-LocaGest.debug.xcconfig */,
+				462F8EEB038B0186CF2B4C97 /* Pods-LocaGest.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		DC4AC4512B1397ED00AFDA6F /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -305,6 +328,8 @@
 			children = (
 				DC51CA322AF8324D00DC8C9A /* LocaGest */,
 				DC51CA312AF8324D00DC8C9A /* Products */,
+				AE58DFE85A2FEB62F9C957CF /* Pods */,
+				4B6D9FE738984D264EBB8544 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -348,9 +373,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DC51CA432AF8325100DC8C9A /* Build configuration list for PBXNativeTarget "LocaGest" */;
 			buildPhases = (
+				F669035732420FAB17BB03BC /* [CP] Check Pods Manifest.lock */,
 				DC51CA2C2AF8324D00DC8C9A /* Sources */,
 				DC51CA2D2AF8324D00DC8C9A /* Frameworks */,
 				DC51CA2E2AF8324D00DC8C9A /* Resources */,
+				46F166ADE6975A473E98CA7D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -405,6 +432,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		46F166ADE6975A473E98CA7D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LocaGest/Pods-LocaGest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LocaGest/Pods-LocaGest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LocaGest/Pods-LocaGest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F669035732420FAB17BB03BC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LocaGest-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DC51CA2C2AF8324D00DC8C9A /* Sources */ = {
@@ -597,6 +666,7 @@
 		};
 		DC51CA442AF8325100DC8C9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E9F7509D519648AE4CB8C24 /* Pods-LocaGest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -626,6 +696,7 @@
 		};
 		DC51CA452AF8325100DC8C9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 462F8EEB038B0186CF2B4C97 /* Pods-LocaGest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

@@ -4,7 +4,7 @@ class ReservationViewModel: ObservableObject {
     @Published var reservations: [Reservation]?
 
     func fetchReservations() {
-        guard let url = URL(string: "http://172.20.10.5:9090/res") else {
+        guard let url = URL(string: "http://172.20.10.4:9090/res") else {
             return
         }
 
@@ -36,7 +36,7 @@ class ReservationViewModel: ObservableObject {
     
     func addReservation(_ reservation: ReservationRequest) {
         // Define the API endpoint URL
-        let apiUrlString = "http://172.20.10.5:9090/res/"
+        let apiUrlString = "http://172.20.10.4:9090/res/"
         
         // Create the URL
         guard let url = URL(string: apiUrlString) else {
@@ -93,7 +93,7 @@ class ReservationViewModel: ObservableObject {
     
     func deleteReservation(reservationID: String, completion: @escaping (Error?) -> Void) {
         // Définir l'URL de l'API pour supprimer une réservation en utilisant l'ID de la réservation
-        let apiUrlString = "http://172.20.10.5:9090/res/\(reservationID)"
+        let apiUrlString = "http://172.20.10.4:9090/res/\(reservationID)"
 
         // Créer l'URL
         guard let url = URL(string: apiUrlString) else {
@@ -138,7 +138,7 @@ class ReservationViewModel: ObservableObject {
     
     func updateReservation(_ reservationId: String, updatedReservation: ReservationRequest) {
         // Define the API endpoint URL
-        let apiUrlString = "http://172.20.10.5:9090/res/\(reservationId)"
+        let apiUrlString = "http://172.20.10.4:9090/res/\(reservationId)"
         
         // Create the URL
         guard let url = URL(string: apiUrlString) else {

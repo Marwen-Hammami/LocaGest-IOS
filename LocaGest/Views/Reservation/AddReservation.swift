@@ -14,21 +14,6 @@ struct AddReservation: View {
         return 0.0
     }
     
-    //    func saveReservation() {
-    //        let newReservation = Reservation(
-    //            _id: "",
-    //            DateDebut: dateDebut,
-    //            DateFin: dateFin,
-    //            HeureDebut: "\(heureDebut)",
-    //            HeureFin: "\(heureFin)",
-    //            Statut: statut.rawValue,
-    //            Total: reservationTotal
-    //        )
-    //
-    //        viewModel.addReservation(newReservation)
-    //        presentationMode.wrappedValue.dismiss()
-    //    }
-    
     var body: some View {
         VStack {
             Text("Ajouter une réservation")
@@ -72,15 +57,23 @@ struct AddReservation: View {
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
                         .frame(height: 50)
-                        .background(Color("Accent"))
+                        .background(Color.teal)
                         .cornerRadius(50)
                         .padding(.leading, 0)
                 }
             }
+//            .listStyle(PlainListStyle())
+//            .background(Color.clear)
+//            // Transparent background for the list itself
         }
+        .background(
+            Image("back1") // Assuming "back1" is the name of your image asset
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
+                .frame(maxWidth: .infinity, maxHeight: .infinity) 
+        )
     }
-    
-    
     
     func saveReservation() {
         let newReservation = ReservationRequest(
@@ -99,15 +92,7 @@ struct AddReservation: View {
         // Fermez la vue
         presentationMode.wrappedValue.dismiss()
     }
-
-    
-    
-      }
-    
-        
-    
-    
-
+}
 
 struct AddReservation_Previews: PreviewProvider {
     static var previews: some View {

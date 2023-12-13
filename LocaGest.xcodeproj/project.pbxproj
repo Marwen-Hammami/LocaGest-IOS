@@ -261,12 +261,12 @@
 			isa = PBXGroup;
 			children = (
 				09D7DF722B17E287003080D5 /* Agence.swift */,
+				4688E9A42B1910C300F83DD5 /* Distribution.swift */,
 				30F918AD2B13999D004EAF46 /* ReservationModel.swift */,
 				DC4AC4522B1398E700AFDA6F /* Conversation.swift */,
 				33D31BD32B13B3A4007E1B84 /* User.swift */,
 				7F3285482B1609BD00ABE165 /* Car.swift */,
 				7FB00C482B1776EE00764794 /* HistoriqueEntretiens.swift */,
-				4688E9A42B1910C300F83DD5 /* Distribution.swift */,
 				4688E9A62B1910EC00F83DD5 /* Tools.swift */,
 				4688E9A82B1911AA00F83DD5 /* Message.swift */,
 				7F9A70D52B22813100A011D8 /* CarRequest.swift */,

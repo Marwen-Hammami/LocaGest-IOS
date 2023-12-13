@@ -52,6 +52,10 @@
 		4688E9AF2B1912BC00F83DD5 /* ConversationMessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E9AE2B1912BC00F83DD5 /* ConversationMessagesView.swift */; };
 		4688E9B12B1912D600F83DD5 /* NewMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E9B02B1912D600F83DD5 /* NewMessageView.swift */; };
 		4688E9B32B1912FC00F83DD5 /* SelectedImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E9B22B1912FC00F83DD5 /* SelectedImageViewModel.swift */; };
+		58F259ED2B29CDE10073F005 /* FacebookAEM in Frameworks */ = {isa = PBXBuildFile; productRef = 58F259EC2B29CDE10073F005 /* FacebookAEM */; };
+		58F259EF2B29CDE10073F005 /* FacebookBasics in Frameworks */ = {isa = PBXBuildFile; productRef = 58F259EE2B29CDE10073F005 /* FacebookBasics */; };
+		58F259F12B29CDE10073F005 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 58F259F02B29CDE10073F005 /* FacebookCore */; };
+		58F259F52B29CDE10073F005 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 58F259F42B29CDE10073F005 /* FacebookLogin */; };
 		7F3285492B1609BD00ABE165 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3285482B1609BD00ABE165 /* Car.swift */; };
 		7F32854B2B160CAE00ABE165 /* DetailFlotte.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F32854A2B160CAE00ABE165 /* DetailFlotte.swift */; };
 		7F6439192B162917001416B3 /* Ajouter_Voiture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6439182B162917001416B3 /* Ajouter_Voiture.swift */; };
@@ -128,6 +132,7 @@
 		4688E9AE2B1912BC00F83DD5 /* ConversationMessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationMessagesView.swift; sourceTree = "<group>"; };
 		4688E9B02B1912D600F83DD5 /* NewMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageView.swift; sourceTree = "<group>"; };
 		4688E9B22B1912FC00F83DD5 /* SelectedImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedImageViewModel.swift; sourceTree = "<group>"; };
+		58F259F62B29CEB90073F005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7F3285482B1609BD00ABE165 /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		7F32854A2B160CAE00ABE165 /* DetailFlotte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFlotte.swift; sourceTree = "<group>"; };
 		7F6439182B162917001416B3 /* Ajouter_Voiture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ajouter_Voiture.swift; sourceTree = "<group>"; };
@@ -163,6 +168,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58F259F52B29CDE10073F005 /* FacebookLogin in Frameworks */,
+				58F259ED2B29CDE10073F005 /* FacebookAEM in Frameworks */,
+				58F259F12B29CDE10073F005 /* FacebookCore in Frameworks */,
+				58F259EF2B29CDE10073F005 /* FacebookBasics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +347,7 @@
 		DC51CA322AF8324D00DC8C9A /* LocaGest */ = {
 			isa = PBXGroup;
 			children = (
+				58F259F62B29CEB90073F005 /* Info.plist */,
 				03E67BE32B22430D007DDBC4 /* LocaGest.entitlements */,
 				090D82C22B19DC83000D1B47 /* Services */,
 				090D82BF2B19DC5B000D1B47 /* ViewModels */,
@@ -378,6 +388,10 @@
 			);
 			name = LocaGest;
 			packageProductDependencies = (
+				58F259EC2B29CDE10073F005 /* FacebookAEM */,
+				58F259EE2B29CDE10073F005 /* FacebookBasics */,
+				58F259F02B29CDE10073F005 /* FacebookCore */,
+				58F259F42B29CDE10073F005 /* FacebookLogin */,
 			);
 			productName = LocaGest;
 			productReference = DC51CA302AF8324D00DC8C9A /* LocaGest.app */;
@@ -637,6 +651,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"LocaGest/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LocaGest/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -667,6 +682,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"LocaGest/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LocaGest/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -719,6 +735,29 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		58F259EC2B29CDE10073F005 /* FacebookAEM */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 03E67BE02B222809007DDBC4 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookAEM;
+		};
+		58F259EE2B29CDE10073F005 /* FacebookBasics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 03E67BE02B222809007DDBC4 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookBasics;
+		};
+		58F259F02B29CDE10073F005 /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 03E67BE02B222809007DDBC4 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
+		};
+		58F259F42B29CDE10073F005 /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 03E67BE02B222809007DDBC4 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		DC51CA3E2AF8325100DC8C9A /* LocaGest.xcdatamodeld */ = {

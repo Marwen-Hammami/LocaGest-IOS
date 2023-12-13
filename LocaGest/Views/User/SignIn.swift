@@ -1,4 +1,5 @@
 import SwiftUI
+import FBSDKLoginKit
 
 
 struct LoginView: View {
@@ -12,10 +13,14 @@ struct LoginView: View {
     @State private var isShowingImagePicker = false
     @State private var isForgotPasswordViewPresented = false
     @State private var rememberMe = false // Add a state variable to track "Remember Me" checkbox
-
+    @State private var captchaInput = ""
+    @State private var captchaCode: String?
     @State private var shouldNavigateToFlotte = false
+    @State private var showAlert = false
+    @State private var alertMessage = ""
     
     var body: some View {
+        
         NavigationView {
             VStack {
                 // Add image
@@ -62,10 +67,28 @@ struct LoginView: View {
                                     .stroke(Color.gray, lineWidth: 1)
                             )
                             .padding(.horizontal, 30)
+                        
+                        
+                       
+                                           
+                        
+                       
                        
                                        
                                        // Additional code for handling image upload, if required
-                                       
+                        if let captchaCode = captchaCode {
+                                                   Text("Captcha: \(captchaCode)")
+                                                       .font(.system(size: 16))
+                                               }
+                                               
+                                               TextField("Enter Captcha", text: $captchaInput)
+                                                   .font(.system(size: 16))
+                                                   .padding()
+                                                   .background(
+                                                       RoundedRectangle(cornerRadius: 10)
+                                                           .stroke(Color.gray, lineWidth: 1)
+                                                   )
+                                                   .padding(.horizontal, 30)
                                    
                     }
                     
@@ -87,6 +110,7 @@ struct LoginView: View {
                         )
                         .padding(.horizontal, 30)
                 }
+                
                 Toggle(isOn: $rememberMe) {
                     Text("Remember Me")
                         .foregroundColor(.blue)
@@ -122,31 +146,44 @@ struct LoginView: View {
                             }
                         }
                     } else {
-                        // Perform sign-up action with user details
-                        let newUser = User(username : username , email : email ,password: password, phoneNumber: phoneNumber) // Replace with the actual user details
-                        UserService.shared.signUp(user: newUser) { result in
-                            switch result {
-                            case .success:
-                                // Signup successful
-                                shouldNavigateToFlotte = true // Set the flag to navigate to FlotteMainView
-                            case .failure(let error):
-                                // Signup failed
-                                // Show an error message or perform appropriate action
-                                print("Signup failed: \(error.localizedDescription)")
+                        
+                        if captchaInput == captchaCode {
+                            // Captcha verification successful
+                            // Perform sign-up action with user details
+                            let newUser = User(username: username, email: email, password: password, phoneNumber: phoneNumber)
+                            UserService.shared.signUp(user: newUser) { result in
+                                switch result {
+                                case .success:
+                                    // Signup successful
+                                    shouldNavigateToFlotte = true
+                                case .failure(let error):
+                                    // Signup failed
+                                    // Show an error message or perform appropriate action
+                                    alertMessage = error.localizedDescription
+                                    showAlert = true
+                                }
                             }
+                        } else {
+                            // Captcha verification failed
+                            // Show an error message or perform appropriate action
+                            alertMessage = "Captcha verification failed"
+                            showAlert = true
                         }
                     }
                     
                 }) {
                     Text(isLogin ? "Login" : "Sign Up")
-                        .foregroundColor(.white)
-                        .font(.headline)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color("Accent"))
-                        .cornerRadius(10)
-                        .padding(.horizontal, 30)
-                }
+                            .foregroundColor(.white)
+                            .font(.headline)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color("Accent"))
+                            .cornerRadius(10)
+                            .padding(.horizontal, 30)
+                    }
+                    .alert(isPresented: $showAlert) {
+                        Alert(title: Text("Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+                    }
                 
                 
                 
@@ -174,25 +211,29 @@ struct LoginView: View {
                 // Add social media buttons
                 HStack(spacing: 20) {
                     Button(action: {
-                               /*// Handle Facebook login action
-                               let loginManager = LoginManager()
-                               loginManager.logIn(permissions: [.publicProfile, .email]) { result in
-                                   switch result {
-                                   case .success(let grantedPermissions, let declinedPermissions, let accessToken):
-                                       // Successfully logged in with Facebook
-                                       // You can access the user's Facebook data using the grantedPermissions and accessToken
-                                       
-                                       // Call your authentication or user registration method using the obtained access token
-                                       
-                                   case .cancelled:
-                                       // User cancelled the Facebook login
-                                       print("Facebook login cancelled")
-                                       
-                                   case .failed(let error):
-                                       // Facebook login failed
-                                       print("Facebook login failed: \(error.localizedDescription)")
-                                   }
-                               }*/
+                               // Handle Facebook login action
+                        LoginManager().logIn(permissions: ["public_profile", "email"], from: nil) { result, error in
+                                                   if let error = error {
+                                                       print("Facebook login failed: \(error.localizedDescription)")
+                                                       return
+                                                   }
+                                                   
+                                                   if let result = result {
+                                                       if !result.isCancelled {
+                                                           // Facebook login successful
+                                                           // Access the user's Facebook data and perform the necessary actions
+                                                           let accessToken = AccessToken.current
+                                                           let userID = accessToken?.userID
+                                                           print("Facebook login successful. User ID: \(userID ?? "")")
+                                                           
+                                                           // Navigate to the FlotteMainView
+                                                           shouldNavigateToFlotte = true
+                                                       } else {
+                                                           print("Facebook login cancelled")
+                                                       }
+                                                   }
+                                               }
+                               
                     }) {
                         Image("img_symbol")
                             .resizable()
@@ -248,8 +289,14 @@ struct LoginView: View {
         }
         
         .navigationBarBackButtonHidden()
+        .onAppear {
+            // Generate a random captcha code on login view appear
+            captchaCode = generateRandomCaptcha()
+        }
     }
+        
     init() {
+        
         // Check if email and password are stored in UserDefaults
         if let rememberedEmail = UserDefaults.standard.string(forKey: "RememberedEmail"),
            let rememberedPassword = UserDefaults.standard.string(forKey: "RememberedPassword") {
@@ -257,6 +304,15 @@ struct LoginView: View {
             password = rememberedPassword
             rememberMe = true
         }
+    }	
+    func generateRandomCaptcha() -> String {
+        let chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        var captcha = ""
+        for _ in 0..<6 {
+            let randomIndex = chars.index(chars.startIndex, offsetBy: Int.random(in: 0..<chars.count))
+            captcha.append(chars[randomIndex])
+        }
+        return captcha
     }
     
 }

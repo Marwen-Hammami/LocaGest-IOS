@@ -1,8 +1,17 @@
 import SwiftUI
+import FBSDKCoreKit
 
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+        return true
+    }
+}
 
 @main
 struct LocaGestApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @StateObject var viewModel: ViewModel = ViewModel()
     @ObservedObject var router = Router()
     @State private var showSplash = true // Added state variable for controlling splash screen visibility

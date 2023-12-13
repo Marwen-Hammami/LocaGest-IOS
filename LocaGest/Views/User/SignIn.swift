@@ -18,6 +18,9 @@ struct LoginView: View {
     @State private var shouldNavigateToFlotte = false
     @State private var showAlert = false
     @State private var alertMessage = ""
+    @State private var showFaceView = false
+
+
     
     var body: some View {
         
@@ -207,6 +210,28 @@ struct LoginView: View {
                         .font(.subheadline)
                 }
                 .padding(.top, 10)
+                
+                Button(action: {
+
+                                                   showFaceView = true
+
+                                               }) {
+
+                                                   Text("Login with FaceID")
+
+                                                       .foregroundColor(.blue)
+
+                                                       .font(.subheadline)
+
+                                               }
+
+                                               .padding(.top, 10)
+
+                                               .sheet(isPresented: $showFaceView) {
+
+                                                   FaceView()
+
+                                               }
                 
                 // Add social media buttons
                 HStack(spacing: 20) {

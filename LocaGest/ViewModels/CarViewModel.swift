@@ -3,6 +3,7 @@ import Foundation
 class CarViewModel: ObservableObject {
     @Published var cars: [Car] = []
     @Published var isLoading: Bool = false
+    
 
     
       @Published var errorMessage: String?
@@ -42,19 +43,36 @@ class CarViewModel: ObservableObject {
             }
         }
 
-//    func addCar(car: Car) {
-//        flotteService.createCar(car: car) { result in
-//            DispatchQueue.main.async {
-//                switch result {
-//                case .success(let createdCar):
-//                    // Optionally, update the UI or perform any other actions
-//                    print("Car added successfully: \(createdCar)")
-//                case .failure(let error):
-//                    print("Error adding car: \(error.localizedDescription)")
-//                }
-//            }
-//        }
-//    }
+    func createCar(car: CarRequest) {
+        // Create a CarRequest object from the Car
+        let carRequest = CarRequest(
+            //id: nil,  // Assuming id is optional in CarRequest
+            immatriculation: car.immatriculation,
+            marque: car.marque,
+            modele: car.modele,
+            image: car.image,
+            cylindree: car.cylindree,
+            etatVoiture: car.etatVoiture,
+            type: car.type,
+            prixParJour: car.prixParJour
+        )
+        
+        // Call the createCar function with the CarRequest object
+        flotteService.createCar(car: carRequest) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let createdCar):
+                    // Optionally, update the UI or perform any other actions
+                    print("Car added successfully: \(createdCar)")
+                case .failure(let error):
+                    // Provide more context about the error
+                    print("Error adding car: \(error.localizedDescription)")
+                }
+            }
+        }
+    }
+
+
 
 //    func updateCar(immatriculation: String, car: Car) {
 //        flotteService.updateCar(immatriculation: immatriculation, car: car) { result in

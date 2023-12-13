@@ -11,7 +11,7 @@ final class FlotteService {
     static let shared = FlotteService()
     private let baseURL = "http://localhost:9090/car"
 
-    func createCar(car: CarRequest, completion: @escaping (Result<CarRequest, Error>) -> Void) {
+    func createCar(car: CarRequest, completion: @escaping (Result<Car, Error>) -> Void) {
         let url = URL(string: "\(baseURL)")!
         
         var request = URLRequest(url: url)
@@ -26,7 +26,7 @@ final class FlotteService {
             URLSession.shared.dataTask(with: request) { data, response, error in
                 if let data = data {
                     do {
-                        let createdCar = try JSONDecoder().decode(CarRequest.self, from: data)
+                        let createdCar = try JSONDecoder().decode(Car.self, from: data)
                         completion(.success(createdCar))
                     } catch {
                         completion(.failure(error))

@@ -6,13 +6,14 @@
 //
 
 import Foundation
-struct CarRequest: Identifiable, Codable {
-    let id: UUID
-    var immatriculation: String?
+struct CarRequest: Encodable {
+    //var id: String?
+    var immatriculation: String
     var marque: String
     var modele: String
-     var carburant: String
-     var boite: String
-  
-   
+    var image: String
+    var cylindree: String
+    var etatVoiture: String
+    var type: String
+    var prixParJour: Int
 }

@@ -56,6 +56,8 @@
 		46BA6EEB2B2B6A9800B2B1E8 /* MessagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA6EEA2B2B6A9800B2B1E8 /* MessagesViewModel.swift */; };
 		46BA6EED2B2B6C3900B2B1E8 /* ConversationChatBotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA6EEC2B2B6C3900B2B1E8 /* ConversationChatBotView.swift */; };
 		46BA6EEF2B2B6CBC00B2B1E8 /* ConvsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA6EEE2B2B6CBC00B2B1E8 /* ConvsViewModel.swift */; };
+		46BA6EF12B2B728600B2B1E8 /* ReservationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA6EF02B2B728600B2B1E8 /* ReservationViewModel.swift */; };
+		46BA6EF32B2B732000B2B1E8 /* ReservationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA6EF22B2B732000B2B1E8 /* ReservationRequest.swift */; };
 		58F259ED2B29CDE10073F005 /* FacebookAEM in Frameworks */ = {isa = PBXBuildFile; productRef = 58F259EC2B29CDE10073F005 /* FacebookAEM */; };
 		58F259EF2B29CDE10073F005 /* FacebookBasics in Frameworks */ = {isa = PBXBuildFile; productRef = 58F259EE2B29CDE10073F005 /* FacebookBasics */; };
 		58F259F12B29CDE10073F005 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 58F259F02B29CDE10073F005 /* FacebookCore */; };
@@ -72,6 +74,7 @@
 		81312F6E2B164614001D38C9 /* Ajouter_Entretien.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81312F6D2B164614001D38C9 /* Ajouter_Entretien.swift */; };
 		81312F702B1647AA001D38C9 /* Modifier_Entretien.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81312F6F2B1647AA001D38C9 /* Modifier_Entretien.swift */; };
 		81C7C3A22B1641F1000D3C90 /* Modifier_Voiture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C7C3A12B1641F1000D3C90 /* Modifier_Voiture.swift */; };
+		D1DC1B0A8434C537C59F16A2 /* Pods_LocaGest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE5261A8D4CC566D353B2CE5 /* Pods_LocaGest.framework */; };
 		DC453BD02B122E0100B2B9BA /* UserMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC453BCF2B122E0100B2B9BA /* UserMainView.swift */; };
 		DC453BD22B122E5800B2B9BA /* FlotteMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC453BD12B122E5800B2B9BA /* FlotteMainView.swift */; };
 		DC453BD42B122ECA00B2B9BA /* AgenceMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC453BD32B122ECA00B2B9BA /* AgenceMainView.swift */; };
@@ -100,6 +103,7 @@
 		090D82CD2B19DE30000D1B47 /* Link.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
 		09666FC42B17E7E10025248E /* AgenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgenceView.swift; sourceTree = "<group>"; };
 		09D7DF722B17E287003080D5 /* Agence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agence.swift; sourceTree = "<group>"; };
+		24B7AF605E7117E67D387EC8 /* Pods-LocaGest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocaGest.debug.xcconfig"; path = "Target Support Files/Pods-LocaGest/Pods-LocaGest.debug.xcconfig"; sourceTree = "<group>"; };
 		30F918AD2B13999D004EAF46 /* ReservationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationModel.swift; sourceTree = "<group>"; };
 		30F918AF2B139E1F004EAF46 /* ReservationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationListView.swift; sourceTree = "<group>"; };
 		3300909B2B1E41B5006E7B4B /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -140,7 +144,10 @@
 		46BA6EEA2B2B6A9800B2B1E8 /* MessagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewModel.swift; sourceTree = "<group>"; };
 		46BA6EEC2B2B6C3900B2B1E8 /* ConversationChatBotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationChatBotView.swift; sourceTree = "<group>"; };
 		46BA6EEE2B2B6CBC00B2B1E8 /* ConvsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvsViewModel.swift; sourceTree = "<group>"; };
+		46BA6EF02B2B728600B2B1E8 /* ReservationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationViewModel.swift; sourceTree = "<group>"; };
+		46BA6EF22B2B732000B2B1E8 /* ReservationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationRequest.swift; sourceTree = "<group>"; };
 		58F259F62B29CEB90073F005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		5FBD900DE645C642929F9BB0 /* Pods-LocaGest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocaGest.release.xcconfig"; path = "Target Support Files/Pods-LocaGest/Pods-LocaGest.release.xcconfig"; sourceTree = "<group>"; };
 		7F3285482B1609BD00ABE165 /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		7F32854A2B160CAE00ABE165 /* DetailFlotte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFlotte.swift; sourceTree = "<group>"; };
 		7F6439182B162917001416B3 /* Ajouter_Voiture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ajouter_Voiture.swift; sourceTree = "<group>"; };
@@ -153,6 +160,7 @@
 		81312F6D2B164614001D38C9 /* Ajouter_Entretien.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ajouter_Entretien.swift; sourceTree = "<group>"; };
 		81312F6F2B1647AA001D38C9 /* Modifier_Entretien.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifier_Entretien.swift; sourceTree = "<group>"; };
 		81C7C3A12B1641F1000D3C90 /* Modifier_Voiture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifier_Voiture.swift; sourceTree = "<group>"; };
+		BE5261A8D4CC566D353B2CE5 /* Pods_LocaGest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LocaGest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC453BCF2B122E0100B2B9BA /* UserMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMainView.swift; sourceTree = "<group>"; };
 		DC453BD12B122E5800B2B9BA /* FlotteMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlotteMainView.swift; sourceTree = "<group>"; };
 		DC453BD32B122ECA00B2B9BA /* AgenceMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgenceMainView.swift; sourceTree = "<group>"; };
@@ -180,6 +188,7 @@
 				58F259ED2B29CDE10073F005 /* FacebookAEM in Frameworks */,
 				58F259F12B29CDE10073F005 /* FacebookCore in Frameworks */,
 				58F259EF2B29CDE10073F005 /* FacebookBasics in Frameworks */,
+				D1DC1B0A8434C537C59F16A2 /* Pods_LocaGest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,6 +202,7 @@
 				3300909D2B1E41F3006E7B4B /* UserViewModel.swift */,
 				46BA6EEA2B2B6A9800B2B1E8 /* MessagesViewModel.swift */,
 				46BA6EEE2B2B6CBC00B2B1E8 /* ConvsViewModel.swift */,
+				46BA6EF02B2B728600B2B1E8 /* ReservationViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -294,6 +304,24 @@
 			path = SideBar;
 			sourceTree = "<group>";
 		};
+		41448E073C60F8BCB684228A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BE5261A8D4CC566D353B2CE5 /* Pods_LocaGest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		64EA55BCB6F5DE4206818F12 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				24B7AF605E7117E67D387EC8 /* Pods-LocaGest.debug.xcconfig */,
+				5FBD900DE645C642929F9BB0 /* Pods-LocaGest.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		DC4AC4512B1397ED00AFDA6F /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,6 +334,7 @@
 				4688E9A42B1910C300F83DD5 /* Distribution.swift */,
 				4688E9A62B1910EC00F83DD5 /* Tools.swift */,
 				4688E9A82B1911AA00F83DD5 /* Message.swift */,
+				46BA6EF22B2B732000B2B1E8 /* ReservationRequest.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -345,6 +374,8 @@
 			children = (
 				DC51CA322AF8324D00DC8C9A /* LocaGest */,
 				DC51CA312AF8324D00DC8C9A /* Products */,
+				64EA55BCB6F5DE4206818F12 /* Pods */,
+				41448E073C60F8BCB684228A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -390,6 +421,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DC51CA432AF8325100DC8C9A /* Build configuration list for PBXNativeTarget "LocaGest" */;
 			buildPhases = (
+				4BE38CD5402E7C1EB13D7B83 /* [CP] Check Pods Manifest.lock */,
 				DC51CA2C2AF8324D00DC8C9A /* Sources */,
 				DC51CA2D2AF8324D00DC8C9A /* Frameworks */,
 				DC51CA2E2AF8324D00DC8C9A /* Resources */,
@@ -457,6 +489,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4BE38CD5402E7C1EB13D7B83 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LocaGest-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DC51CA2C2AF8324D00DC8C9A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -476,6 +533,7 @@
 				090D82CA2B19DE10000D1B47 /* distribution.swift in Sources */,
 				81312F6E2B164614001D38C9 /* Ajouter_Entretien.swift in Sources */,
 				090D82CE2B19DE30000D1B47 /* Link.swift in Sources */,
+				46BA6EF32B2B732000B2B1E8 /* ReservationRequest.swift in Sources */,
 				4688E9B12B1912D600F83DD5 /* NewMessageView.swift in Sources */,
 				46BA6EED2B2B6C3900B2B1E8 /* ConversationChatBotView.swift in Sources */,
 				46BA6EEF2B2B6CBC00B2B1E8 /* ConvsViewModel.swift in Sources */,
@@ -495,6 +553,7 @@
 				3300909E2B1E41F3006E7B4B /* UserViewModel.swift in Sources */,
 				4688E9A52B1910C300F83DD5 /* Distribution.swift in Sources */,
 				4688E9AD2B19125E00F83DD5 /* CardMessage.swift in Sources */,
+				46BA6EF12B2B728600B2B1E8 /* ReservationViewModel.swift in Sources */,
 				090D82C12B19DC76000D1B47 /* AgenceViewModel.swift in Sources */,
 				33DAD6612B1FD5FA00AB616B /* UserDetails.swift in Sources */,
 				33E161722B2135B5000D58CC /* UpdateEmail.swift in Sources */,
@@ -658,6 +717,7 @@
 		};
 		DC51CA442AF8325100DC8C9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24B7AF605E7117E67D387EC8 /* Pods-LocaGest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -690,6 +750,7 @@
 		};
 		DC51CA452AF8325100DC8C9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5FBD900DE645C642929F9BB0 /* Pods-LocaGest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

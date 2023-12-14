@@ -15,7 +15,10 @@ struct ReservationMainView: View {
                         .padding()
                     
                     HomeView()
-                }
+                }.background(
+                    Image("back1").resizable()
+                        .scaledToFill()
+                        .edgesIgnoringSafeArea(.all))
                 .padding(.top, 50)
             }
             .mask(RoundedRectangle(cornerRadius: 30, style: .continuous))

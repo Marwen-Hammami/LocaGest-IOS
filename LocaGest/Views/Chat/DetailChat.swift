@@ -40,18 +40,18 @@ struct DetailChat: View {
             
             //MESSAGES
             Text("Liste des images de la Conversation")
-            ForEach(messages){ item in
-                if item.file != [] {
-                    Image(item.file[0])
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 170, height: 170)
-                        .mask(Rectangle())
-                        .cornerRadius(10)
-                        .foregroundColor(Color(.systemGray4))
-                }
-
-            }
+//            ForEach(messages){ item in
+//                if item.file != [] {
+//                    Image(item.file[0])
+//                        .resizable()
+//                        .scaledToFill()
+//                        .frame(width: 170, height: 170)
+//                        .mask(Rectangle())
+//                        .cornerRadius(10)
+//                        .foregroundColor(Color(.systemGray4))
+//                }
+//
+//            }
             
             
             Spacer()
@@ -59,13 +59,13 @@ struct DetailChat: View {
     }
 }
 
-struct DetailChat_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailChat(conversation: Conversation(
-            members: ["id1","id2"],
-            isGroup: false,
-            name: "notGrp",
-            image: "person"
-        ))
-    }
-}
+//struct DetailChat_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DetailChat(conversation: Conversation(
+//            members: ["id1","id2"],
+//            isGroup: false,
+//            name: "notGrp",
+//            image: "person"
+//        ))
+//    }
+//}

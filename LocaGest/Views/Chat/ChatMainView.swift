@@ -10,6 +10,10 @@ import SwiftUI
 struct ChatMainView: View {
     @EnvironmentObject var vm: ViewModel
     
+//    let currentUserRole = "client"
+    let currentUserRole = "technicien"
+    
+    @State private var rotationAngle: Double = 0
     @State private var showNewMessageView = false
     var body: some View {
         ZStack{
@@ -23,29 +27,38 @@ struct ChatMainView: View {
                     HStack{
                         SideBarButton()
                         
-                        Text("Discussions")
-                            .font(.title)
-                            .padding(.horizontal)
-                        
-                        Spacer()
-                        ZStack{
-                            Button(action: {
-                                //Add new Message
-                                showNewMessageView.toggle()
-                            }, label: {
-                                Image(systemName:"plus.message")
-                                    .foregroundColor(Color("Accent"))
-                            })
-                            Circle()
-                                .stroke(Color("Accent"), lineWidth: 2)
-                                .frame(height: 30)
+                        if(currentUserRole == "client") {
+                            Text("LocaGest ChatBot")
+                                .font(.title)
+                                .padding(.horizontal)
+                            
+                            Spacer()
+                        } else {
+                            Text("Discussions")
+                                .font(.title)
+                                .padding(.horizontal)
+                            
+                            Spacer()
+                            ZStack{
+                                Button(action: {
+                                    //Add new Message
+                                    showNewMessageView.toggle()
+                                }, label: {
+                                    Image(systemName:"plus.message")
+                                        .foregroundColor(Color("Accent"))
+                                })
+                                Circle()
+                                    .stroke(Color("Accent"), lineWidth: 2)
+                                    .frame(height: 30)
+                            }
                         }
+                        
                         
                     }
                     .padding(.horizontal)
+
+                        HomeView()
                     
-                    
-                    HomeView()
                 }
                 .padding(.top, 50)
             }
@@ -76,27 +89,46 @@ struct ChatMainView: View {
         }
     }
     
+    @StateObject private var viewModel = ConvsViewModel()
+    let currentUser = "656e2bb566210cdf7c871d41"
+    
     @ViewBuilder
     func HomeView()-> some View{
-        // Start - Here you can put your work ************************
-//        Text("Marwen")
-        VStack{
-            ScrollView {
-               // CardCurrentConnectedUsers()
-                ForEach(conversations){ item in
-                    CardConversation(conversation: item)
+        if(currentUserRole == "client") {
+            if let conversations = viewModel.conversations {
+                if(conversations.count > 0) {
+                    ConversationChatBotView(conversation: conversations[0])
+                        .padding(.bottom, 15)
+                }else {
+                    //Create a new chatbot conversation
+                    //viewmodel method
+                    //+display
                 }
+            } else {
+                ProgressView()
+                    .onAppear {
+                        viewModel.fetchConversations(forUserID: currentUser)
+                    }
             }
-            
+        }else {
+            NavigationView {
+                VStack {
+                    if let conversations = viewModel.conversations {
+                        List(conversations) { conversation in
+                                CardConversation(conversation: conversation)
+                        }
+                    } else {
+                        ProgressView()
+                            .onAppear {
+                                viewModel.fetchConversations(forUserID: currentUser)
+                            }
+                    }
+                }
+                .navigationTitle("Conversations")
+            }
         }
-        
-        
-        
-        // End   - Here you can put your work ************************
-
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        }
     }
-}
 
 struct ChatMainView_Previews: PreviewProvider {
     static var previews: some View {

@@ -9,6 +9,9 @@ import SwiftUI
 
 struct NewMessageView: View {
     
+    @StateObject private var viewModel = ConvsViewModel()
+    var currentUser = "656e2bb566210cdf7c871d41"
+    
     @State private var searchText: String = ""
     @Environment(\.dismiss) var dismiss
     
@@ -52,11 +55,19 @@ struct NewMessageView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
                 
-                ForEach(conversations.filter { item in
-                    searchText.isEmpty ? true : item.members[1].localizedCaseInsensitiveContains(searchText)
-                })
-                { item in
-                    CardConversation(conversation: item)
+                if let conversations = viewModel.conversations {
+                    ForEach(conversations.filter { item in
+                        searchText.isEmpty ? true : item.members[1].localizedCaseInsensitiveContains(searchText)
+                    })
+                    { item in
+                        CardConversation(conversation: item)
+                    }
+                } else {
+                    // Show loading indicator or error message
+                    ProgressView()
+                        .onAppear {
+                            viewModel.fetchConversations(forUserID: currentUser)
+                        }
                 }
             }
         }

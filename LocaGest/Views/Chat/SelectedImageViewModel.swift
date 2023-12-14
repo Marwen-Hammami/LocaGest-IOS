@@ -10,15 +10,16 @@ import PhotosUI
 
 class SelectedImageViewModel: ObservableObject {
     @Published var selectedItem: PhotosPickerItem? {
-        didSet{ Task {try await loadImage()} }
+        didSet { Task { try await loadImage() } }
     }
     
-    @Published var selectedImage: Image?
+    @Published var selectedImage: UIImage? // Change Image to UIImage
     
     func loadImage() async throws {
-        guard let item = selectedItem else {return}
-        guard let imageData = try await item.loadTransferable(type: Data.self) else {return}
-        guard let uiImage = UIImage(data: imageData) else {return}
-        self.selectedImage = Image(uiImage: uiImage)
+        guard let item = selectedItem else { return }
+        guard let imageData = try await item.loadTransferable(type: Data.self) else { return }
+        guard let uiImage = UIImage(data: imageData) else { return }
+        self.selectedImage = uiImage // Store UIImage instead of Image
     }
 }
+

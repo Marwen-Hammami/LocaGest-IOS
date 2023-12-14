@@ -2,17 +2,33 @@ import Foundation
 
 struct Message:Identifiable {
     var id = UUID()
-    let ConversationId: String
+    var _id: String
+    let conversationId: String
     let sender: String
     let text: String
     let file: [String]
+    let Archive: Bool
+    let Supprime: Bool
+    
+    init?(json: [String: Any]) {
+        guard
+            let file = json["file"] as? [String],
+            let conversationId = json["conversationId"] as? String,
+            let _id = json["_id"] as? String,
+            let sender = json["sender"] as? String,
+            let Archive = json ["Archive"] as? Bool,
+            let Supprime = json ["Supprime"] as? Bool
+        else {
+            return nil
+        }
+        self.text = json["text"] as? String ?? ""
+        self._id = _id
+        self.file = file
+        self.conversationId = conversationId
+        self.sender = sender
+        self.Archive = Archive
+        self.Supprime = Supprime
+        
+    }
+    
 }
-
-var messages = [
-    Message(ConversationId: "1", sender: "id2", text: "Hello", file: []),
-    Message(ConversationId: "1", sender: "id1", text: "hi", file: []),
-    Message(ConversationId: "1", sender: "id2", text: "Comment tu vas", file: []),
-    Message(ConversationId: "1", sender: "id1", text: "Bien et toi ?", file: []),
-    Message(ConversationId: "1", sender: "id2", text: "", file: ["good"]),
-    Message(ConversationId: "1", sender: "id1", text: "nice", file: ["good"]),
-]

@@ -53,6 +53,9 @@
 		4688E9AF2B1912BC00F83DD5 /* ConversationMessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E9AE2B1912BC00F83DD5 /* ConversationMessagesView.swift */; };
 		4688E9B12B1912D600F83DD5 /* NewMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E9B02B1912D600F83DD5 /* NewMessageView.swift */; };
 		4688E9B32B1912FC00F83DD5 /* SelectedImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E9B22B1912FC00F83DD5 /* SelectedImageViewModel.swift */; };
+		46BA6EEB2B2B6A9800B2B1E8 /* MessagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA6EEA2B2B6A9800B2B1E8 /* MessagesViewModel.swift */; };
+		46BA6EED2B2B6C3900B2B1E8 /* ConversationChatBotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA6EEC2B2B6C3900B2B1E8 /* ConversationChatBotView.swift */; };
+		46BA6EEF2B2B6CBC00B2B1E8 /* ConvsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA6EEE2B2B6CBC00B2B1E8 /* ConvsViewModel.swift */; };
 		58F259ED2B29CDE10073F005 /* FacebookAEM in Frameworks */ = {isa = PBXBuildFile; productRef = 58F259EC2B29CDE10073F005 /* FacebookAEM */; };
 		58F259EF2B29CDE10073F005 /* FacebookBasics in Frameworks */ = {isa = PBXBuildFile; productRef = 58F259EE2B29CDE10073F005 /* FacebookBasics */; };
 		58F259F12B29CDE10073F005 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 58F259F02B29CDE10073F005 /* FacebookCore */; };
@@ -134,6 +137,9 @@
 		4688E9AE2B1912BC00F83DD5 /* ConversationMessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationMessagesView.swift; sourceTree = "<group>"; };
 		4688E9B02B1912D600F83DD5 /* NewMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageView.swift; sourceTree = "<group>"; };
 		4688E9B22B1912FC00F83DD5 /* SelectedImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedImageViewModel.swift; sourceTree = "<group>"; };
+		46BA6EEA2B2B6A9800B2B1E8 /* MessagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewModel.swift; sourceTree = "<group>"; };
+		46BA6EEC2B2B6C3900B2B1E8 /* ConversationChatBotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationChatBotView.swift; sourceTree = "<group>"; };
+		46BA6EEE2B2B6CBC00B2B1E8 /* ConvsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvsViewModel.swift; sourceTree = "<group>"; };
 		58F259F62B29CEB90073F005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7F3285482B1609BD00ABE165 /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		7F32854A2B160CAE00ABE165 /* DetailFlotte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFlotte.swift; sourceTree = "<group>"; };
@@ -185,6 +191,8 @@
 			children = (
 				090D82C02B19DC76000D1B47 /* AgenceViewModel.swift */,
 				3300909D2B1E41F3006E7B4B /* UserViewModel.swift */,
+				46BA6EEA2B2B6A9800B2B1E8 /* MessagesViewModel.swift */,
+				46BA6EEE2B2B6CBC00B2B1E8 /* ConvsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -327,6 +335,7 @@
 				4688E9B02B1912D600F83DD5 /* NewMessageView.swift */,
 				4688E9B22B1912FC00F83DD5 /* SelectedImageViewModel.swift */,
 				4681CCAA2B192C3900359338 /* DetailChat.swift */,
+				46BA6EEC2B2B6C3900B2B1E8 /* ConversationChatBotView.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -468,6 +477,8 @@
 				81312F6E2B164614001D38C9 /* Ajouter_Entretien.swift in Sources */,
 				090D82CE2B19DE30000D1B47 /* Link.swift in Sources */,
 				4688E9B12B1912D600F83DD5 /* NewMessageView.swift in Sources */,
+				46BA6EED2B2B6C3900B2B1E8 /* ConversationChatBotView.swift in Sources */,
+				46BA6EEF2B2B6CBC00B2B1E8 /* ConvsViewModel.swift in Sources */,
 				4688E9A12B19108E00F83DD5 /* tools.swift in Sources */,
 				33ECD5EF2B1951AB0010A977 /* UpdatePassword.swift in Sources */,
 				33E161702B2135A9000D58CC /* UpdatePhone.swift in Sources */,
@@ -507,6 +518,7 @@
 				4688E9AB2B1911F500F83DD5 /* CardCurrentConnectedUsers.swift in Sources */,
 				DC51CA402AF8325100DC8C9A /* LocaGest.xcdatamodeld in Sources */,
 				4681CCA92B19286E00359338 /* AddReservation.swift in Sources */,
+				46BA6EEB2B2B6A9800B2B1E8 /* MessagesViewModel.swift in Sources */,
 				DC453BD62B122F4800B2B9BA /* ReservationMainView.swift in Sources */,
 				33E1616E2B21168B000D58CC /* UpdateUsername.swift in Sources */,
 				33ECD5ED2B1951660010A977 /* ResetPassword.swift in Sources */,

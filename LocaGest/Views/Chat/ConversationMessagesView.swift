@@ -11,23 +11,53 @@ import UniformTypeIdentifiers
 
 struct ConversationMessagesView: View {
     @State private var showDialog: Bool = false
+    @State private var showConfirmDeleteDialog: Bool = false
+    @State private var showRaisonSignalerDialog: Bool = false
+    @State private var signalementResponseDiag: Bool = false
+    @State private var signalementResponse: String = ""
+    
     @Environment(\.dismiss) var dismiss
+    
+    @State private var rotationAngle: Double = 0
+    
+    @StateObject private var messageViewModel = MessagesViewModel()
+    let currentUser = "656e2bb566210cdf7c871d41"
     
     @StateObject var viewModel = SelectedImageViewModel()
     @State private var messageText = ""
     let conversation: Conversation
     @State private var messageToCopy = ""
+    @State private var messageId = ""
+    @State private var messageSender = ""
     var body: some View {
         VStack {
             ScrollView{
                 VStack{
-                    Image(conversation.image)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 120, height: 120)
-                        .mask(Circle())
-                        .foregroundColor(Color(.systemGray4))
-                        .padding(.vertical)
+                    AsyncImage(url: URL(string: conversation.image)) { image in
+                        image.resizable()
+                            .scaledToFill()
+                            .mask(Circle())
+                            .frame(width: 120, height: 120)
+                            .rotationEffect(Angle(degrees: rotationAngle))
+                            .onTapGesture {
+                                withAnimation {
+                                    rotationAngle += 360
+                                }
+                            }
+                    } placeholder: {
+                        Image(systemName: "person.circle.fill")
+                            .resizable()
+                            .scaledToFill()
+                            .mask(Circle())
+                            .foregroundColor(.gray)
+                            .frame(width: 120, height: 120)
+                            .rotationEffect(Angle(degrees: rotationAngle))
+                            .onTapGesture {
+                                withAnimation {
+                                    rotationAngle += 360
+                                }
+                            }
+                    }
                     
                     Text(conversation.members[1])
                         .font(.title3)
@@ -39,38 +69,123 @@ struct ConversationMessagesView: View {
                         .padding(.bottom)
                     
                     //MESSAGES
-                    ForEach(messages){ item in
-                        CardMessage(message: item)
-                            .onLongPressGesture {
-                                showDialog = true
-                                messageToCopy = item.text
+                    if let messages = messageViewModel.messages {
+                        ForEach(messages) { messa in
+                            if(!messa.Archive) { //Ne pas afficher les messages archivées (liées au signalement)
+                                CardMessage(message: messa, userImg: conversation.image)
+                                    .onLongPressGesture {
+                                        showDialog = true
+                                        messageToCopy = messa.text
+                                        messageId = messa._id
+                                        messageSender = messa.sender
+                                    }
                             }
-                    }
-                    .alert("Que voulais-vous effectuer ?", isPresented: $showDialog) {
+                        }
+                        .alert("Que voulais-vous effectuer ?", isPresented: $showDialog) {
                             Button("Copier", action: {
                                 UIPasteboard.general.setValue(messageToCopy,
-                                            forPasteboardType: UTType.plainText.identifier)
+                                                              forPasteboardType: UTType.plainText.identifier)
                             })
-                            Button("Supprimer", role: .destructive, action: {})
+                            if (messageSender != currentUser) {
+                                Button("Signaler", role: .destructive, action: {
+                                    showRaisonSignalerDialog = true
+                                })
+                            }
+                            if (messageSender == currentUser) {
+                                Button("Supprimer", role: .destructive, action: {
+                                    showConfirmDeleteDialog = true
+                                })
+                            }
                         }
+                        .alert("Êtes vous sûres de vouloir supprimer ce message ?", isPresented: $showConfirmDeleteDialog) {
+                            Button("Oui", role: .destructive, action: {
+                                messageViewModel.deleteMessage(messageId: messageId) { result in
+                                    switch result {
+                                    case .success:
+                                        // Handle successful deletion
+                                        print("Message deleted successfully")
+
+                                        // Optionally: Fetch the updated list of messages
+                                        messageViewModel.fetchMessages(forConvID: conversation._id)
+
+                                    case .failure(let error):
+                                        // Handle deletion failure
+                                        print("Error deleting message: \(error.localizedDescription)")
+                                    }
+                                }
+                            })
+                        }
+                        .alert("Sélectionner la raison du signalement", isPresented: $showRaisonSignalerDialog) {
+                            Button("Harcèlement", role: .destructive, action: {
+                                messageViewModel.signalerMessage(messageId: messageId, signaleurId: currentUser, raison: "Harcèlement", raisonAutre: "") { result in
+                                    switch result {
+                                    case .success(let response):
+                                        // Handle the successful response
+                                        messageViewModel.fetchMessages(forConvID: conversation._id)
+                                        signalementResponse = response
+                                        signalementResponseDiag = true
+                                    case .failure(let error):
+                                        // Handle the error
+                                        print("Error: \(error.localizedDescription)")
+
+                                    }
+                                }
+                            })
+                        }
+                        .alert(signalementResponse, isPresented: $signalementResponseDiag) {
+                            Button("Ok", role: .destructive, action: {
+                                signalementResponseDiag = false
+                            })
+                        }
+                    } else {
+                        ProgressView()
+                            .onAppear {
+                                messageViewModel.fetchMessages(forConvID: conversation._id)
+                            }
+                    }
                 }
             }
                 .navigationBarTitle(conversation.isGroup ? conversation.name : conversation.members[1], displayMode: .inline)
                 .navigationBarItems(
-                    leading: Image(conversation.image)
-                        .resizable()
-                        .scaledToFill()
-                        .mask(Circle())
-                        .frame(width: 30, height: 30),
-                    trailing: Image(systemName: "info.circle")
-                    .foregroundColor(Color("Accent")))
+                    leading:
+                        AsyncImage(url: URL(string: conversation.image)) { image in
+                                            image.resizable()
+                                                .scaledToFill()
+                                                .mask(Circle())
+                                                .frame(width: 30, height: 30)
+                                                .rotationEffect(Angle(degrees: rotationAngle))
+                                                .onTapGesture {
+                                                    withAnimation {
+                                                        rotationAngle += 360
+                                                    }
+                                                }
+                                        } placeholder: {
+                                            Image(systemName: "person.circle.fill")
+                                            .resizable()
+                                            .scaledToFill()
+                                            .mask(Circle())
+                                            .foregroundColor(.gray)
+                                            .frame(width: 30, height: 30)
+                                            .rotationEffect(Angle(degrees: rotationAngle))
+                                            .onTapGesture {
+                                                withAnimation {
+                                                    rotationAngle += 360
+                                                }
+                                            }
+                                        },
+                    trailing: Image(systemName: "video.circle")
+                    .foregroundColor(Color("Accent"))
+                        .onTapGesture {
+                            //call interface
+                        }
+                                    )
             
             //Message Text Input
             ZStack{
                 HStack{
                     PhotosPicker(selection: $viewModel.selectedItem){
                         if let selectedImage = viewModel.selectedImage {
-                            selectedImage
+                            Image(uiImage: selectedImage) // Wrap UIImage with Image
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width: 180, height: 180)
@@ -89,7 +204,27 @@ struct ConversationMessagesView: View {
                             .font(.subheadline)
                         
                         Button {
-                            messageText = ""
+                            if let selectedImage = viewModel.selectedImage {
+                                    // User has selected an image
+                                    messageViewModel.addMessageWithImage(
+                                        conversationId: conversation._id,
+                                        sender: currentUser,
+                                        text: messageText,
+                                        file: [selectedImage]
+                                    )
+                                    messageText = ""
+                                } else {
+                                    // No image selected
+                                    if (messageText != "") {
+                                        messageViewModel.addMessage(
+                                            conversationId: conversation._id,
+                                            sender: currentUser,
+                                            text: messageText,
+                                            file: []
+                                        )
+                                        messageText = ""
+                                    }
+                                }
                         } label: {
                             Image(systemName: "paperplane.fill")
                                 .foregroundColor(Color("Accent"))
@@ -106,14 +241,14 @@ struct ConversationMessagesView: View {
     }
 }
 
-struct ConversationMessagesView_Previews: PreviewProvider {
-    static var previews: some View {
-        ConversationMessagesView(
-            conversation: Conversation(
-            members: ["id1","id2"],
-            isGroup: false,
-            name: "notGrp",
-            image: "person"
-        ))
-    }
-}
+//struct ConversationMessagesView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ConversationMessagesView(
+//            conversation: Conversation(
+//            members: ["id1","id2"],
+//            isGroup: false,
+//            name: "notGrp",
+//            image: "person"
+//        ))
+//    }
+//}

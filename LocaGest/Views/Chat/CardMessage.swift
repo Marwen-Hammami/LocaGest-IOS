@@ -2,59 +2,153 @@ import SwiftUI
 
 struct CardMessage: View {
     let message: Message
-    var currentUserId = "id1"
+    let userImg: String
+    var currentUserId = "656e2bb566210cdf7c871d41"
     var body: some View {
         HStack{
             if message.sender == currentUserId {
                 Spacer()
                 
-                VStack(alignment: .trailing) {
-                    if (message.text != "") {
-                        Text(message.text)
-                            .font(.subheadline)
-                            .padding(8)
-                            .background(Color(.systemBlue))
-                            .foregroundColor(.white)
-                            .clipShape(Capsule())
-                    }
-                    if (message.file != []) {
-                        Image(message.file[0])
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 170, height: 170)
-                            .mask(Rectangle())
-                            .cornerRadius(10)
-                            .foregroundColor(Color(.systemGray4))
+                if(message.Supprime){
+                    Text("Vous avez retiré un message")
+                        .font(.subheadline)
+                        .padding(8)
+                        .background(Color(.white))
+                        .foregroundColor(.black)
+                        .clipShape(Capsule())
+                        .overlay(
+                                Capsule()
+                                    .stroke(Color.blue, lineWidth: 2) // Add a blue border with a lineWidth of 2
+                            )
+                } else {
+                    VStack(alignment: .trailing) {
+                        if (message.text != "") {
+                            Text(message.text)
+                                .font(.subheadline)
+                                .padding(8)
+                                .background(Color(.systemBlue))
+                                .foregroundColor(.white)
+                                .clipShape(Capsule())
+                        }
+                        switch message.file.count {
+                        case 1:
+                            AsyncImage(url: URL(string: message.file[0])) { image in
+                                image
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 170, height: 170)
+                                    .mask(Rectangle())
+                                    .cornerRadius(10)
+                                } placeholder: {
+                                    ProgressView()
+                                }
+                        case 2:
+                            HStack {
+                                AsyncImage(url: URL(string: message.file[0])) { image in
+                                    image
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 170, height: 170)
+                                        .mask(Rectangle())
+                                        .cornerRadius(10)
+                                    } placeholder: {
+                                        ProgressView()
+                                    }
+                                AsyncImage(url: URL(string: message.file[1])) { image in
+                                    image
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 170, height: 170)
+                                        .mask(Rectangle())
+                                        .cornerRadius(10)
+                                    } placeholder: {
+                                        ProgressView()
+                                    }
+                            }
+                        default:
+                            Spacer()
+                        }
+
                     }
                 }
                 
+                
             } else {
-                HStack(alignment: .center, spacing: 8) {
-                    Image("person")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 20, height: 20)
-                        .mask(Circle())
-                        .foregroundColor(Color(.systemGray4))
-                        .padding(.vertical)
-                    
-                    if (message.text != "") {
-                        Text(message.text)
-                            .font(.subheadline)
-                            .padding(8)
-                            .background(Color(.systemGray5))
-                            .foregroundColor(.black)
-                            .clipShape(Capsule())
-                    }
-                    if (message.file != []) {
-                        Image(message.file[0])
+                HStack(alignment: .top, spacing: 8) {
+                    AsyncImage(url: URL(string: userImg)) { image in
+                        image
                             .resizable()
                             .scaledToFill()
-                            .frame(width: 170, height: 170)
-                            .mask(Rectangle())
-                            .cornerRadius(10)
+                            .frame(width: 20, height: 20)
+                            .mask(Circle())
                             .foregroundColor(Color(.systemGray4))
+                            .padding(.vertical)
+                        } placeholder: {
+                             ProgressView()
+                        }
+                    if(message.Supprime){
+                        Text("A retiré un message")
+                            .font(.subheadline)
+                            .padding(8)
+                            .background(Color(.white))
+                            .foregroundColor(.black)
+                            .clipShape(Capsule())
+                            .overlay(
+                                Capsule()
+                                    .stroke(Color.gray, lineWidth: 2) // Add a blue border with a lineWidth of 2
+                            )
+                    } else {
+                        VStack(alignment: .leading){
+                            if (message.text != "") {
+                                Text(message.text)
+                                    .font(.subheadline)
+                                    .padding(8)
+                                    .background(Color(.systemGray5))
+                                    .foregroundColor(.black)
+                                    .clipShape(Capsule())
+                            }
+                            switch message.file.count {
+                            case 1:
+                                AsyncImage(url: URL(string: message.file[0])) { image in
+                                    image
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 170, height: 170)
+                                        .mask(Rectangle())
+                                        .cornerRadius(10)
+                                    } placeholder: {
+                                        ProgressView()
+                                    }
+                            case 2:
+                                HStack {
+                                    AsyncImage(url: URL(string: message.file[0])) { image in
+                                        image
+                                            .resizable()
+                                            .scaledToFill()
+                                            .frame(width: 170, height: 170)
+                                            .mask(Rectangle())
+                                            .cornerRadius(10)
+                                        } placeholder: {
+                                            ProgressView()
+                                        }
+                                    AsyncImage(url: URL(string: message.file[1])) { image in
+                                        image
+                                            .resizable()
+                                            .scaledToFill()
+                                            .frame(width: 170, height: 170)
+                                            .mask(Rectangle())
+                                            .cornerRadius(10)
+                                        } placeholder: {
+                                            ProgressView()
+                                        }
+                                }
+                            default:
+                                Spacer()
+                            }
+
+                        }
                     }
+                    
                     
                     Spacer()
                 }
@@ -64,8 +158,8 @@ struct CardMessage: View {
     }
 }
 
-struct CardMessage_Previews: PreviewProvider {
-    static var previews: some View {
-        CardMessage(message: Message(ConversationId: "1", sender: "id2", text: "Test Message", file: []))
-    }
-}
+//struct CardMessage_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CardMessage(message: Message(ConversationId: "1", sender: "id2", text: "Test Message", file: []))
+//    }
+//}

@@ -19,9 +19,7 @@ struct Conversation:Identifiable {
         guard
             let members = json["members"] as? [String],
             let isGroup = json["isGroup"] as? Bool,
-            let name = json["name"] as? String,
-            let _id = json["_id"] as? String,
-            let image = json["image"] as? String
+            let _id = json["_id"] as? String
         else {
             return nil
         }
@@ -29,8 +27,8 @@ struct Conversation:Identifiable {
         self._id = _id
         self.members = members
         self.isGroup = isGroup
-        self.name = name
-        self.image = image
+        self.name = json["name"] as? String ?? ""
+        self.image = json["image"] as? String ?? ""
     }
 }
 

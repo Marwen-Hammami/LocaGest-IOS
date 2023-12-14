@@ -3,4 +3,102 @@
    uuid = "12E853C7-05D1-4F5C-B603-3A86550F59DC"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "595A3292-7086-4146-B3FF-4E66B7B5C9CA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LocaGest/Views/Flotte/Page_Entretiens.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "595A3292-7086-4146-B3FF-4E66B7B5C9CA - 5c6790d698a836f9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.frame(width: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, height: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0 in LocaGest.EntretienCardView.body.getter : some"
+                  moduleName = "LocaGest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mohamedmaamounjrad/Desktop/LocaGest-IOS/LocaGest/Views/Flotte/Page_Entretiens.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "104"
+                  endingLineNumber = "104"
+                  offsetFromSymbolStart = "1388">
+               </Location>
+               <Location
+                  uuid = "595A3292-7086-4146-B3FF-4E66B7B5C9CA - 5c6790d698a836f9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.frame(width: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, height: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0 in LocaGest.EntretienCardView.body.getter : some"
+                  moduleName = "LocaGest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mohamedmaamounjrad/Desktop/LocaGest-IOS/LocaGest/Views/Flotte/Page_Entretiens.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "104"
+                  endingLineNumber = "104"
+                  offsetFromSymbolStart = "1332">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6B882307-640A-411E-927F-2361A16AD4AD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LocaGest/Views/Flotte/Page_Entretiens.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "6B882307-640A-411E-927F-2361A16AD4AD - 5c6790d698a8351a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.frame(width: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, height: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0 in LocaGest.EntretienCardView.body.getter : some"
+                  moduleName = "LocaGest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mohamedmaamounjrad/Desktop/LocaGest-IOS/LocaGest/Views/Flotte/Page_Entretiens.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "103"
+                  endingLineNumber = "103"
+                  offsetFromSymbolStart = "1332">
+               </Location>
+               <Location
+                  uuid = "6B882307-640A-411E-927F-2361A16AD4AD - 5c6790d698a836f9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.frame(width: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, height: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0 in LocaGest.EntretienCardView.body.getter : some"
+                  moduleName = "LocaGest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mohamedmaamounjrad/Desktop/LocaGest-IOS/LocaGest/Views/Flotte/Page_Entretiens.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "104"
+                  endingLineNumber = "104"
+                  offsetFromSymbolStart = "1332">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

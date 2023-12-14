@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DashboardFlotte: View {
     @ObservedObject var carViewModel: CarViewModel
+    @ObservedObject var entretienViewModel: EntretienViewModel
     var body: some View {
         NavigationView {
             ZStack {
@@ -22,7 +23,7 @@ struct DashboardFlotte: View {
                 VStack(spacing: 16) {
                     CardView1(carViewModel: carViewModel)
                         .frame(width: 200, height: 200) // Adjust the size as needed
-                    CardView2()
+                    CardView2(entretienViewModel: entretienViewModel)
                         .frame(width: 200, height: 200) // Match the size of CardView1
                     CardView3()
                         .frame(width: 200, height: 200) // Match the size of CardView1
@@ -62,8 +63,9 @@ struct CardView1: View {
     }
 }
 struct CardView2: View {
+    @ObservedObject var entretienViewModel: EntretienViewModel
     var body: some View {
-        NavigationLink(destination: Page_Entretiens(entretiens: [])) {
+        NavigationLink(destination: Page_Entretiens(entretienViewModel: entretienViewModel)) {
             VStack {
                 Image("wrench_7185363")
                     .resizable()

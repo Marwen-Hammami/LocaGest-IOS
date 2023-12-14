@@ -53,15 +53,22 @@ struct Detail_Voiture: View {
                 Spacer()
 
                 HStack {
-                    Text("Immatriculation : \(car.immatriculation)")
+                    Text("Immatriculation : ")
+                        .foregroundColor(Color.black)
                         .padding()
-                        
+                    
+                    Text(car.immatriculation)
+                        .padding()
+                        .background(Color.black)  // Fond noir pour la plaque d'immatriculation
+                        .foregroundColor(Color.white)  // Texte blanc pour la plaque d'immatriculation
                         .cornerRadius(10)
                         .padding(.horizontal)
                         .padding(.leading, 20)
 
                     Spacer()
                 }
+
+
 
                 HStack {
                     Text("Marque :\(car.marque) ")
@@ -110,15 +117,15 @@ struct Detail_Voiture: View {
 
             
                 HStack {
-                    Button("Modifier") {
-                        // Action lorsque le bouton "Modifier" est appuyé
-                    }
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
-                    .padding()
-                    
+                    NavigationLink(destination: Modifier_Voiture()) {
+                            Text("Modifier")
+                                .padding()
+                                .frame(maxWidth: .infinity)
+                                .background(Color.blue)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                                .padding()
+                        }
                     Spacer()
                     NavigationLink(
                         destination: DetailFlotte(carViewModel: carViewModel),

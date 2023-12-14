@@ -3,6 +3,7 @@ import SwiftUI
 struct FlotteMainView: View {
     @EnvironmentObject var vm: ViewModel
     @StateObject var carViewModel = CarViewModel()
+    @StateObject var entretienViewModel = EntretienViewModel()
     var body: some View {
         ZStack{
             Color(.black)
@@ -66,7 +67,7 @@ struct FlotteMainView: View {
     @ViewBuilder
     func HomeView()-> some View{
         // Start - Here you can put your work ************************
-        DashboardFlotte(carViewModel: carViewModel)
+        DashboardFlotte(carViewModel: carViewModel, entretienViewModel: entretienViewModel)
         
         
         // End   - Here you can put your work ************************

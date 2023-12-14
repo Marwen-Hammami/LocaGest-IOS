@@ -43,12 +43,7 @@ struct Ajouter_Entretien: View {
                     .padding(.top, 30)
                 
                 VStack(spacing: 20) {
-                    TextField("ID", text: $id)
-                       .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding(.horizontal, 30)
-                        
-                    
-                    
+                   
                     TextField("Titre", text: $titre)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(.horizontal, 30)

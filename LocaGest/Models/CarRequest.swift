@@ -11,9 +11,11 @@ struct CarRequest: Encodable {
     var immatriculation: String
     var marque: String
     var modele: String
-    var image: String
+    var image: String?
     var cylindree: String
     var etatVoiture: String
     var type: String
     var prixParJour: Int
+    var imageData: Data?
+    
 }

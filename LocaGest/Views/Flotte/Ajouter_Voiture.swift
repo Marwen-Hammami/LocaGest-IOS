@@ -96,6 +96,8 @@ struct Ajouter_Voiture: View {
                     .padding(.horizontal, 30)
                 }
                 .padding(.top, 10)
+                
+                
 
                 Button(action: {
                     let UIimage = self.selectedImage
@@ -105,16 +107,17 @@ struct Ajouter_Voiture: View {
                         immatriculation: immatriculation,
                         marque: marque,
                         modele: modele,
-                        image: "image",
+                        image: "1702314813552.jpg",
                         cylindree: cylindree,
                         etatVoiture: etatVoiture,
                         type: type,
-                        prixParJour: 0
+                        prixParJour: 5
                     )
                     carViewModel.createCar(car: createdCar
                                          //  ,image : selectedImage
                     )
                 }) {
+                    
                     Text("Ajouter")
                         .foregroundColor(.white)
                         .font(.headline)
@@ -125,6 +128,7 @@ struct Ajouter_Voiture: View {
                         .padding(.horizontal, 30)
                 }
                 .padding(.top, 30)
+                
 
                 Spacer()
             }

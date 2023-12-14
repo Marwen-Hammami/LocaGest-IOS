@@ -1,6 +1,6 @@
 import Foundation
 
-struct Car: Decodable, Identifiable {
+struct Car: Decodable, Encodable, Identifiable {
     let id: String
     var immatriculation: String
     var marque: String

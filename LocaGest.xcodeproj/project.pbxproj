@@ -46,6 +46,8 @@
 		4688E9B32B1912FC00F83DD5 /* SelectedImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E9B22B1912FC00F83DD5 /* SelectedImageViewModel.swift */; };
 		7F3285492B1609BD00ABE165 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3285482B1609BD00ABE165 /* Car.swift */; };
 		7F32854B2B160CAE00ABE165 /* DetailFlotte.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F32854A2B160CAE00ABE165 /* DetailFlotte.swift */; };
+		7F54F90C2B2BA45E0052A3B7 /* EntretienViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F54F90B2B2BA45E0052A3B7 /* EntretienViewModel.swift */; };
+		7F54F90E2B2BA4740052A3B7 /* EntretienService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F54F90D2B2BA4740052A3B7 /* EntretienService.swift */; };
 		7F6439192B162917001416B3 /* Ajouter_Voiture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6439182B162917001416B3 /* Ajouter_Voiture.swift */; };
 		7F9A70D62B22813100A011D8 /* CarRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9A70D52B22813100A011D8 /* CarRequest.swift */; };
 		7FA0E9612B148AA900A46450 /* DashboardFlotte.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0E9602B148AA900A46450 /* DashboardFlotte.swift */; };
@@ -116,6 +118,8 @@
 		4688E9B22B1912FC00F83DD5 /* SelectedImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedImageViewModel.swift; sourceTree = "<group>"; };
 		7F3285482B1609BD00ABE165 /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		7F32854A2B160CAE00ABE165 /* DetailFlotte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFlotte.swift; sourceTree = "<group>"; };
+		7F54F90B2B2BA45E0052A3B7 /* EntretienViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntretienViewModel.swift; sourceTree = "<group>"; };
+		7F54F90D2B2BA4740052A3B7 /* EntretienService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntretienService.swift; sourceTree = "<group>"; };
 		7F6439182B162917001416B3 /* Ajouter_Voiture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ajouter_Voiture.swift; sourceTree = "<group>"; };
 		7F9A70D52B22813100A011D8 /* CarRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarRequest.swift; sourceTree = "<group>"; };
 		7FA0E9602B148AA900A46450 /* DashboardFlotte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardFlotte.swift; sourceTree = "<group>"; };
@@ -163,6 +167,7 @@
 			children = (
 				090D82C02B19DC76000D1B47 /* AgenceViewModel.swift */,
 				7FAD90BF2B1F32D8000BF913 /* CarViewModel.swift */,
+				7F54F90B2B2BA45E0052A3B7 /* EntretienViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -172,6 +177,7 @@
 			children = (
 				090D82C32B19DC9C000D1B47 /* AgenceService.swift */,
 				7FAD90BD2B1F2F3E000BF913 /* FlotteService.swift */,
+				7F54F90D2B2BA4740052A3B7 /* EntretienService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -421,6 +427,7 @@
 				4688E9A32B1910A900F83DD5 /* updateTool.swift in Sources */,
 				7FB00C492B1776EE00764794 /* HistoriqueEntretiens.swift in Sources */,
 				81C7C3A22B1641F1000D3C90 /* Modifier_Voiture.swift in Sources */,
+				7F54F90C2B2BA45E0052A3B7 /* EntretienViewModel.swift in Sources */,
 				33D31BD22B13B1B9007E1B84 /* ForgotPassword.swift in Sources */,
 				090D82C82B19DDFB000D1B47 /* updateDist.swift in Sources */,
 				090D82CA2B19DE10000D1B47 /* distribution.swift in Sources */,
@@ -477,6 +484,7 @@
 				4681CCAB2B192C3900359338 /* DetailChat.swift in Sources */,
 				7FAD90BE2B1F2F3E000BF913 /* FlotteService.swift in Sources */,
 				81312F702B1647AA001D38C9 /* Modifier_Entretien.swift in Sources */,
+				7F54F90E2B2BA4740052A3B7 /* EntretienService.swift in Sources */,
 				7FB00C452B17743500764794 /* Page_Entretiens.swift in Sources */,
 				4688E9A72B1910EC00F83DD5 /* Tools.swift in Sources */,
 			);

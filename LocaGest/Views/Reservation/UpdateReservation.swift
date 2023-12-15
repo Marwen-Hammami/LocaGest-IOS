@@ -55,14 +55,7 @@ struct UpdateReservation: View {
                     }
                 }
                 
-                Section(header: Text("Statut")) {
-                    Picker("Statut", selection: $statut) {
-                        Text("Réservée").tag(StatutRes.reserve)
-                        Text("Payée").tag(StatutRes.payee)
-                        Text("Achevée").tag(StatutRes.achevee)
-                    }
-                    .pickerStyle(SegmentedPickerStyle())
-                }
+              
                 
                 Section(header: Text("Total")) {
                     Text("Montant total : \(reservationTotal, specifier: "%.2f") EUR")
@@ -89,8 +82,9 @@ struct UpdateReservation: View {
             DateFin: dateFin,
             HeureDebut: heureDebut,
             HeureFin: heureFin,
-            Statut: statut,
+            Statut: .reserve,
             Total: reservationTotal
+           
         )
 
         // Appelez la méthode dans le modèle pour ajouter la réservation

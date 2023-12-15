@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb378299628043551</string>
+			</array>
+		</dict>
+	</array>
+	<key>FacebookAppID</key>
+	<string>378299628043551</string>
+	<key>FacebookClientToken</key>
+	<string>7507033c4d4b71b83a9c301ae82e3e44</string>
+	<key>FacebookDisplayName</key>
+	<string>LocaGest</string>
+</dict>
+</plist>

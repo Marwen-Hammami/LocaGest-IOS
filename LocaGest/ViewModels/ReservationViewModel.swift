@@ -58,7 +58,7 @@ class ReservationViewModel: ObservableObject {
             "HeureDebut": reservation.HeureDebut,
             "HeureFin": reservation.HeureFin,
             "Statut": reservation.Statut.rawValue,
-            "Total": 0.0
+            "Total": reservation.Total
         ]
         
         do {
@@ -134,7 +134,27 @@ class ReservationViewModel: ObservableObject {
         }.resume()
     }
     
-    
+    func markReservationAsPaid(reservationId: String) {
+        guard let url = URL(string: "http://172.20.10.4:9090/res/updateStatut/\(reservationId)") else {
+            return
+        }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("Error marking reservation as paid: \(error)")
+                return
+            }
+
+            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
+                print("Reservation marked as paid successfully")
+            } else {
+                print("Failed to mark reservation as paid")
+            }
+        }.resume()
+    }
     
     func updateReservation(_ reservationId: String, updatedReservation: ReservationRequest) {
         // Define the API endpoint URL

@@ -10,7 +10,25 @@ struct AddReservation: View {
     @ObservedObject var viewModel: ReservationViewModel
 
     var reservationTotal: Double {
-        return 0.0
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.hour, .minute], from: dateDebut, to: dateFin)
+        let durationInHours = Double(components.hour ?? 0) + Double(components.minute ?? 0) / 60.0
+
+        if durationInHours <= 24 {
+            let hourlyRate = 10.0 // Remplacez par le tarif horaire réel
+            let hours = max(heureFin - heureDebut, 0)
+            return Double(hours) * hourlyRate
+        } else {
+            let dailyRate = 50.0 // Remplacez par le tarif journalier réel
+            let numberOfDays = durationInHours / 24
+            let remainingHours = max(heureFin - heureDebut - Int(numberOfDays) * 24, 0)
+            let extraHourlyRate = dailyRate / 24.0
+
+            let totalDailyRate = Double(numberOfDays) * dailyRate
+            let totalExtraHourlyRate = Double(remainingHours) * extraHourlyRate
+
+            return totalDailyRate + totalExtraHourlyRate
+        }
     }
 
     var body: some View {
@@ -69,7 +87,7 @@ struct AddReservation: View {
             DateFin: dateFin,
             HeureDebut: heureDebut,
             HeureFin: heureFin,
-            Statut: .reserve,  // Fixe le statut directement à Réservée
+            Statut: .reserve,
             Total: reservationTotal
         )
 

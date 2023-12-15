@@ -18,11 +18,11 @@ class PaymentHandler: NSObject,ObservableObject {
     var paymentStatus = PKPaymentAuthorizationStatus.failure
     var completionHandler: PaymentCompletionHandler?
     
-    func startPayment(subtotal: Float ,completion: @escaping PaymentCompletionHandler) {
+    func startPayment(total: Double ,completion: @escaping PaymentCompletionHandler) {
         
-        let amount = PKPaymentSummaryItem(label: "Amount", amount: NSDecimalNumber(value: subtotal), type: .final)
+        let amount = PKPaymentSummaryItem(label: "Amount", amount: NSDecimalNumber(value: total), type: .final)
         let tax = PKPaymentSummaryItem(label: "Tax", amount: NSDecimalNumber(string: "1.12"), type: .final)
-        let total = PKPaymentSummaryItem(label: "ToTal", amount: NSDecimalNumber(value: subtotal + 1.12), type: .final)
+        let total = PKPaymentSummaryItem(label: "ToTal", amount: NSDecimalNumber(value: total + 1.12), type: .final)
         
         paymentSummaryItems = [amount, tax, total];
         completionHandler = completion

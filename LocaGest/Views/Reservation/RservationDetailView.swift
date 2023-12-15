@@ -1,5 +1,6 @@
 import SwiftUI
 
+
 struct ReservationDetailView: View {
     @StateObject private var reservationModel = ReservationModel()
         @StateObject private var viewModel = ReservationViewModel()
@@ -36,9 +37,10 @@ struct ReservationDetailView: View {
                         .font(.title)
                         .fontWeight(.medium)
 
-                    Text("Total: \(reservation.Total)")
+                    Text("Total: \(reservation.Total, specifier: "%.2f") EUR")
                         .font(.body)
                         .foregroundColor(.secondary)
+
 
                     VStack {
                         Image(systemName: "calendar")
@@ -65,67 +67,65 @@ struct ReservationDetailView: View {
                     HStack {
                         Spacer()
                         
-                        Button(action: {
-                            isShowingUpdatePage = true
-                        }) {
-                            Image(systemName: "square.and.pencil") // Choisir le nom de l'icône que vous souhaitez
-                                .resizable()
-                                .scaledToFit()
-                                .foregroundColor(.blue) // Changer la couleur selon vos besoins
-                                .frame(width: 20, height: 20) // Ajuster la taille selon vos besoins
-                        }
-
-                        Spacer()
-                        
-                    
-                        
-                        Button(action: {
-                            // Add to cart action
-                            self.paymentHandler.startPayment(subtotal: Float(self.reservation.Total)) { (success) in
-                                if success {
-                                    // Call a method to display a pop-up for payment success
-                                    self.paymentSuccess = true
-                                    // Update the reservation status to "Payée"
-                                    self.reservation.Statut = StatutRes.payee.rawValue
-                                    // self.sendEmailConfirmation()
-                                } else {
-                                    print("Failed")
-                                }
-                            }
-                        }) {
-                            HStack {
-                                Image(systemName: "creditcard") // Use the appropriate icon name
+                        // Bouton de modification
+                        if reservation.Statut != StatutRes.payee.rawValue {
+                            Button(action: {
+                                isShowingUpdatePage = true
+                            }) {
+                                Image(systemName: "square.and.pencil")
                                     .resizable()
                                     .scaledToFit()
-                                    .foregroundColor(.green) // Change the color as needed
-                                    .frame(width: 20, height: 20) // Adjust the size as needed
-
-                                Text("Payer")
-                                    .font(.body)
-                                    .fontWeight(.medium)
+                                    .foregroundColor(.blue)
+                                    .frame(width: 20, height: 20)
                             }
-                            .padding(8)
-                            .background(Color.blue) // Change the background color as needed
-                            .foregroundColor(.white) // Change the text color as needed
-                            .cornerRadius(8)
+                            Spacer()
                         }
+                        
+                        // Bouton de paiement
+                        if reservation.Statut != StatutRes.payee.rawValue {
+                            Button(action: {
+                                self.paymentHandler.startPayment(total: self.reservation.Total) { (success) in
+                                    if success {
+                                        self.paymentSuccess = true
+                                        viewModel.markReservationAsPaid(reservationId: self.reservation.id)
+                                    } else {
+                                        print("Failed")
+                                    }
+                                }
+                            }) {
+                                HStack {
+                                    Image(systemName: "creditcard")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .foregroundColor(.green)
+                                        .frame(width: 20, height: 20)
 
-
-                        Spacer()
-
+                                    Text("Payer")
+                                        .font(.body)
+                                        .fontWeight(.medium)
+                                }
+                                .padding(8)
+                                .background(Color.blue)
+                                .foregroundColor(.white)
+                                .cornerRadius(8)
+                            }
+                            Spacer()
+                        }
+                        
+                        // Bouton de suppression
                         Button(action: {
                             showDeleteConfirmation = true
                         }) {
-                            Image(systemName: "trash") // Choisir le nom de l'icône que vous souhaitez
+                            Image(systemName: "trash")
                                 .resizable()
                                 .scaledToFit()
-                                .foregroundColor(.red) // Changer la couleur selon vos besoins
-                                .frame(width: 20, height: 20) // Ajuster la taille selon vos besoins
+                                .foregroundColor(.red)
+                                .frame(width: 20, height: 20)
                         }
-
                         Spacer()
                     }
                     .padding(.leading, 0)
+
 
                     .alert(isPresented: $showDeleteConfirmation) {
                         Alert(

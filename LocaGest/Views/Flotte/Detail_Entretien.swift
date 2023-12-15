@@ -22,16 +22,6 @@ struct Detail_Entretien: View {
                     Spacer()
                 }
 
-                HStack {
-                    Text("ID: ")
-                        .padding()
-                        .background(Color.green)
-                        .cornerRadius(10)
-                        .padding(.horizontal)
-                        .padding(.leading, 20)
-                    
-                    Spacer()
-                }
 
                 HStack {
                     Text("Titre: ")

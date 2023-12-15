@@ -36,7 +36,7 @@ struct Reservation: Identifiable {
     var DateFin: String//Date
     let HeureDebut: String//Int
     let HeureFin: String//Int
-    let Statut: String//StatutRes
+    var Statut: String//StatutRes
     private(set) var Total: Double {
            get {
                let dateFormatter = DateFormatter()

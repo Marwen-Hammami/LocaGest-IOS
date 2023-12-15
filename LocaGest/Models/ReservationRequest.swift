@@ -14,7 +14,7 @@ struct ReservationRequest: Identifiable {
     let DateFin: Date//Date
     let HeureDebut: Int//Int
     let HeureFin: Int//Int
-    let Statut: StatutRes//StatutRes
+    var Statut: StatutRes//StatutRes
     private(set) var Total: Double
     
 //        get {

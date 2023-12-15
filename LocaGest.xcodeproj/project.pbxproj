@@ -18,6 +18,7 @@
 		09D7DF732B17E287003080D5 /* Agence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D7DF722B17E287003080D5 /* Agence.swift */; };
 		2199B0B013CDA3D65EAC64CD /* Pods_LocaGest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06C155FADBF483D7B159D780 /* Pods_LocaGest.framework */; };
 		300A22972B2233F70062B463 /* ReservationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300A22962B2233F70062B463 /* ReservationRequest.swift */; };
+		3068BEB12B2BC778008BC242 /* PaymentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3068BEB02B2BC778008BC242 /* PaymentHandler.swift */; };
 		30F918AE2B13999D004EAF46 /* ReservationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F918AD2B13999D004EAF46 /* ReservationModel.swift */; };
 		30F918B02B139E1F004EAF46 /* ReservationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F918AF2B139E1F004EAF46 /* ReservationListView.swift */; };
 		33D31BCE2B13B079007E1B84 /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D31BCD2B13B079007E1B84 /* SignIn.swift */; };
@@ -88,6 +89,7 @@
 		09666FC42B17E7E10025248E /* AgenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgenceView.swift; sourceTree = "<group>"; };
 		09D7DF722B17E287003080D5 /* Agence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agence.swift; sourceTree = "<group>"; };
 		300A22962B2233F70062B463 /* ReservationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationRequest.swift; sourceTree = "<group>"; };
+		3068BEB02B2BC778008BC242 /* PaymentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHandler.swift; sourceTree = "<group>"; };
 		30F918AD2B13999D004EAF46 /* ReservationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationModel.swift; sourceTree = "<group>"; };
 		30F918AF2B139E1F004EAF46 /* ReservationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationListView.swift; sourceTree = "<group>"; };
 		33D31BCD2B13B079007E1B84 /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				4681CCA62B19285600359338 /* ReservationCardView.swift */,
 				4681CCA82B19286E00359338 /* AddReservation.swift */,
 				4681CCAC2B192C6B00359338 /* UpdateReservation.swift */,
+				3068BEB02B2BC778008BC242 /* PaymentHandler.swift */,
 			);
 			path = Reservation;
 			sourceTree = "<group>";
@@ -273,7 +276,6 @@
 				9E9F7509D519648AE4CB8C24 /* Pods-LocaGest.debug.xcconfig */,
 				462F8EEB038B0186CF2B4C97 /* Pods-LocaGest.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -496,6 +498,7 @@
 				4688E9A12B19108E00F83DD5 /* tools.swift in Sources */,
 				33ECD5EF2B1951AB0010A977 /* UpdatePassword.swift in Sources */,
 				4688E9B32B1912FC00F83DD5 /* SelectedImageViewModel.swift in Sources */,
+				3068BEB12B2BC778008BC242 /* PaymentHandler.swift in Sources */,
 				DC453BD82B122F9200B2B9BA /* GarageMainView.swift in Sources */,
 				33ECD5EB2B1950D80010A977 /* UpdateUser.swift in Sources */,
 				DCF91CE82B1FB89F003134AE /* ReservationViewModel.swift in Sources */,

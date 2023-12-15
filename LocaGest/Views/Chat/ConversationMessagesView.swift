@@ -23,6 +23,10 @@ struct ConversationMessagesView: View {
     @StateObject private var messageViewModel = MessagesViewModel()
     let userID = UserDefaults.standard.string(forKey: "UserID")
     
+    @State private var otherUserName: String = ""
+    @State private var otherUserPicture: String = ""
+    @State private var otherUserRole: String = ""
+    
     @StateObject var viewModel = SelectedImageViewModel()
     @State private var messageText = ""
     let conversation: Conversation
@@ -33,7 +37,7 @@ struct ConversationMessagesView: View {
         VStack {
             ScrollView{
                 VStack{
-                    AsyncImage(url: URL(string: conversation.image)) { image in
+                    AsyncImage(url: URL(string: otherUserPicture)) { image in
                         image.resizable()
                             .scaledToFill()
                             .mask(Circle())
@@ -59,11 +63,11 @@ struct ConversationMessagesView: View {
                             }
                     }
                     
-                    Text(conversation.members[1])
+                    Text(otherUserName)
                         .font(.title3)
                         .fontWeight(.semibold)
                     
-                    Text("Technicien")
+                    Text(otherUserRole)
                         .font(.footnote)
                         .foregroundColor(.gray)
                         .padding(.bottom)
@@ -72,7 +76,7 @@ struct ConversationMessagesView: View {
                     if let messages = messageViewModel.messages {
                         ForEach(messages) { messa in
                             if(!messa.Archive) { //Ne pas afficher les messages archivées (liées au signalement)
-                                CardMessage(message: messa, userImg: conversation.image)
+                                CardMessage(message: messa, userImg: otherUserPicture)
                                     .onLongPressGesture {
                                         showDialog = true
                                         messageToCopy = messa.text
@@ -145,10 +149,10 @@ struct ConversationMessagesView: View {
                     }
                 }
             }
-                .navigationBarTitle(conversation.isGroup ? conversation.name : conversation.members[1], displayMode: .inline)
+                .navigationBarTitle(conversation.isGroup ? conversation.name : otherUserName, displayMode: .inline)
                 .navigationBarItems(
                     leading:
-                        AsyncImage(url: URL(string: conversation.image)) { image in
+                        AsyncImage(url: URL(string: otherUserPicture)) { image in
                                             image.resizable()
                                                 .scaledToFill()
                                                 .mask(Circle())
@@ -237,6 +241,22 @@ struct ConversationMessagesView: View {
 
             }
             .padding(.horizontal)
+        }
+        .onAppear {
+            // Fetch user information when the view appears
+            if conversation.members.count > 0 {
+                let otherUserID = conversation.members[1]
+                UserService.shared.getUser(userID: otherUserID) { result in
+                    switch result {
+                    case .success(let user):
+                        self.otherUserName = user.username!
+                        self.otherUserPicture = user.image!
+                        self.otherUserRole = user.roles.rawValue
+                    case .failure(let error):
+                        print("Error fetching other user: \(error)")
+                    }
+                }
+            }
         }
     }
 }

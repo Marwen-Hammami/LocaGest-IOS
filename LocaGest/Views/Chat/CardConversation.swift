@@ -10,6 +10,9 @@ import SwiftUI
 struct CardConversation: View {
     let conversation: Conversation
     
+    @State private var otherUserName: String = ""
+    @State private var otherUserPicture: String = ""
+    
     @State private var rotationAngle: Double = 0
     
     @State private var isConversationMessagesViewActive = false
@@ -17,7 +20,7 @@ struct CardConversation: View {
     var body: some View {
         VStack{
             HStack{
-                AsyncImage(url: URL(string: conversation.image)) { image in
+                AsyncImage(url: URL(string: otherUserPicture)) { image in
                                     image.resizable()
                                         .scaledToFill()
                                         .mask(Circle())
@@ -37,7 +40,7 @@ struct CardConversation: View {
                                     }
                                 }
 
-                Text(conversation.isGroup ? conversation.name : conversation.members[1])
+                Text(conversation.isGroup ? conversation.name : otherUserName)
                     .bold()
                     .font(.title2)
                     .opacity(0.7)
@@ -50,6 +53,21 @@ struct CardConversation: View {
                 .opacity(0.2)
                 .foregroundColor(.black)
                 .padding(.horizontal)
+        }
+        .onAppear {
+            // Fetch user information when the view appears
+            if conversation.members.count > 0 {
+                let otherUserID = conversation.members[1]
+                UserService.shared.getUser(userID: otherUserID) { result in
+                    switch result {
+                    case .success(let user):
+                        self.otherUserName = user.username!
+                        self.otherUserPicture = user.image!
+                    case .failure(let error):
+                        print("Error fetching other user: \(error)")
+                    }
+                }
+            }
         }
         .onTapGesture {
                     isConversationMessagesViewActive = true

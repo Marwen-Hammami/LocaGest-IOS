@@ -7,31 +7,42 @@ import LocalAuthentication
 struct FaceView: View {
 
     @State private var unlocked = false
+    @State private var shouldNavigateToFlotte = false
+    @EnvironmentObject var vm: ViewModel
 
     @State private var text = "LOCKED"
 
     
 
     var body: some View {
-
-        VStack {
-
-            Text(text)
-
-                .bold()
-
-            .padding()
-
-            
-
-            Button("Authenticate") {
-
-                authenticate()
-
+        NavigationView {
+            VStack {
+                
+                Text(text)
+                
+                    .bold()
+                
+                    .padding()
+                
+                
+                
+                Button("Authenticate") {
+                    
+                    authenticate()
+                    
+                }
+                
             }
-
-        }
-
+            
+        }.background(
+            NavigationLink(destination:
+                            FlotteMainView()
+                                .environmentObject(vm)
+                                .navigationBarBackButtonHidden(true)
+                            , isActive: $shouldNavigateToFlotte) {
+                EmptyView()
+            }
+        )
     }
 
     
@@ -59,6 +70,7 @@ struct FaceView: View {
                 if success {
 
                     text = "UNLOCKED"
+                    shouldNavigateToFlotte = true
 
                 } else {
 

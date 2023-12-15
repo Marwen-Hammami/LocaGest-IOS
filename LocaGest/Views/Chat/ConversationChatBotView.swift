@@ -27,10 +27,13 @@ struct ConversationChatBotView: View {
     @State private var messageToCopy = ""
     @State private var messageId = ""
     @State private var messageSender = ""
+    @State private var counter = 0
+    @State private var timer: Timer?
+    
     var body: some View {
         VStack {
-            ScrollView{
-                VStack{
+            ScrollView {
+                VStack {
                     AsyncImage(url: URL(string: otherUserPicture)) { image in
                         image.resizable()
                             .scaledToFill()
@@ -66,10 +69,10 @@ struct ConversationChatBotView: View {
                         .foregroundColor(.gray)
                         .padding(.bottom)
                     
-                    //MESSAGES
+                    // MESSAGES
                     if let messages = messageViewModel.messages {
                         ForEach(messages) { messa in
-                            if(!messa.Archive) { //Ne pas afficher les messages archivées (liées au signalement)
+                            if(!messa.Archive) {
                                 CardMessage(message: messa, userImg: otherUserPicture)
                                     .onLongPressGesture {
                                         showDialog = true
@@ -93,21 +96,31 @@ struct ConversationChatBotView: View {
                     }
                 }
             }
-            //Message Text Input
-            ZStack{
-                HStack{
-                    HStack{
+            
+            // Message Text Input
+            ZStack {
+                HStack {
+                    HStack {
                         TextField("Message...", text: $messageText, axis: .vertical)
                             .padding(.vertical,12)
                             .padding(.leading,12)
                             .font(.subheadline)
                         
                         Button {
-                            
-                            if (messageText != "") {
-                                //send to chat
-                                
-                                //add message to conv
+                            if messageText != "" {
+                                // Send to chat
+                                messageViewModel.sendMessageToChat(userMessage: messageText, convId: conversation._id) { result in
+                                    switch result {
+                                    case .success:
+                                        // Handle success
+                                        startFetchingMessagesTimer()
+                                    case .failure(let error):
+                                        // Handle failure
+                                        print("Error sending message to chat bot: \(error)")
+                                    }
+                                }
+
+                                // Add message to conv
                                 messageViewModel.addMessage(
                                     conversationId: conversation._id,
                                     sender: userID!,
@@ -125,7 +138,6 @@ struct ConversationChatBotView: View {
                     .background(Color(.systemGroupedBackground))
                     .clipShape(Capsule())
                 }
-                
             }
             .padding(.horizontal)
         }
@@ -144,6 +156,18 @@ struct ConversationChatBotView: View {
                 }
             }
         }
+    }
 
+    private func startFetchingMessagesTimer() {
+        counter = 0
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
+            if counter < 1 {
+                messageViewModel.fetchMessages(forConvID: conversation._id)
+                counter += 1
+            } else {
+                timer.invalidate()
+            }
+        }
     }
 }

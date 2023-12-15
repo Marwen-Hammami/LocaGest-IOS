@@ -57,6 +57,7 @@
 		46BA6EEF2B2B6CBC00B2B1E8 /* ConvsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA6EEE2B2B6CBC00B2B1E8 /* ConvsViewModel.swift */; };
 		46BA6EF12B2B728600B2B1E8 /* ReservationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA6EF02B2B728600B2B1E8 /* ReservationViewModel.swift */; };
 		46BA6EF32B2B732000B2B1E8 /* ReservationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA6EF22B2B732000B2B1E8 /* ReservationRequest.swift */; };
+		46BA6EF52B2C2DB600B2B1E8 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA6EF42B2C2DB600B2B1E8 /* CardView.swift */; };
 		58F259ED2B29CDE10073F005 /* FacebookAEM in Frameworks */ = {isa = PBXBuildFile; productRef = 58F259EC2B29CDE10073F005 /* FacebookAEM */; };
 		58F259EF2B29CDE10073F005 /* FacebookBasics in Frameworks */ = {isa = PBXBuildFile; productRef = 58F259EE2B29CDE10073F005 /* FacebookBasics */; };
 		58F259F12B29CDE10073F005 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 58F259F02B29CDE10073F005 /* FacebookCore */; };
@@ -144,6 +145,7 @@
 		46BA6EEE2B2B6CBC00B2B1E8 /* ConvsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvsViewModel.swift; sourceTree = "<group>"; };
 		46BA6EF02B2B728600B2B1E8 /* ReservationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationViewModel.swift; sourceTree = "<group>"; };
 		46BA6EF22B2B732000B2B1E8 /* ReservationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationRequest.swift; sourceTree = "<group>"; };
+		46BA6EF42B2C2DB600B2B1E8 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		58F259F62B29CEB90073F005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5FBD900DE645C642929F9BB0 /* Pods-LocaGest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocaGest.release.xcconfig"; path = "Target Support Files/Pods-LocaGest/Pods-LocaGest.release.xcconfig"; sourceTree = "<group>"; };
 		7F3285482B1609BD00ABE165 /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 			children = (
 				DC453BD32B122ECA00B2B9BA /* AgenceMainView.swift */,
 				09666FC42B17E7E10025248E /* AgenceView.swift */,
+				46BA6EF42B2C2DB600B2B1E8 /* CardView.swift */,
 			);
 			path = Agence;
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 				33ECD5EB2B1950D80010A977 /* UpdateUser.swift in Sources */,
 				7FA0E9612B148AA900A46450 /* DashboardFlotte.swift in Sources */,
 				33D31BD02B13B184007E1B84 /* SignUp.swift in Sources */,
+				46BA6EF52B2C2DB600B2B1E8 /* CardView.swift in Sources */,
 				DC4AC4572B139A4100AFDA6F /* CardConversation.swift in Sources */,
 				090D82CC2B19DE23000D1B47 /* distributions.swift in Sources */,
 				4681CCA52B19283E00359338 /* RservationDetailView.swift in Sources */,

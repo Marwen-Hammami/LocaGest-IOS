@@ -12,11 +12,14 @@ struct AgenceMainView: View {
                 Color(.white)
                 VStack{
                     SideBarButton()
-                    
+                        .padding()
                     HomeView()
-                }
-                .padding()
-                .padding(.vertical, 50)
+                }.background(
+                    Image("backround")
+                        .resizable()
+                        .scaledToFill()
+                        .edgesIgnoringSafeArea(.all)
+                        .padding(.top,50))
             }
             .mask(RoundedRectangle(cornerRadius: 30, style: .continuous))
             .rotation3DEffect(.degrees(30), axis: (x: 0, y: vm.isopen ? -1 : 0, z: 0))
@@ -27,6 +30,9 @@ struct AgenceMainView: View {
             vm.selecteditem = .agence
         }
     }
+     
+       
+        
     @ViewBuilder
     func SideBarButton()-> some View{
         if vm.sideButton{
@@ -40,7 +46,10 @@ struct AgenceMainView: View {
                     .font(.title)
                     .foregroundColor(.black)
             })
+          .padding(.top, 50)
+                
             .frame(maxWidth: .infinity, alignment: .leading)
+            
         }
     }
     

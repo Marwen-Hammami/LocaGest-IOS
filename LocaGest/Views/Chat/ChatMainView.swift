@@ -11,6 +11,7 @@ struct ChatMainView: View {
     @EnvironmentObject var vm: ViewModel
     @StateObject private var userViewModel = UserViewModel()
     @StateObject private var convsViewModel = ConvsViewModel()
+    @StateObject private var messageViewModel = MessagesViewModel()
     @State private var shouldRefreshView = false
 
     @State private var rotationAngle: Double = 0
@@ -124,6 +125,7 @@ struct ChatMainView: View {
                 ProgressView()
                     .onAppear {
                         viewModel.fetchConversations(forUserID: userID!)
+                        
                     }
             }
         }else {

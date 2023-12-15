@@ -48,7 +48,6 @@
 		4688E9A52B1910C300F83DD5 /* Distribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E9A42B1910C300F83DD5 /* Distribution.swift */; };
 		4688E9A72B1910EC00F83DD5 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E9A62B1910EC00F83DD5 /* Tools.swift */; };
 		4688E9A92B1911AA00F83DD5 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E9A82B1911AA00F83DD5 /* Message.swift */; };
-		4688E9AB2B1911F500F83DD5 /* CardCurrentConnectedUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E9AA2B1911F500F83DD5 /* CardCurrentConnectedUsers.swift */; };
 		4688E9AD2B19125E00F83DD5 /* CardMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E9AC2B19125E00F83DD5 /* CardMessage.swift */; };
 		4688E9AF2B1912BC00F83DD5 /* ConversationMessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E9AE2B1912BC00F83DD5 /* ConversationMessagesView.swift */; };
 		4688E9B12B1912D600F83DD5 /* NewMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E9B02B1912D600F83DD5 /* NewMessageView.swift */; };
@@ -136,7 +135,6 @@
 		4688E9A42B1910C300F83DD5 /* Distribution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distribution.swift; sourceTree = "<group>"; };
 		4688E9A62B1910EC00F83DD5 /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
 		4688E9A82B1911AA00F83DD5 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		4688E9AA2B1911F500F83DD5 /* CardCurrentConnectedUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCurrentConnectedUsers.swift; sourceTree = "<group>"; };
 		4688E9AC2B19125E00F83DD5 /* CardMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardMessage.swift; sourceTree = "<group>"; };
 		4688E9AE2B1912BC00F83DD5 /* ConversationMessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationMessagesView.swift; sourceTree = "<group>"; };
 		4688E9B02B1912D600F83DD5 /* NewMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageView.swift; sourceTree = "<group>"; };
@@ -318,7 +316,6 @@
 				24B7AF605E7117E67D387EC8 /* Pods-LocaGest.debug.xcconfig */,
 				5FBD900DE645C642929F9BB0 /* Pods-LocaGest.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -358,7 +355,6 @@
 			children = (
 				DCFCEF642B10C2CC004C3574 /* ChatMainView.swift */,
 				DC4AC4562B139A4100AFDA6F /* CardConversation.swift */,
-				4688E9AA2B1911F500F83DD5 /* CardCurrentConnectedUsers.swift */,
 				4688E9AC2B19125E00F83DD5 /* CardMessage.swift */,
 				4688E9AE2B1912BC00F83DD5 /* ConversationMessagesView.swift */,
 				4688E9B02B1912D600F83DD5 /* NewMessageView.swift */,
@@ -574,7 +570,6 @@
 				DCFCEF652B10C2CC004C3574 /* ChatMainView.swift in Sources */,
 				30F918B02B139E1F004EAF46 /* ReservationListView.swift in Sources */,
 				DC51CA342AF8324D00DC8C9A /* LocaGestApp.swift in Sources */,
-				4688E9AB2B1911F500F83DD5 /* CardCurrentConnectedUsers.swift in Sources */,
 				DC51CA402AF8325100DC8C9A /* LocaGest.xcdatamodeld in Sources */,
 				4681CCA92B19286E00359338 /* AddReservation.swift in Sources */,
 				46BA6EEB2B2B6A9800B2B1E8 /* MessagesViewModel.swift in Sources */,

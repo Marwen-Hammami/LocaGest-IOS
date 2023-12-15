@@ -44,7 +44,7 @@ class ConvsViewModel: ObservableObject {
 
             let parameters: [String: Any] = [
                 "members": members,
-                "isGroup": isGroup
+                "isGroup": isGroup,
             ]
 
             var request = URLRequest(url: url)

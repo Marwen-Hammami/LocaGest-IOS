@@ -17,7 +17,10 @@ struct ConversationChatBotView: View {
     @State private var rotationAngle: Double = 0
     
     @StateObject private var messageViewModel = MessagesViewModel()
-    let currentUser = "656e2bb566210cdf7c871d41"
+    let userID = UserDefaults.standard.string(forKey: "UserID")
+    
+    @State private var otherUserName: String = ""
+    @State private var otherUserPicture: String = ""
     
     @State private var messageText = ""
     let conversation: Conversation
@@ -28,7 +31,7 @@ struct ConversationChatBotView: View {
         VStack {
             ScrollView{
                 VStack{
-                    AsyncImage(url: URL(string: conversation.image)) { image in
+                    AsyncImage(url: URL(string: otherUserPicture)) { image in
                         image.resizable()
                             .scaledToFill()
                             .mask(Circle())
@@ -54,7 +57,7 @@ struct ConversationChatBotView: View {
                             }
                     }
                     
-                    Text(conversation.members[1])
+                    Text(otherUserName)
                         .font(.title3)
                         .fontWeight(.semibold)
                     
@@ -67,7 +70,7 @@ struct ConversationChatBotView: View {
                     if let messages = messageViewModel.messages {
                         ForEach(messages) { messa in
                             if(!messa.Archive) { //Ne pas afficher les messages archivées (liées au signalement)
-                                CardMessage(message: messa, userImg: conversation.image)
+                                CardMessage(message: messa, userImg: otherUserPicture)
                                     .onLongPressGesture {
                                         showDialog = true
                                         messageToCopy = messa.text
@@ -90,41 +93,6 @@ struct ConversationChatBotView: View {
                     }
                 }
             }
-//                .navigationBarTitle(conversation.isGroup ? conversation.name : conversation.members[1], displayMode: .inline)
-//                .navigationBarItems(
-//                    leading:
-//                        AsyncImage(url: URL(string: conversation.image)) { image in
-//                                            image.resizable()
-//                                                .scaledToFill()
-//                                                .mask(Circle())
-//                                                .frame(width: 30, height: 30)
-//                                                .rotationEffect(Angle(degrees: rotationAngle))
-//                                                .onTapGesture {
-//                                                    withAnimation {
-//                                                        rotationAngle += 360
-//                                                    }
-//                                                }
-//                                        } placeholder: {
-//                                            Image(systemName: "person.circle.fill")
-//                                            .resizable()
-//                                            .scaledToFill()
-//                                            .mask(Circle())
-//                                            .foregroundColor(.gray)
-//                                            .frame(width: 30, height: 30)
-//                                            .rotationEffect(Angle(degrees: rotationAngle))
-//                                            .onTapGesture {
-//                                                withAnimation {
-//                                                    rotationAngle += 360
-//                                                }
-//                                            }
-//                                        },
-//                    trailing: Image(systemName: "video.circle")
-//                    .foregroundColor(Color("Accent"))
-//                        .onTapGesture {
-//                            //Demander une assistance humaine via video call
-//                        }
-//                                    )
-            
             //Message Text Input
             ZStack{
                 HStack{
@@ -135,16 +103,19 @@ struct ConversationChatBotView: View {
                             .font(.subheadline)
                         
                         Button {
-
-                                    if (messageText != "") {
-                                        messageViewModel.addMessage(
-                                            conversationId: conversation._id,
-                                            sender: currentUser,
-                                            text: messageText,
-                                            file: []
-                                        )
-                                        messageText = ""
-                                    }
+                            
+                            if (messageText != "") {
+                                //send to chat
+                                
+                                //add message to conv
+                                messageViewModel.addMessage(
+                                    conversationId: conversation._id,
+                                    sender: userID!,
+                                    text: messageText,
+                                    file: []
+                                )
+                                messageText = ""
+                            }
                         } label: {
                             Image(systemName: "paperplane.fill")
                                 .foregroundColor(Color("Accent"))
@@ -154,9 +125,25 @@ struct ConversationChatBotView: View {
                     .background(Color(.systemGroupedBackground))
                     .clipShape(Capsule())
                 }
-
+                
             }
             .padding(.horizontal)
         }
+        .onAppear {
+            // Fetch user information when the view appears
+            if conversation.members.count > 0 {
+                let otherUserID = conversation.members[1]
+                UserService.shared.getUser(userID: otherUserID) { result in
+                    switch result {
+                    case .success(let user):
+                        self.otherUserName = user.username!
+                        self.otherUserPicture = user.image!
+                    case .failure(let error):
+                        print("Error fetching other user: \(error)")
+                    }
+                }
+            }
+        }
+
     }
 }

@@ -3,10 +3,10 @@ import SwiftUI
 struct CardMessage: View {
     let message: Message
     let userImg: String
-    var currentUserId = "656e2bb566210cdf7c871d41"
+    let userID = UserDefaults.standard.string(forKey: "UserID")
     var body: some View {
         HStack{
-            if message.sender == currentUserId {
+            if message.sender == userID {
                 Spacer()
                 
                 if(message.Supprime){

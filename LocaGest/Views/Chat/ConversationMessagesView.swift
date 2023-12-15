@@ -21,7 +21,7 @@ struct ConversationMessagesView: View {
     @State private var rotationAngle: Double = 0
     
     @StateObject private var messageViewModel = MessagesViewModel()
-    let currentUser = "656e2bb566210cdf7c871d41"
+    let userID = UserDefaults.standard.string(forKey: "UserID")
     
     @StateObject var viewModel = SelectedImageViewModel()
     @State private var messageText = ""
@@ -86,12 +86,12 @@ struct ConversationMessagesView: View {
                                 UIPasteboard.general.setValue(messageToCopy,
                                                               forPasteboardType: UTType.plainText.identifier)
                             })
-                            if (messageSender != currentUser) {
+                            if (messageSender != userID) {
                                 Button("Signaler", role: .destructive, action: {
                                     showRaisonSignalerDialog = true
                                 })
                             }
-                            if (messageSender == currentUser) {
+                            if (messageSender == userID) {
                                 Button("Supprimer", role: .destructive, action: {
                                     showConfirmDeleteDialog = true
                                 })
@@ -117,7 +117,7 @@ struct ConversationMessagesView: View {
                         }
                         .alert("Sélectionner la raison du signalement", isPresented: $showRaisonSignalerDialog) {
                             Button("Harcèlement", role: .destructive, action: {
-                                messageViewModel.signalerMessage(messageId: messageId, signaleurId: currentUser, raison: "Harcèlement", raisonAutre: "") { result in
+                                messageViewModel.signalerMessage(messageId: messageId, signaleurId: userID!, raison: "Harcèlement", raisonAutre: "") { result in
                                     switch result {
                                     case .success(let response):
                                         // Handle the successful response
@@ -208,7 +208,7 @@ struct ConversationMessagesView: View {
                                     // User has selected an image
                                     messageViewModel.addMessageWithImage(
                                         conversationId: conversation._id,
-                                        sender: currentUser,
+                                        sender: userID!,
                                         text: messageText,
                                         file: [selectedImage]
                                     )
@@ -218,7 +218,7 @@ struct ConversationMessagesView: View {
                                     if (messageText != "") {
                                         messageViewModel.addMessage(
                                             conversationId: conversation._id,
-                                            sender: currentUser,
+                                            sender: userID!,
                                             text: messageText,
                                             file: []
                                         )

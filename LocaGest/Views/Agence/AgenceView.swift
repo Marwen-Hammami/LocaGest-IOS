@@ -448,6 +448,7 @@ struct FormView: View {
                     .foregroundColor(.red)
             })
             .navigationBarItems(trailing: Button(action: {
+                
                 // Action for Cancel button
                 addAgence()
                 self.name = ""
@@ -512,6 +513,7 @@ struct FormView: View {
                 
             }
         }.resume()
+        
     }
     
     

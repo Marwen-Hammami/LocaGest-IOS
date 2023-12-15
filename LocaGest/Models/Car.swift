@@ -1,35 +1,18 @@
-//
-//  Car.swift
-//  LocaGest
-//
-//  Created by Mohamed Maamoun Jrad  on 28/11/2023.
-//
 import Foundation
-struct Car: Identifiable {
-    let id: UUID
-    var immatriculation: String?
+
+struct Car: Decodable, Encodable, Identifiable {
+    let id: String
+    var immatriculation: String
     var marque: String
     var modele: String
-    var carburant: Carburant
-    var boite: Boite
-    var disponibility: Disponibility
+    var image: String
+    var cylindree: String // Corrected the property name
+    var etatVoiture: String
+    var type: String
+    var prixParJour: Int
     
+    enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case immatriculation, marque, modele, image, cylindree, etatVoiture, type, prixParJour
+    }
 }
-
-enum Carburant: String {
-    case essence = "Essence"
-    case diesel = "Diesel"
-    case hybride = "Hybride"
-}
-
-enum Boite: String {
-    case manuelle = "Manuelle"
-    case automatique = "Automatique"
-}
-enum Disponibility: String {
-    case disponible = "Disponible"
-    case louee = "Louée"
-}
-
-
-

@@ -38,7 +38,7 @@ struct ReservationCardView: View {
                                 .fontWeight(.medium)
                             
                             // Button with the "info.circle" icon
-                            NavigationLink(destination: ReservationDetailView(reservation: reservation)) {
+                            NavigationLink(destination: ReservationDetailView(reservation: reservation, paymentHandler: PaymentHandler())) {
                                 Image(systemName: "info.circle")
                                     .foregroundColor(.teal)
                             }/*}

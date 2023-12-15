@@ -6,51 +6,59 @@ struct AddReservation: View {
     @State private var dateFin = Date()
     @State private var heureDebut = 0
     @State private var heureFin = 0
-    @State private var statut: StatutRes = .reserve
-    
+
     @ObservedObject var viewModel: ReservationViewModel
 
     var reservationTotal: Double {
-        return 0.0
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.hour, .minute], from: dateDebut, to: dateFin)
+        let durationInHours = Double(components.hour ?? 0) + Double(components.minute ?? 0) / 60.0
+
+        if durationInHours <= 24 {
+            let hourlyRate = 10.0 // Remplacez par le tarif horaire réel
+            let hours = max(heureFin - heureDebut, 0)
+            return Double(hours) * hourlyRate
+        } else {
+            let dailyRate = 50.0 // Remplacez par le tarif journalier réel
+            let numberOfDays = durationInHours / 24
+            let remainingHours = max(heureFin - heureDebut - Int(numberOfDays) * 24, 0)
+            let extraHourlyRate = dailyRate / 24.0
+
+            let totalDailyRate = Double(numberOfDays) * dailyRate
+            let totalExtraHourlyRate = Double(remainingHours) * extraHourlyRate
+
+            return totalDailyRate + totalExtraHourlyRate
+        }
     }
-    
+
     var body: some View {
         VStack {
             Text("Ajouter une réservation")
                 .font(.title)
                 .padding()
-            
+
             Form {
                 Section(header: Text("Date et heure")) {
                     DatePicker("Date de début", selection: $dateDebut, displayedComponents: .date)
                     DatePicker("Date de fin", selection: $dateFin, displayedComponents: .date)
-                    
+
                     Picker("Heure de début", selection: $heureDebut) {
                         ForEach(0..<24, id: \.self) { hour in
                             Text("\(hour)h")
                         }
                     }
-                    
+
                     Picker("Heure de fin", selection: $heureFin) {
                         ForEach(0..<24, id: \.self) { hour in
                             Text("\(hour)h")
                         }
                     }
                 }
-                
-                Section(header: Text("Statut")) {
-                    Picker("Statut", selection: $statut) {
-                        Text("Réservée").tag(StatutRes.reserve)
-                        Text("Payée").tag(StatutRes.payee)
-                        Text("Achevée").tag(StatutRes.achevee)
-                    }
-                    .pickerStyle(SegmentedPickerStyle())
-                }
-                
+
                 Section(header: Text("Total")) {
                     Text("Montant total : \(reservationTotal, specifier: "%.2f") EUR")
                 }
-                
+
                 Button(action: saveReservation) {
                     Text("Add")
                         .font(.system(size: 20))
@@ -62,19 +70,16 @@ struct AddReservation: View {
                         .padding(.leading, 0)
                 }
             }
-//            .listStyle(PlainListStyle())
-//            .background(Color.clear)
-//            // Transparent background for the list itself
         }
         .background(
-            Image("back1") // Assuming "back1" is the name of your image asset
+            Image("back1")
                 .resizable()
                 .scaledToFill()
                 .edgesIgnoringSafeArea(.all)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
         )
     }
-    
+
     func saveReservation() {
         let newReservation = ReservationRequest(
             _id: "",
@@ -82,14 +87,12 @@ struct AddReservation: View {
             DateFin: dateFin,
             HeureDebut: heureDebut,
             HeureFin: heureFin,
-            Statut: statut,
+            Statut: .reserve,
             Total: reservationTotal
         )
 
-        // Appelez la méthode dans le modèle pour ajouter la réservation
         viewModel.addReservation(newReservation)
-        
-        // Fermez la vue
+
         presentationMode.wrappedValue.dismiss()
     }
 }

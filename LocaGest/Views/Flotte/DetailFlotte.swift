@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct DetailFlotte: View {
-    let cars: [Car]
+    @ObservedObject var carViewModel: CarViewModel
 
     var body: some View {
         NavigationView {
@@ -14,117 +14,109 @@ struct DetailFlotte: View {
                 .edgesIgnoringSafeArea(.all)
 
                 VStack {
-                    List(cars) { car in
-                        NavigationLink(destination: Detail_Voiture()) {
-                            CarRow(car: car)
+                    
+
+                    if carViewModel.isLoading {
+                        ProgressView("Chargement...")
+                            .progressViewStyle(CircularProgressViewStyle(tint: .green))
+                            .scaleEffect(2)
+                            .foregroundColor(.white)
+                            .padding(.top, 20)
+                    } else {
+                        ScrollView {
+                            VStack(spacing: 16) {
+                                ForEach(carViewModel.cars) { car in
+                                    CarCardView(car: car, carViewModel: carViewModel)
+                                }
+                            }
+                            .padding()
                         }
                     }
-                    .listStyle(GroupedListStyle())
 
                     Spacer()
 
-                    NavigationLink(destination: Ajouter_Voiture()) {
-                        Text("Ajouter une voiture")
+                    NavigationLink(destination: Ajouter_Voiture(carViewModel: carViewModel)) {
+                        Text("Ajouter")
                             .padding()
                             .frame(maxWidth: .infinity)
-                            .background(Color("Accent"))
+                            .background(Color.green)
                             .foregroundColor(.white)
                             .cornerRadius(8)
                             .padding()
                     }
+                    .padding(.bottom, 20)
                 }
+            }.task {
+                do {
+                    await carViewModel.fetchCars()
+                }catch{
+                    print("sdfsdfdsfsdf")
+                }
+                
             }
-            .navigationTitle("Détails de la flotte")
+            .navigationTitle("LocaGest")
+            .accentColor(.green)
         }
     }
 }
 
-struct CarRow: View {
+struct CarCardView: View {
     var car: Car
+    @ObservedObject var carViewModel: CarViewModel
 
     var body: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 8) {
-                Text("Marque: \(car.marque )")
-                    .font(.headline)
-                Text("Modèle: \(car.modele )")
-                    .font(.subheadline)
-                Text("Immatriculation: \(car.immatriculation ?? "")").fontWeight(.bold)
-                    .font(.subheadline)
-                Text("Disponibilité: \(car.disponibility.rawValue)")
-                    .font(.subheadline)
-            }
-            .padding()
-            .background(
-                LinearGradient(
-                    gradient: Gradient(colors: [Color("Main"), Color.white]),
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
-            )
+        NavigationLink(destination: Detail_Voiture(car: car)) {
+            ZStack {
+                Rectangle()
+                    .foregroundColor(Color.black.opacity(0.3))
+                    .cornerRadius(20)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Marque: \(car.marque)")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                    Text("Modèle: \(car.modele)")
+                        .font(.subheadline)
+                        .foregroundColor(.white)
 
-            Spacer()
-
-            // Emplacement pour l'image à droite
-            Image(systemName: "car.fill")
-                .resizable()
-                .frame(width: 50, height: 50)
+                    // Conditionally render immatriculation if it is not nil
+                    Text("Immatriculation: \(car.immatriculation ?? "")")
+                        .fontWeight(.bold)
+                        .font(.subheadline)
+                        .foregroundColor(.white)
+                }
                 .padding()
-                .background(
-                    LinearGradient(
-                        gradient: Gradient(colors: [Color("Main"), Color.white]),
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                )
-                .cornerRadius(10)
-
-            NavigationLink(destination: CarDetailView(car: car)) {
-                Text("Détail")
-                    .foregroundColor(Color("Accent"))
-                    .font(.subheadline)
             }
+            .background(
+               /* ("Dacia_Logan")
+                    .resizable()
+                    .scaledToFill()*/
+                
+         
+                
+                AsyncImage(url: URL(string: "http://localhost:9090/images/car/\(car.image)")) { phase in
+                                     switch phase {
+                                     case .empty:
+                                         ProgressView()
+                                     case .success(let image):
+                                         image
+                                             .resizable()
+                                             .scaledToFill()
+                                     case .failure:
+                                         Image(systemName: "photo")
+                                             .resizable()
+                                             .scaledToFill()
+                                     @unknown default:
+                                         EmptyView()
+                                     }
+                                 }
+                
+                
+            )
+            .cornerRadius(20)
+            .frame(width: 340, height: 180) // Ajustez ces valeurs selon vos besoins
         }
-        .padding()
-        .background(Color.clear) // Fond transparent pour le HStack
-    }
-}
-
-struct CarDetailView: View {
-    var car: Car
-
-    var body: some View {
-        VStack {
-            Text("\(car.marque ) \(car.modele )")
-                .font(.title)
-
-            Spacer()
-
-            Text("Immatriculation: \(car.immatriculation ?? "")")
-                .font(.subheadline)
-            Text("Carburant: \(car.carburant.rawValue)")
-                .font(.subheadline)
-            Text("Boîte de vitesses: \(car.boite.rawValue)")
-                .font(.subheadline)
-            Text("Disponibilité: \(car.disponibility.rawValue)")
-                .font(.subheadline)
-
-            Spacer()
-        }
-        .navigationBarTitle(Text("\(car.marque ) \(car.modele )"), displayMode: .inline)
-    }
-}
-
-
-
-struct DetailFlotte_Previews: PreviewProvider {
-    static var previews: some View {
-        let sampleCars = [
-            Car(id: UUID(), immatriculation: "ABC123", marque: "Toyota", modele: "Camry", carburant: .essence, boite: .automatique, disponibility: .disponible),
-            Car(id: UUID(), immatriculation: "XYZ456", marque: "Honda", modele: "Accord", carburant: .diesel, boite: .manuelle, disponibility: .louee)
-            // Ajoutez d'autres voitures selon vos besoins
-        ]
-
-        return DetailFlotte(cars: sampleCars)
+        .buttonStyle(PlainButtonStyle())
     }
 }

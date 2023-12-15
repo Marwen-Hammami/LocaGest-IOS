@@ -1,13 +1,27 @@
 import SwiftUI
 
+
 struct ReservationDetailView: View {
     @StateObject private var reservationModel = ReservationModel()
-    @StateObject private var viewModel = ReservationViewModel()
-    let reservation: Reservation
-    @State private var showDeleteConfirmation = false
-    @State private var isShowingUpdatePage = false
+        @StateObject private var viewModel = ReservationViewModel()
+        @StateObject private var paymentHandler: PaymentHandler
+    @State var reservation: Reservation
+        @State private var showDeleteConfirmation = false
+        @State private var isShowingUpdatePage = false
+        @State private var paymentSuccess = false
+        @State private var navigateToReservationList: Bool = false
+
+        // Initialize paymentHandler in the initializer
+        init(reservation: Reservation, paymentHandler: PaymentHandler) {
+            self.reservation = reservation
+            self._paymentHandler = StateObject(wrappedValue: paymentHandler)
+           
+        }
+
+
+
     
-    @State private var navigateToReservationList = false
+    
     
     var body: some View {
         NavigationView {
@@ -23,9 +37,10 @@ struct ReservationDetailView: View {
                         .font(.title)
                         .fontWeight(.medium)
 
-                    Text("Total: \(reservation.Total)")
+                    Text("Total: \(reservation.Total, specifier: "%.2f") EUR")
                         .font(.body)
                         .foregroundColor(.secondary)
+
 
                     VStack {
                         Image(systemName: "calendar")
@@ -52,31 +67,65 @@ struct ReservationDetailView: View {
                     HStack {
                         Spacer()
                         
-                        Button(action: {
-                            isShowingUpdatePage = true
-                        }) {
-                            Image(systemName: "square.and.pencil") // Choisir le nom de l'icône que vous souhaitez
-                                .resizable()
-                                .scaledToFit()
-                                .foregroundColor(.blue) // Changer la couleur selon vos besoins
-                                .frame(width: 20, height: 20) // Ajuster la taille selon vos besoins
+                        // Bouton de modification
+                        if reservation.Statut != StatutRes.payee.rawValue {
+                            Button(action: {
+                                isShowingUpdatePage = true
+                            }) {
+                                Image(systemName: "square.and.pencil")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .foregroundColor(.blue)
+                                    .frame(width: 20, height: 20)
+                            }
+                            Spacer()
                         }
+                        
+                        // Bouton de paiement
+                        if reservation.Statut != StatutRes.payee.rawValue {
+                            Button(action: {
+                                self.paymentHandler.startPayment(total: self.reservation.Total) { (success) in
+                                    if success {
+                                        self.paymentSuccess = true
+                                        viewModel.markReservationAsPaid(reservationId: self.reservation.id)
+                                    } else {
+                                        print("Failed")
+                                    }
+                                }
+                            }) {
+                                HStack {
+                                    Image(systemName: "creditcard")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .foregroundColor(.green)
+                                        .frame(width: 20, height: 20)
 
-                        Spacer()
-
+                                    Text("Payer")
+                                        .font(.body)
+                                        .fontWeight(.medium)
+                                }
+                                .padding(8)
+                                .background(Color.blue)
+                                .foregroundColor(.white)
+                                .cornerRadius(8)
+                            }
+                            Spacer()
+                        }
+                        
+                        // Bouton de suppression
                         Button(action: {
                             showDeleteConfirmation = true
                         }) {
-                            Image(systemName: "trash") // Choisir le nom de l'icône que vous souhaitez
+                            Image(systemName: "trash")
                                 .resizable()
                                 .scaledToFit()
-                                .foregroundColor(.red) // Changer la couleur selon vos besoins
-                                .frame(width: 20, height: 20) // Ajuster la taille selon vos besoins
+                                .foregroundColor(.red)
+                                .frame(width: 20, height: 20)
                         }
-
                         Spacer()
                     }
                     .padding(.leading, 0)
+
 
                     .alert(isPresented: $showDeleteConfirmation) {
                         Alert(
@@ -130,15 +179,17 @@ struct ReservationDetailView: View {
     }
 }
 
-struct ReservationDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        let reservationModel = ReservationModel()
-
-        if let reservation = reservationModel.reservations.first {
-            return AnyView(ReservationDetailView(reservation: reservation))
-        } else {
-            return AnyView(Text("No reservation"))
-        }
-    }
-}
+//struct ReservationDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let paymentHandler = PaymentHandler()  // Initialize PaymentHandler here
+//        PanierView(paymentHandler: paymentHandler)
+//        let reservationModel = ReservationModel()
+//
+//        if let reservation = reservationModel.reservations.first {
+//            return AnyView(ReservationDetailView(reservation: reservation))
+//        } else {
+//            return AnyView(Text("No reservation"))
+//        }
+//    }
+//}
 

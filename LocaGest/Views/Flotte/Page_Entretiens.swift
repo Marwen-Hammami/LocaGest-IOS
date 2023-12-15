@@ -1,14 +1,7 @@
-//
-//  Page_Entretiens.swift
-//  LocaGest
-//
-//  Created by Mohamed Maamoun Jrad  on 29/11/2023.
-//
-
 import SwiftUI
 
 struct Page_Entretiens: View {
-    let entretiens: [HistoriqueEntretiens]
+    @ObservedObject var entretienViewModel: EntretienViewModel
 
     var body: some View {
         NavigationView {
@@ -21,90 +14,96 @@ struct Page_Entretiens: View {
                 .edgesIgnoringSafeArea(.all)
 
                 VStack {
-                    List(entretiens) { entretien in
-                        NavigationLink(destination: Detail_Entretien()) {
-                            EntretienRow(entretien: entretien)
+                    if entretienViewModel.isLoading {
+                        ProgressView("Chargement...")
+                            .progressViewStyle(CircularProgressViewStyle(tint: .green))
+                            .scaleEffect(2)
+                            .foregroundColor(.white)
+                            .padding(.top, 20)
+                    } else {
+                        ScrollView {
+                            VStack(spacing: 16) {
+                                ForEach(entretienViewModel.historiqueEntretiens) { historiqueEntretien in
+                                    EntretienCardView(historiqueEntretiens: historiqueEntretien, entretienViewModel: entretienViewModel)
+                                }
+                            }
+                            .padding()
                         }
                     }
-                    .listStyle(GroupedListStyle())
 
                     Spacer()
 
                     NavigationLink(destination: Ajouter_Entretien()) {
-                        Text("Ajouter un entretien")
+                        Text("Ajouter")
                             .padding()
                             .frame(maxWidth: .infinity)
-                            .background(Color("Accent"))
+                            .background(Color.green)
                             .foregroundColor(.white)
                             .cornerRadius(8)
                             .padding()
                     }
+                    .padding(.bottom, 20)
                 }
             }
-            .navigationTitle("Détails des entretiens")
+            .task {
+                do {
+                    await entretienViewModel.fetchEntretiens()
+                } catch {
+                    print("Failed to fetch entretiens: \(error.localizedDescription)")
+                }
+            }
+            .navigationTitle("LocaGest")
+            .accentColor(.green)
         }
     }
 }
 
-struct EntretienRow: View {
-    var entretien: HistoriqueEntretiens
+struct EntretienCardView: View {
+    var historiqueEntretiens: HistoriqueEntretiens
+//    historiqueEntretiens.description = ""
+    @ObservedObject var entretienViewModel: EntretienViewModel
 
     var body: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 8) {
-                Text("Titre: \(entretien.titre)")
-                    .font(.headline)
-                Text("Description: \(entretien.description)")
-                    .font(.subheadline)
-                Text("Coût: \(entretien.cout)")
-                    .font(.subheadline)
-            }
-            .padding()
-            .background(
-                LinearGradient(
-                    gradient: Gradient(colors: [Color("Main"), Color.white]),
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
-            )
-
-            Spacer()
-
-            Image(systemName: "wrench.and.screwdriver")
-                .resizable()
-                .frame(width: 50, height: 50)
+        NavigationLink(destination: Detail_Entretien()) {
+            ZStack {
+                Rectangle()
+                    .foregroundColor(Color.black.opacity(0.3))
+                    .cornerRadius(20)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Immatriculation: \(historiqueEntretiens.immatriculation ?? "")")
+                        .fontWeight(.bold)
+                        .font(.subheadline)
+                        .foregroundColor(.white)
+                    
+                    Text("Titre: \(historiqueEntretiens.titre ?? "") ")
+                        .font(.subheadline)
+                        .foregroundColor(.white)
+                }
                 .padding()
-                .background(
-                    LinearGradient(
-                        gradient: Gradient(colors: [Color("Main"), Color.white]),
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                )
-                .cornerRadius(10)
-
-            NavigationLink(destination: Detail_Entretien( )) {
-                Text("Détail")
-                    .foregroundColor(Color("Accent"))
-                    .font(.subheadline)
             }
+            .background(
+                AsyncImage(url: URL(string: "http://localhost:9090/images/historique_entretien/\(historiqueEntretiens.image)")) { phase in
+                    switch phase {
+                    case .empty:
+                        ProgressView()
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .scaledToFill()
+                    case .failure:
+                        Image(systemName: "photo")
+                            .resizable()
+                            .scaledToFill()
+                    @unknown default:
+                        EmptyView()
+                    }
+                }
+            )
+            .cornerRadius(20)
+            .frame(width: 340, height: 180)
         }
-        .padding()
-        .background(Color.clear)
-    }
-}
-
-
-
-
-struct Page_Entretiens_Previews: PreviewProvider {
-    static var previews: some View {
-        let sampleEntretiens = [
-            HistoriqueEntretiens(id: UUID(), titre: "Entretien 1", description: "Description 1", cout: 100),
-            HistoriqueEntretiens(id: UUID(), titre: "Entretien 2", description: "Description 2", cout: 150)
-            // Add more entretiens as needed
-        ]
-
-        return Page_Entretiens(entretiens: sampleEntretiens)
+        .buttonStyle(PlainButtonStyle())
     }
 }

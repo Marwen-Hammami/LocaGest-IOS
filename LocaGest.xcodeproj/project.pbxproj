@@ -14,6 +14,7 @@
 		090D82CA2B19DE10000D1B47 /* distribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090D82C92B19DE10000D1B47 /* distribution.swift */; };
 		090D82CC2B19DE23000D1B47 /* distributions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090D82CB2B19DE23000D1B47 /* distributions.swift */; };
 		090D82CE2B19DE30000D1B47 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090D82CD2B19DE30000D1B47 /* Link.swift */; };
+		093E15C12B2BF731008FAE78 /* SwiftUIMessage in Frameworks */ = {isa = PBXBuildFile; productRef = 093E15C02B2BF731008FAE78 /* SwiftUIMessage */; };
 		09666FC52B17E7E10025248E /* AgenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09666FC42B17E7E10025248E /* AgenceView.swift */; };
 		09D7DF732B17E287003080D5 /* Agence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D7DF722B17E287003080D5 /* Agence.swift */; };
 		30F918AE2B13999D004EAF46 /* ReservationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F918AD2B13999D004EAF46 /* ReservationModel.swift */; };
@@ -148,6 +149,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				093E15C12B2BF731008FAE78 /* SwiftUIMessage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +356,9 @@
 			dependencies = (
 			);
 			name = LocaGest;
+			packageProductDependencies = (
+				093E15C02B2BF731008FAE78 /* SwiftUIMessage */,
+			);
 			productName = LocaGest;
 			productReference = DC51CA302AF8324D00DC8C9A /* LocaGest.app */;
 			productType = "com.apple.product-type.application";
@@ -382,6 +387,9 @@
 				Base,
 			);
 			mainGroup = DC51CA272AF8324D00DC8C9A;
+			packageReferences = (
+				093E15BF2B2BF731008FAE78 /* XCRemoteSwiftPackageReference "SwiftUIMessage" */,
+			);
 			productRefGroup = DC51CA312AF8324D00DC8C9A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -671,6 +679,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		093E15BF2B2BF731008FAE78 /* XCRemoteSwiftPackageReference "SwiftUIMessage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/edonv/SwiftUIMessage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		093E15C02B2BF731008FAE78 /* SwiftUIMessage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 093E15BF2B2BF731008FAE78 /* XCRemoteSwiftPackageReference "SwiftUIMessage" */;
+			productName = SwiftUIMessage;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		DC51CA3E2AF8325100DC8C9A /* LocaGest.xcdatamodeld */ = {

@@ -13,6 +13,7 @@ struct AgenceView: View {
     var body: some View {
         NavigationView {
             VStack {
+                
                 HStack {
                     TextField("Search...", text: $searchText)
                         .padding(7)
@@ -39,14 +40,20 @@ struct AgenceView: View {
                             searchText.isEmpty ? true : agency.agenceName.localizedCaseInsensitiveContains(searchText)
                         }) { agency in
                             NavigationLink(destination: DetailView(agency: agency)) {
-                                CardView(agency: agency)
-                                    .listRowBackground(Color(.systemGray6)) // Couleur de fond gris clair
-
+                                CardView(agency: agency)// Couleur de fond gris clair
+                                    .listRowBackground(
+                                        Image("backround")
+                                            .resizable()
+                                            .scaledToFill()
+                                            .edgesIgnoringSafeArea(.all)
+                                            .padding(.top,50))
                             }
                         }
                     } .listStyle(PlainListStyle()) // Utiliser un style de liste simple
-                        .background(Color.clear) 
+                        //.background(Color.clear) 
+                    
                 } else {
+                    
                     // Show loading indicator or error message
                     ProgressView()
                         .onAppear {
@@ -57,23 +64,32 @@ struct AgenceView: View {
                 Button(action: { self.showForm.toggle() }) {
                     Text("Ajouter une agence")
                         .padding()
-                        .background(Color.blue)
+                        .background(Color.green)
                         .foregroundColor(.white)
                         .cornerRadius(10)
                     
                 }
             }
             .padding()
-            .background(
-                            Image("back1") // Assurez-vous de remplacer "back1" par le nom de votre image dans le dossier "Assets"
-                                .resizable()
-                                .scaledToFill()
-            )
-
+           
             .sheet(isPresented: $showForm) {
                 FormView()
             }
             .navigationBarTitle("Mes Agences", displayMode: .inline)
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        Text("Mes Agences")
+                            .font(.largeTitle)
+                            .foregroundColor(.black)
+                            .bold()
+                    }
+                }
+            .background(
+                Image("backround")
+                    .resizable()
+                    .scaledToFill()
+                    .edgesIgnoringSafeArea(.all))
         }
         .onAppear {
             agenceViewModel.fetchAgencess()
@@ -86,73 +102,63 @@ struct DetailView: View {
     let agency: Agence
     @Environment(\.dismiss) var dismiss
     let agenceService = AgenceService.shared
-    @State private var showAlert : Bool = false
-
+    @State private var showAlert: Bool = false
+    @State private var showCallDialog: Bool = false
+    let phoneNumber = "58784720" // Replace this with the actual phone number
+    @State private var isMailPresented = false
+    
     var body: some View {
-            VStack(alignment: .center) {
-                
-                Image(systemName: "building.2.crop.circle.fill")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 200, height: 200)
-                    .foregroundColor(Color("Main"))
-                Text(agency.agenceName)
-                    .font(.largeTitle)
-                    .bold()
+        
+        ZStack {
+                  Image("backround")
+                      .resizable()
+                      .scaledToFill()
+                      .edgesIgnoringSafeArea(.all)
+                  
+                  VStack(alignment: .center) {
+                      Image("imagence")
+                              .resizable()
+                              .scaledToFit()
+                              .frame(width: 200, height: 300)
+                              .clipShape(Circle()) // Clip the image in a circular shape
+                              .overlay(Circle().stroke(Color.white, lineWidth: 10)) // Optional: Add a white border
+                              .shadow(radius: 50) // Optional: Add shadow to the circular image
+                      
+                      Text(agency.agenceName)
+                          .font(.largeTitle)
+                          .bold()
+                          .padding()
+                      
+                      // Détails de l'agence
+                      VStack(alignment: .leading) {
+                          HStack {
+                              Text("Address :")
+                                  .font(.headline)
+                                  .foregroundColor(.black)
+                              Text(agency.adresse)
+                                  .bold()
+                          }
                     .padding()
-
-                VStack(alignment : .leading){
-                HStack {
-                    Text("Address:")
-                        .font(.headline)
-                        .foregroundColor(.gray)
-                    Text(agency.adresse)
-                        .font(.body)
+                    
+                    // Add other details here...
                 }
-                .padding()
-
+                
                 HStack {
-                    Text("Head ID:")
-                        .font(.headline)
-                        .foregroundColor(.gray)
-                    Text(agency.idHead ?? "0")
-                        .font(.body)
-                }
-                .padding()
-
-                HStack {
-                    Text("Longitude:")
-                        .font(.headline)
-                        .foregroundColor(.gray)
-                    Text("\(agency.longitude)")
-                        .font(.body)
-                }
-                .padding()
-
-                HStack {
-                    Text("Latitude:")
-                        .font(.headline)
-                        .foregroundColor(.gray)
-                    Text("\(agency.latitude)")
-                        .font(.body)
-                }
-                .padding()
-            }
-                HStack{
                     Spacer()
+                    
+                    // Edit button
                     NavigationLink(destination: FormUpdateView(agency: agency)) {
                         Image(systemName: "square.and.pencil.circle.fill")
                             .resizable()
                             .scaledToFill()
                             .frame(width: 50, height: 50)
-                            .foregroundColor(.blue)
+                            .foregroundColor(.orange)
                     }
-   
-
-                
+                    
                     Spacer()
+                    
+                    // Delete button
                     Button(action: {
-                    // Add your button action here
                         showAlert = true
                     }) {
                         Image(systemName: "trash.circle.fill")
@@ -161,30 +167,79 @@ struct DetailView: View {
                             .frame(width: 50, height: 50)
                             .foregroundColor(.red)
                     }
-                    .alert(isPresented: $showAlert){
-                        Alert(title: Text("Êtes-vous sûres?"),message: Text("Êtes vous sûres de vouloir supprimer l'agence \(agency.agenceName) "),
-                              primaryButton: .destructive(Text("Supprimer")){
-                            agenceService.deleteAgence(agencyID: agency.id) { error in
-                                                            if let error = error {
-                                                                // Handle deletion error if needed
-                                                                print("Error deleting agency: \(error)")
-                                                            } else {
-                                                                
-                                                                // Handle successful deletion if needed
-                                                            }
-                                                        }
-                        },
-                              secondaryButton: .cancel() )
+                    .alert(isPresented: $showAlert) {
+                        Alert(title: Text("Are you sure?"),
+                              message: Text("Are you sure you want to delete the agency \(agency.agenceName)?"),
+                              primaryButton: .destructive(Text("Delete")) {
+                                agenceService.deleteAgence(agencyID: agency.id) { error in
+                                    if let error = error {
+                                        print("Error deleting agency: \(error)")
+                                    } else {
+                                        // Handle successful deletion if needed
+                                    }
+                                }
+                              },
+                              secondaryButton: .cancel())
                     }
-                Spacer()
-                        
+                    
+                    Spacer()
+                    
+                    // Phone call button
+                    Button(action: {
+                        showCallDialog = true
+                    }) {
+                        Image(systemName: "phone.circle.fill")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 50, height: 50)
+                            .foregroundColor(.green)
+                    }
+                    .alert(isPresented: $showCallDialog) {
+                        Alert(title: Text("Do you want to call the agency at number \(phoneNumber)?"),
+                              primaryButton: .default(Text("Call")) {
+                                if let phoneCallURL = URL(string: "tel://\(phoneNumber)") {
+                                    UIApplication.shared.open(phoneCallURL)
+                                }
+                              },
+                              secondaryButton: .cancel(Text("Cancel")))
+                    }
+                    
+                    Spacer()
+                    
+                    // Email button
+                    Button(action: {
+                        openMailApp()
+                    }) {
+                        ZStack {
+                            Circle()
+                                .fill(Color.blue)
+                                .frame(width: 50, height: 50)
+                            Image(systemName: "envelope")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 30, height: 25)
+                                .foregroundColor(.white)
+                        }
+                    }
+                    
+                    Spacer()
                 }
-            } .background(
-                Image("back1") // Assurez-vous de remplacer "back1" par le nom de votre image dans le dossier "Assets"
-                    .resizable()
-                    .scaledToFill()
-)
+                .padding()
+            }
+        }
+        .background(
+            Image("backround")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
+        )
         .navigationBarTitle(agency.agenceName, displayMode: .inline)
+    }
+    
+    func openMailApp() {
+        if let url = URL(string: "https://mail.google.com/mail/u/0/#inbox") {
+            UIApplication.shared.open(url)
+        }
     }
 }
 
@@ -640,9 +695,22 @@ struct FormView: View {
                     }
                     
                     Spacer()
-                }
+                }.padding()
+                    .background(
+                        Image("backround")
+                            .resizable()
+                            .scaledToFill()
+                            .edgesIgnoringSafeArea(.all)
+                            .padding(.top,50))
             }
             .navigationBarTitle(agency.agenceName, displayMode: .inline)
+            .padding()
+            .background(
+                Image("backround")
+                    .resizable()
+                    .scaledToFill()
+                    .edgesIgnoringSafeArea(.all)
+                    .padding(.top,50))
         }
     }
 

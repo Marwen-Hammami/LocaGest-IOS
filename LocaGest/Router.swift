@@ -32,4 +32,4 @@ final class Router: ObservableObject {
     func navigateToRoot() {
         navPath.removeLast(navPath.count)
     }
-}
+} 

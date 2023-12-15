@@ -121,19 +121,26 @@ struct ConversationMessagesView: View {
                         }
                         .alert("Sélectionner la raison du signalement", isPresented: $showRaisonSignalerDialog) {
                             Button("Harcèlement", role: .destructive, action: {
-                                messageViewModel.signalerMessage(messageId: messageId, signaleurId: userID!, raison: "Harcèlement", raisonAutre: "") { result in
-                                    switch result {
-                                    case .success(let response):
-                                        // Handle the successful response
-                                        messageViewModel.fetchMessages(forConvID: conversation._id)
-                                        signalementResponse = response
-                                        signalementResponseDiag = true
-                                    case .failure(let error):
-                                        // Handle the error
-                                        print("Error: \(error.localizedDescription)")
-
-                                    }
-                                }
+                                signaler(withReason: "Harcèlement")
+                            })
+                            Button("Suicide ou automutilation", role: .destructive, action: {
+                                signaler(withReason: "Suicide ou automutilation")
+                            })
+                            Button("Contenu Inapproprié", role: .destructive, action: {
+                                signaler(withReason: "Contenu Inapproprié")
+                            })
+                            Button("Discours haineux", role: .destructive, action: {
+                                signaler(withReason: "Discours haineux")
+                            })
+                            Button("Illégal", role: .destructive, action: {
+                                signaler(withReason: "Illégal")
+                            })
+                            Button("Arnaque", role: .destructive, action: {
+                                signaler(withReason: "Arnaque")
+                            })
+                            Button("Autre", role: .destructive, action: {
+                                // Handle the case when 'Autre' is selected
+                                // You might want to show a text field or another dialog for additional details
                             })
                         }
                         .alert(signalementResponse, isPresented: $signalementResponseDiag) {
@@ -256,6 +263,20 @@ struct ConversationMessagesView: View {
                         print("Error fetching other user: \(error)")
                     }
                 }
+            }
+        }
+    }
+    func signaler(withReason reason: String) {
+        messageViewModel.signalerMessage(messageId: messageId, signaleurId: userID!, raison: reason, raisonAutre: "") { result in
+            switch result {
+            case .success(let response):
+                // Handle the successful response
+                messageViewModel.fetchMessages(forConvID: conversation._id)
+                signalementResponse = response
+                signalementResponseDiag = true
+            case .failure(let error):
+                // Handle the error
+                print("Error: \(error.localizedDescription)")
             }
         }
     }

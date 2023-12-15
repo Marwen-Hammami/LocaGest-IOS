@@ -207,5 +207,51 @@ class MessagesViewModel: ObservableObject {
         }.resume()
     }
 
+    func sendMessageToChat(userMessage: String, convId: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        guard let url = URL(string: "\(BASE_URL)/messages/chatBot") else {
+            return
+        }
+
+        // Create the request
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        // Create the request body
+        let requestBody: [String: Any] = [
+            "userMessage": userMessage,
+            "convId": convId
+        ]
+
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: requestBody)
+        } catch {
+            print("Error encoding request body: \(error)")
+            completion(.failure(error))
+            return
+        }
+
+        // Perform the request
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            DispatchQueue.main.async {
+                guard let data = data, error == nil else {
+                    print("Error performing POST request: \(error?.localizedDescription ?? "Unknown error")")
+                    completion(.failure(error ?? NSError(domain: "UnknownError", code: 0, userInfo: nil)))
+                    return
+                }
+
+                if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
+                    // Successful request
+                    completion(.success(()))
+                } else {
+                    let unknownError = NSError(domain: "UnknownError", code: 0, userInfo: nil)
+                    completion(.failure(unknownError))
+                }
+            }
+        }.resume()
+    }
+
+
+    
 
 }

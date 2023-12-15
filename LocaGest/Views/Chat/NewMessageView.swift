@@ -10,7 +10,7 @@ import SwiftUI
 struct NewMessageView: View {
     
     @StateObject private var viewModel = ConvsViewModel()
-    var currentUser = "656e2bb566210cdf7c871d41"
+    let userID = UserDefaults.standard.string(forKey: "UserID")
     
     @State private var searchText: String = ""
     @Environment(\.dismiss) var dismiss
@@ -66,7 +66,7 @@ struct NewMessageView: View {
                     // Show loading indicator or error message
                     ProgressView()
                         .onAppear {
-                            viewModel.fetchConversations(forUserID: currentUser)
+                            viewModel.fetchConversations(forUserID: userID!)
                         }
                 }
             }

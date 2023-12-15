@@ -3,10 +3,10 @@ import SwiftUI
 struct CardMessage: View {
     let message: Message
     let userImg: String
-    var currentUserId = "656e2bb566210cdf7c871d41"
+    let userID = UserDefaults.standard.string(forKey: "UserID")
     var body: some View {
         HStack{
-            if message.sender == currentUserId {
+            if message.sender == userID {
                 Spacer()
                 
                 if(message.Supprime){
@@ -15,7 +15,7 @@ struct CardMessage: View {
                         .padding(8)
                         .background(Color(.white))
                         .foregroundColor(.black)
-                        .clipShape(Capsule())
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
                         .overlay(
                                 Capsule()
                                     .stroke(Color.blue, lineWidth: 2) // Add a blue border with a lineWidth of 2
@@ -28,7 +28,7 @@ struct CardMessage: View {
                                 .padding(8)
                                 .background(Color(.systemBlue))
                                 .foregroundColor(.white)
-                                .clipShape(Capsule())
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
                         }
                         switch message.file.count {
                         case 1:
@@ -92,7 +92,7 @@ struct CardMessage: View {
                             .padding(8)
                             .background(Color(.white))
                             .foregroundColor(.black)
-                            .clipShape(Capsule())
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
                             .overlay(
                                 Capsule()
                                     .stroke(Color.gray, lineWidth: 2) // Add a blue border with a lineWidth of 2
@@ -105,7 +105,7 @@ struct CardMessage: View {
                                     .padding(8)
                                     .background(Color(.systemGray5))
                                     .foregroundColor(.black)
-                                    .clipShape(Capsule())
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
                             }
                             switch message.file.count {
                             case 1:

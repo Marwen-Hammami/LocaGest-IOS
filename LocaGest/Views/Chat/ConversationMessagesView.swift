@@ -21,7 +21,11 @@ struct ConversationMessagesView: View {
     @State private var rotationAngle: Double = 0
     
     @StateObject private var messageViewModel = MessagesViewModel()
-    let currentUser = "656e2bb566210cdf7c871d41"
+    let userID = UserDefaults.standard.string(forKey: "UserID")
+    
+    @State private var otherUserName: String = ""
+    @State private var otherUserPicture: String = ""
+    @State private var otherUserRole: String = ""
     
     @StateObject var viewModel = SelectedImageViewModel()
     @State private var messageText = ""
@@ -33,7 +37,7 @@ struct ConversationMessagesView: View {
         VStack {
             ScrollView{
                 VStack{
-                    AsyncImage(url: URL(string: conversation.image)) { image in
+                    AsyncImage(url: URL(string: otherUserPicture)) { image in
                         image.resizable()
                             .scaledToFill()
                             .mask(Circle())
@@ -59,11 +63,11 @@ struct ConversationMessagesView: View {
                             }
                     }
                     
-                    Text(conversation.members[1])
+                    Text(otherUserName)
                         .font(.title3)
                         .fontWeight(.semibold)
                     
-                    Text("Technicien")
+                    Text(otherUserRole)
                         .font(.footnote)
                         .foregroundColor(.gray)
                         .padding(.bottom)
@@ -72,7 +76,7 @@ struct ConversationMessagesView: View {
                     if let messages = messageViewModel.messages {
                         ForEach(messages) { messa in
                             if(!messa.Archive) { //Ne pas afficher les messages archivées (liées au signalement)
-                                CardMessage(message: messa, userImg: conversation.image)
+                                CardMessage(message: messa, userImg: otherUserPicture)
                                     .onLongPressGesture {
                                         showDialog = true
                                         messageToCopy = messa.text
@@ -86,12 +90,12 @@ struct ConversationMessagesView: View {
                                 UIPasteboard.general.setValue(messageToCopy,
                                                               forPasteboardType: UTType.plainText.identifier)
                             })
-                            if (messageSender != currentUser) {
+                            if (messageSender != userID) {
                                 Button("Signaler", role: .destructive, action: {
                                     showRaisonSignalerDialog = true
                                 })
                             }
-                            if (messageSender == currentUser) {
+                            if (messageSender == userID) {
                                 Button("Supprimer", role: .destructive, action: {
                                     showConfirmDeleteDialog = true
                                 })
@@ -117,19 +121,26 @@ struct ConversationMessagesView: View {
                         }
                         .alert("Sélectionner la raison du signalement", isPresented: $showRaisonSignalerDialog) {
                             Button("Harcèlement", role: .destructive, action: {
-                                messageViewModel.signalerMessage(messageId: messageId, signaleurId: currentUser, raison: "Harcèlement", raisonAutre: "") { result in
-                                    switch result {
-                                    case .success(let response):
-                                        // Handle the successful response
-                                        messageViewModel.fetchMessages(forConvID: conversation._id)
-                                        signalementResponse = response
-                                        signalementResponseDiag = true
-                                    case .failure(let error):
-                                        // Handle the error
-                                        print("Error: \(error.localizedDescription)")
-
-                                    }
-                                }
+                                signaler(withReason: "Harcèlement")
+                            })
+                            Button("Suicide ou automutilation", role: .destructive, action: {
+                                signaler(withReason: "Suicide ou automutilation")
+                            })
+                            Button("Contenu Inapproprié", role: .destructive, action: {
+                                signaler(withReason: "Contenu Inapproprié")
+                            })
+                            Button("Discours haineux", role: .destructive, action: {
+                                signaler(withReason: "Discours haineux")
+                            })
+                            Button("Illégal", role: .destructive, action: {
+                                signaler(withReason: "Illégal")
+                            })
+                            Button("Arnaque", role: .destructive, action: {
+                                signaler(withReason: "Arnaque")
+                            })
+                            Button("Autre", role: .destructive, action: {
+                                // Handle the case when 'Autre' is selected
+                                // You might want to show a text field or another dialog for additional details
                             })
                         }
                         .alert(signalementResponse, isPresented: $signalementResponseDiag) {
@@ -145,10 +156,10 @@ struct ConversationMessagesView: View {
                     }
                 }
             }
-                .navigationBarTitle(conversation.isGroup ? conversation.name : conversation.members[1], displayMode: .inline)
+                .navigationBarTitle(conversation.isGroup ? conversation.name : otherUserName, displayMode: .inline)
                 .navigationBarItems(
                     leading:
-                        AsyncImage(url: URL(string: conversation.image)) { image in
+                        AsyncImage(url: URL(string: otherUserPicture)) { image in
                                             image.resizable()
                                                 .scaledToFill()
                                                 .mask(Circle())
@@ -208,7 +219,7 @@ struct ConversationMessagesView: View {
                                     // User has selected an image
                                     messageViewModel.addMessageWithImage(
                                         conversationId: conversation._id,
-                                        sender: currentUser,
+                                        sender: userID!,
                                         text: messageText,
                                         file: [selectedImage]
                                     )
@@ -218,7 +229,7 @@ struct ConversationMessagesView: View {
                                     if (messageText != "") {
                                         messageViewModel.addMessage(
                                             conversationId: conversation._id,
-                                            sender: currentUser,
+                                            sender: userID!,
                                             text: messageText,
                                             file: []
                                         )
@@ -237,6 +248,36 @@ struct ConversationMessagesView: View {
 
             }
             .padding(.horizontal)
+        }
+        .onAppear {
+            // Fetch user information when the view appears
+            if conversation.members.count > 0 {
+                let otherUserID = conversation.members[1]
+                UserService.shared.getUser(userID: otherUserID) { result in
+                    switch result {
+                    case .success(let user):
+                        self.otherUserName = user.username!
+                        self.otherUserPicture = user.image!
+                        self.otherUserRole = user.roles.rawValue
+                    case .failure(let error):
+                        print("Error fetching other user: \(error)")
+                    }
+                }
+            }
+        }
+    }
+    func signaler(withReason reason: String) {
+        messageViewModel.signalerMessage(messageId: messageId, signaleurId: userID!, raison: reason, raisonAutre: "") { result in
+            switch result {
+            case .success(let response):
+                // Handle the successful response
+                messageViewModel.fetchMessages(forConvID: conversation._id)
+                signalementResponse = response
+                signalementResponseDiag = true
+            case .failure(let error):
+                // Handle the error
+                print("Error: \(error.localizedDescription)")
+            }
         }
     }
 }

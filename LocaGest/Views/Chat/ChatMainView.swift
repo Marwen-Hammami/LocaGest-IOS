@@ -9,10 +9,11 @@ import SwiftUI
 
 struct ChatMainView: View {
     @EnvironmentObject var vm: ViewModel
-    
-//    let currentUserRole = "client"
-    let currentUserRole = "technicien"
-    
+    @StateObject private var userViewModel = UserViewModel()
+    @StateObject private var convsViewModel = ConvsViewModel()
+    @StateObject private var messageViewModel = MessagesViewModel()
+    @State private var shouldRefreshView = false
+
     @State private var rotationAngle: Double = 0
     @State private var showNewMessageView = false
     var body: some View {
@@ -27,7 +28,7 @@ struct ChatMainView: View {
                     HStack{
                         SideBarButton()
                         
-                        if(currentUserRole == "client") {
+                        if(userViewModel.user?.roles == Role.client) {
                             Text("LocaGest ChatBot")
                                 .font(.title)
                                 .padding(.horizontal)
@@ -71,6 +72,7 @@ struct ChatMainView: View {
         })
         .onAppear {
             vm.selecteditem = .chat
+            userViewModel.getUser() // Fetch the user data
         }
     }
     @ViewBuilder
@@ -90,24 +92,40 @@ struct ChatMainView: View {
     }
     
     @StateObject private var viewModel = ConvsViewModel()
-    let currentUser = "656e2bb566210cdf7c871d41"
+    let userID = UserDefaults.standard.string(forKey: "UserID")
     
     @ViewBuilder
     func HomeView()-> some View{
-        if(currentUserRole == "client") {
+        if(userViewModel.user?.roles == Role.client) {
             if let conversations = viewModel.conversations {
                 if(conversations.count > 0) {
                     ConversationChatBotView(conversation: conversations[0])
                         .padding(.bottom, 15)
                 }else {
                     //Create a new chatbot conversation
-                    //viewmodel method
-                    //+display
+                    Text("Création de la conversation...")
+                        .onAppear(){
+                            if let userID = UserDefaults.standard.string(forKey: "UserID") {
+                                convsViewModel.addConversation(members: [userID, "657b52068948af22d02152e1"], isGroup: false)
+                                
+                                shouldRefreshView = true
+                            }
+                        }
+                        .background(
+                            NavigationLink(destination:
+                                            ChatMainView()
+                                                .environmentObject(vm)
+                                                .navigationBarBackButtonHidden(true)
+                                            , isActive: $shouldRefreshView) {
+                                EmptyView()
+                            }
+                        )
                 }
             } else {
                 ProgressView()
                     .onAppear {
-                        viewModel.fetchConversations(forUserID: currentUser)
+                        viewModel.fetchConversations(forUserID: userID!)
+                        
                     }
             }
         }else {
@@ -120,7 +138,7 @@ struct ChatMainView: View {
                     } else {
                         ProgressView()
                             .onAppear {
-                                viewModel.fetchConversations(forUserID: currentUser)
+                                viewModel.fetchConversations(forUserID: userID!)
                             }
                     }
                 }

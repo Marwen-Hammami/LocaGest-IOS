@@ -9,7 +9,7 @@ import Foundation
 
 final class EntretienService {
     static let shared = EntretienService()
-    private let baseURL = "http://localhost:9090/historique_entretien"
+    private let baseURL = "https://locagest.onrender.com/historique_entretien"
     
     func getEntretiens() async throws -> [HistoriqueEntretiens] {
         let url = URL(string: "\(baseURL)")!

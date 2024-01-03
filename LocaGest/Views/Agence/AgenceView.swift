@@ -466,7 +466,7 @@ struct FormView: View {
     }
     func addAgence() {
         // Define the API endpoint URL
-        let apiUrlString = "http://192.168.155.177:9090/agence/new/"
+        let apiUrlString = "https://locagest.onrender.com/agence/new/"
         
         // Create the URL
         guard let url = URL(string: apiUrlString) else {
@@ -605,7 +605,7 @@ struct FormView: View {
         func updateAgence() {
             // Define the API endpoint URL for updating an agency, assuming the agency ID is available
             let id = "YOUR_AGENCY_ID" // Remplacez ceci par l'ID réel de l'agence que vous souhaitez mettre à jour
-            let apiUrlString = "http://172.20.10.12:9090/agence/:id/" // Utilisez l'URL avec l'ID de l'agence
+            let apiUrlString = "https://locagest.onrender.com/agence/:id/" // Utilisez l'URL avec l'ID de l'agence
             
             // Create the URL
             guard let url = URL(string: apiUrlString) else {

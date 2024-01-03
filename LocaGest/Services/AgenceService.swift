@@ -9,7 +9,7 @@ import Foundation
 
 class AgenceService {
     static let shared = AgenceService()
-    private let baseURL = "http://192.168.155.177:9090"
+    private let baseURL = "https://locagest.onrender.com"
 
     func fetchAgencess(completion: @escaping ([Agence]?) -> Void) {
         let url = URL(string: "\(baseURL)/agence")!
@@ -41,7 +41,7 @@ class AgenceService {
 
         func deleteAgence(agencyID: String, completion: @escaping (Error?) -> Void) {
             // Define the API endpoint URL for deleting an agency using the agencyID
-            let apiUrlString = "http://192.168.155.177:9090/agence/\(agencyID)" // Utilize the URL with the agencyID for deletion
+            let apiUrlString = "https://locagest.onrender.com/agence/\(agencyID)" // Utilize the URL with the agencyID for deletion
 
             // Create the URL
             guard let url = URL(string: apiUrlString) else {
@@ -83,7 +83,7 @@ class AgenceService {
                    "latitude": updatedData.latitude
                    // Add other properties of Agence here as needed
                ]
-            let apiUrlString = "http://192.168.155.177:9090/agence/\(agencyID)" // Utilize the URL with the agencyID for updating
+            let apiUrlString = "https://locagest.onrender.com/agence/\(agencyID)" // Utilize the URL with the agencyID for updating
 
             // Create the URL
             guard let url = URL(string: apiUrlString) else {

@@ -84,7 +84,7 @@ struct EntretienCardView: View {
                 .padding()
             }
             .background(
-                AsyncImage(url: URL(string: "http://localhost:9090/images/historique_entretien/\(historiqueEntretiens.image)")) { phase in
+                AsyncImage(url: URL(string: "https://locagest.onrender.com/images/historique_entretien/\(historiqueEntretiens.image)")) { phase in
                     switch phase {
                     case .empty:
                         ProgressView()

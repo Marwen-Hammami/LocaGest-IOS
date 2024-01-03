@@ -9,7 +9,7 @@ import Foundation
 
 final class FlotteService {
     static let shared = FlotteService()
-    private let baseURL = "http://localhost:9090/car"
+    private let baseURL = "https://locagest.onrender.com/car"
 
     func createCar(car: CarRequest, completion: @escaping (Result<Car, Error>) -> Void) {
         let url = URL(string: "\(baseURL)")!
@@ -96,7 +96,7 @@ final class FlotteService {
 //
     
     static func deleteCar(immatriculation: String) async throws {
-            let urlString = "http://localhost:9090/car/\(immatriculation)"
+            let urlString = "https://locagest.onrender.com/car/\(immatriculation)"
 
             guard let url = URL(string: urlString) else {
                 throw NetworkError.invalidURL
@@ -120,7 +120,7 @@ final class FlotteService {
     
     
     static func getCars() async throws -> [Car] {
-        let urlString = "http://localhost:9090/car/"
+        let urlString = "https://locagest.onrender.com/car/"
 
         guard let url = URL(string: urlString) else {
             throw NetworkError.invalidURL

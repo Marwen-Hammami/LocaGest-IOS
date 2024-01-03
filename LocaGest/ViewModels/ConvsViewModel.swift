@@ -12,7 +12,7 @@ class ConvsViewModel: ObservableObject {
     @Published var conversations: [Conversation]? = nil
     
     //    let BASE_URL = "https://locagest.onrender.com"
-        let BASE_URL = "http://192.168.155.177:9090"
+        let BASE_URL = "https://locagest.onrender.com"
 
     func fetchConversations(forUserID userID: String) {
         guard let url = URL(string: "\(BASE_URL)/conversations/\(userID)") else {

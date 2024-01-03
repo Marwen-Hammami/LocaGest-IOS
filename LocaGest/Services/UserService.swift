@@ -2,7 +2,7 @@ import Foundation
 
 class UserService {
     static let shared = UserService()
-    private let baseURL = "http://192.168.155.177:9090"
+    private let baseURL = "https://locagest.onrender.com"
 
     
   

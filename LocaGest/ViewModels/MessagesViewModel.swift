@@ -12,7 +12,7 @@ class MessagesViewModel: ObservableObject {
     @Published var messages: [Message]? = nil
     
 //    let BASE_URL = "https://locagest.onrender.com"
-    let BASE_URL = "http://192.168.155.177:9090"
+    let BASE_URL = "https://locagest.onrender.com"
 
     func fetchMessages(forConvID convID: String) {
         guard let url = URL(string: "\(BASE_URL)/messages/\(convID)") else {

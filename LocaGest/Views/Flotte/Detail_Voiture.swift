@@ -27,7 +27,7 @@ struct Detail_Voiture: View {
                 }
 
                 // Emplacement pour une image
-                AsyncImage(url: URL(string: "http://localhost:9090/images/car/\(car.image)")) { phase in
+                AsyncImage(url: URL(string: "https://locagest.onrender.com/car/\(car.image)")) { phase in
                     switch phase {
                     case .empty:
                         ProgressView()
